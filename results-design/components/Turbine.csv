@@ -1,0 +1,2 @@
+label;comp_type;busses;bus_param;bus_P_ref;bus_char;bus_base;design;offdesign;design_path;local_design;local_offdesign;P;P_set;P_var;eta_s;eta_s_set;eta_s_var;eta_s_char;eta_s_char_set;eta_s_char_param;pr;pr_set;pr_var;cone;cone_set
+expander;Turbine;['work netto'];[None];[-286697515.8158723];['0x000001F38900D730'];['component'];[];[];nan;False;False;-286697515.8158723;False;False;0.899999999999708;True;False;0x000001F389023130;False;m;0.058479532163742666;False;False;nan;False
