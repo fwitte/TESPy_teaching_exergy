@@ -1,0 +1,35 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+- caption: Getting Started
+  chapters:
+  - file: getting-started/setup-python
+  - file: getting-started/intro-packages
+- caption: Introduction
+  chapters:
+  - file: intro/scope-and-preconditions
+  - file: intro/exergy
+- caption: Single Components
+  chapters:
+  - file: single-components/intro
+  - file: single-components/adiabatic-pipe-flow
+  - file: single-components/heat-exchanger
+  - file: single-components/compressed-air
+- caption: Thermodynamic Cycles
+  chapters:
+  - file: cycles/intro
+  - file: cycles/heat-pump
+  - file: cycles/open-gas-turbine
+  - file: cycles/clausius-rankine
+- caption: Complex Processes
+  chapters:
+  - file: processes/intro
+  - file: processes/orc-combined-heat-and-power
+  - file: processes/electrolysis-heat-recovery
+- caption: Reference
+  chapters:
+  - file: abbreveations-symbols
+  - file: zliterature
