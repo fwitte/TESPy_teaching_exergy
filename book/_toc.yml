@@ -11,7 +11,7 @@ parts:
 - caption: Introduction
   chapters:
   - file: intro/scope-and-preconditions
-  - file: intro/exergy
+  - file: intro/exergy-analysis
 - caption: Single Components
   chapters:
   - file: single-components/intro
