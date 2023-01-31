@@ -21,9 +21,9 @@ parts:
 - caption: Thermodynamic Cycles
   chapters:
   - file: cycles/intro
-  - file: cycles/heat-pump
   - file: cycles/open-gas-turbine
   - file: cycles/clausius-rankine
+  - file: cycles/heat-pump
 - caption: Complex Processes
   chapters:
   - file: processes/intro
