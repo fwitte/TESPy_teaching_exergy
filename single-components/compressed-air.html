@@ -389,6 +389,20 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-1">Excercises 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-product">Overall process product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-exercise-2">Intermediate Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-solution-2">Intermediate Solution 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-4">Excercises 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-6">Solution 6</a></li>
 </ul>
             </nav>
         </div>
@@ -401,44 +415,295 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="compressed-air-production">
-<h1>Compressed Air Production<a class="headerlink" href="#compressed-air-production" title="Permalink to this heading">#</a></h1>
-<p>Story</p>
-<ul class="simple">
-<li><p>Wo steckt bei Druckluft die Energie?</p></li>
-<li><p>Man kann isentrope Arbeit mit Exergie gleichsetzen</p></li>
-<li><p>Zwischenkühlung einführen, warum bringt das was, obwohl Exergie offensichtlich dissipiert wird?</p></li>
-<li></li>
-</ul>
-<p>Übungen</p>
-<ul class="simple">
-<li><p>Überlegungen isentrope Kompression, isentrope Arbeit vs. physikalische Exergie, Aufteilung thermisch mechanisch</p></li>
-<li><p>Zwischenkühlung einbauen, wieder Aufteilung der Exergie,</p></li>
-</ul>
-<p>Story</p>
-<ul class="simple">
-<li><p>Viel einfacher mit Framework, erst recht, wenn WÜT mit kalter Seite vorhanden</p></li>
-</ul>
-<p>Übungen</p>
-<ul class="simple">
-<li><p>Vergleich TESPy, das was wir gemacht haben</p></li>
-<li><p>Analyse des Einflusses des Zwischendruckes</p></li>
-</ul>
+<span id="compressed-air-label"></span><h1>Compressed Air Production<a class="headerlink" href="#compressed-air-production" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="compressor-flowsheet">
+<img alt="../_images/Compressor.svg" src="../_images/Compressor.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Abstract model representation of a Compressor.</span><a class="headerlink" href="#compressor-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>We want to consider compression of air and cooling it the fluid to the ambient
-temperature.</p>
+<p>In this example we are investigating the provision of compressed air. Compressed air is often required in technical
+systems, e.g. for process control, or even as storage medium, i.e. in Compressed Air Energy Storage (CAES). To generate
+compressed air a compressor is required, which will (in the best case) compress the air in an isentropic process. The
+isentropic process is characterized by the fact, that the entropy does not change.</p>
+<p>We can model such a process using CoolProp. For example, we want to compress 1.5 kg/s of air from the ambient state to
+a pressure of 10 bar. To calculate the energy consumed in the isentropic process, the energy balance introduced in eq.
+<a class="reference internal" href="adiabatic-pipe-flow.html#equation-pipe-flow-energy-balance">(16)</a> can be simplified by removing the heat transfer term:</p>
+<div class="math notranslate nohighlight" id="equation-compressor-energy-balance">
+<span class="eqno">(24)<a class="headerlink" href="#equation-compressor-energy-balance" title="Permalink to this equation">#</a></span>\[\dot W = \dot m \cdot \left( h_2 - h_1\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span>
+
+
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
+<span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1.01325</span>  <span class="c1"># bar</span>
+<span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
+<span class="n">dot_m</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="n">h_amb</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">s_amb</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">p_1</span> <span class="o">=</span> <span class="n">p_amb</span>
+<span class="n">T_1</span> <span class="o">=</span> <span class="n">T_amb</span>
+
+<span class="n">p_2</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">h_1</span> <span class="o">=</span> <span class="n">h_amb</span>
+<span class="n">s_1</span> <span class="o">=</span> <span class="n">s_amb</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="n">s_1</span>
+
+<span class="n">h_2</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">s_1</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">dot_W</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_2</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span>
+
+<span class="n">dot_W</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">T_amb</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1.01325</span>  <span class="c1"># bar</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can define the exergy balance for the compressor at temperatures above the ambient temperature in the eqs.
+<a class="reference internal" href="#equation-compressor-fuel-exergy">(25)</a> and <a class="reference internal" href="#equation-compressor-product-exergy">(26)</a>. With that definition it is possible to determine fuel,
+product and exergy destruction.</p>
+<div class="math notranslate nohighlight" id="equation-compressor-fuel-exergy">
+<span class="eqno">(25)<a class="headerlink" href="#equation-compressor-fuel-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{F} = \dot W\]</div>
+<div class="math notranslate nohighlight" id="equation-compressor-product-exergy">
+<span class="eqno">(26)<a class="headerlink" href="#equation-compressor-product-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{P} = \dot{E}_\text{out}^\text{PH} - \dot{E}_\text{in}^\text{PH}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">calc_physical_exergy</span>
+
+
+<span class="n">exergy_fuel</span> <span class="o">=</span> <span class="n">dot_W</span>
+
+<span class="n">ex_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">ex_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_2</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">exergy_product</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_2</span> <span class="o">-</span> <span class="n">ex_1</span><span class="p">)</span>
+
+<span class="n">exergy_destruction</span> <span class="o">=</span> <span class="n">exergy_fuel</span> <span class="o">-</span> <span class="n">exergy_product</span>
+
+<span class="n">exergy_destruction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First of all, we see that the exergy destruction is zero, which verifies our calculation: Since the isentropic process
+is adiabatic and reversible we have an thermodynamically speaking ideal process. Since such a component can only exist
+in theory, a reference figure is used to define how close an actual compressor is to the theoretical optimum: the
+isentropic efficiency <span class="math notranslate nohighlight">\(\eta_\text{s,cmp}\)</span> in eq. <a class="reference internal" href="#equation-compressor-isentropic-efficiency">(27)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-compressor-isentropic-efficiency">
+<span class="eqno">(27)<a class="headerlink" href="#equation-compressor-isentropic-efficiency" title="Permalink to this equation">#</a></span>\[\eta_\text{s,cmp} = \frac{h \left( p_2, s_1\right) - h_1}{h_2 - h_1}\]</div>
+</section>
+<section id="excercises-1">
+<h2>Excercises 1<a class="headerlink" href="#excercises-1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Assume you want to compress the same amount of air to the same pressure as in the example before:</p>
+<ul class="simple">
+<li><p>What power does a compressor with an isentropic efficiency of 85 % consume?</p></li>
+<li><p>How large is the exergy destruction?</p></li>
+<li><p>How and why does the product exergy change?</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="solution-1">
+<h2>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h2>
+<p>To calculate the outlet state of the compressor with the isentropic efficiency of 85 % we have to first reorder the eq.
+<a class="reference internal" href="#equation-compressor-isentropic-efficiency">(27)</a> in a way, that the unknown outlet enthalpy can be calculated:</p>
+<div class="math notranslate nohighlight" id="equation-compressor-isentropic-efficiency-reorder">
+<span class="eqno">(28)<a class="headerlink" href="#equation-compressor-isentropic-efficiency-reorder" title="Permalink to this equation">#</a></span>\[h_2 = \frac{h \left( p_2, s_1\right) - h_1}{\eta_\text{s,cmp}} + h_1\]</div>
+<p>Then we create a function to calculate the enthalpy after isentropic compression <span class="math notranslate nohighlight">\(h \left( p_2, s_1\right)\)</span> and
+call it with the respective parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isentropic_outlet_enthalpy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="n">fluid</span><span class="p">):</span>
+    <span class="n">s_1</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_1</span> <span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    <span class="n">h_2s</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">s_1</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h_2s</span>
+
+
+<span class="n">eta_s</span> <span class="o">=</span> <span class="mf">0.85</span>
+
+<span class="n">h_2_real</span> <span class="o">=</span> <span class="p">(</span><span class="n">isentropic_outlet_enthalpy</span><span class="p">(</span><span class="n">p_1</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span> <span class="o">/</span> <span class="n">eta_s</span> <span class="o">+</span> <span class="n">h_1</span>
+
+<span class="n">dot_W_real</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_2_real</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span>
+
+<span class="n">dot_W_real</span> <span class="o">/</span> <span class="n">dot_W</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;compressor-work-increase&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="n">dot_W_real</span> <span class="o">/</span> <span class="n">dot_W</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see how the work required increases by about  %. Now let’s have a look at
+the exergy analysis. We can calculate the balance with the updated outlet state and have a look at the exergy
+destruction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_fuel_real</span> <span class="o">=</span> <span class="n">dot_W_real</span>
+
+<span class="n">ex_2_real</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_2_real</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">exergy_product_real</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_2_real</span> <span class="o">-</span> <span class="n">ex_1</span><span class="p">)</span>
+
+<span class="n">exergy_destruction_real</span> <span class="o">=</span> <span class="n">exergy_fuel_real</span> <span class="o">-</span> <span class="n">exergy_product_real</span>
+
+<span class="n">exergy_destruction_real</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;compressor-exergy-destruction&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">exergy_destruction_real</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;compressor-work-change&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">dot_W_real</span> <span class="o">-</span> <span class="n">dot_W</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The exergy destruction is at  W, the change of work transferred by the
+compressor (compared to the ideal compressor) is  W. This may seem odd at the first
+glance. If the power input to the process has increased stronger than the exergy destruction, more product exergy must
+be available than before. We can verify this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_product_real</span> <span class="o">-</span> <span class="n">exergy_product</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overall-process-product">
+<h2>Overall process product<a class="headerlink" href="#overall-process-product" title="Permalink to this heading">#</a></h2>
+<p>We have learned how to run energy and exergy balances on a single compressor and found, that a less efficiency
+compressor consumes more power for the provision of the same mass flow at a specific pressure (obviously), but also that
+the product exergy increases the less efficient the compressor is.</p>
+<p>This seems very counter intuitive as we always provide 1.5 kg/s compressed air at a pressure of 10 bar. However, we have
+not yet looked at the outlet temperature of the compressor. We can do that by calculating the temperature at the outlet
+pressure and the respective enthalpy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_2_is</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_2</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">T_2_is</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_2</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_2_real</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">T_2</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It becomes clear, that the outlet temperature rises with a lower isentropic efficiecy of the compressor. Obviously, our
+total exergy changes, but we want to have a look at how the shares of phyiscal and thermal exergy change.</p>
+<section id="intermediate-exercise-2">
+<h3>Intermediate Exercise 2<a class="headerlink" href="#intermediate-exercise-2" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple" start="2">
+<li><p>Compare the mechanical and thermal exergy for the compressed air provided by the ideal and the real compressor. What
+is strinking?</p></li>
+</ol>
+</section>
+<section id="intermediate-solution-2">
+<h3>Intermediate Solution 2<a class="headerlink" href="#intermediate-solution-2" title="Permalink to this heading">#</a></h3>
+<p>We can make use of the exergy splitting to calculate thermal and mechanical exergy and specifically look at the
+mechanical exergy first: It does NOT change.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">calc_splitted_physical_exergy</span>
+
+
+<span class="n">ex_2_ideal_therm</span><span class="p">,</span> <span class="n">ex_2_ideal_mech</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_2</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">ex_2_therm</span><span class="p">,</span> <span class="n">ex_2_mech</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_2_real</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+
+<span class="n">ex_2_mech</span> <span class="o">-</span> <span class="n">ex_2_ideal_mech</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That means the change in product exergy is purely due to a change in thermal exergy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_2_therm</span> <span class="o">-</span> <span class="n">ex_2_ideal_therm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_product_real</span> <span class="o">-</span> <span class="n">exergy_product</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What does this mean about the overall process product exergy? In our technical system we want to provide pneumatic
+energy. We cannot make use of the high temperature for this specific reason. Of course, one could use that thermal
+exergy to provide heat to other processes, but for now we want to focus on the provison of pressurized air. Thinking
+at this, the value of our process lies in the pressure of the air, not in the temperature. Therefore we want to
+investigate more on this by defining a virtual process, which cools the pressurized air back to the ambient temperature
+without changing the pressure as illustrated in <a class="reference internal" href="#compressor-virtual-cooling-flowsheet"><span class="std std-numref">Fig. 6</span></a>.</p>
+<figure class="align-default" id="compressor-virtual-cooling-flowsheet">
+<img alt="figures/Compressor_virtual_cooling.svg" src="figures/Compressor_virtual_cooling.svg" /><figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Process representation of the compressor with virtual cooling of the compressed air.</span><a class="headerlink" href="#compressor-virtual-cooling-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="3">
+<li><p>Balance the virtual process according to the flowsheet above.</p>
+<ul class="simple">
+<li><p>Between the states 1 and 3</p>
+<ul>
+<li><p>How does the enthalpy change?</p></li>
+<li><p>How do mechanical and thermal exergy change?</p></li>
+</ul>
+</li>
+<li><p>How does the heat transferred in the virtual process from 2 to 3 compare to the change in thermal exergy?</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="solution-3">
+<h2>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h2>
+<p>The temperature rises together with the pressure. However, we cannot really make use of the temperature in pneumatic
+systems or in compressed air energy storage.</p>
 <div class="math notranslate nohighlight" id="equation-eq-compressed-air-information">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eq-compressed-air-information" title="Permalink to this equation">#</a></span>\[\begin{split}    T_3 = T_1\\
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-compressed-air-information" title="Permalink to this equation">#</a></span>\[\begin{split}    T_3 = T_1\\
     p_3 &gt; p_1\end{split}\]</div>
 <p>Applying energy analysis to the overall system neglecting the influence of
 potential and kinetic energy to the thermal system, we can calculate the total
 amount of energy transferred over the system boundaries <span class="math notranslate nohighlight">\(\dot E\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-compressed-air-energy">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-compressed-air-energy" title="Permalink to this equation">#</a></span>\[    \dot E =\dot m \cdot \left( h_3 - h_1\right)\]</div>
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-compressed-air-energy" title="Permalink to this equation">#</a></span>\[    \dot E =\dot m \cdot \left( h_3 - h_1\right)\]</div>
 <p>However, we can see that the change in enthalpy is nearly zero, since <span class="math notranslate nohighlight">\(h_1\)</span> and
 <span class="math notranslate nohighlight">\(h_3\)</span> are almost equal.</p>
 <div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-equality">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
 <p>We can easily verify this claim:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -458,18 +723,6 @@ amount of energy transferred over the system boundaries <span class="math notran
 <span class="n">h_3</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_3_SI</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_amb_SI</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Change in enthalpy: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">h_3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h_1</span><span class="p">)</span><span class="si">}</span><span class="s2"> J/kg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">T_amb</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># °C</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1.01325</span>  <span class="c1"># bar</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
 </pre></div>
 </div>
 </div>
@@ -507,9 +760,9 @@ isothermal process:</p>
 <p>For ideal gases, the change in enthalpy will be exactly zero, as the enthalpy
 does not depend on change in pressure but only on change in temperature:</p>
 <div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-ideal-gas">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-ideal-gas" title="Permalink to this equation">#</a></span>\[    h\left(T\right) - h\left(T_\text{ref}\right) = c_\text{p}\left(T\right) \cdot \left(T - T_\text{ref}\right)\]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-ideal-gas" title="Permalink to this equation">#</a></span>\[    h\left(T\right) - h\left(T_\text{ref}\right) = c_\text{p}\left(T\right) \cdot \left(T - T_\text{ref}\right)\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-equality2">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality2" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality2" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
 <p>To visualize the energy stored in the pressurized air, we can apply the exergy
 method and split the exergy in its thermal and mechanical shares.</p>
 <div class="cell docutils container">
@@ -557,7 +810,7 @@ method and split the exergy in its thermal and mechanical shares.</p>
 </div>
 </div>
 <p>With a closer look at the compressor assuming isentropic compression, we see that
-the physical exergy <span class="math notranslate nohighlight">\(ex^\text{PH}\)</span> of the compressed air is identical to the
+the physical exergy <span class="math notranslate nohighlight">\(e^\text{PH}\)</span> of the compressed air is identical to the
 isentropic compression energy <span class="math notranslate nohighlight">\(w = h_\text{is} - h\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -662,6 +915,51 @@ isentropic compression energy <span class="math notranslate nohighlight">\(w = h
 <li><p>Bezug Integral v dp?</p></li>
 </ul>
 </section>
+<section id="excercises-4">
+<h2>Excercises 4<a class="headerlink" href="#excercises-4" title="Permalink to this heading">#</a></h2>
+<p>Now we want to consider an improvement of our process providing the compressed air. The compressor is separated into two
+individual compressor stages and the air stream is cooled in between the two compression stages.</p>
+<ol class="arabic simple" start="4">
+<li><p>Model the process of</p>
+<ul class="simple">
+<li><p>compressing the ambient air to 3 bar,</p></li>
+<li><p>cooling the air back to the ambient temperature and</p></li>
+<li><p>compressing the air up to 10 bar.
+Assume, that the isentropic efficiency of the two compressor stages remains unchanged.</p></li>
+</ul>
+</li>
+<li><p>Balance the process with energy and exergy:</p>
+<ul class="simple">
+<li><p>How does the overall power requirement change?</p></li>
+<li><p>How does the overall exergy destruction change?</p></li>
+<li><p>Why is the overall exergy destruction smaller?</p></li>
+</ul>
+</li>
+<li><p>Build a TESPy model for the same process.</p>
+<ul class="simple">
+<li><p>Run the exergy analysis.</p></li>
+<li><p>Verify the results of the models.</p></li>
+</ul>
+</li>
+<li><p>How does the intermediate pressure affect the overall exergy efficiency?</p>
+<ul class="simple">
+<li><p>Calculate the exergy efficiency for an intermediate pressure range of 2 bar to 9 bar.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id1">
+<h2>Solution 3<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="solution-4">
+<h2>Solution 4<a class="headerlink" href="#solution-4" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="solution-5">
+<h2>Solution 5<a class="headerlink" href="#solution-5" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="solution-6">
+<h2>Solution 6<a class="headerlink" href="#solution-6" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -726,6 +1024,20 @@ isentropic compression energy <span class="math notranslate nohighlight">\(w = h
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-1">Excercises 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-product">Overall process product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-exercise-2">Intermediate Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-solution-2">Intermediate Solution 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-4">Excercises 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-6">Solution 6</a></li>
 </ul>
   </nav></div>
 

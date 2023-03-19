@@ -19,28 +19,37 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 from CoolProp.CoolProp import PropsSI
 
-T_amb = 30  # °C
+
+T_amb = 20  # °C
 p_amb = 1.01325  # bar
 fluid = "air"
+dot_m = 1.5
 
-p_3 = 5  # bar
+h_amb = PropsSI("H", "T", T_amb + 273.15, "P", p_amb * 1e5, fluid)
+s_amb = PropsSI("S", "T", T_amb + 273.15, "P", p_amb * 1e5, fluid)
 
-p_amb_SI = p_amb * 1e5  # Pa
-p_3_SI = p_3 * 1e5  # Pa
-T_amb_SI = T_amb + 273.15  # K
+p_1 = p_amb
+T_1 = T_amb
 
-h_1 = PropsSI("H", "P", p_amb_SI, "T", T_amb_SI, fluid)
-h_3 = PropsSI("H", "P", p_3_SI, "T", T_amb_SI, fluid)
+p_2 = 10
 
-print(f"Change in enthalpy: {round(h_3 - h_1)} J/kg")
+h_1 = h_amb
+s_1 = s_amb
+s_2 = s_1
+
+h_2 = PropsSI("H", "S", s_1, "P", p_2 * 1e5, fluid)
+
+dot_W = dot_m * (h_2 - h_1)
+
+dot_W
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
 Cell [0;32mIn[1], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mCoolProp[39;00m[38;5;21;01m.[39;00m[38;5;21;01mCoolProp[39;00m [38;5;28;01mimport[39;00m PropsSI
-[1;32m      3[0m T_amb [38;5;241m=[39m [38;5;241m30[39m  [38;5;66;03m# °C[39;00m
-[1;32m      4[0m p_amb [38;5;241m=[39m [38;5;241m1.01325[39m  [38;5;66;03m# bar[39;00m
+[1;32m      4[0m T_amb [38;5;241m=[39m [38;5;241m20[39m  [38;5;66;03m# °C[39;00m
+[1;32m      5[0m p_amb [38;5;241m=[39m [38;5;241m1.01325[39m  [38;5;66;03m# bar[39;00m
 
 [0;31mModuleNotFoundError[0m: No module named 'CoolProp'
 ModuleNotFoundError: No module named 'CoolProp'

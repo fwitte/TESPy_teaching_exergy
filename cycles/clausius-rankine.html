@@ -420,16 +420,16 @@ document.write(`
 <span id="rankine-label"></span><h1>Clausius Rankine Cycle<a class="headerlink" href="#clausius-rankine-cycle" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>The clausius rankine cycle serves as a comparative process for the steam power plant in its simplest constellation with steam turbine, condenser, feed water pump and steam generator shown in figure <a class="reference internal" href="#rankine-cycle-dissipative-flowsheet"><span class="std std-numref">Fig. 7</span></a>. This is based on the heat-power process occurring in a steam engine and is thus a clockwise rotationg cycle.</p>
+<p>The clausius rankine cycle serves as a comparative process for the steam power plant in its simplest constellation with steam turbine, condenser, feed water pump and steam generator shown in figure <a class="reference internal" href="#rankine-cycle-dissipative-flowsheet"><span class="std std-numref">Fig. 9</span></a>. This is based on the heat-power process occurring in a steam engine and is thus a clockwise rotationg cycle.</p>
 <figure class="align-default" id="rankine-cycle-dissipative-flowsheet">
 <img alt="../_images/rankine_cycle_dissipative.svg" src="../_images/rankine_cycle_dissipative.svg" /><figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Topology of the clausius rankine cycle.</span><a class="headerlink" href="#rankine-cycle-dissipative-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Topology of the clausius rankine cycle.</span><a class="headerlink" href="#rankine-cycle-dissipative-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The live steam provided in the steam generator enters the turbine at high pressure and temperature, where it is expanded to a lower pressure level. The turbine releases power that can be used to drive a generator. The exhaust steam leaving the turbine is completely condensed out and leaves the condenser as saturated water. After that the feed water pump has to bring this condensate to a pressure level so that the steam generator can be supplied with feed water and the cycle can start again.</p>
-<p>The heat supplied to the process comes from the steam generator. In contrast, the power output of the turbine differentiated by the power input of the feedwater pump, is to be defined as power output of the process. The condensation of the refrigerant is to be regarded as heat output. Consequently, the thermal efficiency is displayed in Eq. <a class="reference internal" href="#equation-thermal-efficiency">(33)</a>.</p>
+<p>The heat supplied to the process comes from the steam generator. In contrast, the power output of the turbine differentiated by the power input of the feedwater pump, is to be defined as power output of the process. The condensation of the refrigerant is to be regarded as heat output. Consequently, the thermal efficiency is displayed in Eq. <a class="reference internal" href="#equation-thermal-efficiency">(38)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-thermal-efficiency">
-<span class="eqno">(33)<a class="headerlink" href="#equation-thermal-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{th} = \frac{W_{out}}{Q_{in}}\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-thermal-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{th} = \frac{W_{out}}{Q_{in}}\]</div>
 </section>
 <section id="excercise-1">
 <h2>Excercise 1<a class="headerlink" href="#excercise-1" title="Permalink to this heading">#</a></h2>
@@ -852,16 +852,16 @@ document.write(`
 <section id="process-optimization">
 <h2>Process optimization<a class="headerlink" href="#process-optimization" title="Permalink to this heading">#</a></h2>
 <p>In addition to the approach of increasing the efficiency via parameter variation, there is also the approach of structural optimization. This involves modifying the circuitry of the process with the aim of increasing efficiency, exergy efficiency or other improvement.</p>
-<p>The regenerative feed water preheating is an often used structural optimization. Figure <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 8</span></a> shows the structure of such a process. Most of the live steam entering the turbine is expanded to the condenser, and from there it reaches the feedwater pump. However, the cold feedwater is now preheated before it enters the boiler. This is done by condensing steam taken from the turbine at a suitable pressure level in a feed water preheater. In the present case, the resulting extraction steam condensate is returned to the condenser of the steam power process. This requires throttling to balance the pressures.</p>
+<p>The regenerative feed water preheating is an often used structural optimization. Figure <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 10</span></a> shows the structure of such a process. Most of the live steam entering the turbine is expanded to the condenser, and from there it reaches the feedwater pump. However, the cold feedwater is now preheated before it enters the boiler. This is done by condensing steam taken from the turbine at a suitable pressure level in a feed water preheater. In the present case, the resulting extraction steam condensate is returned to the condenser of the steam power process. This requires throttling to balance the pressures.</p>
 <figure class="align-default" id="rankine-cycle-preheating-flowsheet">
 <img alt="../_images/rankine_cycle_preheating.svg" src="../_images/rankine_cycle_preheating.svg" /><figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Topology of the clausius rankine cycle with regenerative feed water preheating.</span><a class="headerlink" href="#rankine-cycle-preheating-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Topology of the clausius rankine cycle with regenerative feed water preheating.</span><a class="headerlink" href="#rankine-cycle-preheating-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>A second way of increasing the efficiency of a clausius rankine process is superheating. This additionally influences the operating range of the turbines used, which on the one hand means a technical advantage, but on the other hand can also open up the scope for further parameter optimization. Figure <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 9</span></a> shows the structure of a Rankine Cycle with superheating. The live steam, coming from the steam generator, enters the turbine, which now consists of a high-pressure and a low-pressure section. After initial expansion has taken place in the high-pressure section, all the steam is removed from the turbine and fed to an intermediate superheater. The steam then flows into the low-pressure section of the turbine, from where the process continues as known from the simple process.</p>
+<p>A second way of increasing the efficiency of a clausius rankine process is superheating. This additionally influences the operating range of the turbines used, which on the one hand means a technical advantage, but on the other hand can also open up the scope for further parameter optimization. Figure <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 11</span></a> shows the structure of a Rankine Cycle with superheating. The live steam, coming from the steam generator, enters the turbine, which now consists of a high-pressure and a low-pressure section. After initial expansion has taken place in the high-pressure section, all the steam is removed from the turbine and fed to an intermediate superheater. The steam then flows into the low-pressure section of the turbine, from where the process continues as known from the simple process.</p>
 <figure class="align-default" id="rankine-cycle-superheating-flowsheet">
 <img alt="../_images/rankine_cycle_superheating.svg" src="../_images/rankine_cycle_superheating.svg" /><figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Topology of the clausius rankine cycle with intermediate superheating of steam.</span><a class="headerlink" href="#rankine-cycle-superheating-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Topology of the clausius rankine cycle with intermediate superheating of steam.</span><a class="headerlink" href="#rankine-cycle-superheating-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -870,8 +870,8 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Implement the two topological improvements:</p>
 <ul class="simple">
-<li><p>Regenerative feed water preheating (see <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 8</span></a>)</p></li>
-<li><p>Intermediate superheating (see <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 9</span></a>)</p></li>
+<li><p>Regenerative feed water preheating (see <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 10</span></a>)</p></li>
+<li><p>Intermediate superheating (see <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 11</span></a>)</p></li>
 </ul>
 </li>
 <li><p>Explain the improvement of the cycles efficiency with the exergy analysis by investigating the exergy destruction of each component</p></li>

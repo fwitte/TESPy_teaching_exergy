@@ -412,25 +412,25 @@ document.write(`
 <span id="brayton-label"></span><h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
 <p>In this section we will be investigating gas turbine cycles using TESPy. In the first step the ideal Brayton cycle is
 modeled. The ideal Brayton cycle consists of three subprocesses, i.e. isentropic compression, isobaric heat transfer
-and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 5</span></a>). Next, we are comparing the cycle to the open cycle gas
+and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 7</span></a>). Next, we are comparing the cycle to the open cycle gas
 turbine, which instead of isobaric heat transfer uses a combustion chamber.</p>
 <section id="ideal-brayton-cycle">
 <h2>Ideal Brayton Cycle<a class="headerlink" href="#ideal-brayton-cycle" title="Permalink to this heading">#</a></h2>
-<p>The flowsheet of the Brayton cycle is shown in <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 5</span></a>. Based on the flowsheet we can calculate the
-thermal efficiency of the cycle using eq. <a class="reference internal" href="#equation-brayton-thermal-efficiency">(29)</a>. For the exergy analysis we have to define
-the plant’s fuel and product exergy as well as the exergy losses in eqs. <a class="reference internal" href="#equation-brayton-fuel-exergy">(30)</a>,
-<a class="reference internal" href="#equation-brayton-product-exergy">(31)</a> and <a class="reference internal" href="#equation-brayton-exergy-loss">(32)</a>.</p>
+<p>The flowsheet of the Brayton cycle is shown in <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 7</span></a>. Based on the flowsheet we can calculate the
+thermal efficiency of the cycle using eq. <a class="reference internal" href="#equation-brayton-thermal-efficiency">(34)</a>. For the exergy analysis we have to define
+the plant’s fuel and product exergy as well as the exergy losses in eqs. <a class="reference internal" href="#equation-brayton-fuel-exergy">(35)</a>,
+<a class="reference internal" href="#equation-brayton-product-exergy">(36)</a> and <a class="reference internal" href="#equation-brayton-exergy-loss">(37)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-brayton-thermal-efficiency">
-<span class="eqno">(29)<a class="headerlink" href="#equation-brayton-thermal-efficiency" title="Permalink to this equation">#</a></span>\[\eta_\text{th} = \frac{|\sum \dot W|}{\dot Q_\text{heater}}\]</div>
+<span class="eqno">(34)<a class="headerlink" href="#equation-brayton-thermal-efficiency" title="Permalink to this equation">#</a></span>\[\eta_\text{th} = \frac{|\sum \dot W|}{\dot Q_\text{heater}}\]</div>
 <div class="math notranslate nohighlight" id="equation-brayton-fuel-exergy">
-<span class="eqno">(30)<a class="headerlink" href="#equation-brayton-fuel-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{F,tot} = \dot E_\text{F,heater}\]</div>
+<span class="eqno">(35)<a class="headerlink" href="#equation-brayton-fuel-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{F,tot} = \dot E_\text{F,heater}\]</div>
 <div class="math notranslate nohighlight" id="equation-brayton-product-exergy">
-<span class="eqno">(31)<a class="headerlink" href="#equation-brayton-product-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{P,tot} = \dot E_\text{P,turbine} - \dot E_\text{F,compressor}\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-brayton-product-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{P,tot} = \dot E_\text{P,turbine} - \dot E_\text{F,compressor}\]</div>
 <div class="math notranslate nohighlight" id="equation-brayton-exergy-loss">
-<span class="eqno">(32)<a class="headerlink" href="#equation-brayton-exergy-loss" title="Permalink to this equation">#</a></span>\[\dot E_\text{L,tot} = \dot m \cdot e_\text{4}\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-brayton-exergy-loss" title="Permalink to this equation">#</a></span>\[\dot E_\text{L,tot} = \dot m \cdot e_\text{4}\]</div>
 <figure class="align-default" id="brayton-flowsheet">
 <img alt="../_images/brayton.svg" src="../_images/brayton.svg" /><figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Flow sheet of the Brayton cycle.</span><a class="headerlink" href="#brayton-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Flow sheet of the Brayton cycle.</span><a class="headerlink" href="#brayton-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#brayton-cycle-param"><span class="std std-numref">Table 1</span></a> indicates the parameter settings for the Brayton cycle for the initial setup.</p>
@@ -629,7 +629,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 <h2>Open Cycle Gas Turbine<a class="headerlink" href="#open-cycle-gas-turbine" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="gas-turbine-flowsheet">
 <img alt="../_images/gas_turbine.svg" src="../_images/gas_turbine.svg" /><figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">

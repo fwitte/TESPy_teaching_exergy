@@ -413,7 +413,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adiabatic-pipe-flow">
-<span id="ref-sec-adiabatic-pipe-flow"></span><h1>Adiabatic Pipe Flow<a class="headerlink" href="#adiabatic-pipe-flow" title="Permalink to this heading">#</a></h1>
+<span id="adiabatic-pipe-label"></span><h1>Adiabatic Pipe Flow<a class="headerlink" href="#adiabatic-pipe-flow" title="Permalink to this heading">#</a></h1>
 <p>In this section we will have a look at an adiabatic pipe with pressure losses ocurring. With the first law of
 thermodynamics we cannot see a change in energy, exergy analysis can reveal the thermodynamic losses.</p>
 <section id="introduction">
@@ -463,13 +463,13 @@ thermodynamics we cannot see a change in energy, exergy analysis can reveal the 
 </table>
 <p>First, we can set up the energy balance equation of the thermodynamic open system, where the work <span class="math notranslate nohighlight">\(\dot W\)</span> and heat
 <span class="math notranslate nohighlight">\(\dot Q\)</span> transferred change the enthalpy <span class="math notranslate nohighlight">\(h\)</span> of a mass flow <span class="math notranslate nohighlight">\(\dot m\)</span> from a state 1 to a different state 2:</p>
-<div class="math notranslate nohighlight" id="equation-eq-pipe-flow-energy-balance">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-pipe-flow-energy-balance" title="Permalink to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left(h_2 - h_1\right)\]</div>
+<div class="math notranslate nohighlight" id="equation-pipe-flow-energy-balance">
+<span class="eqno">(16)<a class="headerlink" href="#equation-pipe-flow-energy-balance" title="Permalink to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left(h_2 - h_1\right)\]</div>
 <p>Since a pipe does not transfer work to the fluid, work transferred can be considered equal to zero. Therefore the
 specific heat transferred can be calculated by the change of enthalpy. Since the pipeline is well insulated, the value
 should be rather small.</p>
-<div class="math notranslate nohighlight" id="equation-eq-pipe-flow-energy-balance-simplified">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-pipe-flow-energy-balance-simplified" title="Permalink to this equation">#</a></span>\[\begin{split}    \frac{\dot Q}{\dot m} = h_2 - h_1\\\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-pipe-flow-energy-balance-simplified">
+<span class="eqno">(17)<a class="headerlink" href="#equation-pipe-flow-energy-balance-simplified" title="Permalink to this equation">#</a></span>\[\begin{split}    \frac{\dot Q}{\dot m} = h_2 - h_1\\\end{split}\]</div>
 <p>To do that computationally, we first import the <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code> function from <code class="docutils literal notranslate"><span class="pre">CoolProp</span></code> and then insert the values from the
 table above.</p>
 <div class="cell docutils container">
