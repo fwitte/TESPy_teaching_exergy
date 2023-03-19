@@ -1,11 +1,12 @@
 # Introduction
 
--> Referenz Einführung TESPy
+After learning how to model thermodynamic processes with TESPy and how to set up the exergy analysis method, this
+chapter focuses on well known processes, i.e.
 
-{cite:t}`Witte2020`
+- {ref}`the (open) brayton cycle and gas turbine <brayton-label>`,
+- {ref}`the Clausius-Rankine cycle <rankine-label>` and
+- {ref}`a compression heat pump process <heat-pump-label>`.
 
-Ziele des Kapitels
-- Wie kann die Methode in einfacheren Mehrkomponentensystemen angewendet werden
-- Welche Vorteile bietet sie der einfachen Energieanalyse gegenüber
-- Wie kann die Methode "sichtbar" gemacht werden? (Einführung in unterschiedliche Darstellungsformen)
-- Wie/warum wirken sich Eigenschaften der Komponenten und des Prozesses auf den Gesamtprozess aus?
+You will learn how to set up larger models with TESPy and how to apply the exergy analysis to them. Furthermore,
+parametric analysis of component and process parameters show, how exergy analysis can help identifying cycle
+inefficiencies, or finding improvements.
