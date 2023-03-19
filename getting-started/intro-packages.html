@@ -511,19 +511,19 @@ temperature.</p>
 </section>
 <section id="tespy-in-5-minutes">
 <h2>TESPy in 5 Minutes<a class="headerlink" href="#tespy-in-5-minutes" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://tespy.readthedocs.io">TESPy</a> is an open-source framework for the simulation of component based thermodynamic
-conversion processes. With the software you can used predefined components such as a pump, compressor, heat exhcanger,
-turbine or valve (and many more) to build thermodynamic systems. The system is set up by connecting the components in a
-generic way and then specifying respective process and component parameters.</p>
+<p><a class="reference external" href="https://tespy.readthedocs.io">TESPy</a> <span id="id3">[<a class="reference internal" href="../zliterature.html#id3" title="Francesco Witte and Ilja Tuschy. TESPy: Thermal Engineering Systems in Python. Journal of Open Source Software, 5(49):2178, 2020. doi:10.21105/joss.02178.">2</a>]</span> is an open-source framework for the simulation of component
+based thermodynamic conversion processes. With the software you can used predefined components such as a pump,
+compressor, heat exhcanger, turbine or valve (and many more) to build thermodynamic systems. The system is set up by
+connecting the components in a generic way and then specifying respective process and component parameters.</p>
 <p>The software then performs a steady state simulation of your system by creating and solving a system of equations in the
-so called <em>equation oriented (EO)</em> approach (see <span id="id3">[<a class="reference internal" href="../zliterature.html#id8" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and open-source exergy analysis&amp;mdash;extending the simulation framework tespy. Energies, 2022. doi:10.3390/en15114087.">2</a>]</span> for more information). The system represents the
+so called <em>equation oriented (EO)</em> approach (see <span id="id4">[<a class="reference internal" href="../zliterature.html#id8" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and open-source exergy analysis&amp;mdash;extending the simulation framework tespy. Energies, 2022. doi:10.3390/en15114087.">3</a>]</span> for more information). The system represents the
 individual topology and compoent and process specifications provided by you. TESPy accomplishes this by solving for</p>
 <ul class="simple">
 <li><p>mass flow,</p></li>
 <li><p>pressure and</p></li>
 <li><p>enthalpy</p></li>
 </ul>
-<p>of every connections between two components<a class="footnote-reference brackets" href="#fluid-variable" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. After solving a model, missing component and process
+<p>of every connections between two components<a class="footnote-reference brackets" href="#fluid-variable" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. After solving a model, missing component and process
 parameters - for example: efficiencies, temperatures, pressure losses - are determined based on these information. The
 EO approach lets the modeler choose, which parameters are inputs and which parameters are results: For instance, a
 compressor efficiency can be an input and the system variables are solved to meet that constraint, or it can be a result
@@ -666,7 +666,7 @@ the compressor. This overdetermines the system of equations and will result in a
 </section>
 <section id="learn-more">
 <h3>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h3>
-<p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id5">[<a class="reference internal" href="../zliterature.html#id2" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498-2508, 2014. doi:10.1021/ie4033999.">1</a>]</span>. The
+<p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id6">[<a class="reference internal" href="../zliterature.html#id2" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498-2508, 2014. doi:10.1021/ie4033999.">1</a>]</span>. The
 online documentation of TESPy provides a large variety of examples and tutorials to learn using the software as well as
 extensive background information and code documentation:</p>
 <ul class="simple">
@@ -694,7 +694,7 @@ documentation as well as resources provided by the community, e.g.
 point temperature or pressure and molar mass.</p>
 </aside>
 <aside class="footnote brackets" id="fluid-variable" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
 <p>The fluid mass fractions of mixture components are system variables as well. They are relevant for
 e.g. combustion processes but not for pure-fluid processes.</p>
 </aside>
