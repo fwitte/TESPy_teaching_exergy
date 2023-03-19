@@ -1,0 +1,91 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from tespy.networks import Network
+from tespy.connections import Connection, Bus
+from tespy.components import (
+    CycleCloser, Source, Sink, Pump, HeatExchanger, Condenser,
+    HeatExchangerSimple, Compressor, Valve
+    )
+
+# Network
+refrigerant = 'Ammonia'
+nw = Network(
+    fluids=[refrigerant, 'water'],
+    T_unit='C', p_unit='bar', h_unit='kJ / kg', m_unit='kg / s'
+)
+
+# Components
+cycle_closer = CycleCloser('Refrigerant Cycle Closer')
+
+heatsource_ff = Source('Heat Source Feed Flow')
+evaporator = HeatExchanger('Evaporator')
+heatsource_pump = Pump('Heat Source Recirculation Pump')
+heatsource_bf = Sink('Heat Source Back Flow')
+
+compressor = Compressor('Compressor')
+
+cons_cc = CycleCloser('Consumer Cycle Closer')
+cons_pump = Pump('Heat Sink Recirculation Pump')
+condenser = Condenser('Condenser')
+cons_heatsink = HeatExchangerSimple('Heat Consumer')
+
+valve = Valve('Expansion Valve')
+
+# Connections
+cc2evap = Connection(cycle_closer, 'out1', evaporator, 'in2', label='00')
+hs_ff2evap = Connection(heatsource_ff, 'out1', evaporator, 'in1', label='10')
+evap2hs_pump = Connection(evaporator, 'out1', heatsource_pump, 'in1', label='11')
+hs_pump2hs_bf = Connection(heatsource_pump, 'out1', heatsource_bf, 'in1', label='12')
+
+nw.add_conns(cc2evap, hs_ff2evap, evap2hs_pump, hs_pump2hs_bf)
+
+evap2comp = Connection(evaporator, 'out2', compressor, 'in1', label='01')
+comp2cond = Connection(compressor, 'out1', condenser, 'in1', label='02')
+
+nw.add_conns(evap2comp, comp2cond)
+
+cons_cc2cons_pump = Connection(cons_cc, 'out1', cons_pump, 'in1', label='20')
+cons_pump2cond = Connection(cons_pump, 'out1', condenser, 'in2', label='21')
+cond2cons_hs = Connection(condenser, 'out2', cons_heatsink, 'in1', label='22')
+cons_hs2cons_cc = Connection(cons_heatsink, 'out1', cons_cc, 'in1', label='23')
+
+nw.add_conns(cons_cc2cons_pump, cons_pump2cond, cond2cons_hs, cons_hs2cons_cc)
+
+cond2valve = Connection(condenser, 'out1', valve, 'in1', label='03')
+valve2cc = Connection(valve, 'out1', cycle_closer, 'in1', label='04')
+
+nw.add_conns(cond2valve, valve2cc)
+
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtespy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnetworks[39;00m [38;5;28;01mimport[39;00m Network
+[1;32m      2[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtespy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconnections[39;00m [38;5;28;01mimport[39;00m Connection, Bus
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtespy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcomponents[39;00m [38;5;28;01mimport[39;00m (
+[1;32m      4[0m     CycleCloser, Source, Sink, Pump, HeatExchanger, Condenser,
+[1;32m      5[0m     HeatExchangerSimple, Compressor, Valve
+[1;32m      6[0m     )
+
+[0;31mModuleNotFoundError[0m: No module named 'tespy'
+ModuleNotFoundError: No module named 'tespy'
+

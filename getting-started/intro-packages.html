@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to used libraries &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started/intro-packages';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Goals and Scope of the Course" href="../intro/scope-and-preconditions.html" />
+    <link rel="prev" title="Setup your Python environment" href="setup-python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../single-components/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/adiabatic-pipe-flow.html">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/heat-exchanger.html">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cycles/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/open-gas-turbine.html">Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/clausius-rankine.html">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fgetting-started/intro-packages.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/getting-started/intro-packages.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to used libraries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coolprop-in-5-minutes">CoolProp in 5 Minutes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tespy-in-5-minutes">TESPy in 5 Minutes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-a-compressor">Modeling a Compressor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-handling-and-visualization">Data handling and visualization</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-used-libraries">
+<h1>Introduction to used libraries<a class="headerlink" href="#introduction-to-used-libraries" title="Permalink to this heading">#</a></h1>
+<p>This section will give a short introduction into the packages used for the course.</p>
+<section id="coolprop-in-5-minutes">
+<h2>CoolProp in 5 Minutes<a class="headerlink" href="#coolprop-in-5-minutes" title="Permalink to this heading">#</a></h2>
+<p>CoolProp <span id="id1">[<a class="reference internal" href="../zliterature.html#id2" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498-2508, 2014. doi:10.1021/ie4033999.">1</a>]</span> is an open source package for the calculation of thermodynamic properties of many pure,
+pseudo-pure (e.g. air) and mixtures. The <a class="reference external" href="https://coolprop.org">online documentation</a> contains all relevant information
+on the scope of the software and its usage for further read. In this course CoolProp is mainly accessed at the
+<a class="reference external" href="http://www.coolprop.org/coolprop/HighLevelAPI.html">High Level API</a>, specifically the <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code> function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code> function can be imported as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To access non-trivial<a class="footnote-reference brackets" href="#trivials-coolprop" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> properties of a fluid at a defined state, we have to provide</p>
+<ul class="simple">
+<li><p>the output property</p></li>
+<li><p>the first input property,</p></li>
+<li><p>the second input property and</p></li>
+<li><p>the name of the fluid.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All values returned by the function are given in SI unit systems.</p>
+</div>
+<p>For example, to get the <strong>enthalpy</strong> of <strong>water</strong> at a <strong>pressure of 10 bar</strong> and a <strong>temperature of 250 °C</strong>, <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code>
+is called in the following way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">250</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2943122.4215286043
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will be working with entropy <code class="docutils literal notranslate"><span class="pre">S</span></code>, enthalpy <code class="docutils literal notranslate"><span class="pre">H</span></code>, temperature <code class="docutils literal notranslate"><span class="pre">T</span></code>, pressure <code class="docutils literal notranslate"><span class="pre">P</span></code> and vapor mass fraction <code class="docutils literal notranslate"><span class="pre">Q</span></code> in this
+course. All possible input variables are listed
+<a class="reference external" href="http://www.coolprop.org/coolprop/HighLevelAPI.html#table-of-string-inputs-to-propssi-function">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">250</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># entropy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6926.482858129736
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># saturation temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>453.02800788167605
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">250</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># saturation pressure</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3976174.9306515492
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># enthalpy of saturated liquid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>762515.0697660876
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># enthalpy of saturated gas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2777108.6040473124
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is also possible to call <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code> on vectors calculating many states in a single function call. To do this, we need
+to pass a <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> to the function. For example calulate the enthalpy of water at a give pressure but variable
+temperature.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Find helpful links on the usage of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> in the <a class="reference internal" href="#other-libraries-label"><span class="std std-ref">last section</span></a> of this chapter.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">251</span><span class="p">)</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># temperature range from 50 to 250 degrees</span>
+
+<span class="n">enthalpy_range</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">temperature_range</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># at 10 bar</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tespy-in-5-minutes">
+<h2>TESPy in 5 Minutes<a class="headerlink" href="#tespy-in-5-minutes" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://tespy.readthedocs.io">TESPy</a> is an open-source framework for the simulation of component based thermodynamic
+conversion processes. With the software you can used predefined components such as a pump, compressor, heat exhcanger,
+turbine or valve (and many more) to build thermodynamic systems. The system is set up by connecting the components in a
+generic way and then specifying respective process and component parameters.</p>
+<p>The software then performs a steady state simulation of your system by creating and solving a system of equations in the
+so called <em>equation oriented (EO)</em> approach (see <span id="id3">[<a class="reference internal" href="../zliterature.html#id8" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and open-source exergy analysis&amp;mdash;extending the simulation framework tespy. Energies, 2022. doi:10.3390/en15114087.">2</a>]</span> for more information). The system represents the
+individual topology and compoent and process specifications provided by you. TESPy accomplishes this by solving for</p>
+<ul class="simple">
+<li><p>mass flow,</p></li>
+<li><p>pressure and</p></li>
+<li><p>enthalpy</p></li>
+</ul>
+<p>of every connections between two components<a class="footnote-reference brackets" href="#fluid-variable" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. After solving a model, missing component and process
+parameters - for example: efficiencies, temperatures, pressure losses - are determined based on these information. The
+EO approach lets the modeler choose, which parameters are inputs and which parameters are results: For instance, a
+compressor efficiency can be an input and the system variables are solved to meet that constraint, or it can be a result
+of other inputs.</p>
+<section id="modeling-a-compressor">
+<h3>Modeling a Compressor<a class="headerlink" href="#modeling-a-compressor" title="Permalink to this heading">#</a></h3>
+<p>TESPy consists of three main building blocks:</p>
+<ul class="simple">
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Network</span></code> as container of the simulation</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Component</span></code> (children of them: <code class="docutils literal notranslate"><span class="pre">Compressor</span></code>, <code class="docutils literal notranslate"><span class="pre">Valve</span></code>, …), in which
+thermodynamic conversion processes take place</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Connection</span></code>, which define the topology of the <code class="docutils literal notranslate"><span class="pre">Network</span></code>
+by connecting the individual components</p></li>
+</ul>
+<p>We are modeling a compressor, which compresses fully saturated steam to a higher pressure level. The
+<a class="reference internal" href="#compressor-flowsheet"><span class="std std-numref">Fig. 1</span></a> shows the abstract representation of the component. The table below summarizes the
+process parameters we are going to apply in our example.</p>
+<figure class="align-default" id="compressor-flowsheet">
+<img alt="../_images/Compressor.svg" src="../_images/Compressor.svg" /><figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Compressor model.</span><a class="headerlink" href="#compressor-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<table class="table" id="table-mini-example-compressor">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>parameter description</p></th>
+<th class="head text-left"><p>model location</p></th>
+<th class="head text-left"><p>model parameter</p></th>
+<th class="head text-right"><p>value</p></th>
+<th class="head text-left"><p>unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>saturated gas state</p></td>
+<td class="text-left"><p>in</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td class="text-right"><p>100</p></td>
+<td class="text-left"><p>%</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>temperature</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-left"><p>°C</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>mass flow</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td class="text-right"><p>0.1</p></td>
+<td class="text-left"><p>kg/s</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>efficiency</p></td>
+<td class="text-left"><p>compressor</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">eta_s</span></code></p></td>
+<td class="text-right"><p>80</p></td>
+<td class="text-left"><p>%</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>pressure ratio</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pr</span></code></p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-left"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span>
+<span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span>
+
+
+<span class="n">nwk</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R290&quot;</span><span class="p">],</span> <span class="n">p_unit</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">T_unit</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+
+<span class="n">so</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
+<span class="n">si</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s2">&quot;sink&quot;</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">so</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make a simulation it is now necessary to specify relevant component and process parameters. We start with the values
+as provided in <a class="reference internal" href="#table-mini-example-compressor"><span class="std std-ref">Table 1</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;R290&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can have a look at some of the results. An overview is provided by the <code class="docutils literal notranslate"><span class="pre">print_results</span></code> method of the
+<code class="docutils literal notranslate"><span class="pre">Network</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwk</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since TESPy is working with an equation oriented solver, we can now change things up. For example, instead of providing
+the efficiency of the compressor, we could provide an outlet temperature. Given that temperature, the efficiency of the
+compressor will be a result of the calculation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the equation oriented structure the user is not constraint in the inputs. As long as the network is well
+determined, the solver be able to find a result. One downside of the equation oriented approach is that the a initial
+guess for all variables is required. Bad starting values often lead to the solver being unable to find a solution. For
+more information please have a look at the TESPy documentation. Here in detail information and best practices are
+provided for this topic.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># unset the isentropic efficiency</span>
+<span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, we can make an invalid parameter specification by setting the mass flow at the inlet and at the outlet of
+the compressor. This overdetermines the system of equations and will result in an error when trying to solve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="learn-more">
+<h3>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h3>
+<p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id5">[<a class="reference internal" href="../zliterature.html#id2" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498-2508, 2014. doi:10.1021/ie4033999.">1</a>]</span>. The
+online documentation of TESPy provides a large variety of examples and tutorials to learn using the software as well as
+extensive background information and code documentation:</p>
+<ul class="simple">
+<li><p>online documentation <a class="reference external" href="https://tespy.readthedocs.io">https://tespy.readthedocs.io</a></p></li>
+<li><p>github repository <a class="github reference external" href="https://github.com/oemof/tespy">oemof/tespy</a></p></li>
+<li><p>user forum <a class="github reference external" href="https://github.com/oemof/tespy/discussions">oemof/tespy#discussions</a></p></li>
+</ul>
+</section>
+</section>
+<section id="data-handling-and-visualization">
+<span id="other-libraries-label"></span><h2>Data handling and visualization<a class="headerlink" href="#data-handling-and-visualization" title="Permalink to this heading">#</a></h2>
+<p>The following Python packages are used within the course:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a> is a mathematical comupation package, e.g. for vectorized function calls.</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a> is a package building on NumPy with focus on data science.</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/">matplotlib</a> is a library with a lot of methods for scientific data visualization.</p></li>
+</ul>
+<p>We do not provide a tutorial here, there are many examples and tutorials available through the respective online
+documentation as well as ressources provided by the community, e.g.
+<a class="reference external" href="https://fneum.github.io/data-science-for-esm/">Data Science for Energy System Modeling</a>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="trivials-coolprop" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Trivial properties are those that do not depend on the state of the fluid, for example, critical
+point temperature or pressure and molar mass.</p>
+</aside>
+<aside class="footnote brackets" id="fluid-variable" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>The fluid mass fractions of mixture components are system variables as well. They are relevant for
+e.g. combustion processes but not for pure-fluid processes.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./getting-started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="setup-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Setup your Python environment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../intro/scope-and-preconditions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Goals and Scope of the Course</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coolprop-in-5-minutes">CoolProp in 5 Minutes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tespy-in-5-minutes">TESPy in 5 Minutes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-a-compressor">Modeling a Compressor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-handling-and-visualization">Data handling and visualization</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

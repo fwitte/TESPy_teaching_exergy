@@ -1,0 +1,1142 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Adiabatic Pipe Flow &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'single-components/adiabatic-pipe-flow';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Heat Exchanger" href="heat-exchanger.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/intro-packages.html">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heat-exchanger.html">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cycles/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/open-gas-turbine.html">Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/clausius-rankine.html">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fsingle-components/adiabatic-pipe-flow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/single-components/adiabatic-pipe-flow.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Adiabatic Pipe Flow</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exergy-analysis">Exergy Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-part-1">Excercises part 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-part-2">Excercises part 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="adiabatic-pipe-flow">
+<span id="ref-sec-adiabatic-pipe-flow"></span><h1>Adiabatic Pipe Flow<a class="headerlink" href="#adiabatic-pipe-flow" title="Permalink to this heading">#</a></h1>
+<p>In this section we will have a look at an adiabatic pipe with pressure losses ocurring. With the first law of
+thermodynamics we cannot see a change in energy, exergy analysis can reveal the thermodynamic losses.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Consider a well insulated pipeline transporting steam as shown in the figure below.</p>
+<figure class="align-default" id="pipeline-flowsheet">
+<img alt="../_images/Pipe.svg" src="../_images/Pipe.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Abstract model of the well insulated steam pipeline.</span><a class="headerlink" href="#pipeline-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Measurement data are obtained at the inlet and the outlet of the pipeline:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Parameter</p></th>
+<th class="head text-left"><p>Location</p></th>
+<th class="head text-right"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Temperature</p></td>
+<td class="text-left"><p>Inlet</p></td>
+<td class="text-right"><p>195</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Temperature</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-right"><p>184.4</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Pressure</p></td>
+<td class="text-left"><p>Inlet</p></td>
+<td class="text-right"><p>10</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Outlet</p></td>
+<td class="text-right"><p>6</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Mass flow</p></td>
+<td class="text-left"><p>Inlet</p></td>
+<td class="text-right"><p>1.2</p></td>
+<td><p>kg/s</p></td>
+</tr>
+</tbody>
+</table>
+<p>First, we can set up the energy balance equation of the thermodynamic open system, where the work <span class="math notranslate nohighlight">\(\dot W\)</span> and heat
+<span class="math notranslate nohighlight">\(\dot Q\)</span> transferred change the enthalpy <span class="math notranslate nohighlight">\(h\)</span> of a mass flow <span class="math notranslate nohighlight">\(\dot m\)</span> from a state 1 to a different state 2:</p>
+<div class="math notranslate nohighlight" id="equation-eq-pipe-flow-energy-balance">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-pipe-flow-energy-balance" title="Permalink to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left(h_2 - h_1\right)\]</div>
+<p>Since a pipe does not transfer work to the fluid, work transferred can be considered equal to zero. Therefore the
+specific heat transferred can be calculated by the change of enthalpy. Since the pipeline is well insulated, the value
+should be rather small.</p>
+<div class="math notranslate nohighlight" id="equation-eq-pipe-flow-energy-balance-simplified">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-pipe-flow-energy-balance-simplified" title="Permalink to this equation">#</a></span>\[\begin{split}    \frac{\dot Q}{\dot m} = h_2 - h_1\\\end{split}\]</div>
+<p>To do that computationally, we first import the <code class="docutils literal notranslate"><span class="pre">PropsSI</span></code> function from <code class="docutils literal notranslate"><span class="pre">CoolProp</span></code> and then insert the values from the
+table above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+
+
+<span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;water&quot;</span>
+
+<span class="n">p_in</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span>
+<span class="n">T_in</span> <span class="o">=</span> <span class="mi">195</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">h_in</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_in</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">p_out</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mf">1e5</span>
+<span class="n">T_out</span> <span class="o">=</span> <span class="mf">184.4</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">h_out</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_out</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_out</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">h_out</span> <span class="o">-</span> <span class="n">h_in</span>
+<span class="n">q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;water&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">p_in</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>As we expected the specific heat transferred is very low. Therefore we will make an assumption, that the pipeline can be
+considered adiabatic for further calculations. If transferred work and heat are both zero, the change in enthalpy will
+therefore be zero as well:</p>
+<div class="math notranslate nohighlight">
+\[    h_2 = h_1\]</div>
+</div>
+<p>We can also double check this, by calculating the outlet temperature at the measured outlet pressure and with the
+assumption of non-changing enthalpy. Note that it is only slighty different:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_out</span> <span class="o">=</span> <span class="n">h_in</span>
+<span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_out</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have seen, that no energy has been transferred from the pipe to the ambient. Does that mean, we can revert the
+process? Obviously, that does not seem natural, as you cannot change the pressure of the fluid at the outlet back to the
+inlet pressure without adding any energy. That means, while we have not lost any energy to the ambient, the energy must
+have become less valuable.</p>
+</section>
+<section id="exergy-analysis">
+<h2>Exergy Analysis<a class="headerlink" href="#exergy-analysis" title="Permalink to this heading">#</a></h2>
+<p>In this chapter, we will learn, how the described change in quality of energy can be made visible using Second Law
+analysis. To do that, we calculate the exergy of the fluid at the inlet and at the outlet of the pipe. First, we define
+a function, that follows the definition of phyiscal exergy in eq. <a class="reference internal" href="../intro/exergy-analysis.html#equation-physical-exergy-total">(4)</a> without splitting physical
+exergy into mechanical and thermal share. Chemical exergy can be ignored in this application, since no chemical reaction
+processes take place.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">calc_physical_exergy</span></code> will take pressure and enthalpy of a fluid and calculate the thermal and the
+mechanical part of the physical exergy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_physical_exergy</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate specific physical exergy.&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>    
+    <span class="n">h0</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    
+    <span class="n">ex</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">-</span> <span class="n">T0</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">s0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can define an (arbitrary) ambient state and calculate the exergy and the inlet and the outlet state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p0</span> <span class="o">=</span> <span class="mf">1.01325</span> <span class="o">*</span> <span class="mf">1e5</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">ex_in</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+<span class="n">ex_in</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_out</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_out</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+<span class="n">ex_out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With that, we can set up the exergy balance equation (eq. <a class="reference internal" href="#equation-exergy-balance-adiabatic-pipe">(18)</a>). The adiabatic pipe component does not serve any other purpose
+than transporting a fluid from one place to another. Energetically, the adiabatic pipe is a “useless” component, which
+means, that the exergy product is not defined. The fuel exergy is then the inlet exergy, the exergy destruction the
+difference between inlet and outlet exergy:</p>
+<div class="math notranslate nohighlight" id="equation-exergy-balance-adiabatic-pipe">
+<span class="eqno">(18)<a class="headerlink" href="#equation-exergy-balance-adiabatic-pipe" title="Permalink to this equation">#</a></span>\[\begin{split}    \dot E_F=\dot m \cdot e^\text{PH}_\text{in}\\
+    \dot E_D=\dot m \cdot \left(e^\text{PH}_\text{in} - e^\text{PH}_\text{out}\right)\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_destruction</span> <span class="o">=</span> <span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span>
+<span class="n">exergy_destruction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_destruction_rate</span> <span class="o">=</span> <span class="n">exergy_destruction</span> <span class="o">/</span> <span class="n">ex_in</span>
+<span class="n">exergy_destruction_rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that a total of  J/kg is destroyed, which corresponds to an exergy destruction rate of about  %.</p>
+</section>
+<section id="excercises-part-1">
+<h2>Excercises part 1<a class="headerlink" href="#excercises-part-1" title="Permalink to this heading">#</a></h2>
+<p>With the information from the sections above:</p>
+<ol class="arabic simple">
+<li><p>Calculate the total exergy destruction and the exergy efficiency of the pipe flow for varying outlet pressures in a
+range from the ambient pressure to the inlet pressure.</p>
+<ul class="simple">
+<li><p>As a function of the pipe pressure drop (x-axis) plot the:</p>
+<ul>
+<li><p>exergy destruction (y-axis).</p></li>
+<li><p>exergy destruction ratio (y-axis).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>What could be the reason, the exergy destruction ratio not equal to 100 %, when the pressure at the pipeline outlet
+is equal to the ambient pressure? What are the relevant equations in the theory
+(section <a class="reference internal" href="../intro/exergy-analysis.html#intro-fundamentals"><span class="std std-ref">exergy analysis</span></a>)?</p></li>
+</ol>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h3>
+<p>We can use numpy to create a vector of outlet pressure values and then calculate the outlet exergy vector. The inlet
+exergy does not change for all values. Then with matplotlib we can create two subplots sharing the same x-axis (i.e. the
+pressure range) and plot the exergy destruction and the exergy efficiency.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">outlet_pressure_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">p0</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e5</span>
+<span class="n">pressure_difference_range</span> <span class="o">=</span> <span class="n">p_in</span> <span class="o">-</span> <span class="n">outlet_pressure_range</span>
+<span class="n">ex_out</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">outlet_pressure_range</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+<span class="n">ex_in</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span><span class="p">)</span> <span class="o">/</span> <span class="n">ex_in</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Exergy destruction in kW&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Exergy destruction ratio in %&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Pipe pressure loss in bar&quot;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-pressure-range&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Result</p>
+<p>From <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-pressure-range</span></code> we can see, that the destruction of exergy obviously depends
+on the change of pressure in the pipe. The higher the pressure loss, the higher the destruction of exergy. The change
+in exergy destruction does increase the higher the pressure loss is.</p>
+</div>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
+<p>From <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-pressure-range</span></code> we can also see, that at a pressure loss of about 9 bars,
+i.e. when the outlet pressure is at the ambient state, the exergy destruction rate is not at 100 %. This means there
+must still be exergy in the outlet flow. We can check that, by looking at the last value in the <code class="docutils literal notranslate"><span class="pre">ex_out</span></code> vector.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_out_p_ambient</span> <span class="o">=</span> <span class="n">ex_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ex_out_p_ambient</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Exergy is a function of pressure and temperature (difference to ambient state), we can have a look at the outlet temperature, when the steam is throttled to the ambient pressure without changing enthalpy:</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_out_at_p_ambient</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span>
+<span class="n">T_out_at_p_ambient</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>The temperature is higher than the ambient state, thus we can expect that there is still some exergy remaining in the temperature of the fluid. With the learnings from the <a class="reference internal" href="../intro/exergy-analysis.html#intro-fundamentals"><span class="std std-ref">introduction chapter</span></a>, i.e. that
+physical exergy consists of the two components</p>
+<ul class="simple">
+<li><p>mechanical exergy and</p></li>
+<li><p>thermal exergy,</p></li>
+</ul>
+<p>we find, that either the thermal or the mechanical exergy (or both) is not zero at the outlet.</p>
+</section>
+</section>
+<section id="excercises-part-2">
+<h2>Excercises part 2<a class="headerlink" href="#excercises-part-2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="3">
+<li><p>Create a function that splits the physical exergy in its thermal and mechanical shares according to eq. <a class="reference internal" href="../intro/exergy-analysis.html#equation-thermal-exergy">(5)</a> and eq. <a class="reference internal" href="../intro/exergy-analysis.html#equation-mechanical-exergy">(6)</a>.</p>
+<ul class="simple">
+<li><p>Verify that your function produces the same result as the function defined earlier.</p></li>
+<li><p>Create a plot that shows, how thermal and mechanical exergy are affected by the pressure change within the
+specified pressure range.</p></li>
+<li><p>What is the thermal and what is the mechanical exergy of the steam, when the pressure at the outlet is at ambient
+state?</p></li>
+</ul>
+</li>
+<li><p>Instead of a steam flow consider flow of hot air:</p>
+<ul class="simple">
+<li><p>Create a plot with exergy destruction and exergy destruction ratio of both air and water inside the same subplots.</p></li>
+<li><p>Why is the influence of the pressure on the exergy destruction ratio of the air flow much higher than on the exergy
+efficiency of the steam flow?</p></li>
+</ul>
+</li>
+</ol>
+<section id="solution-3">
+<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h3>
+<p>First we define a new function that returns the thermal and the mechanical share of exergy according the the equations
+<a class="reference internal" href="../intro/exergy-analysis.html#equation-thermal-exergy">(5)</a>, <a class="reference internal" href="../intro/exergy-analysis.html#equation-mechanical-exergy">(6)</a> and <a class="reference internal" href="../intro/exergy-analysis.html#equation-physical-exergy">(7)</a>. Then we can calculate the share of thermal and
+mechanical exergy at the inlet state of the air pipe and validate, if the sum of both shares is equal to the result
+from our first implementation of the physical exergy:</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate specific physical exergy according to splitting rule.&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    
+    <span class="n">h_T0_p</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    <span class="n">s_T0_p</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    
+    <span class="n">ex_therm</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">h_T0_p</span><span class="p">)</span> <span class="o">-</span> <span class="n">T0</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">s_T0_p</span><span class="p">)</span>
+    
+    <span class="n">h0</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+    
+    <span class="n">ex_mech</span> <span class="o">=</span> <span class="p">(</span><span class="n">h_T0_p</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">-</span> <span class="n">T0</span> <span class="o">*</span> <span class="p">(</span><span class="n">s_T0_p</span> <span class="o">-</span> <span class="n">s0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ex_therm</span><span class="p">,</span> <span class="n">ex_mech</span>
+
+<span class="n">ex_T_in</span><span class="p">,</span> <span class="n">ex_M_in</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>
+
+<span class="nb">round</span><span class="p">(</span><span class="n">ex_T_in</span> <span class="o">+</span> <span class="n">ex_M_in</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># should return True</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In the next step we calculate the thermal and mechanical exergy for all pressure range for the outlet state as we did
+before. Then, we can make two subplots, which show the change in thermal exergy and the change in mechanical exergy.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_T_out</span><span class="p">,</span> <span class="n">ex_M_out</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">outlet_pressure_range</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_T_in</span> <span class="o">-</span> <span class="n">ex_T_out</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_M_in</span> <span class="o">-</span> <span class="n">ex_M_out</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\Delta </span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{Ex}</span><span class="s2">^</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{T}</span><span class="s2">$ in kW&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\Delta </span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{Ex}</span><span class="s2">^</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{M}</span><span class="s2">$ in kW&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Pipe pressure loss in bar&quot;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-change-thermal-mechanical-water&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-change-thermal-mechanical-water</span></code> we can see the change of thermal and of mechanical exergy in
+the pipe flow at the different pressure losses. Note, the different scales:</p>
+<ul class="simple">
+<li><p>The thermal exergy changes by up to 300 kW.</p></li>
+<li><p>The mechanical exergy changes only by about 0.9 kW at maximum.</p></li>
+</ul>
+<p>Obviously, the much more thermal exergy is destroyed in the process than mechanical exergy, although only the pressure changes. This is because expansion of the steam causes a drop in temperature as well (as we have seen in the solution 2). The reason, why we see such a small change in mechanical exergy can be seen, when we have a look at the shares of
+thermal and mechanical exergies in the inlet state and the outlet state at ambient pressure. We can create a bar
+diagram for both states in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-shares-water-bar</span></code>. The exergy is nearly pure thermal exergy.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">thermal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ex_T_in</span> <span class="o">/</span> <span class="n">ex_in</span><span class="p">,</span> <span class="n">ex_T_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">ex_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">mechanical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ex_M_in</span> <span class="o">/</span> <span class="n">ex_in</span><span class="p">,</span> <span class="n">ex_M_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">ex_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;outlet&quot;</span><span class="p">],</span> <span class="n">thermal</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;thermal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;outlet&quot;</span><span class="p">],</span> <span class="n">mechanical</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mechanical&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">thermal</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Share of exergies in %&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-shares-water-bar&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can verify the value of mechanical exergy of the steam at ambient pressure:</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_M_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="solution-4">
+<h3>Solution 4<a class="headerlink" href="#solution-4" title="Permalink to this heading">#</a></h3>
+<p>We can build the same setup for the air flow using the defined inlet state. Since the enthalpy at the inlet is not the
+same as the enthalpy of water, we need to recalculate that value.</p>
+<p>In the plots we plot the air and steam exergy destruction and efficiency into the same subplots and label them for the
+legend.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
+<span class="n">h_in_air</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_in</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">h_out_air</span> <span class="o">=</span> <span class="n">h_in_air</span>
+
+<span class="n">ex_out_air</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">outlet_pressure_range</span><span class="p">,</span> <span class="n">h_out_air</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">ex_in_air</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in_air</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;water&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in_air</span> <span class="o">-</span> <span class="n">ex_out_air</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span><span class="p">)</span> <span class="o">/</span> <span class="n">ex_in</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in_air</span> <span class="o">-</span> <span class="n">ex_out_air</span><span class="p">)</span> <span class="o">/</span> <span class="n">ex_in_air</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Exergy destruction in kW&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Exergy destruction rate in %&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Pressure drop in bar&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-vs-air-pressure-range&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the first subplot of <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-pressure-range</span></code> we can see that in the steam flow
+the exergy destruction is higher by a factor of about 1.5. This ratio can be verified by checking
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-ratio</span></code>. This displays the ratio over the pressure range and we
+can see, the ratio is merely affected by pressure.</p>
+<p>While the exergy destruction is higher for the steam flow, we see in the second subplot of
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-pressure-range</span></code> that the exergy destruction as share of the inlet exergy
+is much higher for air. When the pressure drops to ambient state pressure, more than 80 % of exergy of the air are
+destroyed. To understand why this is the case, we can again have a look at the shares of mechanical and thermal exergy
+for the air stream. We do this for the “extreme” case with the outlet pressure at ambient state, i.e. when all mechanical exergy is lost. The <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-shares-water-bar</span></code> displays the result.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressure_difference_range</span> <span class="o">/</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ex_in</span> <span class="o">-</span> <span class="n">ex_out</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ex_in_air</span> <span class="o">-</span> <span class="n">ex_out_air</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Steam to air exergy destruction ratio&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Pressure drop in bar&quot;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-vs-air-ratio&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_T_in_air</span><span class="p">,</span> <span class="n">ex_M_in_air</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_in</span><span class="p">,</span> <span class="n">h_in_air</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+<span class="n">ex_T_out_air</span><span class="p">,</span> <span class="n">ex_M_out_air</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">outlet_pressure_range</span><span class="p">,</span> <span class="n">h_out_air</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">thermal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ex_T_in_air</span> <span class="o">/</span> <span class="n">ex_in_air</span><span class="p">,</span> <span class="n">ex_T_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">ex_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">mechanical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ex_M_in_air</span> <span class="o">/</span> <span class="n">ex_in_air</span><span class="p">,</span> <span class="n">ex_M_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">ex_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;outlet&quot;</span><span class="p">],</span> <span class="n">thermal</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;thermal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;outlet&quot;</span><span class="p">],</span> <span class="n">mechanical</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mechanical&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">thermal</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Share of exergies in %&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-shares-air-bar&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the figure above we can see that</p>
+<ul class="simple">
+<li><p>all mechanical exergy is destroyed when expanding to ambient pressure (as expected)</p></li>
+<li><p>the share of mechanical exergy at the air pipe inlet is about 87 %, thus a higher share of exergy of the inlet exergy
+is destroyed in the air stream.</p></li>
+</ul>
+<p>Finally, we can check, how thermal exergy changes in case of the air flow and see, that only 0.5 kW of thermal exergy
+is lost.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_T_in_air</span> <span class="o">-</span> <span class="n">ex_T_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="lessons-learned">
+<h2>Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Physical exergy of a mass flow can be splitted into a thermal and a mechanical share.</p></li>
+<li><p>At the same pressure and temperature, the shares of the exergy depend on the working fluid.</p></li>
+<li><p>At ambient pressure mechanical exergy is equal to zero.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./single-components"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="heat-exchanger.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Heat Exchanger</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exergy-analysis">Exergy Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-part-1">Excercises part 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises-part-2">Excercises part 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

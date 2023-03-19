@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Fundamentals of Exergy Analysis &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/exergy-analysis';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../single-components/intro.html" />
+    <link rel="prev" title="Goals and Scope of the Course" href="scope-and-preconditions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/intro-packages.html">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../single-components/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/adiabatic-pipe-flow.html">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/heat-exchanger.html">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cycles/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/open-gas-turbine.html">Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/clausius-rankine.html">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fintro/exergy-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/intro/exergy-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fundamentals of Exergy Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-exergy">Physical Exergy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-exergy">Chemical Exergy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exergy-analyses">Exergy Analyses</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals-of-exergy-analysis">
+<span id="intro-fundamentals"></span><h1>Fundamentals of Exergy Analysis<a class="headerlink" href="#fundamentals-of-exergy-analysis" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Exergy is bound to mass flow or to massless energy transfer such as heat transfer or power. The transport of exergy
+with mass can be further splitted into four different shares according to eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>, i.e.:</p>
+<ul class="simple">
+<li><p>physical <span class="math notranslate nohighlight">\(e^\text{PH}\)</span>,</p></li>
+<li><p>chemical <span class="math notranslate nohighlight">\(e^\text{CH}\)</span>,</p></li>
+<li><p>kinetic <span class="math notranslate nohighlight">\(e^\text{KN}\)</span> and</p></li>
+<li><p>potential <span class="math notranslate nohighlight">\(e^\text{PT}\)</span>.</p></li>
+</ul>
+<p>In thermal engineering kinetic and potential energy can usually be neglected, simplifying the respective equation:</p>
+<div class="math notranslate nohighlight" id="equation-exergy-massflow">
+<span class="eqno">(1)<a class="headerlink" href="#equation-exergy-massflow" title="Permalink to this equation">#</a></span>\[\dot E=\dot m \left(e^\text{PH}+e^\text{CH}+\cancel{e^\text{KN}}+\cancel{e^\text{PT}}\right)\]</div>
+<p>For heat, the share of exergy depends on the temperature level of the ambient and the temperature level of the heat:</p>
+<div class="math notranslate nohighlight" id="equation-exergy-heat">
+<span class="eqno">(2)<a class="headerlink" href="#equation-exergy-heat" title="Permalink to this equation">#</a></span>\[\dot E_{\text{q,}j}=\left(1-\frac{T_0}{T_j}\right)\cdot \dot Q_j\]</div>
+<p>Work is pure exergy:</p>
+<div class="math notranslate nohighlight" id="equation-exergy-work">
+<span class="eqno">(3)<a class="headerlink" href="#equation-exergy-work" title="Permalink to this equation">#</a></span>\[\dot E_{\text{w,}i} = \dot W_{\text{t,}i}\]</div>
+<section id="physical-exergy">
+<h3>Physical Exergy<a class="headerlink" href="#physical-exergy" title="Permalink to this heading">#</a></h3>
+<p>Physical exergy defines the maximum work that can be generated by a mass flow when enthalpy and entropy of the flow
+change to the ambient state <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="math notranslate nohighlight" id="equation-physical-exergy-total">
+<span class="eqno">(4)<a class="headerlink" href="#equation-physical-exergy-total" title="Permalink to this equation">#</a></span>\[e^\mathrm{PH} = \left( h - h \left( p_0, T_0 \right) \right) -
+T_0 \cdot \left(s - s\left(p_0, T_0\right)\right)\]</div>
+<p>Following the definitions in <span id="id1">[<a class="reference internal" href="../zliterature.html#id5" title="Tatiana Morosuk and George Tsatsaronis. Splitting physical exergy: theory and application. Energy, 167:698-707, 2019. doi:https://doi.org/10.1016/j.energy.2018.10.090.">3</a>]</span>, phyical exergy can be further splitted into two shares:</p>
+<ul class="simple">
+<li><p>the mechanical exergy, eq. <a class="reference internal" href="#equation-mechanical-exergy">(6)</a> and</p></li>
+<li><p>the thermal exergy, eq. <a class="reference internal" href="#equation-thermal-exergy">(5)</a>.</p></li>
+</ul>
+<p>The physical exergy is the sum of both shares eq. <a class="reference internal" href="#equation-physical-exergy">(7)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-thermal-exergy">
+<span class="eqno">(5)<a class="headerlink" href="#equation-thermal-exergy" title="Permalink to this equation">#</a></span>\[e^\mathrm{T} = \left( h - h \left( p, T_0 \right) \right) -
+T_0 \cdot \left(s - s\left(p, T_0\right)\right)\]</div>
+<div class="math notranslate nohighlight" id="equation-mechanical-exergy">
+<span class="eqno">(6)<a class="headerlink" href="#equation-mechanical-exergy" title="Permalink to this equation">#</a></span>\[e^\mathrm{M}=\left(h\left(p,T_0\right)-h\left(p_0,T_0\right)\right)
+-T_0\cdot\left(s\left(p, T_0\right)-s\left(p_0,T_0\right)\right)\]</div>
+<div class="math notranslate nohighlight" id="equation-physical-exergy">
+<span class="eqno">(7)<a class="headerlink" href="#equation-physical-exergy" title="Permalink to this equation">#</a></span>\[e^\mathrm{PH} = e^\mathrm{T} + e^\mathrm{M}\]</div>
+</section>
+<section id="chemical-exergy">
+<h3>Chemical Exergy<a class="headerlink" href="#chemical-exergy" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight" id="equation-chemical-exergy-general">
+<span class="eqno">(8)<a class="headerlink" href="#equation-chemical-exergy-general" title="Permalink to this equation">#</a></span>\[e^\text{CH} = \left(\sum x_i M_i\right)^{-1}\cdot\left(\sum x_i \bar{e}_i^\text{CH} + \bar{R} T_0\sum x_i \ln
+x_i\right)\]</div>
+<div class="math notranslate nohighlight" id="equation-chemical-exergy-specific">
+<span class="eqno">(9)<a class="headerlink" href="#equation-chemical-exergy-specific" title="Permalink to this equation">#</a></span>\[e^\text{CH}=\left(\sum x_i M_i\right)^{-1}\cdot\left(x_\text{gas}\left(\sum x'_i \bar{e}^\text{CH}_i+\bar{R} T_0
+\sum x'_i \ln{x'_i}\right) + x_{\text{H}_2\text{O}_\text{(l)}}\bar{e}^\text{CH}_{\text{H}_2\text{O}_\text{(l)}}
+\right)\]</div>
+</section>
+</section>
+<section id="exergy-analyses">
+<h2>Exergy Analyses<a class="headerlink" href="#exergy-analyses" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="#exergy-system"><span class="std std-ref">Figure 1</span></a> shows an abstract thermodynamic system and the exergy transported over the system’s
+boundary. Based on that, we can define an exergy balance to analyse the system, taking into account exergy transferred
+to or from the system. These can be heat (eq. <a class="reference internal" href="#equation-exergy-heat">(2)</a>) and power (eq. <a class="reference internal" href="#equation-exergy-work">(3)</a>), incoming
+<span class="math notranslate nohighlight">\(\dot E_{in}\)</span>and outgoing massflows <span class="math notranslate nohighlight">\(\dot E_{out}\)</span> (eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>) as well as the destruction
+of exergy <span class="math notranslate nohighlight">\(\dot E_\text{D}\)</span> happening in all of the system’s components.</p>
+<div class="math notranslate nohighlight" id="equation-ex-bilanz-stat">
+<span class="eqno">(10)<a class="headerlink" href="#equation-ex-bilanz-stat" title="Permalink to this equation">#</a></span>\[0=\sum\limits_{j}\dot E_{\text{q,}j}+
+\sum\limits_{i}\dot E_{\text{w,}i} + \sum\limits_{in}\dot E_{in}-\sum\limits_{out}\dot E_{out} -\dot E_\text{D}\]</div>
+<figure class="align-default" id="exergy-system">
+<img alt="../_images/exergy-system.svg" src="../_images/exergy-system.svg" /><figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of the exergy balance of a thermodynamic system <span id="id2">[<a class="reference internal" href="../zliterature.html#id8" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and open-source exergy analysis&amp;mdash;extending the simulation framework tespy. Energies, 2022. doi:10.3390/en15114087.">2</a>]</span>.</span><a class="headerlink" href="#exergy-system" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Furthermore, it is possible to define balance equations for each of the system’s components <span class="math notranslate nohighlight">\(k\)</span>. The exergy
+destruction can then be calculated as the difference between fuel exergy <span class="math notranslate nohighlight">\(E_{\text{F,}k}\)</span> and the product exergy
+<span class="math notranslate nohighlight">\(E_{\text{P,}k}\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-ex-d-k">
+<span class="eqno">(11)<a class="headerlink" href="#equation-ex-d-k" title="Permalink to this equation">#</a></span>\[\dot E_{\text{D,}k}=\dot E_{\text{F,}k}-\dot E_{\text{P,}k}\]</div>
+<p>Der exergetische Wirkungsgrad ergibt sich aus dem bekannten Nutzen-Aufwand-Verhältnis.</p>
+<div class="math notranslate nohighlight" id="equation-ex-eff-k">
+<span class="eqno">(12)<a class="headerlink" href="#equation-ex-eff-k" title="Permalink to this equation">#</a></span>\[\varepsilon_k=\frac{\dot E_{\text{P,}k}}{\dot E_{\text{F,}k}}\]</div>
+<p>Die Exergievernichtung des Gesamtprozesses ergibt sich aus der Summe der Exergievernichtungen aller Komponenten. Alle Ströme die ungenutzt über die Bilanzgrenze gehen werden als Exergieverluste betrachtet. Die Exergiebilanz für ein Gesamtprozess (total) kann damit notiert werden.</p>
+<div class="math notranslate nohighlight" id="equation-ex-tot">
+<span class="eqno">(13)<a class="headerlink" href="#equation-ex-tot" title="Permalink to this equation">#</a></span>\[\dot E_\text{F,tot}=\dot E_\text{P,tot}+\dot E_\text{D,tot}+\dot E_\text{L,tot}\]</div>
+<p>Der exergetisiche Wirkungsgrad des Gesamtprozesses ergibt sich analog zu \cref{eq:ex-eff-k}.</p>
+<div class="math notranslate nohighlight" id="equation-ex-eff-tot">
+<span class="eqno">(14)<a class="headerlink" href="#equation-ex-eff-tot" title="Permalink to this equation">#</a></span>\[\varepsilon_\text{tot}=\frac{\dot E_\text{P,tot}}{\dot E_\text{F,tot}}=1-\frac{\dot E_\text{D,tot}+\dot E_\text{L,tot}}{\dot E_\text{F,tot}}\]</div>
+<p>Da sich die Exergievernichtung des Gesamtprozesses aus den Beiträgen der einzelnen Komponenten zusammensetzt, kann der Einfluss der einzelnen Komponenten auf die Verringerung des Gesamtwirkungsgrad aufgezeigt werden. Der Exergievernichtungskoeffizient verbindet die Informationen aus den Komponenten und dem Gesamtprozess.</p>
+<div class="math notranslate nohighlight" id="equation-ex-koeff-y">
+<span class="eqno">(15)<a class="headerlink" href="#equation-ex-koeff-y" title="Permalink to this equation">#</a></span>\[y_{\text{D,}k}=\frac{\dot E_{\text{D,}k}}{\dot E_\text{F,tot}}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="scope-and-preconditions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Goals and Scope of the Course</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../single-components/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-exergy">Physical Exergy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-exergy">Chemical Exergy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exergy-analyses">Exergy Analyses</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

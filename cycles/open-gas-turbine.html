@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Gas Turbine &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cycles/open-gas-turbine';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clausius Rankine Cycle" href="clausius-rankine.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/intro-packages.html">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../single-components/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/adiabatic-pipe-flow.html">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/heat-exchanger.html">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clausius-rankine.html">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fcycles/open-gas-turbine.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/cycles/open-gas-turbine.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gas Turbine</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-brayton-cycle">Ideal Brayton Cycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-cycle-gas-turbine">Open Cycle Gas Turbine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="gas-turbine">
+<h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
+<p>In this section we will be investigating gas turbine cycles using TESPy. In the first step the ideal Brayton cycle is
+modeled. The ideal Brayton cycle consists of three subprocesses, i.e. isentropic compression, isobaric heat transfer
+and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 5</span></a>). Next, we are comparing the cycle to the open cycle gas
+turbine, which instead of isobaric heat transfer uses a combustion chamber.</p>
+<section id="ideal-brayton-cycle">
+<h2>Ideal Brayton Cycle<a class="headerlink" href="#ideal-brayton-cycle" title="Permalink to this heading">#</a></h2>
+<p>The flowsheet of the Brayton cycle is shown in <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 5</span></a>. Based on the flowsheet we can calculate the
+thermal efficiency of the cycle using eq. <a class="reference internal" href="#equation-brayton-thermal-efficiency">(29)</a>. For the exergy analysis we have to define
+the plant’s fuel and product exergy as well as the exergy losses in eqs. <a class="reference internal" href="#equation-brayton-fuel-exergy">(30)</a>,
+<a class="reference internal" href="#equation-brayton-product-exergy">(31)</a> and <a class="reference internal" href="#equation-brayton-exergy-loss">(32)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-brayton-thermal-efficiency">
+<span class="eqno">(29)<a class="headerlink" href="#equation-brayton-thermal-efficiency" title="Permalink to this equation">#</a></span>\[\eta_\text{th} = \frac{|\sum \dot W|}{\dot Q_\text{heater}}\]</div>
+<div class="math notranslate nohighlight" id="equation-brayton-fuel-exergy">
+<span class="eqno">(30)<a class="headerlink" href="#equation-brayton-fuel-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{F,tot} = \dot E_\text{F,heater}\]</div>
+<div class="math notranslate nohighlight" id="equation-brayton-product-exergy">
+<span class="eqno">(31)<a class="headerlink" href="#equation-brayton-product-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{P,tot} = \dot E_\text{P,turbine} - \dot E_\text{F,compressor}\]</div>
+<div class="math notranslate nohighlight" id="equation-brayton-exergy-loss">
+<span class="eqno">(32)<a class="headerlink" href="#equation-brayton-exergy-loss" title="Permalink to this equation">#</a></span>\[\dot E_\text{L,tot} = \dot m \cdot e_\text{4}\]</div>
+<figure class="align-default" id="brayton-flowsheet">
+<img alt="../_images/brayton.svg" src="../_images/brayton.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Flow sheet of the Brayton cycle.</span><a class="headerlink" href="#brayton-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#brayton-cycle-param"><span class="std std-numref">Table 1</span></a> indicates the parameter settings for the Brayton cycle for the initial setup.</p>
+<table class="table" id="brayton-cycle-param">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Parametrization of the Brayton cycle</span><a class="headerlink" href="#brayton-cycle-param" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Location</p></th>
+<th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Compressor</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>100</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Pressure ratio</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Heater</p></td>
+<td><p>Pressure ratio</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Turbine</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>100</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p>Generator</p></td>
+<td><p>Total power output</p></td>
+<td><p>-100</p></td>
+<td><p>MW</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Pressure</p></td>
+<td><p>1.013</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Temperature</p></td>
+<td><p>20</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Temperature</p></td>
+<td><p>1400</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Pressure</p></td>
+<td><p>1.013</p></td>
+<td><p>bar</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="excercise-1">
+<h2>Excercise 1<a class="headerlink" href="#excercise-1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Build the TESPy model according to the flowsheet of the ideal Brayton cycle and its specifications shown in
+<a class="reference internal" href="#brayton-cycle-param"><span class="std std-numref">Table 1</span></a>:</p>
+<ul class="simple">
+<li><p>Calculate the thermal efficiency of the process.</p></li>
+<li><p>Add the setup for the exergy analysis and run it:</p>
+<ul>
+<li><p>What is the total exergy efficiency?</p></li>
+<li><p>What is the total exergy destruction?</p></li>
+<li><p>What are the exergy losses to the ambient?</p></li>
+</ul>
+</li>
+<li><p>Why is it impossible to reach an exergy efficiency of 100 %?</p></li>
+</ul>
+</li>
+<li><p>Make individual parameter variations for the compressor pressure ratio and the turbine inlet temperature:</p>
+<ul class="simple">
+<li><p>Calculate thermal efficiency and exergy efficiency for every combination of values.</p></li>
+<li><p>Make a 3D-plot showing the thermal efficiency</p></li>
+<li><p>Make a 3D-plot showing the exergy efficiency</p></li>
+</ul>
+</li>
+</ol>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h3>
+<p>We can set up the plant with standard components. The heater of the Brayton cycle can be represented by the
+<code class="docutils literal notranslate"><span class="pre">HeatExchangerSimple</span></code> component.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Turbine</span><span class="p">,</span> <span class="n">HeatExchangerSimple</span>
+<span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
+<span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="kn">from</span> <span class="nn">tespy.tools</span> <span class="kn">import</span> <span class="n">ExergyAnalysis</span>
+
+
+<span class="n">nwk</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Air&quot;</span><span class="p">],</span> <span class="n">p_unit</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">T_unit</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1.013</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">so</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s2">&quot;air intake&quot;</span><span class="p">)</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
+<span class="n">hi</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s2">&quot;heater&quot;</span><span class="p">)</span>
+<span class="n">tu</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s2">&quot;turbine&quot;</span><span class="p">)</span>
+<span class="n">si</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s2">&quot;air outlet&quot;</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">so</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">)</span>
+
+<span class="n">power_output</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;power output&quot;</span><span class="p">)</span>
+<span class="n">power_output</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;component&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">heat_input</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;heat input&quot;</span><span class="p">)</span>
+<span class="n">heat_input</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">hi</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">chimney</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;chimney&quot;</span><span class="p">)</span>
+<span class="n">chimney</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">si</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;component&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">power_output</span><span class="p">,</span> <span class="n">heat_input</span><span class="p">,</span> <span class="n">chimney</span><span class="p">)</span>
+
+<span class="n">c1</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T0</span><span class="p">)</span>
+<span class="n">c3</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">1400</span><span class="p">)</span>
+<span class="n">c4</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p0</span><span class="p">)</span>
+
+<span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">hi</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tu</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">power_output</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">P</span><span class="o">=-</span><span class="mf">100e6</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+
+<span class="n">thermal_efficiency</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_output</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">heat_input</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+
+<span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">nwk</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_input</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_output</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">chimney</span><span class="p">])</span>
+
+<span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Turbine</span><span class="p">,</span> <span class="n">HeatExchangerSimple</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tespy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;brayton-thermal-efficiency&quot;</span><span class="p">,</span> <span class="n">thermal_efficiency</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;brayton-exergy-efficiency&quot;</span><span class="p">,</span> <span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;epsilon&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cycle’s efficiency is at about  %, with an exergy efficiency of
+ %. We can extract the plant’s overall exergy analysis results from the
+<code class="docutils literal notranslate"><span class="pre">network_data</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the</p>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="solution-3">
+<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="open-cycle-gas-turbine">
+<h2>Open Cycle Gas Turbine<a class="headerlink" href="#open-cycle-gas-turbine" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="gas-turbine-flowsheet">
+<img alt="../_images/gas_turbine.svg" src="../_images/gas_turbine.svg" /><figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>BK mit Verbrennung -&gt; Chemical exergy</p></li>
+<li><p>Wie funktioniert die chemische Exergie?</p></li>
+</ul>
+<p>Table of parameters for gas turbine</p>
+</section>
+<section id="excercise-2">
+<h2>Excercise 2<a class="headerlink" href="#excercise-2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="4">
+<li><p>Build the TESPy model for the open cycle gas turbine and specify the process and component parameters identically to
+the setup of the Brayton cycle.</p>
+<ul class="simple">
+<li><p>Make a comparison of the results:</p>
+<ul>
+<li><p>Air mass flow</p></li>
+<li><p>Compressor outlet temperature</p></li>
+<li><p>Turbine outlet temperature</p></li>
+<li><p>Total heat input</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Run the exergy analysis for the open cycle gas turbine:</p>
+<ul class="simple">
+<li><p>Why is the exergy</p></li>
+</ul>
+</li>
+<li><p>Make a parametric analysis of</p>
+<ul class="simple">
+<li><p>the compressor isentropic efficiency,</p></li>
+<li><p>the turbine isentropic efficiency.
+Why is the effect of the compressor efficiency stronger than the effect of the turbine efficieny?</p></li>
+</ul>
+</li>
+<li><p>Make a parametric analysis of</p>
+<ul class="simple">
+<li><p>pressure losses in the combustion chamber,</p></li>
+<li><p>heat losses in the combustion chamber.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./cycles"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="clausius-rankine.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clausius Rankine Cycle</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-brayton-cycle">Ideal Brayton Cycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-cycle-gas-turbine">Open Cycle Gas Turbine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

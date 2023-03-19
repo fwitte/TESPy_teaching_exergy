@@ -1,0 +1,1174 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Heat Exchanger &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'single-components/heat-exchanger';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compressed Air Production" href="compressed-air.html" />
+    <link rel="prev" title="Adiabatic Pipe Flow" href="adiabatic-pipe-flow.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/intro-packages.html">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adiabatic-pipe-flow.html">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cycles/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/open-gas-turbine.html">Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/clausius-rankine.html">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cycles/heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fsingle-components/heat-exchanger.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/single-components/heat-exchanger.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Heat Exchanger</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#district-heating-delivery-heat-exchanger-for-radiator-heating-system">District heating delivery heat exchanger for radiator heating system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#district-heating-delivery-heat-exchanger-for-underfloor-heating-system">District heating delivery heat exchanger for underfloor heating system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1">Proposed solution 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-1">Proposed solution 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-2">Proposed solution 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaporator-of-an-air-water-heat-pump">Evaporator of an air-water heat pump</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-3">Proposed solution 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="heat-exchanger">
+<h1>Heat Exchanger<a class="headerlink" href="#heat-exchanger" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>A heat exchanger is used to transfer heat from one fluid to a different one. We can write the energy balance for the component assuming, that no heat is lost to the ambient.</p>
+<div class="math notranslate nohighlight" id="equation-heat-exchanger-energy-balance">
+<span class="eqno">(19)<a class="headerlink" href="#equation-heat-exchanger-energy-balance" title="Permalink to this equation">#</a></span>\[    0 = \dot m_1 \cdot \left(h_\text{1,out} - h_\text{1,in}\right) + \dot m_2 \cdot \left(h_\text{2,out} - h_\text{2,in}\right)\]</div>
+<p>The hot side <span class="math notranslate nohighlight">\(1\)</span> transfers heat to the cold side <span class="math notranslate nohighlight">\(2\)</span>, as shown in <a class="reference internal" href="#heat-exchanger-schematic"><span class="std std-numref">Fig. 4</span></a>. We can see, that all heat provided by the hot side is transferred to the cold side. However, in this process it is not possible to reach the same temperature level on the cold side as on the hot side. Reversing the heat transfer is for the same reason not possible: You cannot transfer heat against the direction of the temperature gradient. That obviously means, that the heat transfer incurs thermodynamic losses. To make them visible, we will again calculate the exergy of each of the flows.</p>
+<figure class="align-default" id="heat-exchanger-schematic">
+<img alt="../_images/HeatExchanger.svg" src="../_images/HeatExchanger.svg" /><figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of a heat exchanger.</span><a class="headerlink" href="#heat-exchanger-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="district-heating-delivery-heat-exchanger-for-radiator-heating-system">
+<span id="ref-sec-heat-ex-dhs-radiator"></span><h2>District heating delivery heat exchanger for radiator heating system<a class="headerlink" href="#district-heating-delivery-heat-exchanger-for-radiator-heating-system" title="Permalink to this heading">#</a></h2>
+<p>As an example we want to have a look at a home heating system that uses centralized distric heat as a source. To separate the district heating system from the home system, a heat exchangers is set in place. The radiator of the home system needs a feed flow temperature of <span class="math notranslate nohighlight">\(70\)</span> degrees Celsius. By transfering heat to the home, its temperature reduces by <span class="math notranslate nohighlight">\(15\)</span> Kelvin. It operates at a pressure of roughly <span class="math notranslate nohighlight">\(1.5\)</span> bar above atmospheric pressure. The district heating system provides a flow of <span class="math notranslate nohighlight">\(1\)</span> kg/s with a temperature of <span class="math notranslate nohighlight">\(90\)</span> degrees Celsius at <span class="math notranslate nohighlight">\(8\)</span> bar above atmospheric pressure. It returns back with a temperature of <span class="math notranslate nohighlight">\(60\)</span> degrees Celsius.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+
+<span class="c1"># Properties of hot side fluid</span>
+<span class="n">fluid_1</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
+<span class="n">m_dot_1</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># kg/s</span>
+<span class="n">p_1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.013</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e5</span>  <span class="c1"># Pa</span>
+<span class="n">T_in_1</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+<span class="n">T_out_1</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+
+<span class="c1"># Properties of cold side fluid</span>
+<span class="n">fluid_2</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
+<span class="n">p_2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.013</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e5</span>  <span class="c1"># Pa</span>
+<span class="n">T_in_2</span> <span class="o">=</span> <span class="mi">55</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+<span class="n">T_out_2</span> <span class="o">=</span> <span class="mi">70</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Properties of hot side fluid</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fluid_1</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s find out how much water is flowing through the home heating system. To employ equation <a class="reference internal" href="#equation-heat-exchanger-energy-balance">(19)</a>, we have to get the specific enthalpies of our fluids.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">h_out_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_1</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+
+<span class="n">h_in_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+<span class="n">h_out_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_2</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+<span class="n">m_dot_2</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span> <span class="o">/</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_in_2</span><span class="p">)</span>
+
+<span class="n">m_dot_2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The home heating system mass flow is about <span class="math notranslate nohighlight">\(2 \frac{kg}{s}\)</span>, which makes sense due to the temperature spread of the radiator being smaller, than that of the district heat. After this calculation, we have all the information we need to calculate the physical exergy of both flows. For that we can use the function we built within the <a class="reference internal" href="adiabatic-pipe-flow.html#ref-sec-adiabatic-pipe-flow"><span class="std std-ref">Adiabatic Pipe Flow</span></a> example. But first, we have to define an ambient state:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambient state</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1.013</span> <span class="o">*</span> <span class="mf">1e5</span>  <span class="c1"># Pa</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We have provided the function to calculate the exergy in the ‘utilities’ file in this directory, so we can import it from there instead of redefining it here.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">calc_physical_exergy</span>
+
+
+<span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">ex_out_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">ex_in_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+<span class="n">ex_out_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this specific case, all fluid temperatures are above our ambiant temperature. This means, that the following equations describe the fuel and product exergies:</p>
+<div class="math notranslate nohighlight" id="equation-e-f-all-t-above-t0">
+<span class="eqno">(20)<a class="headerlink" href="#equation-e-f-all-t-above-t0" title="Permalink to this equation">#</a></span>\[    \dot{E}_F = \dot{E}^{PH}_{in,1} - \dot{E}^{PH}_{out,1} + \dot{E}^{M}_{in,2} - \dot{E}^{M}_{out,2}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-p-all-t-above-t0">
+<span class="eqno">(21)<a class="headerlink" href="#equation-e-p-all-t-above-t0" title="Permalink to this equation">#</a></span>\[    \dot{E}_P = \dot{E}^{T}_{out,2} - \dot{E}^{T}_{in,2}\]</div>
+<p>Let’s calculate them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ex_dot_F</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">))</span> <span class="o">+</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fuel exergy comes out to about <span class="math notranslate nohighlight">\(19.81\)</span> kJ and the product exergy to about <span class="math notranslate nohighlight">\(15.91\)</span> kJ. With these values, we can finally calculate exergy destruction, exergy destruction ratio and exergy efficiency. That works analogously as described in <a class="reference internal" href="adiabatic-pipe-flow.html#ref-sec-adiabatic-pipe-flow"><span class="std std-ref">Adiabatic Pipe Flow</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ex_dot_D</span> <span class="o">=</span> <span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span>
+<span class="n">y_D</span> <span class="o">=</span> <span class="n">Ex_dot_D</span> <span class="o">/</span> <span class="n">Ex_dot_F</span>
+<span class="n">eta_Ex</span> <span class="o">=</span> <span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span>
+
+<span class="n">Ex_dot_D</span><span class="p">,</span> <span class="n">y_D</span><span class="p">,</span> <span class="n">eta_Ex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The total exergy destruction is about <span class="math notranslate nohighlight">\(3.899\)</span> kJ, resulting in an exergy destruction ratio of about <span class="math notranslate nohighlight">\(19.7\)</span> % and an exergy efficiency of about <span class="math notranslate nohighlight">\(80.3\)</span> %.</p>
+</section>
+<section id="district-heating-delivery-heat-exchanger-for-underfloor-heating-system">
+<h2>District heating delivery heat exchanger for underfloor heating system<a class="headerlink" href="#district-heating-delivery-heat-exchanger-for-underfloor-heating-system" title="Permalink to this heading">#</a></h2>
+<p>Now lets compare the radiator with an underfloor heating system. Typically, these work at a feed flow temperature of <span class="math notranslate nohighlight">\(40\)</span> degrees Celsius with a temperature spread of <span class="math notranslate nohighlight">\(10\)</span> K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_in_2_uf</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+<span class="n">T_out_2_uf</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
+
+<span class="n">h_in_2_uf</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2_uf</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+<span class="n">h_out_2_uf</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_2_uf</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+<span class="n">m_dot_2_uf</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span> <span class="o">/</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_2_uf</span> <span class="o">-</span> <span class="n">h_in_2_uf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What do you expect the result of the exergy analysis of the underfloor heater to be in comparison to the radiator. How do the lower system temperatures affect the fuel and product exergy? Take a guess before continuing.</p>
+<p>Let’s calculate the physical, as well as the fuel and product exergies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_in_2_uf</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2_uf</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+<span class="n">ex_out_2_uf</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2_uf</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+<span class="n">Ex_dot_F_uf</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">))</span> <span class="o">+</span> <span class="n">m_dot_2_uf</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_in_2_uf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2_uf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">Ex_dot_P_uf</span> <span class="o">=</span> <span class="n">m_dot_2_uf</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_out_2_uf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2_uf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With these, we can calculate exergy destruction, exergy destruction ratio and exergy efficiency again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ex_dot_D_uf</span> <span class="o">=</span> <span class="n">Ex_dot_F_uf</span> <span class="o">-</span> <span class="n">Ex_dot_P_uf</span>
+<span class="n">y_D_uf</span> <span class="o">=</span> <span class="n">Ex_dot_D_uf</span> <span class="o">/</span> <span class="n">Ex_dot_F_uf</span>
+<span class="n">eta_Ex_uf</span> <span class="o">=</span> <span class="n">Ex_dot_P_uf</span> <span class="o">/</span> <span class="n">Ex_dot_F_uf</span>
+
+<span class="n">Ex_dot_D_uf</span><span class="p">,</span> <span class="n">y_D_uf</span><span class="p">,</span> <span class="n">eta_Ex_uf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The total exergy destruction is about <span class="math notranslate nohighlight">\(13.69 \frac{kJ}{kg}\)</span>, resulting in an exergy destruction ratio of about <span class="math notranslate nohighlight">\(69.1\)</span> % and an exergy efficiency of about <span class="math notranslate nohighlight">\(30.9\)</span> %. That’s an <strong>increase</strong> in exergy destruction of around <span class="math notranslate nohighlight">\(151.2\)</span> %.</p>
+<p>Do the results match your expectations? What does this say about the process of providing heat to the underfloor system from the district heating system? How could a dhs operator reduce exergy destruction in home systems in general?</p>
+</section>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
+<p>The analysis above assumes a constant ambient state. In reality, the reference temperature for a heating system – the temperature outside – varies throughout the year. To find out how a varying ambient temperature influences the results of the exergy analysis above, do the following exercise for a typical temperature range of <span class="math notranslate nohighlight">\(5\)</span> to <span class="math notranslate nohighlight">\(30\)</span> degrees Celsius.</p>
+<ol class="arabic simple">
+<li><p>Using the radiator home system example as a use case, create a plot of the exergy destruction against the ambient temperature. How do you interprete the results?</p></li>
+</ol>
+<section id="proposed-solution-1">
+<h3>Proposed solution 1<a class="headerlink" href="#proposed-solution-1" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">T0_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span> <span class="o">+</span> <span class="mf">273.15</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">Ex_dot_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">T0_val</span> <span class="ow">in</span> <span class="n">T0_range</span><span class="p">:</span>
+    <span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0_val</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+    <span class="n">ex_out_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0_val</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+    <span class="n">ex_in_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0_val</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+    <span class="n">ex_out_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0_val</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+    <span class="n">Ex_dot_F</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">))</span> <span class="o">+</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">Ex_dot_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">T</span> <span class="o">-</span> <span class="mf">273.15</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">T0_range</span><span class="p">],</span>
+    <span class="n">Ex_dot_D_range</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#B54036&#39;</span>
+    <span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergy destruction in kJ&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ambient temperature in °C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Explanation</p>
+<p>What we can gather from the resulting plot is, that the exergy destruction increases with an increase in ambient temperature. This can be counter-intuitive, as the fuel and product exergy decrease in absolute terms. This seems reasonable, as the ambient temperature approaches all other temperature levels and therefore their respective potential to extract work decreases.</p>
+<p>If we inspect fuel and product exergy, we can see, that the former decrease slower than the latter, which results in the observed increase in exergy destruction. The fuel exergy decreases slower, because it is mostly dependent on the thermal exergy of the hot side of the example heat exchanger.</p>
+<p>As the temperatures of the hot side are higher than those on the cold side and with the thermal exergy increasing disproportionately with temperature increase above the ambient temperature, even with the same temperature drop the thermal exergy difference between inlet and outlet is always bigger. This effect amplifies with a bigger distance to the ambient temperature.</p>
+</div>
+</section>
+</section>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<p>To further analyze the influence of the key parameters of a heat exchanger, let’s variate them and study their effects. Based on the first example (see: <a class="reference internal" href="#ref-sec-heat-ex-dhs-radiator"><span class="std std-ref">District heating delivery heat exchanger for radiator heating system</span></a>) and with a constant heat flow rate from hot to cold side, implement the following variation routines and plot the resulting exergy destruction and efficiency:</p>
+<ol class="arabic simple">
+<li><p>Variable inlet temperatures with constant outlet temperatures.</p></li>
+<li><p>Variable outlet temperatures with constant inlet temperatures.</p></li>
+</ol>
+<section id="proposed-solution-2-1">
+<h3>Proposed solution 2.1<a class="headerlink" href="#proposed-solution-2-1" title="Permalink to this heading">#</a></h3>
+<p><strong>Zeroth step:</strong> Let’s create some helper functions</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_massflow</span><span class="p">(</span><span class="n">which</span><span class="p">,</span> <span class="n">m_dot</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Energy balance of heat exchanger that is adiabatic to surroundings.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;cold&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m_dot</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span> <span class="o">/</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_in_2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;hot&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m_dot</span> <span class="o">*</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_in_2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">calc_ex_fuel_prod</span><span class="p">(</span><span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Defined for all temperatures above T0.&quot;&quot;&quot;</span>
+    <span class="n">Ex_dot_F</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">))</span>
+        <span class="o">+</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span>
+
+<span class="k">def</span> <span class="nf">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_range</span><span class="p">,</span> <span class="n">Ex_D_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot exergy destruction and efficiency against variable temperature.&quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_range</span><span class="p">,</span> <span class="n">Ex_D_range</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#B54036&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00395B&#39;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergy destruction in kJ&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergetic efficiency&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>First step:</strong> Variate hot side inlet temperature</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_nominal</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">))</span>
+<span class="n">m_dot_2</span> <span class="o">=</span> <span class="n">Q_nominal</span> <span class="o">/</span> <span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_out_1</span><span class="p">)</span>
+
+<span class="n">T_in_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">121</span><span class="p">)]</span>
+<span class="n">h_in_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_in_1</span> <span class="ow">in</span> <span class="n">T_in_1_range</span><span class="p">]</span>
+<span class="n">ex_in_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_in_1</span> <span class="ow">in</span> <span class="n">h_in_1_range</span><span class="p">]</span>
+
+<span class="n">m_dot_1_range</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">calc_massflow</span><span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_in_1</span> <span class="ow">in</span> <span class="n">h_in_1_range</span>
+    <span class="p">]</span>
+
+<span class="n">Ex_dot_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">eta_Ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">m_dot_1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ex_in_1_range</span><span class="p">,</span> <span class="n">m_dot_1_range</span><span class="p">):</span>
+    <span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">calc_ex_fuel_prod</span><span class="p">(</span>
+        <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span>
+        <span class="p">)</span>
+    <span class="n">Ex_dot_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+    <span class="n">eta_Ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_in_1_range</span><span class="p">,</span> <span class="n">Ex_dot_D_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Feed flow temperature of district heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Second step:</strong> Variate cold side inlet temperature</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset hot side inlet temperature</span>
+<span class="n">m_dot_1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">T_in_1</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+
+<span class="n">T_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">61</span><span class="p">)]</span>
+<span class="n">h_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_in_2</span> <span class="ow">in</span> <span class="n">T_in_2_range</span><span class="p">]</span>
+<span class="n">ex_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_in_2</span> <span class="ow">in</span> <span class="n">h_in_2_range</span><span class="p">]</span>
+<span class="n">m_dot_2_range</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">calc_massflow</span><span class="p">(</span><span class="s1">&#39;cold&#39;</span><span class="p">,</span> <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_in_2</span> <span class="ow">in</span> <span class="n">h_in_2_range</span>
+    <span class="p">]</span>
+
+<span class="n">Ex_dot_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">eta_Ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">m_dot_2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ex_in_2_range</span><span class="p">,</span> <span class="n">m_dot_2_range</span><span class="p">):</span>
+    <span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">calc_ex_fuel_prod</span><span class="p">(</span><span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span><span class="p">)</span>
+    <span class="n">Ex_dot_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+    <span class="n">eta_Ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_in_2_range</span><span class="p">,</span> <span class="n">Ex_dot_D_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Back flow temperature of home heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Third step:</strong> Variate both inlet temperatures simultaneously</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">T_in_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+    <span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+    <span class="n">m_dot_1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Q_nominal</span> <span class="o">/</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">))</span>
+
+    <span class="n">Ex_dot_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">eta_Ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">T_in_2_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">T_in_2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">T_in_2_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">T_in_2</span><span class="p">]</span>
+        <span class="n">h_in_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+        <span class="n">ex_in_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+        <span class="n">m_dot_2</span> <span class="o">=</span> <span class="n">calc_massflow</span><span class="p">(</span><span class="s1">&#39;cold&#39;</span><span class="p">,</span> <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">)</span>
+
+        <span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">calc_ex_fuel_prod</span><span class="p">(</span>
+            <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span>
+            <span class="p">)</span>
+        <span class="n">Ex_dot_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+        <span class="n">eta_Ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span><span class="p">]</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_in_2_range</span><span class="p">,</span> <span class="n">Ex_dot_D_range</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">T_in_1</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_in_2_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">T_in_1</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Specific exergy destruction in kJ/kg&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergetic efficiency&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;T_in_1:&#39;</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Back flow temperature of home heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="proposed-solution-2-2">
+<h3>Proposed solution 2.2<a class="headerlink" href="#proposed-solution-2-2" title="Permalink to this heading">#</a></h3>
+<p><strong>First step:</strong> Variate hot side outlet temperature</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset inlet temperatures</span>
+<span class="n">T_in_1</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">T_in_2</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">h_in_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+<span class="n">ex_in_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+<span class="n">T_out_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">81</span><span class="p">)]</span>
+<span class="n">h_out_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_out_1</span> <span class="ow">in</span> <span class="n">T_out_1_range</span><span class="p">]</span>
+<span class="n">ex_out_1_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_out_1</span> <span class="ow">in</span> <span class="n">h_out_1_range</span><span class="p">]</span>
+
+<span class="n">ex_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">eta_ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ex_out_1</span> <span class="ow">in</span> <span class="n">ex_out_1_range</span><span class="p">:</span>
+    <span class="n">ex_F</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ex_P</span> <span class="o">=</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ex_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">ex_F</span> <span class="o">-</span> <span class="n">ex_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+    <span class="n">eta_ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ex_P</span> <span class="o">/</span> <span class="n">ex_F</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_out_1_range</span><span class="p">,</span> <span class="n">ex_D_range</span><span class="p">,</span> <span class="n">eta_ex_range</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Back flow temperature of district heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Second step:</strong> Variate cold side outlet temperature</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset hot side outlet temperature</span>
+<span class="n">T_out_1</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">h_out_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+<span class="n">ex_out_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+
+<span class="n">T_out_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">86</span><span class="p">)]</span>
+<span class="n">h_out_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_out_2</span> <span class="ow">in</span> <span class="n">T_out_2_range</span><span class="p">]</span>
+<span class="n">ex_out_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_out_2</span> <span class="ow">in</span> <span class="n">h_out_2_range</span><span class="p">]</span>
+
+<span class="n">ex_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">eta_ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ex_out_2</span> <span class="ow">in</span> <span class="n">ex_out_2_range</span><span class="p">:</span>
+    <span class="n">ex_F</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ex_P</span> <span class="o">=</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ex_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">ex_F</span> <span class="o">-</span> <span class="n">ex_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+    <span class="n">eta_ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ex_P</span> <span class="o">/</span> <span class="n">ex_F</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_out_2_range</span><span class="p">,</span> <span class="n">ex_D_range</span><span class="p">,</span> <span class="n">eta_ex_range</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Feed flow temperature of home heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Third step:</strong> Variate both outlet temperatures simultaneously</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">T_out_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">h_out_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+    <span class="n">ex_out_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
+
+    <span class="n">ex_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">eta_ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">T_out_2_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">T_out_2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">86</span><span class="p">):</span>
+        <span class="n">T_out_2_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">T_out_2</span><span class="p">]</span>
+        <span class="n">h_out_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_out_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+        <span class="n">ex_out_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span>
+
+        <span class="n">ex_F</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ex_P</span> <span class="o">=</span> <span class="n">ex_out_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ex_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">ex_F</span> <span class="o">-</span> <span class="n">ex_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+        <span class="n">eta_ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ex_P</span> <span class="o">/</span> <span class="n">ex_F</span><span class="p">]</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_out_2_range</span><span class="p">,</span> <span class="n">ex_D_range</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">T_out_1</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_out_2_range</span><span class="p">,</span> <span class="n">eta_ex_range</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">T_out_1</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Specific exergy destruction in kJ/kg&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergetic efficiency&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;T_out_1:&#39;</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Feed flow temperature of home heating system in °C&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="evaporator-of-an-air-water-heat-pump">
+<h2>Evaporator of an air-water heat pump<a class="headerlink" href="#evaporator-of-an-air-water-heat-pump" title="Permalink to this heading">#</a></h2>
+<p>For our next example, consider the heat exchanger used for evaporation of the refrigerant of an air-water heat pump. As the name implies, ambient air is used as the heat source of the cycle. That means, that the ambient temperature <span class="math notranslate nohighlight">\(T_0\)</span> occurs at the inlet of the hot side of the evaporator. As the air is supplying the heat, its temperatures decreases until it exits the heat exchanger. The evaporation of the refrigerant must occur at an even lower temperature. This means, that all temperatures lie at our below the defined ambient temperature <span class="math notranslate nohighlight">\(T_0\)</span>.</p>
+<p>As heat must always flow from a higher to a lower temperature, the direction of the heat flow of the evaporator is from the ambient air to the evaporating refrigerant. In our preceding examples, the direction of the exergy flow aligned with the heat flow. But exergy always flows from a point of higher potential – meaning higher distance to the ambient state – to that of a lower one. In this case, the refrigerant is cooler and therefore exhibits a higher exergetic potential. This means, that the direction of the exergy flow is opposite to the heat flow direction: from the refrigerant to the ambient air.</p>
+<p>What does this mean for our exergy analysis? The increase in exergy, i.e. the product of the process, is the hot side of the heat exchanger. Vice versa, the thermal fuel exergy stems from the evaporating refrigerant, which approaches ambient enthalpy. Therefore, we have to adjust the equations accordingly. As you can see, Eq. <a class="reference internal" href="#equation-e-f-all-t-below-t0">(22)</a> and <a class="reference internal" href="#equation-e-p-all-t-below-t0">(23)</a> reflect the switch up between the thermal exergy of the hot and the cold side. The mechanical exergy, i.e. in case of the heat exchanger the pressure losses, both remain part of the fuel.</p>
+<div class="math notranslate nohighlight" id="equation-e-f-all-t-below-t0">
+<span class="eqno">(22)<a class="headerlink" href="#equation-e-f-all-t-below-t0" title="Permalink to this equation">#</a></span>\[    \dot{E}_F = \dot{E}^{PH}_{in,2} - \dot{E}^{PH}_{out,2} + \dot{E}^{M}_{in,1} - \dot{E}^{M}_{out,1}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-p-all-t-below-t0">
+<span class="eqno">(23)<a class="headerlink" href="#equation-e-p-all-t-below-t0" title="Permalink to this equation">#</a></span>\[    \dot{E}_P = \dot{E}^{T}_{out,1} - \dot{E}^{T}_{in,1}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As you can imagine by now, the location of the ambient state has a big influence of the results of the exergy. Other constellations are possible, with the ambient temperature lying somewhere between the inlet and outlet tempereture of either side of the heat exchanger. All eqautions implemented in the exergy analysis tool of the TESPy module can be found in <span id="id1">Witte <em>et al.</em> [<a class="reference internal" href="../zliterature.html#id8" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and open-source exergy analysis&amp;mdash;extending the simulation framework tespy. Energies, 2022. doi:10.3390/en15114087.">2</a>]</span>.</p>
+</div>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
+<p>Compare the old calculation rule with the adjusted one by calculating fuel and product exergy for a range of evaporation temperatures from 2 to 15 degrees Celsius below the hot side outlet temperature. Use Ammonia as the refrigerant. Let the hot side outlet temperature be 5 degrees cooler than the inlet temperature and a heat flow of 500 kW be exchanged. Assume an inlet enthalpy of the refrigerant of 600 kJ/kg and a full evaporation.</p>
+<section id="proposed-solution-3">
+<h3>Proposed solution 3<a class="headerlink" href="#proposed-solution-3" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T0</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">+</span> <span class="mf">273.15</span> <span class="c1"># Ambient and hot side inlet temperature</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1.013e5</span>  <span class="c1"># Ambient and hot side pressure</span>
+<span class="n">T_1_out</span> <span class="o">=</span> <span class="n">T0</span> <span class="o">-</span> <span class="mi">5</span>
+
+<span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s1">&#39;Air&#39;</span><span class="p">)</span>
+<span class="n">h_out_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_1_out</span><span class="p">,</span> <span class="s1">&#39;Air&#39;</span><span class="p">)</span>
+<span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s1">&#39;Air&#39;</span><span class="p">)</span>
+<span class="n">ex_out_1</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">h_out_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s1">&#39;Air&#39;</span><span class="p">)</span>
+<span class="n">m_dot_1</span> <span class="o">=</span> <span class="mf">500e3</span> <span class="o">/</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span>
+
+<span class="n">h_in_2</span> <span class="o">=</span> <span class="mf">600e3</span>
+
+<span class="n">T_2_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">Ex_dot_wrong</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">Ex_dot</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ttd</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+    <span class="n">T_2</span> <span class="o">=</span> <span class="n">T_1_out</span> <span class="o">-</span> <span class="n">ttd</span>
+    <span class="n">T_2_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">T_2</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">]</span>
+    <span class="n">p_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_2</span><span class="p">,</span> <span class="s1">&#39;Ammonia&#39;</span><span class="p">)</span>
+    <span class="n">h_out_2</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_2</span><span class="p">,</span> <span class="s1">&#39;Ammonia&#39;</span><span class="p">)</span>
+    <span class="n">ex_in_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s1">&#39;Ammonia&#39;</span><span class="p">)</span>
+    <span class="n">ex_out_2</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_out_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="s1">&#39;Ammonia&#39;</span><span class="p">)</span>
+    <span class="n">m_dot_2</span> <span class="o">=</span> <span class="mf">500e3</span> <span class="o">/</span> <span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_in_2</span><span class="p">)</span>
+
+    <span class="n">Ex_dot_F_wrong</span><span class="p">,</span> <span class="n">Ex_dot_P_wrong</span> <span class="o">=</span> <span class="n">calc_ex_fuel_prod</span><span class="p">(</span>
+        <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span>
+        <span class="p">)</span>
+    <span class="n">Ex_dot_wrong</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F_wrong</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">Ex_dot_P_wrong</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">)]</span>
+
+    <span class="n">Ex_dot_F</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">m_dot_2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">ex_in_2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ex_out_2</span><span class="p">))</span>
+        <span class="o">+</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_in_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_out_1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_out_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ex_in_1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">Ex_dot</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">Ex_dot_P</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_2_range</span><span class="p">,</span> <span class="p">[</span><span class="n">Ex</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">Ex</span> <span class="ow">in</span> <span class="n">Ex_dot</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00395B&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fuel (adjusted)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_2_range</span><span class="p">,</span> <span class="p">[</span><span class="n">Ex</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">Ex</span> <span class="ow">in</span> <span class="n">Ex_dot</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00395B&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Product (adjusted)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_2_range</span><span class="p">,</span> <span class="p">[</span><span class="n">Ex</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">Ex</span> <span class="ow">in</span> <span class="n">Ex_dot_wrong</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#B54036&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fuel (wrong)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_2_range</span><span class="p">,</span> <span class="p">[</span><span class="n">Ex</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">Ex</span> <span class="ow">in</span> <span class="n">Ex_dot_wrong</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#B54036&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Product (wrong)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Evaporation temperature in °C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergy in kJ&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Explanation</p>
+<p>As you can see, with the wrong implementation of the fuel and product exergy both values become negative. This is not possible according to the definiton of exergy itself. With the adjusted equations, this rightfully is not the case. The product exergy is not changing with variation of the evaporation temperature, as the hot side is not impacted in the example case. On the other hand, the fuel exergy is higher, when the evaporation temperature is lower, i.e. further from the ambient state.</p>
+<p>If you calculate the exergy destruction of the process, both calculation rules yield the same result, as the difference of two negative numbers is same, as the difference of the same positve numbers.</p>
+</div>
+</section>
+</section>
+<section id="lessons-learned">
+<h2>Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h2>
+<p>After this section you should be able to perfrom a simple exergy analysis of a heat exchanger. You should be aware of the influence of the chosen ambient state and how the underlying equations have to be arranged. On top of that, you should have learned how the key parameters of a heat exchanger, e.g. the fluids temperatures, inpact the exergy fuel and product and finally the processes exergy destruction and efficiency.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./single-components"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="adiabatic-pipe-flow.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adiabatic Pipe Flow</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="compressed-air.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compressed Air Production</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#district-heating-delivery-heat-exchanger-for-radiator-heating-system">District heating delivery heat exchanger for radiator heating system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#district-heating-delivery-heat-exchanger-for-underfloor-heating-system">District heating delivery heat exchanger for underfloor heating system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1">Proposed solution 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-1">Proposed solution 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-2">Proposed solution 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaporator-of-an-air-water-heat-pump">Evaporator of an air-water heat pump</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-3">Proposed solution 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

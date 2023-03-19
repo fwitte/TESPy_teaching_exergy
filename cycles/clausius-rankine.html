@@ -1,0 +1,1264 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Clausius Rankine Cycle &#8212; Teaching Exergy using TESPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cycles/clausius-rankine';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Heat Pump" href="heat-pump.html" />
+    <link rel="prev" title="Gas Turbine" href="open-gas-turbine.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_tespy_mid.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_tespy_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    THE Almighty Book of Applied Thermal Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/intro-packages.html">Introduction to used libraries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../single-components/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/adiabatic-pipe-flow.html">Adiabatic Pipe Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/heat-exchanger.html">Heat Exchanger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single-components/compressed-air.html">Compressed Air Production</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamic Cycles</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-gas-turbine.html">Gas Turbine</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Clausius Rankine Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heat-pump.html">Heat Pump</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complex Processes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../processes/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/orc-combined-heat-and-power.html">ORC Combined Heat and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/electrolysis-heat-recovery.html">Electrolysis with Waste Heat Recovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fwitte/teaching-exergy/issues/new?title=Issue%20on%20page%20%2Fcycles/clausius-rankine.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/cycles/clausius-rankine.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Clausius Rankine Cycle</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-1">Proposed solution 1.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-improvements-and-exergy-influence">Efficiency improvements and exergy influence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-1">Proposed solution 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-2">Proposed solution 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-optimization">Process optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-3">Excercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-3-1">Proposed solution 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="clausius-rankine-cycle">
+<h1>Clausius Rankine Cycle<a class="headerlink" href="#clausius-rankine-cycle" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>The clausius rankine cycle serves as a comparative process for the steam power plant in its simplest constellation with steam turbine, condenser, feed water pump and steam generator shown in figure <a class="reference internal" href="#rankine-cycle-dissipative-flowsheet"><span class="std std-numref">Fig. 7</span></a>. This is based on the heat-power process occurring in a steam engine and is thus a clockwise rotationg cycle.</p>
+<figure class="align-default" id="rankine-cycle-dissipative-flowsheet">
+<img alt="../_images/rankine_cycle_dissipative.svg" src="../_images/rankine_cycle_dissipative.svg" /><figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Topology of the clausius rankine cycle.</span><a class="headerlink" href="#rankine-cycle-dissipative-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The live steam provided in the steam generator enters the turbine at high pressure and temperature, where it is expanded to a lower pressure level. The turbine releases power that can be used to drive a generator. The exhaust steam leaving the turbine is completely condensed out and leaves the condenser as saturated water. After that the feed water pump has to bring this condensate to a pressure level so that the steam generator can be supplied with feed water and the cycle can start again.</p>
+<p>The heat supplied to the process comes from the steam generator. In contrast, the power output of the turbine differentiated by the power input of the feedwater pump, is to be defined as power output of the process. The condensation of the refrigerant is to be regarded as heat output. Consequently, the thermal efficiency is displayed in Eq. <a class="reference internal" href="#equation-thermal-efficiency">(33)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-thermal-efficiency">
+<span class="eqno">(33)<a class="headerlink" href="#equation-thermal-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{th} = \frac{W_{out}}{Q_{in}}\]</div>
+</section>
+<section id="excercise-1">
+<h2>Excercise 1<a class="headerlink" href="#excercise-1" title="Permalink to this heading">#</a></h2>
+<p>Build the clausius rankine cycle in two variants:</p>
+<ol class="arabic simple">
+<li><p>A cycle with a dissipative condenser (system boundaries are around the hot side of the heat exchanger)</p></li>
+<li><p>A condenser with the cold side, e.g. a river water cooling cycle, modelled (system boundaries are in and out flowing water)</p></li>
+</ol>
+<p>Make sure the cycles are the same by checking their respective thermal efficiencies. Perform and compare the exergy analysis of the two variants. Interprete the results and the implication on the condensers efficiency.</p>
+<p>Parametrize the model according to the description as shown in Table <a class="reference internal" href="#clausius-rankine-param"><span class="std std-numref">Table 2</span></a>.</p>
+<table class="table" id="clausius-rankine-param">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Parametrization of clausius rankine clcye</span><a class="headerlink" href="#clausius-rankine-param" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Network parameter</p></td>
+<td><p>Massflow</p></td>
+<td><p>10</p></td>
+<td><p>kg / s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Turbine</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>90</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Live steam temperature</p></td>
+<td><p>600</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Live steam pressure</p></td>
+<td><p>150</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>exhaust steam pressure</p></td>
+<td><p>0.1</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-odd"><td><p>Feed water pump</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>75</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p>Steam generator</p></td>
+<td><p>Pressure losses</p></td>
+<td><p>10</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Condenser</p></td>
+<td><p>Pressure losses</p></td>
+<td><p>0</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p>Cooling Water Source</p></td>
+<td><p>Incoming Temperature</p></td>
+<td><p>20</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Temperature increase</p></td>
+<td><p>10</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>System pressure</p></td>
+<td><p>1.2</p></td>
+<td><p>bar</p></td>
+</tr>
+</tbody>
+</table>
+<section id="proposed-solution-1-1">
+<h3>Proposed solution 1.1<a class="headerlink" href="#proposed-solution-1-1" title="Permalink to this heading">#</a></h3>
+<p><strong>First step:</strong> Build clausius rankine cycle with condenser using <code class="docutils literal notranslate"><span class="pre">HeatExchangerSimple</span></code> component</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
+<span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Pump</span><span class="p">,</span> <span class="n">HeatExchangerSimple</span><span class="p">,</span> <span class="n">Turbine</span>
+
+<span class="c1"># Network</span>
+<span class="n">nw</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">])</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T_unit</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">p_unit</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">h_unit</span><span class="o">=</span><span class="s1">&#39;kJ / kg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Components</span>
+<span class="n">cycle_closer</span> <span class="o">=</span> <span class="n">CycleCloser</span><span class="p">(</span><span class="s1">&#39;Cycle Closer&#39;</span><span class="p">)</span>
+<span class="n">turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;Steam Turbine&#39;</span><span class="p">)</span>
+<span class="n">condenser</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s1">&#39;Condenser&#39;</span><span class="p">)</span>
+<span class="n">fw_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;Feed Water Pump&#39;</span><span class="p">)</span>
+<span class="n">steam_generator</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s1">&#39;Steam Generator&#39;</span><span class="p">)</span>
+
+<span class="c1"># Connections</span>
+<span class="n">steamgen2cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="n">cc2turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">turb2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">cond2pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">pump2steamgen</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">steamgen2cc</span><span class="p">,</span> <span class="n">cc2turb</span><span class="p">,</span> <span class="n">turb2cond</span><span class="p">,</span> <span class="n">cond2pump</span><span class="p">,</span> <span class="n">pump2steamgen</span><span class="p">)</span>
+
+<span class="c1"># Component Parametrization</span>
+<span class="n">turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fw_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">steam_generator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># Connection Parametrization</span>
+<span class="n">cc2turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">turb2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">cond2pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Busses</span>
+<span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
+<span class="n">heat_in</span><span class="o">.</span><span class="n">add_comps</span><span class="p">({</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">})</span>
+
+<span class="n">power_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Power Output&#39;</span><span class="p">)</span>
+<span class="n">power_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">heat_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Output&#39;</span><span class="p">)</span>
+<span class="n">heat_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">({</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">})</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_out</span><span class="p">,</span> <span class="n">heat_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Pump</span><span class="p">,</span> <span class="n">HeatExchangerSimple</span><span class="p">,</span> <span class="n">Turbine</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tespy&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Second step:</strong> Solve model with variant 1 and perform exergy analysis</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.tools</span> <span class="kn">import</span> <span class="n">ExergyAnalysis</span>
+
+<span class="c1"># Solve model</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">eta_th</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">heat_in</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_th = </span><span class="si">{</span><span class="n">eta_th</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">ean_var1</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+<span class="n">ean_var1</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ean_var1</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eta_th = 0.370
+##### RESULTS: Component exergy analysis #####
++-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                 |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|-----------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Condenser       |   1.675e+06 | nan         |   1.675e+06 | nan         |   1.042e-01 |   4.615e-01 |
+| Steam Turbine   |   1.456e+07 |   1.321e+07 |   1.349e+06 |   9.073e-01 |   8.390e-02 |   3.717e-01 |
+| Feed Water Pump |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.183e-03 |   1.410e-02 |
+| Steam Generator |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   4.568e-03 |
+| Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
++-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Bus exergy analysis #####
++-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                 |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|-----------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Steam Turbine   |   1.321e+07 |   1.268e+07 |   5.284e+05 |   9.600e-01 |   3.286e-02 |   1.456e-01 |
+| Feed Water Pump |   2.329e+05 |   2.236e+05 |   9.316e+03 |   9.600e-01 |   5.794e-04 |   2.567e-03 |
+| Steam Generator |   1.608e+07 |   1.608e+07 |   0.000e+00 |   1.000e+00 |   0.000e+00 |   0.000e+00 |
+| Condenser       | nan         | nan         | nan         | nan         | nan         | nan         |
++-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-------+-----------+
+|       E_F |       E_P |       E_D |   E_L |   epsilon |
+|-----------+-----------+-----------+-------+-----------|
+| 1.608e+07 | 1.245e+07 | 3.630e+06 |   nan | 7.743e-01 |
++-----------+-----------+-----------+-------+-----------+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Third step:</strong> Replace <code class="docutils literal notranslate"><span class="pre">HeatExchangerSimple</span></code> with <code class="docutils literal notranslate"><span class="pre">Condenser</span></code> component</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Condenser</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span>
+    
+<span class="c1"># Remove old connections</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">del_conns</span><span class="p">(</span><span class="n">turb2cond</span><span class="p">,</span> <span class="n">cond2pump</span><span class="p">)</span>
+
+<span class="c1"># Replace condenser</span>
+<span class="n">condenser</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span><span class="s1">&#39;Condenser&#39;</span><span class="p">)</span>
+<span class="n">cw_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Cooling Water Source&#39;</span><span class="p">)</span>
+<span class="n">cw_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Cooling Water Sink&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reconnect condenser</span>
+<span class="n">turb2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">cond2pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">cw_source2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
+<span class="n">cond2cw_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">turb2cond</span><span class="p">,</span> <span class="n">cond2pump</span><span class="p">,</span> <span class="n">cw_source2cond</span><span class="p">,</span> <span class="n">cond2cw_sink</span><span class="p">)</span>
+
+<span class="c1"># Parametrize condenser and cooling cycle</span>
+<span class="n">turb2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cw_source2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">cond2cw_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Reset heat output bus</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">del_busses</span><span class="p">(</span><span class="n">heat_out</span><span class="p">)</span>
+
+<span class="n">heat_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Output&#39;</span><span class="p">)</span>
+<span class="n">heat_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Forth step:</strong> Solve model with variant 2 and perform exergy analysis</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve model</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">eta_th</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">heat_in</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_th = </span><span class="si">{</span><span class="n">eta_th</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">ean_var2</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+<span class="n">ean_var2</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ean_var2</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eta_th = 0.370
+##### RESULTS: Component exergy analysis #####
++----------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                      |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|----------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Steam Turbine        |   1.456e+07 |   1.321e+07 |   1.349e+06 |   9.073e-01 |   8.390e-02 |   4.108e-01 |
+| Condenser            |   1.675e+06 |   3.452e+05 |   1.330e+06 |   2.061e-01 |   8.270e-02 |   4.049e-01 |
+| Feed Water Pump      |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.183e-03 |   1.558e-02 |
+| Steam Generator      |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   5.048e-03 |
+| Cycle Closer         | nan         | nan         | nan         | nan         | nan         | nan         |
+| Cooling Water Sink   | nan         | nan         | nan         | nan         | nan         | nan         |
+| Cooling Water Source | nan         | nan         | nan         | nan         | nan         | nan         |
++----------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Bus exergy analysis #####
++----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
+|                      |       E_F |       E_P |       E_D |   epsilon |      y_Dk |     y*_Dk |
+|----------------------+-----------+-----------+-----------+-----------+-----------+-----------|
+| Steam Turbine        | 1.321e+07 | 1.268e+07 | 5.284e+05 | 9.600e-01 | 3.286e-02 | 1.609e-01 |
+| Feed Water Pump      | 2.329e+05 | 2.236e+05 | 9.316e+03 | 9.600e-01 | 5.794e-04 | 2.836e-03 |
+| Steam Generator      | 1.608e+07 | 1.608e+07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cooling Water Sink   | 3.545e+05 | 3.545e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cooling Water Source | 9.275e+03 | 9.275e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
++----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 1.608e+07 | 1.245e+07 | 3.284e+06 | 3.452e+05 | 7.743e-01 |
++-----------+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Explanation</p>
+<p>First variation makes Condenser look very inefficient, because all exergy is destroyed. Second variation highlights real losses of the condenser and dissipates heat through cooling water.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>From this point onwards the second variant of the clausius rankine cycle containg the implementation of the condensers cooling cycle is used.</p>
+</div>
+</section>
+</section>
+<section id="efficiency-improvements-and-exergy-influence">
+<h2>Efficiency improvements and exergy influence<a class="headerlink" href="#efficiency-improvements-and-exergy-influence" title="Permalink to this heading">#</a></h2>
+<p>As you should already know, thermal efficiency depends on component parameters. Especially the variations of live steam parameters have a positive effect on thermal efficiency. Thus, both high temperatures and high pressures improve the thermal efficiency. However, if the live steam pressure is increased without simultaneously increasing the live steam temperature, the last stages of the turbine may be damaged by droplet impingement. But how do these key parameter affect exergetic efficiency? Are there other factors that influence it as well?</p>
+</section>
+<section id="excercise-2">
+<h2>Excercise 2<a class="headerlink" href="#excercise-2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Analyze the influence of key parameters on the exergy analysis, such as live steam pressure and temperature.</p></li>
+<li><p>What impact does the ambient state have on the results of the exergy analysis.</p></li>
+</ol>
+<section id="proposed-solution-2-1">
+<h3>Proposed solution 2.1<a class="headerlink" href="#proposed-solution-2-1" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">T_ls_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">50</span><span class="p">)]</span>
+<span class="n">p_ls_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">25</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">p_ls</span> <span class="ow">in</span> <span class="n">p_ls_range</span><span class="p">:</span>
+    <span class="n">epsilon_tot</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">T_ls</span> <span class="ow">in</span> <span class="n">T_ls_range</span><span class="p">:</span>
+        <span class="n">cc2turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_ls</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_ls</span><span class="p">)</span>
+
+        <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+        <span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+        <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">epsilon_tot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_ls_range</span><span class="p">,</span> <span class="n">epsilon_tot</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">p_ls</span><span class="si">}</span><span class="s1"> bar&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Live steam temperature in °C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergetic efficiency $</span><span class="se">\\</span><span class="s1">epsilon$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;$p_</span><span class="si">{livesteam}</span><span class="s1">$:&#39;</span><span class="p">)</span> <span class="c1">#, alignment=&#39;left&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="proposed-solution-2-2">
+<h3>Proposed solution 2.2<a class="headerlink" href="#proposed-solution-2-2" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset live steam parameters</span>
+<span class="n">cc2turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+
+<span class="n">T_amb_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">E_Fs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">E_Ps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">epsilons</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">T_amb</span> <span class="ow">in</span> <span class="n">T_amb_range</span><span class="p">:</span>
+    <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="n">T_amb</span><span class="p">)</span>
+    <span class="n">E_Fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;E_F&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">E_Ps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;E_P&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">epsilons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_amb_range</span><span class="p">,</span> <span class="n">E_Fs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00395B&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">dot</span><span class="si">{E}</span><span class="s1">_</span><span class="si">{F}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_amb_range</span><span class="p">,</span> <span class="n">E_Ps</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#B54036&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">dot</span><span class="si">{E}</span><span class="s1">_</span><span class="si">{P}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_amb_range</span><span class="p">,</span> <span class="n">epsilons</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#EC6707&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">epsilon$&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ambient temperature in °C&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total Exergies in MW&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exergetic efficiency&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Explanation</p>
+<p>Hier könnte ihre Erklärung stehen</p>
+</div>
+</section>
+</section>
+<section id="process-optimization">
+<h2>Process optimization<a class="headerlink" href="#process-optimization" title="Permalink to this heading">#</a></h2>
+<p>In addition to the approach of increasing the efficiency via parameter variation, there is also the approach of structural optimization. This involves modifying the circuitry of the process with the aim of increasing efficiency, exergy efficiency or other improvement.</p>
+<p>The regenerative feed water preheating is an often used structural optimization. Figure <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 8</span></a> shows the structure of such a process. Most of the live steam entering the turbine is expanded to the condenser, and from there it reaches the feedwater pump. However, the cold feedwater is now preheated before it enters the boiler. This is done by condensing steam taken from the turbine at a suitable pressure level in a feed water preheater. In the present case, the resulting extraction steam condensate is returned to the condenser of the steam power process. This requires throttling to balance the pressures.</p>
+<figure class="align-default" id="rankine-cycle-preheating-flowsheet">
+<img alt="../_images/rankine_cycle_preheating.svg" src="../_images/rankine_cycle_preheating.svg" /><figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Topology of the clausius rankine cycle with regenerative feed water preheating.</span><a class="headerlink" href="#rankine-cycle-preheating-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A second way of increasing the efficiency of a clausius rankine process is superheating. This additionally influences the operating range of the turbines used, which on the one hand means a technical advantage, but on the other hand can also open up the scope for further parameter optimization. Figure <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 9</span></a> shows the structure of a Rankine Cycle with superheating. The live steam, coming from the steam generator, enters the turbine, which now consists of a high-pressure and a low-pressure section. After initial expansion has taken place in the high-pressure section, all the steam is removed from the turbine and fed to an intermediate superheater. The steam then flows into the low-pressure section of the turbine, from where the process continues as known from the simple process.</p>
+<figure class="align-default" id="rankine-cycle-superheating-flowsheet">
+<img alt="../_images/rankine_cycle_superheating.svg" src="../_images/rankine_cycle_superheating.svg" /><figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Topology of the clausius rankine cycle with intermediate superheating of steam.</span><a class="headerlink" href="#rankine-cycle-superheating-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="excercise-3">
+<h2>Excercise 3<a class="headerlink" href="#excercise-3" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Implement the two topological improvements:</p>
+<ul class="simple">
+<li><p>Regenerative feed water preheating (see <a class="reference internal" href="#rankine-cycle-preheating-flowsheet"><span class="std std-numref">Fig. 8</span></a>)</p></li>
+<li><p>Intermediate superheating (see <a class="reference internal" href="#rankine-cycle-superheating-flowsheet"><span class="std std-numref">Fig. 9</span></a>)</p></li>
+</ul>
+</li>
+<li><p>Explain the improvement of the cycles efficiency with the exergy analysis by investigating the exergy destruction of each component</p></li>
+</ol>
+<section id="proposed-solution-3-1">
+<h3>Proposed solution 3.1<a class="headerlink" href="#proposed-solution-3-1" title="Permalink to this heading">#</a></h3>
+<p><strong>First step:</strong> Build clausius rankine cycle with regenerative feed water preheating</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Ref</span>
+<span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Splitter</span><span class="p">,</span> <span class="n">Merge</span><span class="p">,</span> <span class="n">HeatExchanger</span><span class="p">,</span> <span class="n">Valve</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Network</span>
+<span class="n">nw_pre</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">])</span>
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T_unit</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">p_unit</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">h_unit</span><span class="o">=</span><span class="s1">&#39;kJ / kg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Components</span>
+<span class="n">cycle_closer</span> <span class="o">=</span> <span class="n">CycleCloser</span><span class="p">(</span><span class="s1">&#39;Cycle Closer&#39;</span><span class="p">)</span>
+<span class="n">hp_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;High Pressure Steam Turbine&#39;</span><span class="p">)</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">Splitter</span><span class="p">(</span><span class="s1">&#39;Splitter&#39;</span><span class="p">)</span>
+<span class="n">lp_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;Low Pressure Steam Turbine&#39;</span><span class="p">)</span>
+<span class="n">merge</span> <span class="o">=</span> <span class="n">Merge</span><span class="p">(</span><span class="s1">&#39;Merge&#39;</span><span class="p">)</span>
+
+<span class="n">condenser</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span><span class="s1">&#39;Condenser&#39;</span><span class="p">)</span>
+<span class="n">cw_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Cooling Water Source&#39;</span><span class="p">)</span>
+<span class="n">cw_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Cooling Water Sink&#39;</span><span class="p">)</span>
+<span class="n">fw_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;Feed Water Pump&#39;</span><span class="p">)</span>
+<span class="n">steam_generator</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s1">&#39;Steam Generator&#39;</span><span class="p">)</span>
+
+<span class="n">valve</span> <span class="o">=</span> <span class="n">Valve</span><span class="p">(</span><span class="s1">&#39;Expansion Valve&#39;</span><span class="p">)</span>
+<span class="n">preheater</span> <span class="o">=</span> <span class="n">HeatExchanger</span><span class="p">(</span><span class="s1">&#39;Preheater&#39;</span><span class="p">)</span>
+
+<span class="c1"># Connections</span>
+<span class="n">steamgen2cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="n">cc2hp_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">hp_turb2split</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">splitter</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">split2lp_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">splitter</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">lp_turb2merge</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">steamgen2cc</span><span class="p">,</span> <span class="n">cc2hp_turb</span><span class="p">,</span> <span class="n">hp_turb2split</span><span class="p">,</span> <span class="n">split2lp_turb</span><span class="p">,</span> <span class="n">lp_turb2merge</span><span class="p">)</span>
+
+<span class="n">merg2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<span class="n">cond2pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;6&#39;</span><span class="p">)</span>
+<span class="n">pump2preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">preheater</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;7&#39;</span><span class="p">)</span>
+<span class="n">preheat2steamgen</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">preheater</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;8&#39;</span><span class="p">)</span>
+<span class="n">cw_source2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
+<span class="n">cond2cw_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">)</span>
+
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">merg2cond</span><span class="p">,</span> <span class="n">cond2pump</span><span class="p">,</span> <span class="n">pump2preheat</span><span class="p">,</span> <span class="n">preheat2steamgen</span><span class="p">,</span> <span class="n">cw_source2cond</span><span class="p">,</span> <span class="n">cond2cw_sink</span><span class="p">)</span>
+
+<span class="n">split2preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">splitter</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">preheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
+<span class="n">preheat2valve</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+<span class="n">valve2merge</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;13&#39;</span><span class="p">)</span>
+
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">split2preheat</span><span class="p">,</span> <span class="n">preheat2valve</span><span class="p">,</span> <span class="n">valve2merge</span><span class="p">)</span>
+
+<span class="c1"># Component Parametrization</span>
+<span class="n">hp_turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">lp_turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fw_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ttd_l</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">steam_generator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># Connection Parametrization</span>
+<span class="n">cc2hp_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">split2lp_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">150</span><span class="o">*</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">m</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">cc2hp_turb</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">lp_turb2merge</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">cw_source2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">cond2cw_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Busses</span>
+<span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
+<span class="n">heat_in</span><span class="o">.</span><span class="n">add_comps</span><span class="p">({</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">})</span>
+
+<span class="n">power_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Power Output&#39;</span><span class="p">)</span>
+<span class="n">power_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">heat_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Output&#39;</span><span class="p">)</span>
+<span class="n">heat_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_out</span><span class="p">,</span> <span class="n">heat_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Second step:</strong> Solve model with regenerative feed water preheating and perform exergy analysis</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve model</span>
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nw_pre</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">eta_th</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">heat_in</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_th = </span><span class="si">{</span><span class="n">eta_th</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">ean_pre</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw_pre</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+<span class="n">ean_pre</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ean_pre</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Third step:</strong> Build clausius rankine cycle with intermediate superheating of steam</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nw_super</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">])</span>
+<span class="n">nw_super</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T_unit</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">p_unit</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">h_unit</span><span class="o">=</span><span class="s1">&#39;kJ / kg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Components</span>
+<span class="n">cycle_closer</span> <span class="o">=</span> <span class="n">CycleCloser</span><span class="p">(</span><span class="s1">&#39;Cycle Closer&#39;</span><span class="p">)</span>
+<span class="n">hp_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;High Pressure Steam Turbine&#39;</span><span class="p">)</span>
+<span class="n">steam_superheater</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s1">&#39;Steam Superheater&#39;</span><span class="p">)</span>
+<span class="n">lp_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;Low Pressure Steam Turbine&#39;</span><span class="p">)</span>
+<span class="n">condenser</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span><span class="s1">&#39;Condenser&#39;</span><span class="p">)</span>
+<span class="n">fw_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;Feed Water Pump&#39;</span><span class="p">)</span>
+<span class="n">steam_generator</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s1">&#39;Steam Generator&#39;</span><span class="p">)</span>
+
+<span class="n">cw_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Cooling Water Source&#39;</span><span class="p">)</span>
+<span class="n">cw_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Cooling Water Sink&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Connections</span>
+<span class="n">steamgen2cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="n">cc2hp_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">hp_turb2super</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_superheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">super2lp_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_superheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">lp_turb2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+<span class="n">cond2pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<span class="n">pump2steamgen</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;6&#39;</span><span class="p">)</span>
+
+<span class="n">cw_source2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
+<span class="n">cond2cw_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+
+<span class="n">nw_super</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span>
+    <span class="n">steamgen2cc</span><span class="p">,</span> <span class="n">cc2hp_turb</span><span class="p">,</span> <span class="n">hp_turb2super</span><span class="p">,</span> <span class="n">super2lp_turb</span><span class="p">,</span> <span class="n">lp_turb2cond</span><span class="p">,</span>
+    <span class="n">cond2pump</span><span class="p">,</span> <span class="n">pump2steamgen</span><span class="p">,</span> <span class="n">cw_source2cond</span><span class="p">,</span> <span class="n">cond2cw_sink</span>
+    <span class="p">)</span>
+
+<span class="c1"># Component Parametrization</span>
+<span class="n">hp_turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">lp_turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fw_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">steam_generator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">steam_superheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># Connection Parametrization</span>
+<span class="n">cc2hp_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">hp_turb2super</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">150</span><span class="o">*</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">super2lp_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">lp_turb2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">cw_source2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">cond2cw_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Busses</span>
+<span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
+<span class="n">heat_in</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_generator</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_superheater</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">power_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Power Output&#39;</span><span class="p">)</span>
+<span class="n">power_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">hp_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">fw_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">heat_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Output&#39;</span><span class="p">)</span>
+<span class="n">heat_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cw_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">nw_super</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_out</span><span class="p">,</span> <span class="n">heat_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Forth step:</strong> Solve model with intermediate superheater and perform exergy analysis</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve model</span>
+<span class="n">nw_super</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nw_super</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">eta_th</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">heat_in</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_th = </span><span class="si">{</span><span class="n">eta_th</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">ean_super</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw_super</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+<span class="n">ean_super</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ean_super</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Fifth step:</strong> Compare the two topological improvements</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare the two topological improvements</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Explanation</p>
+<p>Hier könnte ihre Erklärung stehen</p>
+</div>
+</section>
+</section>
+<section id="lessons-learned">
+<h2>Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Lessons Learned 1</p></li>
+<li><p>Lessons Learned 2</p></li>
+<li><p>Lessons Learned 3</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./cycles"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="open-gas-turbine.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gas Turbine</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="heat-pump.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Heat Pump</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-1">Proposed solution 1.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-improvements-and-exergy-influence">Efficiency improvements and exergy influence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-1">Proposed solution 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-2-2">Proposed solution 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-optimization">Process optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-3">Excercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-3-1">Proposed solution 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francesco Witte, Mathias Hofmann, Malte Fritz, Jonas Freißmann, Ilja Tuschy, George Tsatsaronis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
