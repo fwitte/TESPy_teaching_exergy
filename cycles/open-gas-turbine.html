@@ -381,14 +381,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-brayton-cycle">Ideal Brayton Cycle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-cycle-gas-turbine">Open Cycle Gas Turbine</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
 </ul>
             </nav>
         </div>
@@ -484,8 +484,8 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </tbody>
 </table>
 </section>
-<section id="excercise-1">
-<h2>Excercise 1<a class="headerlink" href="#excercise-1" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Build the TESPy model according to the flowsheet of the ideal Brayton cycle and its specifications shown in
 <a class="reference internal" href="#brayton-cycle-param"><span class="std std-numref">Table 1</span></a>:</p>
@@ -498,14 +498,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 <li><p>What are the exergy losses to the ambient?</p></li>
 </ul>
 </li>
-<li><p>Why is it impossible to reach an exergy efficiency of 100 %?</p></li>
-</ul>
-</li>
-<li><p>Make individual parameter variations for the compressor pressure ratio and the turbine inlet temperature:</p>
-<ul class="simple">
-<li><p>Calculate thermal efficiency and exergy efficiency for every combination of values.</p></li>
-<li><p>Make a 3D-plot showing the thermal efficiency</p></li>
-<li><p>Make a 3D-plot showing the exergy efficiency</p></li>
+<li><p>Why is it impossible to reach an exergy efficiency of 100 % even with ideal components?</p></li>
 </ul>
 </li>
 </ol>
@@ -573,6 +566,8 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 <span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">nwk</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_input</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_output</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">chimney</span><span class="p">])</span>
 
 <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
+
+<span class="n">brayton_connections</span> <span class="o">=</span> <span class="n">nwk</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;Connection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -608,63 +603,216 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </div>
 </div>
 </div>
-<p>We can see the</p>
-</section>
-<section id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="solution-3">
-<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h3>
+<p>As expected no exergy is destroyed in our setup, because the compressor and the turbine are isentropic components and
+the heat input is isobaric. However, our exergy efficiency is still not 100 %. The reason for this is, that the flue gas
+leaving the cycle to the ambient still contains exergy. The stream of physical exergs is therefore lost:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c4</span><span class="o">.</span><span class="n">Ex_physical</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="open-cycle-gas-turbine">
 <h2>Open Cycle Gas Turbine<a class="headerlink" href="#open-cycle-gas-turbine" title="Permalink to this heading">#</a></h2>
+<p>In the second part of this section we are switching our investigation to an actual open cycle gas turbine system with
+combustion of fuel as indicated in <a class="reference internal" href="#gas-turbine-flowsheet"><span class="std std-numref">Fig. 8</span></a>. All relevant component and process parameters
+are indicated in<a class="reference internal" href="#gas-turbine-param"><span class="std std-numref">Table 2</span></a>. As fuel we are going to use pure methane.</p>
 <figure class="align-default" id="gas-turbine-flowsheet">
 <img alt="../_images/gas_turbine.svg" src="../_images/gas_turbine.svg" /><figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p>BK mit Verbrennung -&gt; Chemical exergy</p></li>
-<li><p>Wie funktioniert die chemische Exergie?</p></li>
-</ul>
-<p>Table of parameters for gas turbine</p>
+<table class="table" id="gas-turbine-param">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Parametrization of the Brayton cycle</span><a class="headerlink" href="#gas-turbine-param" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Location</p></th>
+<th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Compressor</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>100</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Pressure ratio</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Heater</p></td>
+<td><p>Pressure ratio</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Turbine</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td><p>100</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p>Generator</p></td>
+<td><p>Total power output</p></td>
+<td><p>-100</p></td>
+<td><p>MW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Combustion Chamber</p></td>
+<td><p>Efficiency (thermal insulation)</p></td>
+<td><p>100</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Pressure losses</p></td>
+<td><p>0</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Pressure</p></td>
+<td><p>1.013</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Temperature</p></td>
+<td><p>20</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Temperature</p></td>
+<td><p>1400</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Pressure</p></td>
+<td><p>1.013</p></td>
+<td><p>bar</p></td>
+</tr>
+</tbody>
+</table>
+<p>In constrast to the previous exercise we have to model the air composition component wise in this example. We are going
+to use an additional source for the fuel and the <code class="docutils literal notranslate"><span class="pre">DiabaticCombustionChamber</span></code> to make accounting of heat and pressure
+losses in the combustion process possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Turbine</span><span class="p">,</span> <span class="n">DiabaticCombustionChamber</span>
+<span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span><span class="p">,</span> <span class="n">Ref</span>
+<span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="kn">from</span> <span class="nn">tespy.tools</span> <span class="kn">import</span> <span class="n">ExergyAnalysis</span>
+
+
+<span class="n">nwk</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;O2&quot;</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="s2">&quot;N2&quot;</span><span class="p">,</span> <span class="s2">&quot;Ar&quot;</span><span class="p">,</span> <span class="s2">&quot;CH4&quot;</span><span class="p">],</span> <span class="n">p_unit</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">T_unit</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1.013</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">fuel</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s2">&quot;methane source&quot;</span><span class="p">)</span>
+<span class="n">so</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s2">&quot;air intake&quot;</span><span class="p">)</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
+<span class="n">dcc</span> <span class="o">=</span> <span class="n">DiabaticCombustionChamber</span><span class="p">(</span><span class="s2">&quot;combustion chamber&quot;</span><span class="p">)</span>
+<span class="n">tu</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s2">&quot;turbine&quot;</span><span class="p">)</span>
+<span class="n">si</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s2">&quot;air outlet&quot;</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">so</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">dcc</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">dcc</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+
+<span class="n">c5</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">fuel</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">dcc</span><span class="p">,</span> <span class="s2">&quot;in2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">,</span> <span class="n">c5</span><span class="p">)</span>
+
+<span class="n">power_output</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;power output&quot;</span><span class="p">)</span>
+<span class="n">power_output</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">tu</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;component&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">fuel_input</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;heat input&quot;</span><span class="p">)</span>
+<span class="n">fuel_input</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">fuel</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">chimney</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s2">&quot;chimney&quot;</span><span class="p">)</span>
+<span class="n">chimney</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="n">si</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;component&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">nwk</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">power_output</span><span class="p">,</span> <span class="n">fuel_input</span><span class="p">,</span> <span class="n">chimney</span><span class="p">)</span>
+
+<span class="n">c1</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;N2&quot;</span><span class="p">:</span> <span class="mf">0.7551</span><span class="p">,</span> <span class="s2">&quot;O2&quot;</span><span class="p">:</span> <span class="mf">0.2314</span><span class="p">,</span> <span class="s2">&quot;Ar&quot;</span><span class="p">:</span> <span class="mf">0.0129</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;CO2&quot;</span><span class="p">:</span> <span class="mf">0.0006</span><span class="p">,</span> <span class="s2">&quot;CH4&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T0</span><span class="p">)</span>
+<span class="n">c3</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">1400</span><span class="p">)</span>
+<span class="n">c4</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p0</span><span class="p">)</span>
+
+<span class="n">c5</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;N2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;O2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Ar&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;CO2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;CH4&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">c3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="n">T0</span><span class="p">)</span>
+
+<span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">dcc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tu</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">power_output</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">P</span><span class="o">=-</span><span class="mf">100e6</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+
+<span class="n">thermal_efficiency</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_output</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">c5</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">*</span> <span class="n">dcc</span><span class="o">.</span><span class="n">fuels</span><span class="p">[</span><span class="s2">&quot;CH4&quot;</span><span class="p">][</span><span class="s2">&quot;LHV&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To set up the exergy analysis…</p>
 </section>
-<section id="excercise-2">
-<h2>Excercise 2<a class="headerlink" href="#excercise-2" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple" start="4">
-<li><p>Build the TESPy model for the open cycle gas turbine and specify the process and component parameters identically to
-the setup of the Brayton cycle.</p>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="3">
+<li><p>Make a comparison of the results between the Brayton and gas turbine cycle:</p>
 <ul class="simple">
-<li><p>Make a comparison of the results:</p>
-<ul>
 <li><p>Air mass flow</p></li>
 <li><p>Compressor outlet temperature</p></li>
 <li><p>Turbine outlet temperature</p></li>
-<li><p>Total heat input</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Run the exergy analysis for the open cycle gas turbine:</p>
-<ul class="simple">
-<li><p>Why is the exergy</p></li>
-</ul>
-</li>
-<li><p>Make a parametric analysis of</p>
-<ul class="simple">
-<li><p>the compressor isentropic efficiency,</p></li>
-<li><p>the turbine isentropic efficiency.
-Why is the effect of the compressor efficiency stronger than the effect of the turbine efficieny?</p></li>
-</ul>
-</li>
-<li><p>Make a parametric analysis of</p>
-<ul class="simple">
-<li><p>pressure losses in the combustion chamber,</p></li>
-<li><p>heat losses in the combustion chamber.</p></li>
+<li><p>Total heat input and thermal efficiency
+How can the deviations be explained?</p></li>
 </ul>
 </li>
 </ol>
+<p>Change the isentropic efficiency of</p>
+<ul class="simple">
+<li><p>the turbine to 90 % and of</p></li>
+<li><p>the compressor to 85 %.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Make individual parameter variations for the compressor pressure ratio and the turbine inlet temperature:</p>
+<ul class="simple">
+<li><p>Calculate thermal efficiency for every combination of values.</p></li>
+<li><p>Plot the thermal efficiency as function of the total power generated grouped by turbine inlet temperature and by
+the compressor pressure ratio.</p></li>
+</ul>
+</li>
+<li><p>Run the exergy anlysis and create a Grassmann diagram of the process with the parameters specified in the table.</p></li>
+</ol>
+</section>
+<section id="solution-3">
+<h2>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h2>
+<p>For the comparison of the results between the two cycles, we have saved all connection information from the brayton
+cycle in a dataframe. We can then substract the results dataframes from each other. Rows and columns with missing values
+are dropped and only absolute properties (mass flow, temperature and pressure) are kept in the dataframe.</p>
+<p>The relative deviation can then be calculated by dividing the absolute deviation by the results of the gas turbine
+cycle simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deviation_abs</span> <span class="o">=</span> <span class="p">(</span><span class="n">brayton_connections</span> <span class="o">-</span> <span class="n">nwk</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;Connection&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)[[</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">]]</span>
+<span class="p">(</span><span class="n">deviation_abs</span> <span class="o">/</span> <span class="n">nwk</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;Connection&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see, that the temperature values deviate by a very small margin. The compressor inlet temperature is 0.06 %
+higher in the Brayton cycle than in the gas turbine cycle, the turbine outlet temperature is lower by about 4 %. Much
+higher deviation can be observed in the mass flow: Here the Brayton cycle requires 10 % more air mass flow and nearly
+7 % more flue gas mass flow. The pressure values do not deviate.</p>
+</section>
+<section id="solution-4">
+<h2>Solution 4<a class="headerlink" href="#solution-4" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -730,14 +878,14 @@ Why is the effect of the compressor efficiency stronger than the effect of the t
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-brayton-cycle">Ideal Brayton Cycle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-cycle-gas-turbine">Open Cycle Gas Turbine</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
 </ul>
   </nav></div>
 

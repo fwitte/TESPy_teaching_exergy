@@ -75,6 +75,8 @@ thermal_efficiency = abs(power_output.P.val) / heat_input.P.val
 ean = ExergyAnalysis(nwk, E_F=[heat_input], E_P=[power_output], E_L=[chimney])
 
 ean.analyse(p0, T0)
+
+brayton_connections = nwk.results["Connection"].copy()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
