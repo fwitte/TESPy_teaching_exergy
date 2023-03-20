@@ -14,14 +14,13 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 execute_notebooks: auto
 
-# Define the name of the latex output file for PDF builds
+# LaTeX settings
+bibtex_bibfiles:
+   - references.bib
 latex:
+  latex_engine                : "xelatex"
   latex_documents:
     targetname: book.tex
-
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -35,3 +34,4 @@ html:
   use_issues_button: true
   use_repository_button: true
   favicon: "logo_tespy_small.svg"
+  home_page_in_navbar: false
