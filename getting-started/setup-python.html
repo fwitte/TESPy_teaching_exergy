@@ -149,14 +149,6 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    Open Source Educational Resources on Exergy Analysis using TESPy
-                </a>
-            </li>
-        </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Setup your Python environment</a></li>
@@ -407,11 +399,23 @@ document.write(`
 <p>Make sure you have installed your favorite python distribution as well as a code editor on your machine. A lightweight
 python installation is, for example, <a class="reference external" href="https://github.com/conda-forge/miniforge">miniforge</a>. Then you can follow these
 steps to create an environment and install the required dependencies:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Create a new folder on your machine.</p></li>
 <li><p>Download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file from the
 <a class="reference external" href="https://github.com/fwitte/TESPy_teaching_exergy">github repository</a> and save it to the new folder OR create an
-<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in your folder manually and copy the following contents into it:</p></li>
+<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in your folder manually and copy the following contents into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">exergy</span><span class="o">-</span><span class="n">env</span>
+<span class="n">channels</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">dependencies</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.10</span>
+<span class="o">-</span> <span class="n">pip</span>
+<span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">tespy</span>
+  <span class="o">-</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+</li>
 <li><p>Open the miniforge3 prompt and navigate into that folder with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/the/folder</span></code></p></li>
 <li><p>Create and prepare the environment mit <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code></p></li>
 <li><p>Activate your environment using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">exergy-env</span></code></p></li>
