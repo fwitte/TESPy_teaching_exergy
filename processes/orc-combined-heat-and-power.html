@@ -389,6 +389,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-1">Proposed solution 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-2">Proposed solution 1.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-3">Excercise 3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>
@@ -414,11 +415,12 @@ document.write(`
 <p>Build a power plant working combined heat and power. The heat source is a geothermal field.</p>
 <ul class="simple">
 <li><p>Erstelle ein Modell und simuliere dieses in TESPy</p></li>
+<li><p>Beide Modelle aufbauen</p></li>
 </ul>
 </section>
 <section id="proposed-solution-1-1">
 <h2>Proposed solution 1.1<a class="headerlink" href="#proposed-solution-1-1" title="Permalink to this heading">#</a></h2>
-<p><strong>First Step</strong>: Build the model topology of geothermal ORC cycle with CHP</p>
+<p><strong>First Step</strong>: Build the model topology of geothermal combined heat and power plan</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -437,7 +439,7 @@ document.write(`
 <span class="n">nw</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">])</span>
 <span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T_unit</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">p_unit</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">h_unit</span><span class="o">=</span><span class="s1">&#39;kJ / kg&#39;</span><span class="p">)</span>
 
-<span class="n">flu_vec_org</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">flu_vec_orc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 <span class="n">flu_vec_water</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 <span class="n">flu_vec_air</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 
@@ -614,6 +616,23 @@ document.write(`
 </div>
 </div>
 <p><strong>Third step</strong>: Solve model with starting and final values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve model</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="c1"># eta_th = abs(power_out.P.val)/heat_in.P.val</span>
+<span class="c1"># print(f&#39;eta_th = {eta_th:.3f}&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="proposed-solution-1-2">
+<h2>Proposed solution 1.2<a class="headerlink" href="#proposed-solution-1-2" title="Permalink to this heading">#</a></h2>
+<p><strong>First Step</strong>: Build the model topology of geothermal power plant</p>
+<p><strong>Second Step</strong>:  Set the process parameters and starting values and define the energy busses</p>
+<p><strong>Third step</strong>: Solve model with starting and final values</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Explanation</p>
 <p>Hier könnte ihre Erklärung stehen</p>
@@ -622,6 +641,7 @@ document.write(`
 <section id="excercise-2">
 <h2>Excercise 2<a class="headerlink" href="#excercise-2" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
+<li><p>Energetische</p></li>
 <li><p>Treffe eine Auswahl von geeigneten Arbeitsmedien</p></li>
 <li><p>Auswahl und Begründung der Nutzung thermodynamischer Stoffdatenmodelle für die Simulation.</p></li>
 </ul>
@@ -741,6 +761,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-1">Excercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-1">Proposed solution 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-solution-1-2">Proposed solution 1.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-2">Excercise 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise-3">Excercise 3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a></li>

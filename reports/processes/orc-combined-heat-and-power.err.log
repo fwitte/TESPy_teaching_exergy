@@ -28,7 +28,7 @@ from tespy.components import (
 nw = Network(fluids=['water', 'air', 'Isopentane'])
 nw.set_attr(T_unit='C', p_unit='bar', h_unit='kJ / kg')
 
-flu_vec_org = {'water': 0, 'air': 0, 'Isopentane': 1}
+flu_vec_orc = {'water': 0, 'air': 0, 'Isopentane': 1}
 flu_vec_water = {'water': 1, 'air': 0, 'Isopentane': 0}
 flu_vec_air = {'water': 0, 'air': 1, 'Isopentane': 0}
 
