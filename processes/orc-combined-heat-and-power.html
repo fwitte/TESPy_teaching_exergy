@@ -517,7 +517,7 @@ document.write(`
     <span class="n">dh_cond2dh_heatsink</span>
     <span class="p">)</span>
 
-<span class="c1"># Geothermal Heat Source</span>
+<span class="c1"># Geothermal heat source</span>
 <span class="n">geo_source2sep</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">geo_source</span><span class="p">,</span><span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">seperator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
 <span class="n">sep2orc_eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">seperator</span><span class="p">,</span><span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">)</span>
 <span class="n">orc_eva2orc_preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_evaporator</span><span class="p">,</span><span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;23&#39;</span><span class="p">)</span>
@@ -563,26 +563,46 @@ document.write(`
 <span class="n">geo_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">dh_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 
-<span class="n">orc_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">orc_evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">orc_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">dh_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">dh_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">orc_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#, ttd_l=10)</span>
+<span class="n">orc_evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#, ttd_l=20)</span>
+<span class="n">orc_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#, ttd_u=5)</span>
+<span class="n">dh_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#, ttd_u=5)</span>
+<span class="n">dh_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#, ttd_l=10)</span>
 <span class="n">dh_heatsink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Connection Parametrization</span>
-<span class="c1"># Geothermal Heat source</span>
+<span class="c1"># ORC cycle</span>
+<span class="n">orc_pump2orc_cc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_orc</span><span class="p">)</span>
+
+<span class="n">orc_turb2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Geothermal heat source</span>
 <span class="n">geo_source2sep</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
 <span class="n">geo_pump2geo_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
-<span class="c1"># District Heating Network</span>
+<span class="c1"># District heating system</span>
 <span class="n">dh_cond2dh_heatsink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
 <span class="n">dh_heatsink2dh_cc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="c1"># Cooling Cycle</span>
-<span class="n">cool_source2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.013</span><span class="p">)</span>
+<span class="c1"># Cooling cycle</span>
+<span class="n">cool_source2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_air</span><span class="p">)</span>
+<span class="n">orc_cond2cool_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Starting Values</span>
+<span class="n">p_orc_evaporator</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">80</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">orc_eva2orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_orc_evaporator</span><span class="p">)</span>
+
+<span class="c1"># p_orc_preheater = PSI(&quot;P&quot;, &quot;Q&quot;, 0, &quot;T&quot;,  + 273.15, &#39;Isopentane&#39;) * 1e-5</span>
+<span class="c1"># .set_attr(p=p_orc_preheater)</span>
+
+<span class="c1"># p_orc_condenser = PSI(&quot;P&quot;, &quot;Q&quot;, 0, &quot;T&quot;, T_cons_ff + 5 + 273.15, wf) * 1e-5</span>
+<span class="c1"># c4.set_attr(p=p_orc_preheater)</span>
+
+<span class="n">p_dh_condenser</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">105</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">steam_turb2dh_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_dh_condenser</span><span class="p">)</span>
+
+<span class="c1"># p_dh_preheater = PSI(&quot;P&quot;, &quot;Q&quot;, 0, &quot;T&quot;, T_cons_ff + 5 + 273.15, wf) * 1e-5</span>
+<span class="c1"># c4.set_attr(p=p_orc_preheater)</span>
 
 <span class="c1"># Busses</span>
 <span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
@@ -611,6 +631,9 @@ document.write(`
     <span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_out</span><span class="p">,</span> <span class="n">heat_out_dh</span><span class="p">,</span> <span class="n">heat_out_cool</span><span class="p">)</span>
+
+<span class="n">heat_out_dh</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">P</span><span class="o">=-</span><span class="mf">400e6</span><span class="p">)</span>
+<span class="n">power_out</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">P</span><span class="o">=</span><span class="mf">80e6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,6 +642,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve model</span>
+
 <span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
 <span class="c1"># eta_th = abs(power_out.P.val)/heat_in.P.val</span>

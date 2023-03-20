@@ -106,7 +106,7 @@ nw.add_conns(
     dh_cond2dh_heatsink
     )
 
-# Geothermal Heat Source
+# Geothermal heat source
 geo_source2sep = Connection(geo_source,'out1', seperator, 'in1', label='21')
 sep2orc_eva = Connection(seperator,'out2', orc_evaporator, 'in1', label='22')
 orc_eva2orc_preheat = Connection(orc_evaporator,'out1', orc_preheater, 'in1', label='23')
