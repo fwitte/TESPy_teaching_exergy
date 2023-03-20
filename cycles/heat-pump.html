@@ -408,10 +408,10 @@ document.write(`
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="heat-pump-flowsheet">
 <img alt="../_images/heat_pump.svg" src="../_images/heat_pump.svg" /><figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Flow sheet of the simplest implementation of a heat pump.</span><a class="headerlink" href="#heat-pump-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Flow sheet of the simplest implementation of a heat pump.</span><a class="headerlink" href="#heat-pump-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As the final simple thermodynamic cycle, a heat pump will be subject of the exergy analysis. Heat pumps are a promising technology in the process of climate change mitigation, because they can replace conventional fossil fuel based heating plants. As heat pumps are scalable, they can be used in households and building, as well as whole neighbourhoods and in district heating systems. A heat pump employs the well known refrigeration cycle (see <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 12</span></a>), but instead uses the heat that is transfered out of the system. For the cycle to work, heat has to be transferred into the system at a lower temperature level and through the input of work can be transferred out on a higher temperature level. The resulting energy balance of a heat pump is displayed in Eq. <a class="reference internal" href="#equation-heat-pump-energy-balance">(39)</a>.</p>
+<p>As the final simple thermodynamic cycle, a heat pump will be subject of the exergy analysis. Heat pumps are a promising technology in the process of climate change mitigation, because they can replace conventional fossil fuel based heating plants. As heat pumps are scalable, they can be used in households and building, as well as whole neighbourhoods and in district heating systems. A heat pump employs the well known refrigeration cycle (see <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 18</span></a>), but instead uses the heat that is transfered out of the system. For the cycle to work, heat has to be transferred into the system at a lower temperature level and through the input of work can be transferred out on a higher temperature level. The resulting energy balance of a heat pump is displayed in Eq. <a class="reference internal" href="#equation-heat-pump-energy-balance">(39)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-heat-pump-energy-balance">
 <span class="eqno">(39)<a class="headerlink" href="#equation-heat-pump-energy-balance" title="Permalink to this equation">#</a></span>\[    0 = Q_{in} + Q_{out} + W_{in}\]</div>
 <p>As traditionally is done with heat engines, the benefit of a cycle can be put in to relation with the necessary input. Formalizing this expression yields the so called coefficient of performance of a heat pump, as is shown in Eq. <a class="reference internal" href="#equation-heat-pump-coefficient-of-performance">(40)</a>. From the energy balance <a class="reference internal" href="#equation-heat-pump-energy-balance">(39)</a> we can infer, that the outgoing heat is the sum of the work and heat put in. This means, that the <span class="math notranslate nohighlight">\(COP\)</span> must be greater than <span class="math notranslate nohighlight">\(1\)</span>, in contrast to the thermal efficiency of heat engines.</p>
@@ -423,7 +423,7 @@ document.write(`
 <section id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Build a simple heat pump model using ammonia with TESPy according to the flowsheet in <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 12</span></a>, but add a water fed heat source (the hot side of the evaporator) and a consumer cycle as the heat sink (the cold side of the condenser). Parametrize the model according to the description as shown in <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>.</p></li>
+<li><p>Build a simple heat pump model using ammonia with TESPy according to the flowsheet in <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 18</span></a>, but add a water fed heat source (the hot side of the evaporator) and a consumer cycle as the heat sink (the cold side of the condenser). Parametrize the model according to the description as shown in <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>.</p></li>
 <li><p>Execute the exergy analysis for the heat pump model. Visualize how each component destroyes part of the fuel exergy through a waterfall diagram. Analyze the influence of the compressors isentropic efficiency, as well as that of the heat exchangers terminal temperature differences.</p></li>
 <li><p>Analyze the impact of the ambient temperature level on the components and total efficiency.</p></li>
 </ol>
@@ -581,21 +581,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Pump</span><span class="p">,</span> <span class="n">HeatExchanger</span><span class="p">,</span> <span class="n">Condenser</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">HeatExchangerSimple</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Valve</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tespy&#39;
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <p><strong>Second step:</strong> Set the heat pumps process parameters and starting values and define the energy busses</p>
@@ -682,6 +667,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COP = 3.060
+</pre></div>
+</div>
+</div>
 </details>
 </div>
 </section>
@@ -718,6 +708,43 @@ document.write(`
 
 <span class="n">E_D</span> <span class="o">=</span> <span class="p">[</span><span class="n">E</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="k">for</span> <span class="n">E</span> <span class="ow">in</span> <span class="n">E_D</span><span class="p">]</span>
 <span class="n">E_P</span> <span class="o">=</span> <span class="p">[</span><span class="n">E</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="k">for</span> <span class="n">E</span> <span class="ow">in</span> <span class="n">E_P</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Component exergy analysis #####
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                                |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Condenser                      |   1.066e+05 |   7.489e+04 |   3.171e+04 |   7.026e-01 |   1.977e-01 |   3.711e-01 |
+| Compressor                     |   1.566e+05 |   1.321e+05 |   2.455e+04 |   8.433e-01 |   1.531e-01 |   2.873e-01 |
+| Expansion Valve                |   2.463e+04 |   8.793e+03 |   1.584e+04 |   3.570e-01 |   9.878e-02 |   1.854e-01 |
+| Evaporator                     |   9.704e+03 |   3.067e+03 |   6.637e+03 |   3.160e-01 |   4.139e-02 |   7.767e-02 |
+| Heat Consumer                  |   7.502e+04 |   7.490e+04 |   1.195e+02 |   9.984e-01 |   7.451e-04 |   1.398e-03 |
+| Heat Sink Recirculation Pump   |   3.053e+02 |   2.518e+02 |   5.351e+01 |   8.248e-01 |   3.337e-04 |   6.262e-04 |
+| Heat Source Recirculation Pump |   4.154e+01 |   3.311e+01 |   8.425e+00 |   7.972e-01 |   5.254e-05 |   9.860e-05 |
+| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Bus exergy analysis #####
++--------------------------------+------------+------------+-----------+-----------+-----------+-----------+
+|                                |        E_F |        E_P |       E_D |   epsilon |      y_Dk |     y*_Dk |
+|--------------------------------+------------+------------+-----------+-----------+-----------+-----------|
+| Compressor                     |  1.631e+05 |  1.565e+05 | 6.522e+03 | 9.600e-01 | 4.067e-02 | 7.633e-02 |
+| Heat Sink Recirculation Pump   |  3.181e+02 |  3.053e+02 | 1.272e+01 | 9.600e-01 | 7.934e-05 | 1.489e-04 |
+| Heat Source Recirculation Pump |  4.311e+01 |  4.138e+01 | 1.724e+00 | 9.600e-01 | 1.075e-05 | 2.018e-05 |
+| Heat Source Feed Flow          | -5.356e-07 | -5.356e-07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Back Flow          |  3.067e+03 |  3.067e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Consumer                  |  7.490e+04 |  7.490e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
++--------------------------------+------------+------------+-----------+-----------+-----------+-----------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 1.604e+05 | 7.490e+04 | 8.545e+04 | 0.000e+00 | 4.671e-01 |
++-----------+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
 </div>
@@ -758,6 +785,9 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" src="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" />
 </div>
 </details>
 </div>
@@ -836,6 +866,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/b5d3fd599850b2bc362f0d61d5a9d37d0525f7a76494779db44f79e39f8c8f14.png" src="../_images/b5d3fd599850b2bc362f0d61d5a9d37d0525f7a76494779db44f79e39f8c8f14.png" />
+</div>
 </details>
 </div>
 </section>
@@ -845,7 +878,7 @@ document.write(`
 <p>There are many ways to improve a heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by changing the process through the addition of components. A popular topological improvement is the so called <em>Economizer</em>, where part of the condensate gets evaporated on an intermediate pressure level and injected between two compressor stages. This is done in order to yield a cooler mixture entering the high pressure compressor and to reduce the final output temperature of the superheated gas. The evaporation of part of the condensate is reached through subcooling of the rest of it via an internal heat exchanger. The topology of this improved heat pump cycle can be seen in the flowsheet depicted in <div style="color:red">Figure XX</div>.</p>
 <figure class="align-default" id="heat-pump-econ-flowsheet">
 <img alt="../_images/heat_pump_economizer.svg" src="../_images/heat_pump_economizer.svg" /><figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Flow sheet of a heat pump with an economizer.</span><a class="headerlink" href="#heat-pump-econ-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Flow sheet of a heat pump with an economizer.</span><a class="headerlink" href="#heat-pump-econ-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -985,6 +1018,88 @@ document.write(`
 <span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">cond2split</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2011,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2010</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2011</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2012</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.001</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
+
+<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
+
+<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
+
+<span class="ne">ValueError</span>: Inputs in Brent [42645.642063,54784.000000] do not bracket the root.  Function values are [-1.000153,-0.990727]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">123</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="c1"># Initial solve with starting values</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">interinfo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">123</span> <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span> <span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span> <span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1662,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, always_all_equations)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1659</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_determination</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1662</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_loop</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1664</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin_dep</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1666</span>         <span class="s1">&#39;Singularity in jacobian matrix, calculation aborted! Make &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1667</span>         <span class="s1">&#39;sure your network does not have any linear dependencies in &#39;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span>         <span class="s1">&#39;of combustion chamber, provide small (near to zero, but not &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1675</span>         <span class="s1">&#39;zero) starting value.&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1712,</span> in <span class="ni">Network.solve_loop</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1709</span> <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="bp">self</span><span class="o">.</span><span class="n">increment_filter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">increment</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">err</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="ne">-&gt; </span><span class="mi">1712</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_control</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residual</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1715</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterinfo</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1934,</span> in <span class="ni">Network.solve_control</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1931</span>             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1933</span>     <span class="c1"># check the fluid properties for physical ranges</span>
+<span class="ne">-&gt; </span><span class="mi">1934</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_check_props</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1935</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1937</span> <span class="c1"># increment for the custom variables</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2015,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2014</span>     <span class="n">f</span> <span class="o">=</span> <span class="mf">1.05</span>
+<span class="ne">-&gt; </span><span class="mi">2015</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2016</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2018</span> <span class="n">T</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2019</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="n">h_sat</span> <span class="o">=</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
+
+<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
+
+<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
+
+<span class="ne">ValueError</span>: Inputs in Brent [42002.910167,54784.000000] do not bracket the root.  Function values are [-1.000141,-0.990219]
 </pre></div>
 </div>
 </div>

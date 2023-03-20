@@ -408,16 +408,16 @@ document.write(`
 <span class="eqno">(41)<a class="headerlink" href="#equation-orc-chp-energy-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{CHP} = \frac{\dot{W}_{net} + \dot{Q}_{DH}}{\dot{H}_1 - \dot{H}_2}\]</div>
 <div class="math notranslate nohighlight" id="equation-orc-chp-exergy-efficiency">
 <span class="eqno">(42)<a class="headerlink" href="#equation-orc-chp-exergy-efficiency" title="Permalink to this equation">#</a></span>\[    \epsilon_{CHP} = \frac{\dot{W}_{net} + (\dot{E}_{ff} - \dot{E}_{bf})}{\dot{E}_1 - \dot{E}_2}\]</div>
-<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in  figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 14</span></a>.</p>
+<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in  figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 20</span></a>.</p>
 <figure class="align-default" id="orc-chp-flowsheet">
 <img alt="../_images/geothermal_orc_chp.pdf" src="../_images/geothermal_orc_chp.pdf" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
 <div class="legend">
 <figure class="align-default" id="orc-full-elec-flowsheet">
 <img alt="../_images/geothermal_orc_full_elec.pdf" src="../_images/geothermal_orc_full_elec.pdf" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -544,21 +544,6 @@ document.write(`
     <span class="n">geo_source2sep</span><span class="p">,</span> <span class="n">sep2orc_eva</span><span class="p">,</span> <span class="n">orc_eva2orc_preheat</span><span class="p">,</span> <span class="n">orc_preheat2merge</span><span class="p">,</span>
     <span class="n">merge2geo_pump</span><span class="p">,</span> <span class="n">geo_pump2geo_sink</span>
     <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Pump</span><span class="p">,</span> <span class="n">Turbine</span><span class="p">,</span> <span class="n">HeatExchanger</span><span class="p">,</span><span class="n">HeatExchangerSimple</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">Condenser</span><span class="p">,</span> <span class="n">Drum</span><span class="p">,</span> <span class="n">DropletSeparator</span><span class="p">,</span> <span class="n">Merge</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tespy&#39;
 </pre></div>
 </div>
 </div>

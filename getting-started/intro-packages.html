@@ -412,16 +412,6 @@ on the scope of the software and its usage for further read. In this course Cool
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>To access non-trivial<a class="footnote-reference brackets" href="#trivials-coolprop" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> properties of a fluid at a defined state, we have to provide</p>
 <ul class="simple">
@@ -442,6 +432,11 @@ is called in the following way:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2943122.4215286043
+</pre></div>
+</div>
+</div>
 </div>
 <p>We will be working with entropy <code class="docutils literal notranslate"><span class="pre">S</span></code>, enthalpy <code class="docutils literal notranslate"><span class="pre">H</span></code>, temperature <code class="docutils literal notranslate"><span class="pre">T</span></code>, pressure <code class="docutils literal notranslate"><span class="pre">P</span></code> and vapor mass fraction <code class="docutils literal notranslate"><span class="pre">Q</span></code> in this
 course. All possible input variables are listed
@@ -452,10 +447,20 @@ course. All possible input variables are listed
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6926.482858129736
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># saturation temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>453.02800788167605
 </pre></div>
 </div>
 </div>
@@ -466,6 +471,11 @@ course. All possible input variables are listed
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3976174.9306515492
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -473,10 +483,20 @@ course. All possible input variables are listed
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>762515.0697660876
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>  <span class="c1"># enthalpy of saturated gas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2777108.6040473124
 </pre></div>
 </div>
 </div>
@@ -531,7 +551,7 @@ thermodynamic conversion processes take place</p></li>
 by connecting the individual components</p></li>
 </ul>
 <p>We are modeling a compressor, which compresses fully saturated steam to a higher pressure level. The
-<a class="reference internal" href="../single-components/compressed-air.html#compressor-flowsheet"><span class="std std-numref">Fig. 5</span></a> shows the abstract representation of the component. The table below summarizes the
+<a class="reference internal" href="../single-components/compressed-air.html#compressor-flowsheet"><span class="std std-numref">Fig. 11</span></a> shows the abstract representation of the component. The table below summarizes the
 process parameters we are going to apply in our example.</p>
 <figure class="align-default" id="compressor-flowsheet">
 <img alt="../_images/Compressor.svg" src="../_images/Compressor.svg" /><figcaption>
@@ -613,12 +633,43 @@ as provided in <a class="reference internal" href="#table-mini-example-compresso
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 3.82e+05 | 1.02e+00 | 1.03e+06 | 7.37e+04 | 0.00e+00
+2	| 3.26e+05 | 8.33e-17 | 7.44e+05 | 4.20e+05 | 0.00e+00
+3	| 4.50e+03 | 0.00e+00 | 1.18e+05 | 4.14e+03 | 0.00e+00
+4	| 6.32e+01 | 0.00e+00 | 1.09e+03 | 8.01e+01 | 0.00e+00
+5	| 5.29e-03 | 0.00e+00 | 9.42e-02 | 1.20e-02 | 0.00e+00
+6	| 1.85e-06 | 0.00e+00 | 9.55e-02 | 2.41e-03 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 6, Calculation time: 0.0 s, Iterations per second: 349.52
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can have a look at some of the results. An overview is provided by the <code class="docutils literal notranslate"><span class="pre">print_results</span></code> method of the
 <code class="docutils literal notranslate"><span class="pre">Network</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwk</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 6.37e+03 | 8.00e-01 | 3.00e+00 |    nan |
++------------+----------+----------+----------+--------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+|  1 | 1.000e-01 | 6.366e+00 | 5.857e+05 | 1.000e+01 |
+|  2 | 1.000e-01 | 1.910e+01 | 6.494e+05 | 6.476e+01 |
++----+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
 </div>
@@ -644,6 +695,23 @@ provided for this topic.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 7.64e+03 | 6.67e-01 | 3.00e+00 |    nan |
++------------+----------+----------+----------+--------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+|  1 | 1.000e-01 | 6.366e+00 | 5.857e+05 | 1.000e+01 |
+|  2 | 1.000e-01 | 1.910e+01 | 6.621e+05 | 7.000e+01 |
++----+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+</div>
 </div>
 <p>For example, we can make an invalid parameter specification by setting the mass flow at the inlet and at the outlet of
 the compressor. This overdetermines the system of equations and will result in an error when trying to solve.</p>
@@ -651,6 +719,15 @@ the compressor. This overdetermines the system of equations and will result in a
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Singularity in jacobian matrix, calculation aborted! Make sure your network does not have any linear dependencies in the parametrisation. Other reasons might be
+-&gt; given temperature with given pressure in two phase region, try setting enthalpy instead or provide accurate starting value for pressure.
+-&gt; given logarithmic temperature differences or kA-values for heat exchangers, 
+-&gt; support better starting values.
+-&gt; bad starting value for fuel mass flow of combustion chamber, provide small (near to zero, but not zero) starting value.
 </pre></div>
 </div>
 </div>

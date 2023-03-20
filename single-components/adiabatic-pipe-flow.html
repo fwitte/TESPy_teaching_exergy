@@ -485,14 +485,7 @@ table above.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;water&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">p_in</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1e5</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-32.01454686373472
 </pre></div>
 </div>
 </div>
@@ -511,6 +504,11 @@ assumption of non-changing enthalpy. Note that it is only slighty different:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_out</span> <span class="o">=</span> <span class="n">h_in</span>
 <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_out</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>184.4142164685412
 </pre></div>
 </div>
 </div>
@@ -555,11 +553,21 @@ mechanical part of the physical exergy.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>863747.8363819825
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_out</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_out</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
 <span class="n">ex_out</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>797952.1230949757
 </pre></div>
 </div>
 </div>
@@ -578,6 +586,11 @@ difference between inlet and outlet exergy:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65795.71328700683
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -586,8 +599,13 @@ difference between inlet and outlet exergy:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07617467797384957
+</pre></div>
 </div>
-<p>We see that a total of  J/kg is destroyed, which corresponds to an exergy destruction rate of about  %.</p>
+</div>
+</div>
+<p>We see that a total of <span class="pasted-text">65796</span> J/kg is destroyed, which corresponds to an exergy destruction rate of about <span class="pasted-text">7.62</span> %.</p>
 </section>
 <section id="exercises-part-1">
 <h2>Exercises part 1<a class="headerlink" href="#exercises-part-1" title="Permalink to this heading">#</a></h2>
@@ -655,14 +673,20 @@ pressure range) and plot the exergy destruction and the exergy efficiency.</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Result</p>
-<p>From <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-pressure-range</span></code> we can see, that the destruction of exergy obviously depends
+<p>From <a class="reference internal" href="#fig-exergy-destruction-steam-pressure-range"><span class="std std-numref">Fig. 4</span></a> we can see, that the destruction of exergy obviously depends
 on the change of pressure in the pipe. The higher the pressure loss, the higher the destruction of exergy. The change
 in exergy destruction does increase the higher the pressure loss is.</p>
+<figure class="align-default" id="fig-exergy-destruction-steam-pressure-range">
+<img alt="../_images/30f78632fa37f7509143d488a18e94ab34073285dcd5b2296a6808769ed77772.png" src="../_images/30f78632fa37f7509143d488a18e94ab34073285dcd5b2296a6808769ed77772.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Exergy destruction and exergy destruction ratio as function of the pipe’s outlet pressure.</span><a class="headerlink" href="#fig-exergy-destruction-steam-pressure-range" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </section>
 <section id="solution-2">
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
-<p>From <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-pressure-range</span></code> we can also see, that at a pressure loss of about 9 bars,
+<p>From <a class="reference internal" href="#fig-exergy-destruction-steam-pressure-range"><span class="std std-numref">Fig. 4</span></a> we can also see, that at a pressure loss of about 9 bars,
 i.e. when the outlet pressure is at the ambient state, the exergy destruction rate is not at 100 %. This means there
 must still be exergy in the outlet flow. We can check that, by looking at the last value in the <code class="docutils literal notranslate"><span class="pre">ex_out</span></code> vector.</p>
 <div class="cell tag_hide-cell docutils container">
@@ -674,6 +698,11 @@ must still be exergy in the outlet flow. We can check that, by looking at the la
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_out_p_ambient</span> <span class="o">=</span> <span class="n">ex_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ex_out_p_ambient</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>561738.2486228282
 </pre></div>
 </div>
 </div>
@@ -689,6 +718,11 @@ must still be exergy in the outlet flow. We can check that, by looking at the la
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_out_at_p_ambient</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span>
 <span class="n">T_out_at_p_ambient</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169.94765628665198
 </pre></div>
 </div>
 </div>
@@ -757,6 +791,11 @@ from our first implementation of the physical exergy:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </details>
 </div>
 <p>In the next step we calculate the thermal and mechanical exergy for all pressure range for the outlet state as we did
@@ -795,7 +834,13 @@ before. Then, we can make two subplots, which show the change in thermal exergy 
 </div>
 </div>
 </div>
-<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-change-thermal-mechanical-water</span></code> we can see the change of thermal and of mechanical exergy in
+<figure class="align-default" id="fig-exergy-change-thermal-mechanical-water">
+<img alt="../_images/9feac1cb58e2c00d87a59ddd3071971055cd431196332140fd2dc070defcdaa8.png" src="../_images/9feac1cb58e2c00d87a59ddd3071971055cd431196332140fd2dc070defcdaa8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Change in thermal and mechanical exergy of the steam pipe flow depending on the pressure change.</span><a class="headerlink" href="#fig-exergy-change-thermal-mechanical-water" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In <a class="reference internal" href="#fig-exergy-change-thermal-mechanical-water"><span class="std std-numref">Fig. 5</span></a> we can see the change of thermal and of mechanical exergy in
 the pipe flow at the different pressure losses. Note, the different scales:</p>
 <ul class="simple">
 <li><p>The thermal exergy changes by up to 300 kW.</p></li>
@@ -803,7 +848,13 @@ the pipe flow at the different pressure losses. Note, the different scales:</p>
 </ul>
 <p>Obviously, the much more thermal exergy is destroyed in the process than mechanical exergy, although only the pressure changes. This is because expansion of the steam causes a drop in temperature as well (as we have seen in the solution 2). The reason, why we see such a small change in mechanical exergy can be seen, when we have a look at the shares of
 thermal and mechanical exergies in the inlet state and the outlet state at ambient pressure. We can create a bar
-diagram for both states in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-shares-water-bar</span></code>. The exergy is nearly pure thermal exergy.</p>
+diagram for both states in <a class="reference internal" href="#fig-exergy-shares-water-bar"><span class="std std-numref">Fig. 6</span></a>. The exergy is nearly pure thermal exergy.</p>
+<figure class="align-default" id="fig-exergy-shares-water-bar">
+<img alt="../_images/0256dbd56079bd799e23e1315cf2b01899c659acae7286025ea5910b2235151d.png" src="../_images/0256dbd56079bd799e23e1315cf2b01899c659acae7286025ea5910b2235151d.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shares of thermal and mechanical exergy at the inlet and the outlet state at ambient pressure.</span><a class="headerlink" href="#fig-exergy-shares-water-bar" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -844,6 +895,11 @@ diagram for both states in <code class="xref std std-numref docutils literal not
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_M_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -899,15 +955,27 @@ legend.</p>
 </div>
 </div>
 </div>
-<p>In the first subplot of <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-pressure-range</span></code> we can see that in the steam flow
+<p>In the first subplot of <a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-pressure-range"><span class="std std-numref">Fig. 7</span></a> we can see that in the steam flow
 the exergy destruction is higher by a factor of about 1.5. This ratio can be verified by checking
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-ratio</span></code>. This displays the ratio over the pressure range and we
+<a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-ratio"><span class="std std-numref">Fig. 8</span></a>. This displays the ratio over the pressure range and we
 can see, the ratio is merely affected by pressure.</p>
+<figure class="align-default" id="fig-exergy-destruction-steam-vs-air-pressure-range">
+<img alt="../_images/e654167a1e0f2f4be09239b563d11a4637f76043f45d411fafd42502ae297262.png" src="../_images/e654167a1e0f2f4be09239b563d11a4637f76043f45d411fafd42502ae297262.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Exergy destruction and exergy destruction share for the adiabatic steam and air flows.</span><a class="headerlink" href="#fig-exergy-destruction-steam-vs-air-pressure-range" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-exergy-destruction-steam-vs-air-ratio">
+<img alt="../_images/87815cb9a50d85fefe1798e172b52cbccb06b55d8fae24f8ae84e6ceb7c1db75.png" src="../_images/87815cb9a50d85fefe1798e172b52cbccb06b55d8fae24f8ae84e6ceb7c1db75.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Ratio of exergy destruction of steam to exergy destruction of air.</span><a class="headerlink" href="#fig-exergy-destruction-steam-vs-air-ratio" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>While the exergy destruction is higher for the steam flow, we see in the second subplot of
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-destruction-steam-vs-air-pressure-range</span></code> that the exergy destruction as share of the inlet exergy
+<a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-pressure-range"><span class="std std-numref">Fig. 7</span></a> that the exergy destruction as share of the inlet exergy
 is much higher for air. When the pressure drops to ambient state pressure, more than 80 % of exergy of the air are
 destroyed. To understand why this is the case, we can again have a look at the shares of mechanical and thermal exergy
-for the air stream. We do this for the “extreme” case with the outlet pressure at ambient state, i.e. when all mechanical exergy is lost. The <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-exergy-shares-water-bar</span></code> displays the result.</p>
+for the air stream. We do this for the “extreme” case with the outlet pressure at ambient state, i.e. when all mechanical exergy is lost. The <a class="reference internal" href="#fig-exergy-shares-water-bar"><span class="std std-numref">Fig. 6</span></a> displays the result.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -926,6 +994,12 @@ for the air stream. We do this for the “extreme” case with the outlet pressu
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1859/3922793100.py:3: RuntimeWarning: invalid value encountered in divide
+  ax.plot(pressure_difference_range / 1e5, (ex_in - ex_out) / (ex_in_air - ex_out_air))
 </pre></div>
 </div>
 </div>
@@ -972,6 +1046,12 @@ for the air stream. We do this for the “extreme” case with the outlet pressu
 </div>
 </div>
 </div>
+<figure class="align-default" id="fig-exergy-shares-air-bar">
+<img alt="../_images/a2164b2911cac27575a590b59a1e6f6057a378c300a8cdfcad3020d6d01d4361.png" src="../_images/a2164b2911cac27575a590b59a1e6f6057a378c300a8cdfcad3020d6d01d4361.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Change in thermal and mechanical exergy of the air pipe flow depending on the pressure change.</span><a class="headerlink" href="#fig-exergy-shares-air-bar" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In the figure above we can see that</p>
 <ul class="simple">
 <li><p>all mechanical exergy is destroyed when expanding to ambient pressure (as expected)</p></li>
@@ -988,6 +1068,11 @@ is lost.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_T_in_air</span> <span class="o">-</span> <span class="n">ex_T_out_air</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>499.4708984364988
 </pre></div>
 </div>
 </div>

@@ -410,7 +410,7 @@ document.write(`
 <span id="compressed-air-label"></span><h1>Compressed Air Production<a class="headerlink" href="#compressed-air-production" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="compressor-flowsheet">
 <img alt="../_images/Compressor.svg" src="../_images/Compressor.svg" /><figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Abstract model representation of a Compressor.</span><a class="headerlink" href="#compressor-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Abstract model representation of a Compressor.</span><a class="headerlink" href="#compressor-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="introduction">
@@ -455,14 +455,7 @@ a pressure of 10 bar. To calculate the energy consumed in the isentropic process
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">T_amb</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1.01325</span>  <span class="c1"># bar</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>407576.7496308336
 </pre></div>
 </div>
 </div>
@@ -489,6 +482,11 @@ product and exergy destruction.</p>
 <span class="n">exergy_destruction</span> <span class="o">=</span> <span class="n">exergy_fuel</span> <span class="o">-</span> <span class="n">exergy_product</span>
 
 <span class="n">exergy_destruction</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.820766091346741e-10
 </pre></div>
 </div>
 </div>
@@ -538,6 +536,11 @@ call it with the respective parameters.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.17647058823529416
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,7 +550,7 @@ call it with the respective parameters.</p>
 </div>
 </div>
 </div>
-<p>We can see how the work required increases by about  %. Now let’s have a look at
+<p>We can see how the work required increases by about <span class="pasted-text">17.65</span> %. Now let’s have a look at
 the exergy analysis. We can calculate the balance with the updated outlet state and have a look at the exergy
 destruction:</p>
 <div class="cell docutils container">
@@ -564,6 +567,11 @@ destruction:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36204.98829636583
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -573,13 +581,18 @@ destruction:</p>
 </div>
 </div>
 </div>
-<p>The exergy destruction is at  W, the change of work transferred by the
-compressor (compared to the ideal compressor) is  W. This may seem odd at the first
+<p>The exergy destruction is at <span class="pasted-text">36205</span> W, the change of work transferred by the
+compressor (compared to the ideal compressor) is <span class="pasted-text">71925</span> W. This may seem odd at the first
 glance. If the power input to the process has increased stronger than the exergy destruction, more product exergy must
 be available than before. We can verify this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exergy_product_real</span> <span class="o">-</span> <span class="n">exergy_product</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35720.320462017145
 </pre></div>
 </div>
 </div>
@@ -600,11 +613,21 @@ pressure and the respective enthalpy.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286.660898246084
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_2</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_2</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">h_2_real</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
 <span class="n">T_2</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>332.31621838839794
 </pre></div>
 </div>
 </div>
@@ -635,11 +658,21 @@ mechanical exergy first: It does NOT change.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>That means the change in product exergy is purely due to a change in thermal exergy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_2_therm</span> <span class="o">-</span> <span class="n">ex_2_ideal_therm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35720.32046201713
 </pre></div>
 </div>
 </div>
@@ -650,16 +683,21 @@ mechanical exergy first: It does NOT change.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35720.320462017145
+</pre></div>
+</div>
+</div>
 </div>
 <p>What does this mean about the overall process product exergy? In our technical system we want to provide pneumatic
 energy. We cannot make use of the high temperature for this specific reason. Of course, one could use that thermal
 exergy to provide heat to other processes, but for now we want to focus on the provison of pressurized air. Thinking
 at this, the value of our process lies in the pressure of the air, not in the temperature. Therefore we want to
 investigate more on this by defining a virtual process, which cools the pressurized air back to the ambient temperature
-without changing the pressure as illustrated in <a class="reference internal" href="#compressor-virtual-cooling-flowsheet"><span class="std std-numref">Fig. 6</span></a>.</p>
+without changing the pressure as illustrated in <a class="reference internal" href="#compressor-virtual-cooling-flowsheet"><span class="std std-numref">Fig. 12</span></a>.</p>
 <figure class="align-default" id="compressor-virtual-cooling-flowsheet">
 <img alt="figures/Compressor_virtual_cooling.svg" src="figures/Compressor_virtual_cooling.svg" /><figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Process representation of the compressor with virtual cooling of the compressed air.</span><a class="headerlink" href="#compressor-virtual-cooling-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Process representation of the compressor with virtual cooling of the compressed air.</span><a class="headerlink" href="#compressor-virtual-cooling-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -718,6 +756,11 @@ amount of energy transferred over the system boundaries <span class="math notran
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Change in enthalpy: -880 J/kg
+</pre></div>
+</div>
+</div>
 </div>
 <p>It even looks as if energy has been produced by our setup, since the change in enthalpy is
 negative. We can see, how the enthalpy of air changes with pressure given
@@ -747,6 +790,9 @@ isothermal process:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/88ef6c6ea00e3b4c9bdc64239edabdfd9930018519297f0620960e24bebc1d16.png" src="../_images/88ef6c6ea00e3b4c9bdc64239edabdfd9930018519297f0620960e24bebc1d16.png" />
 </div>
 </div>
 <p>For ideal gases, the change in enthalpy will be exactly zero, as the enthalpy
@@ -800,6 +846,12 @@ method and split the exergy in its thermal and mechanical shares.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mechanical exergy at reference state: 0 J/kg
+</pre></div>
+</div>
+<img alt="../_images/9b2dacae3472055c07e62e461fb67dc1b2033b589583739107c07e9794d5982e.png" src="../_images/9b2dacae3472055c07e62e461fb67dc1b2033b589583739107c07e9794d5982e.png" />
+</div>
 </div>
 <p>With a closer look at the compressor assuming isentropic compression, we see that
 the physical exergy <span class="math notranslate nohighlight">\(e^\text{PH}\)</span> of the compressed air is identical to the
@@ -843,6 +895,9 @@ isentropic compression energy <span class="math notranslate nohighlight">\(w = h
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5dd066fad23abd25b194f9cf8a07db112a0801b69454ec1704b17c8e670c87fe.png" src="../_images/5dd066fad23abd25b194f9cf8a07db112a0801b69454ec1704b17c8e670c87fe.png" />
 </div>
 </div>
 <p>We can now inspect the change of energy in the cooling process (assuming isobaric).</p>
@@ -893,6 +948,9 @@ isentropic compression energy <span class="math notranslate nohighlight">\(w = h
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4eda9c06e739bfb8b0588534c5544340807248288f9c2a007d19156467a6e66e.png" src="../_images/4eda9c06e739bfb8b0588534c5544340807248288f9c2a007d19156467a6e66e.png" />
 </div>
 </div>
 <ul class="simple">

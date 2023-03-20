@@ -416,10 +416,10 @@ document.write(`
 <p>A heat exchanger is used to transfer heat from one fluid to a different one. We can write the energy balance for the component assuming, that no heat is lost to the ambient.</p>
 <div class="math notranslate nohighlight" id="equation-heat-exchanger-energy-balance">
 <span class="eqno">(19)<a class="headerlink" href="#equation-heat-exchanger-energy-balance" title="Permalink to this equation">#</a></span>\[    0 = \dot m_1 \cdot \left(h_\text{1,out} - h_\text{1,in}\right) + \dot m_2 \cdot \left(h_\text{2,out} - h_\text{2,in}\right)\]</div>
-<p>The hot side <span class="math notranslate nohighlight">\(1\)</span> transfers heat to the cold side <span class="math notranslate nohighlight">\(2\)</span>, as shown in <a class="reference internal" href="#heat-exchanger-schematic"><span class="std std-numref">Fig. 4</span></a>. We can see, that all heat provided by the hot side is transferred to the cold side. However, in this process it is not possible to reach the same temperature level on the cold side as on the hot side. Reversing the heat transfer is for the same reason not possible: You cannot transfer heat against the direction of the temperature gradient. That obviously means, that the heat transfer incurs thermodynamic losses. To make them visible, we will again calculate the exergy of each of the flows.</p>
+<p>The hot side <span class="math notranslate nohighlight">\(1\)</span> transfers heat to the cold side <span class="math notranslate nohighlight">\(2\)</span>, as shown in <a class="reference internal" href="#heat-exchanger-schematic"><span class="std std-numref">Fig. 10</span></a>. We can see, that all heat provided by the hot side is transferred to the cold side. However, in this process it is not possible to reach the same temperature level on the cold side as on the hot side. Reversing the heat transfer is for the same reason not possible: You cannot transfer heat against the direction of the temperature gradient. That obviously means, that the heat transfer incurs thermodynamic losses. To make them visible, we will again calculate the exergy of each of the flows.</p>
 <figure class="align-default" id="heat-exchanger-schematic">
 <img alt="../_images/HeatExchanger.svg" src="../_images/HeatExchanger.svg" /><figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of a heat exchanger.</span><a class="headerlink" href="#heat-exchanger-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Schematic of a heat exchanger.</span><a class="headerlink" href="#heat-exchanger-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -445,18 +445,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span> <span class="k">as</span> <span class="n">PSI</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Properties of hot side fluid</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fluid_1</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;CoolProp&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s find out how much water is flowing through the home heating system. To employ equation <a class="reference internal" href="#equation-heat-exchanger-energy-balance">(19)</a>, we have to get the specific enthalpies of our fluids.</p>
 <div class="cell docutils container">
@@ -470,6 +458,11 @@ document.write(`
 <span class="n">m_dot_2</span> <span class="o">=</span> <span class="n">m_dot_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out_1</span> <span class="o">-</span> <span class="n">h_in_1</span><span class="p">)</span> <span class="o">/</span> <span class="o">-</span><span class="p">(</span><span class="n">h_out_2</span> <span class="o">-</span> <span class="n">h_in_2</span><span class="p">)</span>
 
 <span class="n">m_dot_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.00294954481023
 </pre></div>
 </div>
 </div>
@@ -516,6 +509,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(19805.698084773787, 15906.4158830616)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The fuel exergy comes out to about <span class="math notranslate nohighlight">\(19.81\)</span> kJ and the product exergy to about <span class="math notranslate nohighlight">\(15.91\)</span> kJ. With these values, we can finally calculate exergy destruction, exergy destruction ratio and exergy efficiency. That works analogously as described in <span class="xref std std-ref">ref:sec:adiabatic-pipe-flow</span>.</p>
 <div class="cell docutils container">
@@ -525,6 +523,11 @@ document.write(`
 <span class="n">eta_Ex</span> <span class="o">=</span> <span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span>
 
 <span class="n">Ex_dot_D</span><span class="p">,</span> <span class="n">y_D</span><span class="p">,</span> <span class="n">eta_Ex</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3899.282201712187, 0.19687678692375277, 0.8031232130762472)
 </pre></div>
 </div>
 </div>
@@ -568,6 +571,11 @@ document.write(`
 <span class="n">eta_Ex_uf</span> <span class="o">=</span> <span class="n">Ex_dot_P_uf</span> <span class="o">/</span> <span class="n">Ex_dot_F_uf</span>
 
 <span class="n">Ex_dot_D_uf</span><span class="p">,</span> <span class="n">y_D_uf</span><span class="p">,</span> <span class="n">eta_Ex_uf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13694.426035151324, 0.6914386948915129, 0.3085613051084871)
 </pre></div>
 </div>
 </div>
@@ -619,6 +627,9 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2818866aea8e9ba42388b6f133ab01f88e09b81fb6a3724671991da260f9bce4.png" src="../_images/2818866aea8e9ba42388b6f133ab01f88e09b81fb6a3724671991da260f9bce4.png" />
 </div>
 </details>
 </div>
@@ -721,6 +732,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Feed flow temperature of district heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/b3846484bedb790dc6cf646bb829e6d97448f6baad18a846f85a24bcbaba82e2.png" src="../_images/b3846484bedb790dc6cf646bb829e6d97448f6baad18a846f85a24bcbaba82e2.png" />
+</div>
 </details>
 </div>
 <p><strong>Second step:</strong> Variate cold side inlet temperature</p>
@@ -759,6 +776,12 @@ document.write(`
     <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Back flow temperature of home heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/421744a77a2907ca122f85ca339c35104cabfc29716b7cbdf776fb4f24783d0b.png" src="../_images/421744a77a2907ca122f85ca339c35104cabfc29716b7cbdf776fb4f24783d0b.png" />
 </div>
 </details>
 </div>
@@ -811,6 +834,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Back flow temperature of home heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/7cbed775d76fd34f585a3547b695a20cd814f94cbcb7dcd308be3d4822d43ab9.png" src="../_images/7cbed775d76fd34f585a3547b695a20cd814f94cbcb7dcd308be3d4822d43ab9.png" />
+</div>
 </details>
 </div>
 </section>
@@ -853,6 +882,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Back flow temperature of district heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/f15fc51cc8d3e0c906dae53de514a2ef9a5268b336810a44ba8cefb8691e9d99.png" src="../_images/f15fc51cc8d3e0c906dae53de514a2ef9a5268b336810a44ba8cefb8691e9d99.png" />
+</div>
 </details>
 </div>
 <p><strong>Second step:</strong> Variate cold side outlet temperature</p>
@@ -887,6 +922,12 @@ document.write(`
     <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Feed flow temperature of home heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/2c24dd7962b093e23f3142548dc1d5b684b745569cc5e268f02530f2d0c5c229.png" src="../_images/2c24dd7962b093e23f3142548dc1d5b684b745569cc5e268f02530f2d0c5c229.png" />
 </div>
 </details>
 </div>
@@ -935,6 +976,12 @@ document.write(`
     <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Feed flow temperature of home heating system in °C&#39;)
+</pre></div>
+</div>
+<img alt="../_images/bdf0111a0bb892c8828365d79aaa64a216bf579c120b386135757a742dc2e651.png" src="../_images/bdf0111a0bb892c8828365d79aaa64a216bf579c120b386135757a742dc2e651.png" />
 </div>
 </details>
 </div>
@@ -1016,6 +1063,9 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/40b16f44dc561eb13cb7e347492a12c89322ddc2112c9e394f354271c43c7459.png" src="../_images/40b16f44dc561eb13cb7e347492a12c89322ddc2112c9e394f354271c43c7459.png" />
 </div>
 </details>
 </div>

@@ -404,11 +404,11 @@ document.write(`
 <span id="brayton-label"></span><h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
 <p>In this section we will be investigating gas turbine cycles using TESPy. In the first step the ideal Brayton cycle is
 modeled. The ideal Brayton cycle consists of three subprocesses, i.e. isentropic compression, isobaric heat transfer
-and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 7</span></a>). Next, we are comparing the cycle to the open cycle gas
+and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 13</span></a>). Next, we are comparing the cycle to the open cycle gas
 turbine, which instead of isobaric heat transfer uses a combustion chamber.</p>
 <section id="ideal-brayton-cycle">
 <h2>Ideal Brayton Cycle<a class="headerlink" href="#ideal-brayton-cycle" title="Permalink to this heading">#</a></h2>
-<p>The flowsheet of the Brayton cycle is shown in <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 7</span></a>. Based on the flowsheet we can calculate the
+<p>The flowsheet of the Brayton cycle is shown in <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 13</span></a>. Based on the flowsheet we can calculate the
 thermal efficiency of the cycle using eq. <a class="reference internal" href="#equation-brayton-thermal-efficiency">(34)</a>. For the exergy analysis we have to define
 the plant’s fuel and product exergy as well as the exergy losses in eqs. <a class="reference internal" href="#equation-brayton-fuel-exergy">(35)</a>,
 <a class="reference internal" href="#equation-brayton-product-exergy">(36)</a> and <a class="reference internal" href="#equation-brayton-exergy-loss">(37)</a>.</p>
@@ -422,7 +422,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 <span class="eqno">(37)<a class="headerlink" href="#equation-brayton-exergy-loss" title="Permalink to this equation">#</a></span>\[\dot E_\text{L,tot} = \dot m \cdot e_\text{4}\]</div>
 <figure class="align-default" id="brayton-flowsheet">
 <img alt="../_images/brayton.svg" src="../_images/brayton.svg" /><figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Flow sheet of the Brayton cycle.</span><a class="headerlink" href="#brayton-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Flow sheet of the Brayton cycle.</span><a class="headerlink" href="#brayton-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#brayton-cycle-param"><span class="std std-numref">Table 1</span></a> indicates the parameter settings for the Brayton cycle for the initial setup.</p>
@@ -571,18 +571,6 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Turbine</span><span class="p">,</span> <span class="n">HeatExchangerSimple</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Bus</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tespy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,8 +581,8 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </div>
 </div>
 </div>
-<p>The cycle’s efficiency is at about  %, with an exergy efficiency of
- %. We can extract the plant’s overall exergy analysis results from the
+<p>The cycle’s efficiency is at about <span class="pasted-text">45.06</span> %, with an exergy efficiency of
+<span class="pasted-text">62.90</span> %. We can extract the plant’s overall exergy analysis results from the
 <code class="docutils literal notranslate"><span class="pre">network_data</span></code> attribute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,6 +590,44 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>E_F</th>
+      <th>E_P</th>
+      <th>E_D</th>
+      <th>E_L</th>
+      <th>epsilon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>value</th>
+      <td>1.589700e+08</td>
+      <td>100000000.0</td>
+      <td>1.639128e-07</td>
+      <td>5.897003e+07</td>
+      <td>0.629049</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>As expected no exergy is destroyed in our setup, because the compressor and the turbine are isentropic components and
 the heat input is isobaric. However, our exergy efficiency is still not 100 %. The reason for this is, that the flue gas
@@ -612,17 +638,22 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58970028.54051102
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
 <section id="open-cycle-gas-turbine">
 <h2>Open Cycle Gas Turbine<a class="headerlink" href="#open-cycle-gas-turbine" title="Permalink to this heading">#</a></h2>
 <p>In the second part of this section we are switching our investigation to an actual open cycle gas turbine system with
-combustion of fuel as indicated in <a class="reference internal" href="#gas-turbine-flowsheet"><span class="std std-numref">Fig. 8</span></a>. All relevant component and process parameters
+combustion of fuel as indicated in <a class="reference internal" href="#gas-turbine-flowsheet"><span class="std std-numref">Fig. 14</span></a>. All relevant component and process parameters
 are indicated in<a class="reference internal" href="#gas-turbine-param"><span class="std std-numref">Table 2</span></a>. As fuel we are going to use pure methane.</p>
 <figure class="align-default" id="gas-turbine-flowsheet">
 <img alt="../_images/gas_turbine.svg" src="../_images/gas_turbine.svg" /><figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="table" id="gas-turbine-param">
@@ -805,6 +836,58 @@ cycle simulation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T</th>
+      <th>m</th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>-1.136868e-14</td>
+      <td>0.099559</td>
+      <td>2.191951e-16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.368579e-04</td>
+      <td>0.099559</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.451943e-13</td>
+      <td>0.068685</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-4.372745e-02</td>
+      <td>0.068685</td>
+      <td>0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We can see, that the temperature values deviate by a very small margin. The compressor inlet temperature is 0.06 %
 higher in the Brayton cycle than in the gas turbine cycle, the turbine outlet temperature is lower by about 4 %. Much
