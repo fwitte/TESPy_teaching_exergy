@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'processes/orc-combined-heat-and-power';</script>
     <link rel="shortcut icon" href="../_static/logo_tespy_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -400,7 +402,27 @@ document.write(`
 <span id="orc-chp-label"></span><h1>ORC Combined Heat and Power<a class="headerlink" href="#orc-combined-heat-and-power" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Einführungstext</p>
+<p>Subject of the following example of a more complex thermodynamic process will be a combined geothermal heat and power plant. As even deep geothermal boreholes can not supply temperatures high enough to drice conventional powerplant processes, such as the aforementioned and thoroughly analyzed Clausius Rankine Cycle, adjustments are necessary. Organic process fluids whose vaporization temperature is lower than that of water allow the execution of a Rankine cycle at these lower heat source temperatures, resulting in the so called <em>Organic Rankine Cycle</em>.</p>
+<p>The main focus of this example is the comparison of a geothermal plant with cogeneration of heat and power with one that only supplies electricity. This comparision is achieved through the analysis of energy, as well as exergy flows, so as to magnify the shortcomings of a solely energy-based approach. Therefore, the key parameters of an evaluation of a chp process are defined in Eq. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and Eq. <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>, with the respective equations of a pure powerplant process missing the district heating parts.</p>
+<div class="math notranslate nohighlight" id="equation-orc-chp-energy-efficiency">
+<span class="eqno">(41)<a class="headerlink" href="#equation-orc-chp-energy-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{CHP} = \frac{\dot{W}_{net} + \dot{Q}_{DH}}{\dot{H}_1 - \dot{H}_2}\]</div>
+<div class="math notranslate nohighlight" id="equation-orc-chp-exergy-efficiency">
+<span class="eqno">(42)<a class="headerlink" href="#equation-orc-chp-exergy-efficiency" title="Permalink to this equation">#</a></span>\[    \epsilon_{CHP} = \frac{\dot{W}_{net} + (\dot{E}_{ff} - \dot{E}_{bf})}{\dot{E}_1 - \dot{E}_2}\]</div>
+<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in  figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 14</span></a>.</p>
+<figure class="align-default" id="orc-chp-flowsheet">
+<img alt="../_images/geothermal_orc_chp.pdf" src="../_images/geothermal_orc_chp.pdf" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
+<div class="legend">
+<figure class="align-default" id="orc-full-elec-flowsheet">
+<img alt="../_images/geothermal_orc_full_elec.pdf" src="../_images/geothermal_orc_full_elec.pdf" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</figcaption>
+</figure>
 </section>
 <section id="excercise-1">
 <h2>Excercise 1<a class="headerlink" href="#excercise-1" title="Permalink to this heading">#</a></h2>
