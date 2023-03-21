@@ -407,15 +407,14 @@ document.write(`
 <span class="eqno">(41)<a class="headerlink" href="#equation-orc-chp-energy-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{CHP} = \frac{\dot{W}_{net} + \dot{Q}_{DH}}{\dot{H}_1 - \dot{H}_2}\]</div>
 <div class="math notranslate nohighlight" id="equation-orc-chp-exergy-efficiency">
 <span class="eqno">(42)<a class="headerlink" href="#equation-orc-chp-exergy-efficiency" title="Permalink to this equation">#</a></span>\[    \epsilon_{CHP} = \frac{\dot{W}_{net} + (\dot{E}_{ff} - \dot{E}_{bf})}{\dot{E}_1 - \dot{E}_2}\]</div>
-<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in  figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 20</span></a>.</p>
+<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in  figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 20</span></a>. The heat outflow to close the Organic Rankine Cycle is realized through cooling with ambient air. Finally, the two streams from the geothermal source are combined again to be fed back into the geothermal sink.</p>
 <figure class="align-default" id="orc-chp-flowsheet">
-<img alt="../_images/geothermal_orc_chp.pdf" src="../_images/geothermal_orc_chp.pdf" />
-<figcaption>
+<img alt="../_images/geothermal_orc_chp.svg" src="../_images/geothermal_orc_chp.svg" /><figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
 <div class="legend">
+<p>The second approach without the supply of heat is implemented with an additional Organic Rankinke Cycle replacing the district heating condenser. This second ORC is in principle of the same structure as the first one.</p>
 <figure class="align-default" id="orc-full-elec-flowsheet">
-<img alt="../_images/geothermal_orc_full_elec.pdf" src="../_images/geothermal_orc_full_elec.pdf" />
-<figcaption>
+<img alt="../_images/geothermal_orc_full_elec.svg" src="../_images/geothermal_orc_full_elec.svg" /><figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
