@@ -28,7 +28,6 @@ parts:
   chapters:
   - file: processes/intro
   - file: processes/orc-combined-heat-and-power
-  - file: processes/electrolysis-heat-recovery
 - caption: Reference
   chapters:
   - file: abbreveations-symbols
