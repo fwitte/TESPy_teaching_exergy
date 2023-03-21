@@ -21,7 +21,7 @@ from CoolProp.CoolProp import PropsSI as PSI
 
 # Parametrization
 # Component parameters
-steam_pump.set_attr(eta_s=0.9)
+steam_turbine.set_attr(eta_s=0.9)
 lp_orc_turbine.set_attr(eta_s=0.9)
 
 lp_orc_pump.set_attr(eta_s=0.8)
@@ -33,7 +33,7 @@ lp_orc_condenser.set_attr(pr1=1, pr2=1)
 
 # Connection parameter
 # Low pressure ORC
-p_lp_orc_condenser = PSI("P", "Q", 0, "T",  35 + 273.15, 'water') * 1e-5
+p_lp_orc_condenser = PSI("P", "Q", 0, "T",  35 + 273.15, 'Isopentane') * 1e-5
 lp_orc_turb2lp_orc_cond.set_attr(p=p_lp_orc_condenser, fluid=flu_vec_orc)
 
 p_lp_orc_evaporator = PSI("P", "Q", 1, "T", 85 + 273.15, 'Isopentane') * 1e-5
@@ -41,9 +41,11 @@ lp_orc_eva2lp_orc_drum.set_attr(p=p_lp_orc_evaporator, x=0.7)
 
 lp_orc_preheat2lp_orc_drum.set_attr(Td_bp=-5)
 
-# Geothermal liquid cyclye
+# Geothermal steam cyclye
 steam_source2steam_turb.set_attr(m=500*0.45, p=10.8, x=1, fluid=flu_vec_water)
-# lp_orc_preheat2steam_pump.set_attr(T=30, p=2)
+p_steam_lp_orc_evap = PSI("P", "Q", 0, "T",  105 + 273.15, 'water') * 1e-5
+steam_turb2lp_orc_eva.set_attr(p=p_steam_lp_orc_evap)
+lp_orc_eva2lp_orc_preheat.set_attr(x=0)
 steam_pump2liquid_sink.set_attr(T=55, p=30)
 
 # Condenser coolant cycle
@@ -67,17 +69,17 @@ nw_el.print_results()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTESPyNetworkError[0m                         Traceback (most recent call last)
-Cell [0;32mIn[6], line 35[0m
-[1;32m     32[0m lp_orc_cond2lp_cool_sink[38;5;241m.[39mset_attr(T[38;5;241m=[39m[38;5;241m30[39m)
-[1;32m     34[0m [38;5;66;03m# Initial solve with starting values[39;00m
-[0;32m---> 35[0m [43mnw_el[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mdesign[39;49m[38;5;124;43m"[39;49m[43m)[49m
-[1;32m     36[0m nw_el[38;5;241m.[39mprint_results()
-[1;32m     38[0m [38;5;66;03m# # Final solve[39;00m
-[1;32m     39[0m [38;5;66;03m# orc_eva2orc_drum.set_attr(p=None)[39;00m
-[1;32m     40[0m [38;5;66;03m# orc_evaporator.set_attr(ttd_l=10)[39;00m
+Cell [0;32mIn[6], line 37[0m
+[1;32m     34[0m lp_orc_cond2lp_cool_sink[38;5;241m.[39mset_attr(T[38;5;241m=[39m[38;5;241m30[39m)
+[1;32m     36[0m [38;5;66;03m# Initial solve with starting values[39;00m
+[0;32m---> 37[0m [43mnw_el[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mdesign[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m     38[0m nw_el[38;5;241m.[39mprint_results()
+[1;32m     40[0m [38;5;66;03m# # Final solve[39;00m
+[1;32m     41[0m [38;5;66;03m# orc_eva2orc_drum.set_attr(p=None)[39;00m
+[1;32m     42[0m [38;5;66;03m# orc_evaporator.set_attr(ttd_l=10)[39;00m
 [0;32m   (...)[0m
-[1;32m     44[0m 
-[1;32m     45[0m [38;5;66;03m# nw_el.solve("design")[39;00m
+[1;32m     46[0m 
+[1;32m     47[0m [38;5;66;03m# nw_el.solve("design")[39;00m
 
 File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1661[0m, in [0;36mNetwork.solve[0;34m(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, always_all_equations)[0m
 [1;32m   1658[0m msg [38;5;241m=[39m [38;5;124m'[39m[38;5;124mStarting solver.[39m[38;5;124m'[39m
@@ -86,13 +88,17 @@ File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages
 [1;32m   1662[0m [38;5;28mself[39m[38;5;241m.[39msolve_loop()
 [1;32m   1664[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mlin_dep:
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1793[0m, in [0;36mNetwork.solve_determination[0;34m(self)[0m
-[1;32m   1789[0m msg [38;5;241m=[39m ([38;5;124m'[39m[38;5;124mYou have not provided enough parameters: [39m[38;5;124m'[39m
-[1;32m   1790[0m        [38;5;241m+[39m [38;5;28mstr[39m([38;5;28mself[39m[38;5;241m.[39mnum_vars) [38;5;241m+[39m [38;5;124m'[39m[38;5;124m required, [39m[38;5;124m'[39m [38;5;241m+[39m [38;5;28mstr[39m(n) [38;5;241m+[39m
-[1;32m   1791[0m        [38;5;124m'[39m[38;5;124m supplied. Aborting calculation![39m[38;5;124m'[39m)
-[1;32m   1792[0m logging[38;5;241m.[39merror(msg)
-[0;32m-> 1793[0m [38;5;28;01mraise[39;00m hlp[38;5;241m.[39mTESPyNetworkError(msg)
+File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1787[0m, in [0;36mNetwork.solve_determination[0;34m(self)[0m
+[1;32m   1783[0m     msg [38;5;241m=[39m ([38;5;124m'[39m[38;5;124mYou have provided too many parameters: [39m[38;5;124m'[39m [38;5;241m+[39m
+[1;32m   1784[0m            [38;5;28mstr[39m([38;5;28mself[39m[38;5;241m.[39mnum_vars) [38;5;241m+[39m [38;5;124m'[39m[38;5;124m required, [39m[38;5;124m'[39m [38;5;241m+[39m [38;5;28mstr[39m(n) [38;5;241m+[39m
+[1;32m   1785[0m            [38;5;124m'[39m[38;5;124m supplied. Aborting calculation![39m[38;5;124m'[39m)
+[1;32m   1786[0m     logging[38;5;241m.[39merror(msg)
+[0;32m-> 1787[0m     [38;5;28;01mraise[39;00m hlp[38;5;241m.[39mTESPyNetworkError(msg)
+[1;32m   1788[0m [38;5;28;01melif[39;00m n [38;5;241m<[39m [38;5;28mself[39m[38;5;241m.[39mnum_vars:
+[1;32m   1789[0m     msg [38;5;241m=[39m ([38;5;124m'[39m[38;5;124mYou have not provided enough parameters: [39m[38;5;124m'[39m
+[1;32m   1790[0m            [38;5;241m+[39m [38;5;28mstr[39m([38;5;28mself[39m[38;5;241m.[39mnum_vars) [38;5;241m+[39m [38;5;124m'[39m[38;5;124m required, [39m[38;5;124m'[39m [38;5;241m+[39m [38;5;28mstr[39m(n) [38;5;241m+[39m
+[1;32m   1791[0m            [38;5;124m'[39m[38;5;124m supplied. Aborting calculation![39m[38;5;124m'[39m)
 
-[0;31mTESPyNetworkError[0m: You have not provided enough parameters: 90 required, 88 supplied. Aborting calculation!
-TESPyNetworkError: You have not provided enough parameters: 90 required, 88 supplied. Aborting calculation!
+[0;31mTESPyNetworkError[0m: You have provided too many parameters: 90 required, 91 supplied. Aborting calculation!
+TESPyNetworkError: You have provided too many parameters: 90 required, 91 supplied. Aborting calculation!
 
