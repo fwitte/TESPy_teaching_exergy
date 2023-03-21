@@ -409,32 +409,137 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Subject of the following example of a more complex thermodynamic process will be a combined geothermal heat and power plant. As even deep geothermal boreholes can not supply temperatures high enough to drice conventional powerplant processes, such as the aforementioned and thoroughly analyzed Clausius Rankine Cycle, adjustments are necessary. Organic process fluids whose vaporization temperature is lower than that of water allow the execution of a Rankine cycle at these lower heat source temperatures, resulting in the so called <em>Organic Rankine Cycle</em>.</p>
-<p>The main focus of this example is the comparison of a geothermal plant with cogeneration of heat and power with one that only supplies electricity. This comparision is achieved through the analysis of energy, as well as exergy flows, so as to magnify the shortcomings of a solely energy-based approach. Therefore, the key parameters of an evaluation of a chp process are defined in Eq. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and Eq. <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>, with the respective equations of a pure powerplant process missing the district heating parts.</p>
+<p>The following exercises are supposed to emulate a typical energy engineers workflow. The task is a process design study, where conditions of the surrundings and requirements of stakeholders are given. The proposed process design has to fulfill these constraints, which are displayed in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 20</span></a>.</p>
+<figure class="align-default" id="geothermal-chp-parameters">
+<img alt="../_images/geothermal_chp_parameters.svg" src="../_images/geothermal_chp_parameters.svg" /><figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Boundary conditions of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#geothermal-chp-parameters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Additionally, <a class="reference internal" href="#comp-approx"><span class="std std-numref">Table 5</span></a> lists approximations of typical component parameters.</p>
+<table class="table" id="comp-approx">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Approximations of typical component parameters</span><a class="headerlink" href="#comp-approx" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Parameter</p></th>
+<th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Auxillary Installations</p></td>
+<td><p>Electrical power requirements</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>MW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Generators</p></td>
+<td><p>Mechanical-electrical efficiency</p></td>
+<td></td>
+<td><p>0.985</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Motors</p></td>
+<td><p>Electrical-mechanical efficiency</p></td>
+<td></td>
+<td><p>0.975</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Steam turbines</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td></td>
+<td><p>0.9</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Mechanical efficiency</p></td>
+<td></td>
+<td><p>0.99</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Minimum steam quality</p></td>
+<td></td>
+<td><p>0.9</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Pumps</p></td>
+<td><p>Isentropic efficiency</p></td>
+<td></td>
+<td><p>0.8</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Mechanical efficiency</p></td>
+<td></td>
+<td><p>0.99</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Heat Exchangers</p></td>
+<td><p>Minimal temperature difference</p></td>
+<td><p>liquid-liquid</p></td>
+<td><p>10</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>liquid-condensing</p></td>
+<td><p>5</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>liquid-steam</p></td>
+<td><p>20</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>liquid-gaseous</p></td>
+<td><p>25</p></td>
+<td><p>K</p></td>
+</tr>
+</tbody>
+</table>
+<p>The proposed process is to be evaluated both with an energy- and an exergy-based approach. This can be achieved via efficiency values, which put the benefit of the process in relation to the necessary input. The energy efficiency of the cobined heat and power process is defined according to Eq. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and the exergy efficiency according to Eq. <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-orc-chp-energy-efficiency">
 <span class="eqno">(41)<a class="headerlink" href="#equation-orc-chp-energy-efficiency" title="Permalink to this equation">#</a></span>\[    \eta_{CHP} = \frac{\dot{W}_{net} + \dot{Q}_{DH}}{\dot{H}_1 - \dot{H}_2}\]</div>
 <div class="math notranslate nohighlight" id="equation-orc-chp-exergy-efficiency">
 <span class="eqno">(42)<a class="headerlink" href="#equation-orc-chp-exergy-efficiency" title="Permalink to this equation">#</a></span>\[    \epsilon_{CHP} = \frac{\dot{W}_{net} + (\dot{E}_{ff} - \dot{E}_{bf})}{\dot{E}_1 - \dot{E}_2}\]</div>
-<p>For the cogeneration of heat and power, the ORC will be employed to solely supply power. The gaseous mass fraction of the geothermal source can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in Figure <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 20</span></a>. The heat outflow to close the Organic Rankine Cycle is realized through cooling with ambient air. Finally, the two streams from the geothermal source are combined again to be fed back into the geothermal sink.</p>
-<figure class="align-default" id="orc-chp-flowsheet">
-<img alt="../_images/geothermal_orc_chp.svg" src="../_images/geothermal_orc_chp.svg" /><figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The second approach without the supply of heat is implemented with an additional Organic Rankinke Cycle replacing the district heating condenser. This second ORC is in principle of the same structure as the first one, as can be seen in Figure <a class="reference internal" href="#orc-full-elec-flowsheet"><span class="std std-numref">Fig. 21</span></a>.</p>
-<figure class="align-default" id="orc-full-elec-flowsheet">
-<img alt="../_images/geothermal_orc_full_elec.svg" src="../_images/geothermal_orc_full_elec.svg" /><figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 <section id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
-<p>Build a power plant working combined heat and power. The heat source is a geothermal field.</p>
-<ul class="simple">
-<li><p>Erstelle ein Modell und simuliere dieses in TESPy</p></li>
-<li><p>Beide Modelle aufbauen</p></li>
-<li><p>Erstelle</p></li>
-</ul>
+<ol class="arabic simple">
+<li><p>Build a geothermal combined heat and power plant according to the boundary conditions in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 20</span></a> and <a class="reference internal" href="#comp-approx"><span class="std std-numref">Table 5</span></a> and evaluate them according to Eqs. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>.</p></li>
+<li><p>Build another geothermal plant based on the one before that replaces the heat output with another cycle extracting electrical power. Also evaluate this process and compare it with the combined heat and power plant.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task is described very openly, so there is no single right solution. You have to be creative to find a working process that fulfills all requirements.</p>
+<p>At first, you can try to come up with components that are necessary to supply the desired outputs. You can build simple cycles and contemplate how they can be improved.</p>
+<p>Additionally, you can get inspiration through existing plants as described in the literature. A few examples are <span id="id1">DiPippo [<a class="reference internal" href="../zliterature.html#id10" title="Ronald DiPippo. Geothermal Power Plants. Elsevier, 2015. doi:10.1016/C2014-0-02885-7.">5</a>]</span>, <span id="id2">Drbal <em>et al.</em> [<a class="reference internal" href="../zliterature.html#id11" title="Lawrence F. Drbal, Patricia G. Boston, and Kayla L. Westra. Power Plant Engineering. Springer, 1996. doi:10.1007/978-1-4613-0427-2.">6</a>]</span>, <span id="id3">Kitto and Stultz [<a class="reference internal" href="../zliterature.html#id12" title="J. B. Kitto and S. C. Stultz. Steam: Its Generation and Use. Babcock &amp; Wilcoy Company, 2005.">7</a>]</span> and <span id="id4">Strauss [<a class="reference internal" href="../zliterature.html#id13" title="Karl Strauss. Kraftwerkstechnik. Springer, 2016. doi:10.1007/978-3-662-53030-6.">8</a>]</span> (german).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your model very likely will be quite complex and use a lot of components which need parametrization. Building the whole model at once likely results in too few or too many parameters, which can be hard to track down. Oftentimes, a better approach is to build parts of the model, e.g. inner cycles or outer strands, and make them work. Only then the parts are joined together to build the whole process.</p>
+<p>Also, you will probably encouter issues when setting terminal temperature differences without stable starting values. As mentioned in other examples, running the model with best-guess starting values before finalizing parametrization strengthens stability and can even be necessary. Besides the other examples, you are referred to the TESPy tutorial on <a href="https://tespy.readthedocs.io/en/dev/tutorials/starting_values.html#tespy-tutorial-starting-values-label">How to Generate Stable Starting Values</a>.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Proposed process designs (only use if necessary!)</p>
+<p>If you are having trouble creating/finding a suitable process design that fulfills all the requirements, example designs are provided here. Definitly try to come up with your own process designs at first, as there is a lot to learn trying, failing and hopefully finally succeeding in solving the tasks.</p>
+<p>For the cogeneration of heat and power, an ORC using the liquid phase from the geothermal source will be employed to solely supply power. The gaseous mass fraction can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 21</span></a>. The heat outflow to close the Organic Rankine Cycle is realized through cooling with ambient air. Finally, the two streams from the geothermal source are combined again to be fed back into the geothermal sink.</p>
+<figure class="align-default" id="orc-chp-flowsheet">
+<img alt="../_images/geothermal_orc_chp.svg" src="../_images/geothermal_orc_chp.svg" /><figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The second approach without the supply of heat is implemented with an additional Organic Rankinke Cycle replacing the district heating condenser. This second ORC is in principle of the same structure as the first one, as can be seen in <a class="reference internal" href="#orc-full-elec-flowsheet"><span class="std std-numref">Fig. 22</span></a>.</p>
+<figure class="align-default" id="orc-full-elec-flowsheet">
+<img alt="../_images/geothermal_orc_full_elec.svg" src="../_images/geothermal_orc_full_elec.svg" /><figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="proposed-solution-1">
 <h2>Proposed solution 1<a class="headerlink" href="#proposed-solution-1" title="Permalink to this heading">#</a></h2>
@@ -570,25 +675,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.95634661867399 below minimum value (0) at component ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618685984 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.95634661867058 below minimum value (0) at component ORC Preheater.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618685359 below minimum value (0) at component ORC Preheater.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 3.06e+08 | 3.30e+05 | 7.93e+06 | 5.71e+06 | 0.00e+00
-2	| 6.23e+09 | 2.81e+06 | 3.09e+06 | 1.30e+08 | 0.00e+00
-3	| 3.66e+10 | 1.94e+06 | 1.27e+06 | 2.81e+07 | 0.00e+00
-4	| 1.77e+10 | 4.10e+05 | 5.57e+05 | 1.11e+06 | 0.00e+00
-5	| 3.16e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
-6	| 1.44e+08 | 3.19e+03 | 5.50e+04 | 1.42e+05 | 0.00e+00
-7	| 2.83e+05 | 3.81e+00 | 4.04e-10 | 3.02e+02 | 0.00e+00
-8	| 5.89e-01 | 7.16e-05 | 4.03e-10 | 6.07e-04 | 0.00e+00
-9	| 1.21e-07 | 1.51e-09 | 4.04e-10 | 9.48e-08 | 0.00e+00
+1	| 3.06e+08 | 3.31e+05 | 7.93e+06 | 5.73e+06 | 0.00e+00
+2	| 6.25e+09 | 2.82e+06 | 3.09e+06 | 1.30e+08 | 0.00e+00
+3	| 3.68e+10 | 1.95e+06 | 1.27e+06 | 2.82e+07 | 0.00e+00
+4	| 1.77e+10 | 4.12e+05 | 5.57e+05 | 1.13e+06 | 0.00e+00
+5	| 3.17e+09 | 1.49e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
+6	| 1.44e+08 | 3.20e+03 | 5.50e+04 | 1.43e+05 | 0.00e+00
+7	| 2.84e+05 | 3.82e+00 | 4.04e-10 | 3.03e+02 | 0.00e+00
+8	| 5.91e-01 | 7.18e-05 | 4.03e-10 | 6.09e-04 | 0.00e+00
+9	| 1.18e-07 | 1.51e-09 | 4.04e-10 | 9.73e-08 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 157.66
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 161.06
 iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
 1	| 3.00e+01 | 7.49e+02 | 6.23e+06 | 4.63e+05 | 0.00e+00
@@ -597,9 +702,9 @@ iter	| residual | massflow | pressure | enthalpy | fluid
 4	| 1.42e+05 | 6.76e+01 | 2.06e+04 | 6.34e+03 | 0.00e+00
 5	| 6.85e+03 | 1.06e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
 6	| 1.16e+00 | 1.27e-04 | 4.49e-02 | 1.43e-02 | 0.00e+00
-7	| 7.52e-07 | 1.07e-05 | 7.90e-03 | 2.06e-03 | 0.00e+00
+7	| 6.92e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.99
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 111.08
 </pre></div>
 </div>
 </div>
@@ -684,16 +789,16 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.99
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 8.98e+06 | 2.90e+03 | 7.91e+06 | 3.41e+08 | 0.00e+00
-2	| 1.26e+10 | 7.61e+03 | 3.39e+06 | 1.05e+07 | 0.00e+00
-3	| 2.13e+10 | 7.43e-03 | 1.29e+06 | 6.34e+06 | 0.00e+00
-4	| 5.93e+05 | 8.07e-05 | 5.42e+05 | 8.41e+04 | 0.00e+00
-5	| 2.47e+05 | 8.33e-08 | 1.95e+05 | 6.22e+04 | 0.00e+00
-6	| 5.02e+04 | 1.94e-05 | 3.53e+04 | 3.41e+04 | 0.00e+00
-7	| 3.09e+03 | 2.14e-08 | 1.58e-05 | 3.11e+03 | 0.00e+00
-8	| 2.39e-07 | 2.70e-09 | 1.78e-06 | 5.60e-07 | 0.00e+00
+1	| 9.03e+06 | 2.22e+03 | 7.91e+06 | 3.26e+08 | 0.00e+00
+2	| 9.50e+09 | 6.93e+03 | 3.39e+06 | 1.38e+07 | 0.00e+00
+3	| 2.13e+10 | 6.95e-03 | 1.29e+06 | 6.34e+06 | 0.00e+00
+4	| 5.93e+05 | 4.39e-04 | 5.42e+05 | 8.41e+04 | 0.00e+00
+5	| 2.47e+05 | 1.37e-05 | 1.95e+05 | 6.22e+04 | 0.00e+00
+6	| 5.02e+04 | 2.98e-05 | 3.53e+04 | 3.41e+04 | 0.00e+00
+7	| 3.09e+03 | 7.33e-09 | 5.30e-06 | 3.11e+03 | 0.00e+00
+8	| 2.40e-07 | 1.18e-09 | 1.88e-07 | 1.21e-07 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 85.57
+Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 87.04
 </pre></div>
 </div>
 </div>
@@ -808,14 +913,22 @@ Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 85.57
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 2.13e+07 | 4.25e-14
-2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 9.37e-17
+1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 2.17e+07 | 2.67e-14
+2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 9.96e-17
 3	| 1.35e+06 | 3.08e+02 | 7.41e+03 | 8.53e+03 | 1.61e-16
-4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 4.34e-21
-5	| 7.64e+00 | 5.13e-04 | 2.01e-01 | 4.93e-02 | 0.00e+00
-6	| 1.83e-06 | 1.95e-04 | 1.48e-01 | 3.80e-02 | 1.61e-16
+4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 0.00e+00
+5	| 7.64e+00 | 5.13e-04 | 2.01e-01 | 4.93e-02 | 8.24e-30
+6	| 1.83e-06 | 1.96e-04 | 1.48e-01 | 3.80e-02 | 1.61e-16
 --------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 57.47
+Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 56.94
+##### RESULTS (HeatExchanger) #####
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
+| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | -7.45e-12 | 0.00e+00 |
+| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 | -1.03e-12 | 0.00e+00 |
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
 ##### RESULTS (Condenser) #####
 +----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
 |                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
@@ -823,14 +936,6 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 57.47
 | ORC Condenser              | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -1.73e-15 | 0.00e+00 |
 | District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
 +----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-##### RESULTS (HeatExchanger) #####
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
-|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |     zeta2 |
-|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------|
-| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | -5.44e-15 |
-| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | -7.45e-12 |  0.00e+00 |
-| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 |  0.00e+00 |  0.00e+00 |
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
 ##### RESULTS (Turbine) #####
 +---------------+-----------+----------+----------+
 |               |         P |    eta_s |       pr |
