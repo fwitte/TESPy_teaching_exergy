@@ -543,8 +543,8 @@ document.write(`
 </div>
 </section>
 <section id="proposed-solution-1">
-<h2>Proposed solution 1<a class="headerlink" href="#proposed-solution-1" title="Permalink to this heading">#</a></h2>
-<p><strong>First Step</strong>: Build up the ORC cycle as basis for geothermal combined heat and power plant and geothermal power plant</p>
+<span id="orc-proposed-solution-1-label"></span><h2>Proposed solution 1<a class="headerlink" href="#proposed-solution-1" title="Permalink to this heading">#</a></h2>
+<p><strong>First Step</strong>: Build the ORC as basis for geothermal combined heat and power plant and geothermal power plant</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -676,25 +676,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.95634661868081 below minimum value (0) at component ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618687235 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618679902 below minimum value (0) at component ORC Preheater.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618687974 below minimum value (0) at component ORC Preheater.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
 1	| 3.06e+08 | 3.30e+05 | 7.93e+06 | 5.70e+06 | 0.00e+00
-2	| 6.23e+09 | 2.81e+06 | 3.09e+06 | 1.29e+08 | 0.00e+00
+2	| 6.23e+09 | 2.81e+06 | 3.09e+06 | 1.30e+08 | 0.00e+00
 3	| 3.66e+10 | 1.94e+06 | 1.27e+06 | 2.81e+07 | 0.00e+00
 4	| 1.77e+10 | 4.10e+05 | 5.57e+05 | 1.10e+06 | 0.00e+00
-5	| 3.15e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
+5	| 3.16e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
 6	| 1.44e+08 | 3.19e+03 | 5.50e+04 | 1.42e+05 | 0.00e+00
-7	| 2.83e+05 | 3.80e+00 | 4.04e-10 | 3.02e+02 | 0.00e+00
-8	| 5.89e-01 | 7.15e-05 | 3.29e-10 | 6.07e-04 | 0.00e+00
-9	| 1.14e-07 | 1.51e-09 | 4.04e-10 | 9.69e-08 | 0.00e+00
+7	| 2.83e+05 | 3.81e+00 | 3.30e-10 | 3.02e+02 | 0.00e+00
+8	| 5.89e-01 | 7.16e-05 | 3.30e-10 | 6.07e-04 | 0.00e+00
+9	| 1.20e-07 | 1.53e-09 | 3.30e-10 | 9.92e-08 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 164.74
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 153.82
 iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
 1	| 3.00e+01 | 7.49e+02 | 6.23e+06 | 4.63e+05 | 0.00e+00
@@ -702,10 +702,10 @@ iter	| residual | massflow | pressure | enthalpy | fluid
 3	| 2.39e+06 | 2.79e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
 4	| 1.42e+05 | 6.76e+01 | 2.06e+04 | 6.34e+03 | 0.00e+00
 5	| 6.85e+03 | 1.06e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
-6	| 1.16e+00 | 1.27e-04 | 4.48e-02 | 1.43e-02 | 0.00e+00
-7	| 7.22e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
+6	| 1.16e+00 | 1.26e-04 | 4.47e-02 | 1.43e-02 | 0.00e+00
+7	| 7.28e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.98
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.63
 </pre></div>
 </div>
 </div>
@@ -744,12 +744,12 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.98
 <span class="n">steam_source2steam_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
 <span class="n">steam_turb2dh_cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">dh_condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
 <span class="n">dh_cond2dh_preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">dh_condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">dh_preheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;13&#39;</span><span class="p">)</span>
-<span class="n">dh_preheat2dh_cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">dh_preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;14&#39;</span><span class="p">)</span>
+<span class="n">dh_preheat2steam_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">dh_preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;14&#39;</span><span class="p">)</span>
 <span class="n">steam_pump2geo_sink2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_sink2</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;15&#39;</span><span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span>
     <span class="n">steam_source2steam_turb</span><span class="p">,</span> <span class="n">steam_turb2dh_cond</span><span class="p">,</span> <span class="n">dh_cond2dh_preheat</span><span class="p">,</span>
-    <span class="n">dh_preheat2dh_cond</span><span class="p">,</span> <span class="n">steam_pump2geo_sink2</span>
+    <span class="n">dh_preheat2steam_pump</span><span class="p">,</span> <span class="n">steam_pump2geo_sink2</span>
     <span class="p">)</span>
 
 <span class="c1"># District heating system</span>
@@ -773,7 +773,8 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.98
 
 <span class="c1"># Connection parameter</span>
 <span class="c1"># Steam system</span>
-<span class="n">p_dh_condenser</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">105</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="c1">#105</span>
+<span class="n">p_dh_condenser</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">85</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
 <span class="n">steam_turb2dh_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_dh_condenser</span><span class="p">)</span>
 
 <span class="n">steam_source2steam_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
@@ -784,22 +785,42 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.98
 <span class="n">dh_heatsink2dh_cc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+
+<span class="n">steam_turb2dh_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">dh_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.99999999958169 below minimum value (0) at component District Heating Condenser.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 9.04e+06 | 1.73e+03 | 7.91e+06 | 2.24e+08 | 0.00e+00
-2	| 7.27e+09 | 6.42e+03 | 3.39e+06 | 1.80e+07 | 0.00e+00
-3	| 2.13e+10 | 5.54e-03 | 1.29e+06 | 6.34e+06 | 0.00e+00
-4	| 5.93e+05 | 5.60e-04 | 5.42e+05 | 8.41e+04 | 0.00e+00
-5	| 2.47e+05 | 1.02e-04 | 1.95e+05 | 6.22e+04 | 0.00e+00
-6	| 5.02e+04 | 1.02e-05 | 3.53e+04 | 3.41e+04 | 0.00e+00
-7	| 3.09e+03 | 8.78e-09 | 6.38e-06 | 3.11e+03 | 0.00e+00
-8	| 2.37e-07 | 1.23e-09 | 2.18e-07 | 1.27e-07 | 0.00e+00
+1	| 9.06e+06 | 2.35e+03 | 7.97e+06 | 3.38e+08 | 0.00e+00
+2	| 1.01e+10 | 6.85e+03 | 3.46e+06 | 1.25e+07 | 0.00e+00
+3	| 2.03e+10 | 6.00e-03 | 1.37e+06 | 6.34e+06 | 0.00e+00
+4	| 6.48e+05 | 7.91e-05 | 6.24e+05 | 9.12e+04 | 0.00e+00
+5	| 3.01e+05 | 2.68e-04 | 2.74e+05 | 7.47e+04 | 0.00e+00
+6	| 1.27e+05 | 8.13e-05 | 1.01e+05 | 5.62e+04 | 0.00e+00
+7	| 2.88e+04 | 1.34e-05 | 2.03e+04 | 3.21e+04 | 0.00e+00
+8	| 3.75e+03 | 1.70e-09 | 9.97e-07 | 3.77e+03 | 0.00e+00
+9	| 2.25e-07 | 6.02e-09 | 4.35e-06 | 1.35e-06 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 86.49
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 86.19
+iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 2.00e+01 | 2.10e+02 | 7.86e+04 | 1.29e+05 | 0.00e+00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2	| 1.15e+06 | 4.25e+00 | 2.86e+04 | 1.99e+03 | 0.00e+00
+3	| 2.01e+03 | 2.20e-01 | 1.95e+03 | 1.02e+02 | 0.00e+00
+4	| 6.87e+00 | 7.99e-04 | 7.61e+00 | 3.70e-01 | 0.00e+00
+5	| 1.03e-04 | 1.35e-08 | 1.14e-04 | 5.77e-06 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 67.11
 </pre></div>
 </div>
 </div>
@@ -843,7 +864,7 @@ Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 86.49
 <span class="c1"># Parametrize new connections</span>
 <span class="n">orc_preheat2merge</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
 <span class="n">geo_pump2geo_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">dh_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">dh_preheat2steam_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
 
 <span class="c1"># Build up the seperator part</span>
 <span class="c1"># Delete old connections</span>
@@ -895,16 +916,20 @@ Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 86.49
 <span class="c1"># Calculate thermal efficiency</span>
 <span class="n">h_in</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="mf">10.8e5</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
 <span class="n">h_out</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">55</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="mf">30e5</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
-<span class="n">delta_H</span> <span class="o">=</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_out</span> <span class="o">-</span> <span class="n">h_in</span><span class="p">)</span>
-<span class="n">eta_chp</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">+</span><span class="n">heat_out_dh</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">delta_H</span>
+<span class="n">delta_H</span> <span class="o">=</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_in</span> <span class="o">-</span> <span class="n">h_out</span><span class="p">)</span>
+<span class="n">eta_el</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">delta_H</span>
+<span class="n">eta_th</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">heat_out_dh</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">delta_H</span>
+<span class="n">eta_chp</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="n">heat_out_dh</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">))</span><span class="o">/</span><span class="n">delta_H</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_el = </span><span class="si">{</span><span class="n">eta_el</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_th = </span><span class="si">{</span><span class="n">eta_th</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_chp = </span><span class="si">{</span><span class="n">eta_chp</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="c1"># Create and execute exergy analysis</span>
+<span class="c1"># # Create and execute exergy analysis</span>
 <span class="n">dh_heatsink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">dissipative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span>
     <span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out_dh</span><span class="p">,</span> <span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out_cool</span><span class="p">])</span>
 <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1"># ean.print_results(components=False, connections=False, busses=False, groups=False)</span>
+<span class="n">ean</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">busses</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># ean.print_results()</span>
 <span class="n">epsilon_chp</span> <span class="o">=</span> <span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epsilon_chp = </span><span class="si">{</span><span class="n">epsilon_chp</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -914,43 +939,14 @@ Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 86.49
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 1.48e+07 | 3.23e-14
-2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 0.00e+00
-3	| 1.35e+06 | 3.08e+02 | 7.41e+03 | 8.53e+03 | 0.00e+00
-4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 1.51e-21
+1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 1.77e+07 | 3.83e-14
+2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 1.76e-32
+3	| 1.35e+06 | 3.08e+02 | 7.41e+03 | 8.53e+03 | 1.61e-16
+4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 3.59e-21
 5	| 7.64e+00 | 5.13e-04 | 2.01e-01 | 4.93e-02 | 0.00e+00
-6	| 1.83e-06 | 1.95e-04 | 1.48e-01 | 3.80e-02 | 1.61e-16
+6	| 1.83e-06 | 1.96e-04 | 1.48e-01 | 3.81e-02 | 6.80e-30
 --------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 57.11
-##### RESULTS (Condenser) #####
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
-|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
-| ORC Condenser              | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -1.73e-15 | 0.00e+00 |
-| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-##### RESULTS (CycleCloser) #####
-+-------------------------------+------------------+-------------------+
-|                               |   mass_deviation |   fluid_deviation |
-|-------------------------------+------------------+-------------------|
-| ORC Cycle Closer              |         0.00e+00 |          0.00e+00 |
-| District Heating Cycle Closer |         0.00e+00 |          0.00e+00 |
-+-------------------------------+------------------+-------------------+
-##### RESULTS (HeatExchanger) #####
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
-|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
-| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | -7.45e-12 | 0.00e+00 |
-| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-##### RESULTS (Turbine) #####
-+---------------+-----------+----------+----------+
-|               |         P |    eta_s |       pr |
-|---------------+-----------+----------+----------|
-| ORC Turbine   | -1.13e+07 | 9.00e-01 | 4.00e-01 |
-| Steam Turbine | -7.60e+07 | 9.00e-01 | 1.12e-01 |
-+---------------+-----------+----------+----------+
+Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 56.35
 ##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
@@ -959,6 +955,35 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 57.11
 | Geothermal Pump | 1.22e+06 | 8.00e-01 | 2.78e+00 |
 | Steam Pump      | 2.74e+05 | 8.00e-01 | 8.93e+00 |
 +-----------------+----------+----------+----------+
+##### RESULTS (Condenser) #####
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| ORC Condenser              | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 8.65e-16 | 0.00e+00 |
+| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 | 5.60e-16 | 0.00e+00 |
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
+|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |     zeta2 |
+|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------|
+| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | -5.44e-15 |
+| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | -1.49e-11 |  0.00e+00 |
+| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 | -1.03e-12 |  0.00e+00 |
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
+##### RESULTS (CycleCloser) #####
++-------------------------------+------------------+-------------------+
+|                               |   mass_deviation |   fluid_deviation |
+|-------------------------------+------------------+-------------------|
+| ORC Cycle Closer              |         0.00e+00 |          0.00e+00 |
+| District Heating Cycle Closer |         0.00e+00 |          0.00e+00 |
++-------------------------------+------------------+-------------------+
+##### RESULTS (Turbine) #####
++---------------+-----------+----------+----------+
+|               |         P |    eta_s |       pr |
+|---------------+-----------+----------+----------|
+| ORC Turbine   | -1.13e+07 | 9.00e-01 | 4.00e-01 |
+| Steam Turbine | -7.60e+07 | 9.00e-01 | 1.12e-01 |
++---------------+-----------+----------+----------+
 ##### RESULTS (HeatExchangerSimple) #####
 +---------------------------+-----------+----------+----------+-----+-----+------+------+--------+
 |                           |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
@@ -1029,10 +1054,43 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 57.11
 | Coolant Sink   |         0.000e+00 |   0.000e+00 |    1.000e+00 |
 | total          |         0.000e+00 |   0.000e+00 |  nan         |
 +----------------+-------------------+-------------+--------------+
-eta_chp = 0.573
+eta_el = 0.115
+eta_th = 0.688
+eta_chp = 0.804
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epsilon_chp = 0.714
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Aggregation of components and busses #####
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| District Heating Condenser    |   1.072e+08 |   7.968e+07 |   2.753e+07 |   7.432e-01 |   1.166e-01 |   4.298e-01 |
+| ORC Evaporator                |   3.540e+07 |   1.898e+07 |   1.643e+07 |   5.360e-01 |   6.959e-02 |   2.564e-01 |
+| Steam Turbine                 |   8.241e+07 |   7.409e+07 |   8.321e+06 |   8.990e-01 |   3.525e-02 |   1.299e-01 |
+| ORC Condenser                 |   9.150e+06 |   3.499e+06 |   5.651e+06 |   3.824e-01 |   2.394e-02 |   8.821e-02 |
+| District Heating Preheater    |   8.633e+06 |   5.423e+06 |   3.210e+06 |   6.282e-01 |   1.360e-02 |   5.011e-02 |
+| ORC Turbine                   |   1.243e+07 |   1.102e+07 |   1.417e+06 |   8.860e-01 |   6.004e-03 |   2.213e-02 |
+| ORC Preheater                 |   3.630e+06 |   2.509e+06 |   1.121e+06 |   6.911e-01 |   4.750e-03 |   1.750e-02 |
+| Geothermal Pump               |   1.260e+06 |   1.003e+06 |   2.573e+05 |   7.958e-01 |   1.090e-03 |   4.017e-03 |
+| Steam Pump                    |   2.835e+05 |   2.256e+05 |   5.789e+04 |   7.958e-01 |   2.452e-04 |   9.037e-04 |
+| ORC Pump                      |   1.613e+05 |   1.266e+05 |   3.472e+04 |   7.848e-01 |   1.471e-04 |   5.420e-04 |
+| ORC Drum                      |   2.809e+07 |   2.806e+07 |   3.061e+04 |   9.989e-01 |   1.297e-04 |   4.779e-04 |
+| Merge                         |   6.043e+03 |   6.036e+03 |   6.334e+00 |   9.990e-01 |   2.683e-08 |   9.888e-08 |
+| District Heating Consumer     |   8.510e+07 |   8.510e+07 |   0.000e+00 |   1.000e+00 |   0.000e+00 |   0.000e+00 |
+| ORC Cycle Closer              | nan         | nan         | nan         | nan         | nan         | nan         |
+| Coolant Source                | nan         | nan         | nan         | nan         | nan         | nan         |
+| Coolant Sink                  | nan         | nan         | nan         | nan         | nan         | nan         |
+| District Heating Cycle Closer | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Sink               | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Source             | nan         | nan         | nan         | nan         | nan         | nan         |
+| Seperator                     | nan         | nan         | nan         | nan         | nan         | nan         |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 2.361e+08 | 1.685e+08 | 6.406e+07 | 3.499e+06 | 7.138e-01 |
++-----------+-----------+-----------+-----------+-----------+
+epsilon_chp = 0.714
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1104,12 @@ eta_chp = 0.573
 <h3>geothermal plant with only power generation<a class="headerlink" href="#geothermal-plant-with-only-power-generation" title="Permalink to this heading">#</a></h3>
 <p><strong>First Step</strong>: Build up the low pressure ORC for complete condensation operation</p>
 <p>Be sure this one runs standalone first!</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nw_el</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">])</span>
 <span class="n">nw_el</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T_unit</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">p_unit</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">h_unit</span><span class="o">=</span><span class="s1">&#39;kJ / kg&#39;</span><span class="p">)</span>
@@ -1069,13 +1132,13 @@ eta_chp = 0.573
 <span class="n">lp_cool_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;LP Coolant Source&#39;</span><span class="p">)</span>
 <span class="n">lp_cool_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;LP Coolant Sink&#39;</span><span class="p">)</span>
 
-<span class="c1"># Steam Cycle</span>
+<span class="c1"># Geothermal steam Cycle</span>
 <span class="n">steam_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;Steam Turbine&#39;</span><span class="p">)</span>
 <span class="n">steam_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;Steam Pump&#39;</span><span class="p">)</span>
 
 <span class="c1"># Auxiliary source and sink</span>
 <span class="n">steam_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Steam Sep Source&#39;</span><span class="p">)</span>
-<span class="n">liquid_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Liquid Sink&#39;</span><span class="p">)</span>
+<span class="n">geo_sink2</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Geothermal Sink2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Connections</span>
 <span class="c1"># Low pressure ORC</span>
@@ -1100,20 +1163,21 @@ eta_chp = 0.573
 
 <span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">lp_cool_source2lp_orc_cond</span><span class="p">,</span> <span class="n">lp_orc_cond2lp_cool_sink</span><span class="p">)</span>
 
-<span class="c1"># steam cyclye</span>
+<span class="c1"># Steam cyclye</span>
 <span class="n">steam_source2steam_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
 <span class="n">steam_turb2lp_orc_eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">lp_orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;13&#39;</span><span class="p">)</span>
 <span class="n">lp_orc_eva2lp_orc_preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">lp_orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">lp_orc_preheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;14&#39;</span><span class="p">)</span>
 <span class="n">lp_orc_preheat2steam_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">lp_orc_preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;15&#39;</span><span class="p">)</span>
-<span class="n">steam_pump2liquid_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">liquid_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">)</span>
+<span class="n">steam_pump2geo_sink2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_sink2</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">)</span>
 
 <span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span>
     <span class="n">steam_source2steam_turb</span><span class="p">,</span> <span class="n">steam_turb2lp_orc_eva</span><span class="p">,</span> <span class="n">lp_orc_eva2lp_orc_preheat</span><span class="p">,</span>
-    <span class="n">lp_orc_preheat2steam_pump</span><span class="p">,</span> <span class="n">steam_pump2liquid_sink</span>
+    <span class="n">lp_orc_preheat2steam_pump</span><span class="p">,</span> <span class="n">steam_pump2geo_sink2</span>
     <span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p><strong>Second Step</strong>: Set the process parameters and starting values. After that solve orc cycle with starting and final values</p>
 <div class="cell docutils container">
@@ -1137,17 +1201,17 @@ eta_chp = 0.573
 <span class="n">p_lp_orc_condenser</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span>  <span class="mi">35</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
 <span class="n">lp_orc_turb2lp_orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_lp_orc_condenser</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_orc</span><span class="p">)</span>
 
-<span class="n">p_lp_orc_evaporator</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">85</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
-<span class="n">lp_orc_eva2lp_orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_lp_orc_evaporator</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">p_lp_orc_evaporator</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">100</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">lp_orc_eva2lp_orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_lp_orc_evaporator</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="n">lp_orc_preheat2lp_orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Td_bp</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># Geothermal steam cyclye</span>
-<span class="n">steam_source2steam_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
-<span class="n">p_steam_lp_orc_evap</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span>  <span class="mi">105</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">steam_source2steam_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
+<span class="n">p_steam_lp_orc_evap</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span>  <span class="mi">120</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
 <span class="n">steam_turb2lp_orc_eva</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_steam_lp_orc_evap</span><span class="p">)</span>
-<span class="n">lp_orc_eva2lp_orc_preheat</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">steam_pump2liquid_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="c1"># lp_orc_eva2lp_orc_preheat.set_attr(x0=0)</span>
+<span class="n">steam_pump2geo_sink2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Condenser coolant cycle</span>
 <span class="n">lp_cool_source2lp_orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_air</span><span class="p">)</span>
@@ -1155,56 +1219,581 @@ eta_chp = 0.573
 
 <span class="c1"># Initial solve with starting values</span>
 <span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+
+<span class="c1"># Final solve</span>
+<span class="n">lp_orc_eva2lp_orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">lp_orc_evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">lp_orc_turb2lp_orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">lp_orc_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
 <span class="n">nw_el</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
-
-<span class="c1"># # Final solve</span>
-<span class="c1"># orc_eva2orc_drum.set_attr(p=None)</span>
-<span class="c1"># orc_evaporator.set_attr(ttd_l=10)</span>
-
-<span class="c1"># orc_turb2orc_cond.set_attr(p=None)</span>
-<span class="c1"># orc_condenser.set_attr(ttd_u=5)</span>
-
-<span class="c1"># nw_el.solve(&quot;design&quot;)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:You have provided too many parameters: 90 required, 91 supplied. Aborting calculation!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -2.214791294005181 below minimum value (0) at component LP ORC Evaporator.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TESPyNetworkError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">37</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">lp_orc_cond2lp_cool_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="c1"># Initial solve with starting values</span>
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">nw_el</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="c1"># # Final solve</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="c1"># orc_eva2orc_drum.set_attr(p=None)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># orc_evaporator.set_attr(ttd_l=10)</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> 
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="c1"># nw_el.solve(&quot;design&quot;)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 1.06e+07 | 9.55e+04 | 9.41e+06 | 2.15e+08 | 0.00e+00
+2	| 1.05e+09 | 8.96e+04 | 4.29e+06 | 9.80e+05 | 0.00e+00
+3	| 2.04e+08 | 3.87e+03 | 1.78e+06 | 5.75e+05 | 0.00e+00
+4	| 1.00e+08 | 2.12e+02 | 7.12e+05 | 3.96e+05 | 0.00e+00
+5	| 6.83e+06 | 1.78e+02 | 2.42e+05 | 2.96e+04 | 0.00e+00
+6	| 6.87e+05 | 1.21e+01 | 5.50e+04 | 1.91e+03 | 0.00e+00
+7	| 5.12e+02 | 8.22e-02 | 1.46e-11 | 1.46e+00 | 0.00e+00
+8	| 9.98e-03 | 9.20e-07 | 1.46e-11 | 5.42e-07 | 0.00e+00
+9	| 6.85e-08 | 6.48e-10 | 1.46e-11 | 1.85e-08 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 149.21
+iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 1.22e+01 | 4.61e+02 | 1.22e+06 | 1.74e+05 | 0.00e+00
+2	| 2.92e+06 | 2.03e+02 | 1.67e+05 | 2.59e+04 | 0.00e+00
+3	| 8.82e+04 | 2.01e+01 | 2.24e+03 | 2.61e+03 | 0.00e+00
+4	| 9.97e+02 | 1.09e-01 | 4.98e+01 | 1.60e+01 | 0.00e+00
+5	| 3.32e-02 | 9.54e-07 | 1.72e-03 | 1.28e-04 | 0.00e+00
+6	| 5.69e-07 | 2.58e-06 | 2.18e-03 | 6.04e-04 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 105.54
+##### RESULTS (Turbine) #####
++----------------+-----------+----------+----------+
+|                |         P |    eta_s |       pr |
+|----------------+-----------+----------+----------|
+| LP ORC Turbine | -8.12e+06 | 9.00e-01 | 4.39e-01 |
+| Steam Turbine  | -4.24e+06 | 9.00e-01 | 1.84e-01 |
++----------------+-----------+----------+----------+
+##### RESULTS (Pump) #####
++-------------+----------+----------+----------+
+|             |        P |    eta_s |       pr |
+|-------------+----------+----------+----------|
+| LP ORC Pump | 1.07e+05 | 8.00e-01 | 2.28e+00 |
+| Steam Pump  | 7.99e+05 | 8.00e-01 | 1.51e+01 |
++-------------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
++---------------------+------------------+-------------------+
+##### RESULTS (Condenser) #####
++------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| LP ORC Condenser | -1.11e+08 | 1.03e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+| 40 | 3.132e+02 | 2.936e+00 | 1.692e+01 | 3.509e+01 |
+| 41 | 3.132e+02 | 2.936e+00 | 1.692e+01 | 3.509e+01 |
+| 42 | 3.132e+02 | 2.936e+00 | 7.084e+01 | 5.765e+01 |
+| 43 | 6.511e+02 | 2.936e+00 | 8.320e+01 | 6.265e+01 |
+| 44 | 6.511e+02 | 2.936e+00 | 2.402e+02 | 6.265e+01 |
+| 45 | 3.132e+02 | 2.936e+00 | 3.972e+02 | 6.265e+01 |
+| 46 | 3.132e+02 | 1.290e+00 | 3.713e+02 | 4.460e+01 |
+| 47 | 3.132e+02 | 1.290e+00 | 1.658e+01 | 3.500e+01 |
+| 61 | 7.361e+03 | 1.013e+00 | 4.144e+02 | 1.500e+01 |
+| 62 | 7.361e+03 | 1.013e+00 | 4.295e+02 | 3.000e+01 |
+| 12 | 2.250e+02 | 1.080e+01 | 7.774e+02 | 1.832e+02 |
+| 13 | 2.250e+02 | 1.987e+00 | 7.586e+02 | 1.200e+02 |
+| 14 | 2.250e+02 | 1.987e+00 | 3.043e+02 | 7.265e+01 |
+| 15 | 2.250e+02 | 1.987e+00 | 2.292e+02 | 5.472e+01 |
+| 16 | 2.250e+02 | 3.000e+01 | 2.328e+02 | 5.500e+01 |
++----+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Third Step</strong>: <em>Identically</em> build the ORC as in <a class="reference internal" href="#orc-proposed-solution-1-label"><span class="std std-ref">Proposed solution 1</span></a></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Components</span>
+<span class="c1"># ORC</span>
+<span class="n">orc_cc</span> <span class="o">=</span> <span class="n">CycleCloser</span><span class="p">(</span><span class="s1">&#39;ORC Cycle Closer&#39;</span><span class="p">)</span>
+<span class="n">orc_preheater</span> <span class="o">=</span> <span class="n">HeatExchanger</span><span class="p">(</span><span class="s1">&#39;ORC Preheater&#39;</span><span class="p">)</span>
+<span class="n">orc_drum</span> <span class="o">=</span> <span class="n">Drum</span><span class="p">(</span><span class="s1">&#39;ORC Drum&#39;</span><span class="p">)</span>
+<span class="n">orc_evaporator</span> <span class="o">=</span> <span class="n">HeatExchanger</span><span class="p">(</span><span class="s1">&#39;ORC Evaporator&#39;</span><span class="p">)</span>
+<span class="n">orc_turbine</span> <span class="o">=</span> <span class="n">Turbine</span><span class="p">(</span><span class="s1">&#39;ORC Turbine&#39;</span><span class="p">)</span>
+<span class="n">orc_condenser</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span><span class="s1">&#39;ORC Condenser&#39;</span><span class="p">)</span>
+<span class="n">orc_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;ORC Pump&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1661,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, always_all_equations)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1658</span> <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Starting solver.&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_determination</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_loop</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin_dep</span><span class="p">:</span>
+<span class="c1"># Condenser coolant cycle</span>
+<span class="n">cool_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Coolant Source&#39;</span><span class="p">)</span>
+<span class="n">cool_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Coolant Sink&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1787,</span> in <span class="ni">Network.solve_determination</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1783</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;You have provided too many parameters: &#39;</span> <span class="o">+</span>
-<span class="g g-Whitespace">   </span><span class="mi">1784</span>            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_vars</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; required, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span>
-<span class="g g-Whitespace">   </span><span class="mi">1785</span>            <span class="s1">&#39; supplied. Aborting calculation!&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1786</span>     <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1787</span>     <span class="k">raise</span> <span class="n">hlp</span><span class="o">.</span><span class="n">TESPyNetworkError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1788</span> <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_vars</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1789</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;You have not provided enough parameters: &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1790</span>            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_vars</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; required, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span>
-<span class="g g-Whitespace">   </span><span class="mi">1791</span>            <span class="s1">&#39; supplied. Aborting calculation!&#39;</span><span class="p">)</span>
+<span class="c1"># Auxiliary source and sink</span>
+<span class="n">liquid_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Liquid Sep Source&#39;</span><span class="p">)</span>
+<span class="n">geo_pump</span> <span class="o">=</span> <span class="n">Pump</span><span class="p">(</span><span class="s1">&#39;Geothermal Pump&#39;</span><span class="p">)</span>
+<span class="n">geo_sink1</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Geothermal Sink1&#39;</span><span class="p">)</span>
 
-<span class="ne">TESPyNetworkError</span>: You have provided too many parameters: 90 required, 91 supplied. Aborting calculation!
+<span class="c1"># Connections</span>
+<span class="c1"># ORC</span>
+<span class="n">orc_pump2orc_cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_cc</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;30&#39;</span><span class="p">)</span>
+<span class="n">orc_cc2orc_preheater</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_cc</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;31&#39;</span><span class="p">)</span>
+<span class="n">orc_preheat2orc_drum</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">orc_drum</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;32&#39;</span><span class="p">)</span>
+<span class="n">orc_drum2orc_eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_drum</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;33&#39;</span><span class="p">)</span>
+<span class="n">orc_eva2orc_drum</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">orc_drum</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;34&#39;</span><span class="p">)</span>
+<span class="n">orc_drum2orc_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_drum</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">orc_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;35&#39;</span><span class="p">)</span>
+<span class="n">orc_turb2orc_cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_turbine</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;36&#39;</span><span class="p">)</span>
+<span class="n">orc_cond2orc_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;37&#39;</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span>
+    <span class="n">orc_pump2orc_cc</span><span class="p">,</span> <span class="n">orc_cc2orc_preheater</span><span class="p">,</span> <span class="n">orc_preheat2orc_drum</span><span class="p">,</span> <span class="n">orc_drum2orc_eva</span><span class="p">,</span>
+    <span class="n">orc_eva2orc_drum</span><span class="p">,</span> <span class="n">orc_drum2orc_turb</span><span class="p">,</span> <span class="n">orc_turb2orc_cond</span><span class="p">,</span> <span class="n">orc_cond2orc_pump</span>
+    <span class="p">)</span>
+
+<span class="c1"># Condenser coolant cycle</span>
+<span class="n">cool_source2orc_cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cool_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;51&#39;</span><span class="p">)</span>
+<span class="n">orc_cond2cool_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cool_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;52&#39;</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">cool_source2orc_cond</span><span class="p">,</span> <span class="n">orc_cond2cool_sink</span><span class="p">)</span>
+
+<span class="c1"># Geothermal liquid cyclye</span>
+<span class="n">liquid_source2orc_eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">liquid_source</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;17&#39;</span><span class="p">)</span>
+<span class="n">orc_eva2orc_preheat</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;18&#39;</span><span class="p">)</span>
+<span class="n">orc_preheat2geo_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;19&#39;</span><span class="p">)</span>
+<span class="n">geo_pump2geo_sink1</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">geo_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_sink1</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span>
+    <span class="n">liquid_source2orc_eva</span><span class="p">,</span> <span class="n">orc_eva2orc_preheat</span><span class="p">,</span> <span class="n">orc_preheat2geo_pump</span><span class="p">,</span> <span class="n">geo_pump2geo_sink1</span>
+    <span class="p">)</span>
+
+<span class="c1"># Parametrization</span>
+<span class="c1"># Component parameters</span>
+<span class="n">orc_turbine</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">orc_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">geo_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">orc_preheater</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">orc_evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">orc_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">pr1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pr2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Connection parameter</span>
+<span class="c1"># ORC</span>
+<span class="n">p_orc_condenser</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">35</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">orc_turb2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_orc_condenser</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_orc</span><span class="p">)</span>
+
+<span class="n">p_orc_evaporator</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="mi">150</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;Isopentane&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">orc_eva2orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_orc_evaporator</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">orc_preheat2orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Td_bp</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Geothermal liquid cyclye</span>
+<span class="n">liquid_source2orc_eva</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
+<span class="n">geo_pump2geo_sink1</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Condenser coolant cycle</span>
+<span class="n">cool_source2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_air</span><span class="p">)</span>
+<span class="n">orc_cond2cool_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Initial solve with starting values</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+
+<span class="c1"># Final solve</span>
+<span class="n">orc_eva2orc_drum</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">orc_evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">orc_turb2orc_cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">orc_condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618681778 below minimum value (0) at component ORC Preheater.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618682005 below minimum value (0) at component ORC Evaporator.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 3.06e+08 | 3.29e+05 | 7.93e+06 | 5.70e+06 | 0.00e+00
+2	| 6.22e+09 | 2.81e+06 | 3.09e+06 | 1.29e+08 | 0.00e+00
+3	| 3.66e+10 | 1.94e+06 | 1.27e+06 | 2.81e+07 | 0.00e+00
+4	| 1.77e+10 | 4.10e+05 | 5.57e+05 | 1.10e+06 | 0.00e+00
+5	| 3.15e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
+6	| 1.44e+08 | 3.19e+03 | 5.50e+04 | 1.42e+05 | 0.00e+00
+7	| 2.83e+05 | 3.80e+00 | 1.61e-05 | 3.01e+02 | 0.00e+00
+8	| 5.88e-01 | 7.15e-05 | 3.92e-07 | 6.06e-04 | 0.00e+00
+9	| 1.59e-07 | 3.17e-09 | 1.62e-06 | 5.46e-07 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 71.74
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 3.00e+01 | 7.49e+02 | 6.23e+06 | 4.63e+05 | 0.00e+00
+2	| 1.46e+07 | 3.50e+02 | 1.93e+06 | 5.16e+04 | 0.00e+00
+3	| 2.39e+06 | 2.79e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
+4	| 1.42e+05 | 6.76e+01 | 2.06e+04 | 6.34e+03 | 0.00e+00
+5	| 6.85e+03 | 1.06e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
+6	| 1.16e+00 | 1.27e-04 | 4.49e-02 | 1.43e-02 | 0.00e+00
+7	| 1.39e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
+--------+----------+----------+----------+----------+---------
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 54.51
+##### RESULTS (Turbine) #####
++----------------+-----------+----------+----------+
+|                |         P |    eta_s |       pr |
+|----------------+-----------+----------+----------|
+| LP ORC Turbine | -8.12e+06 | 9.00e-01 | 4.39e-01 |
+| Steam Turbine  | -4.24e+06 | 9.00e-01 | 1.84e-01 |
+| ORC Turbine    | -1.11e+07 | 9.00e-01 | 4.07e-01 |
++----------------+-----------+----------+----------+
+##### RESULTS (Pump) #####
++-----------------+----------+----------+----------+
+|                 |        P |    eta_s |       pr |
+|-----------------+----------+----------+----------|
+| LP ORC Pump     | 1.07e+05 | 8.00e-01 | 2.28e+00 |
+| Steam Pump      | 7.99e+05 | 8.00e-01 | 1.51e+01 |
+| ORC Pump        | 1.52e+05 | 8.00e-01 | 2.46e+00 |
+| Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
++-----------------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
+| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
+| ORC Preheater     | -2.38e+07 | 1.38e+06 | 1.72e+01 | 1.50e+01 | 1.97e+01 | 1.00e+00 | 1.00e+00 | -3.72e-12 | 0.00e+00 |
+| ORC Evaporator    | -1.27e+08 | 2.90e+06 | 4.37e+01 | 1.18e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         5.68e-14 |          0.00e+00 |
+| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
++---------------------+------------------+-------------------+
+##### RESULTS (Condenser) #####
++------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| LP ORC Condenser | -1.11e+08 | 1.03e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+| 40 | 3.132e+02 | 2.936e+00 | 1.692e+01 | 3.509e+01 |
+| 41 | 3.132e+02 | 2.936e+00 | 1.692e+01 | 3.509e+01 |
+| 42 | 3.132e+02 | 2.936e+00 | 7.084e+01 | 5.765e+01 |
+| 43 | 6.511e+02 | 2.936e+00 | 8.320e+01 | 6.265e+01 |
+| 44 | 6.511e+02 | 2.936e+00 | 2.402e+02 | 6.265e+01 |
+| 45 | 3.132e+02 | 2.936e+00 | 3.972e+02 | 6.265e+01 |
+| 46 | 3.132e+02 | 1.290e+00 | 3.713e+02 | 4.460e+01 |
+| 47 | 3.132e+02 | 1.290e+00 | 1.658e+01 | 3.500e+01 |
+| 61 | 7.361e+03 | 1.013e+00 | 4.144e+02 | 1.500e+01 |
+| 62 | 7.361e+03 | 1.013e+00 | 4.295e+02 | 3.000e+01 |
+| 12 | 2.250e+02 | 1.080e+01 | 7.774e+02 | 1.832e+02 |
+| 13 | 2.250e+02 | 1.987e+00 | 7.586e+02 | 1.200e+02 |
+| 14 | 2.250e+02 | 1.987e+00 | 3.043e+02 | 7.265e+01 |
+| 15 | 2.250e+02 | 1.987e+00 | 2.292e+02 | 5.472e+01 |
+| 16 | 2.250e+02 | 3.000e+01 | 2.328e+02 | 5.500e+01 |
+| 30 | 3.910e+02 | 3.170e+00 | 1.697e+01 | 3.510e+01 |
+| 31 | 3.910e+02 | 3.170e+00 | 1.697e+01 | 3.510e+01 |
+| 32 | 3.910e+02 | 3.170e+00 | 7.793e+01 | 6.052e+01 |
+| 33 | 5.810e+02 | 3.170e+00 | 9.037e+01 | 6.552e+01 |
+| 34 | 5.810e+02 | 3.170e+00 | 3.083e+02 | 6.552e+01 |
+| 35 | 3.910e+02 | 3.170e+00 | 4.017e+02 | 6.552e+01 |
+| 36 | 3.910e+02 | 1.290e+00 | 3.732e+02 | 4.569e+01 |
+| 37 | 3.910e+02 | 1.290e+00 | 1.658e+01 | 3.500e+01 |
+| 51 | 9.241e+03 | 1.013e+00 | 4.144e+02 | 1.500e+01 |
+| 52 | 9.241e+03 | 1.013e+00 | 4.295e+02 | 3.000e+01 |
+| 17 | 2.750e+02 | 1.080e+01 | 7.774e+02 | 1.832e+02 |
+| 18 | 2.750e+02 | 1.080e+01 | 3.170e+02 | 7.552e+01 |
+| 19 | 2.750e+02 | 1.080e+01 | 2.304e+02 | 5.481e+01 |
+| 21 | 2.750e+02 | 3.000e+01 | 2.328e+02 | 5.500e+01 |
++----+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Fourth Step</strong>: Connecting ORC with low pressure ORC</p>
+<ol class="arabic simple">
+<li><p>Build the merge part</p></li>
+<li><p>Build the seperator part</p></li>
+<li><p>Set busses und solve the geothermal combined heat and power plant</p></li>
+<li><p>Create and execute <code class="docutils literal notranslate"><span class="pre">ExergyAnalysis</span></code> instance</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Components</span>
+<span class="c1"># Geothermal heat source with interfaces</span>
+<span class="n">geo_source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;Geothermal Source&#39;</span><span class="p">)</span>
+<span class="n">geo_sink</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="s1">&#39;Geothermal Sink&#39;</span><span class="p">)</span>
+<span class="n">seperator</span> <span class="o">=</span> <span class="n">DropletSeparator</span><span class="p">(</span><span class="s1">&#39;Seperator&#39;</span><span class="p">)</span>
+<span class="n">merge</span> <span class="o">=</span> <span class="n">Merge</span><span class="p">(</span><span class="s1">&#39;Merge&#39;</span><span class="p">)</span>
+
+<span class="c1"># Build up the merge part</span>
+<span class="c1"># Delete old connections</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">del_conns</span><span class="p">(</span><span class="n">geo_pump2geo_sink1</span><span class="p">,</span> <span class="n">steam_pump2geo_sink2</span><span class="p">,</span> <span class="n">orc_preheat2geo_pump</span><span class="p">)</span>
+
+<span class="c1"># Set new connections</span>
+<span class="n">steam_pump2merge</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">)</span>
+<span class="n">orc_preheat2merge</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">orc_preheater</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;19&#39;</span><span class="p">)</span>
+<span class="n">merge2geo_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">geo_pump2geo_sink</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">geo_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">geo_sink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">steam_pump2merge</span><span class="p">,</span> <span class="n">orc_preheat2merge</span><span class="p">,</span> <span class="n">merge2geo_pump</span><span class="p">,</span> <span class="n">geo_pump2geo_sink</span><span class="p">)</span>
+
+<span class="c1"># Parametrize new connections</span>
+<span class="n">orc_preheat2merge</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">geo_pump2geo_sink</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">lp_orc_preheat2steam_pump</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
+
+<span class="c1"># Build up the seperator part</span>
+<span class="c1"># Delete old connections</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">del_conns</span><span class="p">(</span><span class="n">liquid_source2orc_eva</span><span class="p">,</span> <span class="n">steam_source2steam_turb</span><span class="p">)</span>
+
+<span class="c1"># Set new connections</span>
+<span class="n">geo_source2sep</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">geo_source</span><span class="p">,</span><span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">seperator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
+<span class="n">sep2steam_turb</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">seperator</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+<span class="n">sep2orc_eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">seperator</span><span class="p">,</span><span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">orc_evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;17&#39;</span><span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">geo_source2sep</span><span class="p">,</span> <span class="n">sep2steam_turb</span><span class="p">,</span> <span class="n">sep2orc_eva</span><span class="p">)</span>
+
+<span class="c1"># Parametrize new connections</span>
+<span class="n">geo_source2sep</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">10.8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="n">flu_vec_water</span><span class="p">)</span>
+<span class="n">sep2orc_eva</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m0</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.55</span><span class="p">)</span>
+<span class="n">sep2steam_turb</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m0</span><span class="o">=</span><span class="mi">500</span><span class="o">*</span><span class="mf">0.45</span><span class="p">)</span>
+
+<span class="c1"># Busses</span>
+<span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
+<span class="n">heat_in</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">geo_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">geo_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">power_out</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Power Output&#39;</span><span class="p">)</span>
+<span class="n">power_out</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.985</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">orc_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.985</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_orc_turbine</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.985</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">steam_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.975</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">orc_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.975</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_orc_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.975</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">geo_pump</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="mf">0.975</span><span class="o">*</span><span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">heat_out_cool</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Output Cooling&#39;</span><span class="p">)</span>
+<span class="n">heat_out_cool</span><span class="o">.</span><span class="n">add_comps</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cool_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">cool_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_cool_source</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;comp&#39;</span><span class="p">:</span> <span class="n">lp_cool_sink</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="s1">&#39;component&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">nw_el</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_out</span><span class="p">,</span> <span class="n">heat_out_cool</span><span class="p">)</span>
+
+<span class="c1"># Solve model</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+<span class="n">nw_el</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
+
+<span class="c1"># Calculate thermal efficiency</span>
+<span class="n">h_in</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="mf">10.8e5</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<span class="n">h_out</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">55</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="mf">30e5</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<span class="n">delta_H</span> <span class="o">=</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_in</span> <span class="o">-</span> <span class="n">h_out</span><span class="p">)</span>
+<span class="n">eta_el</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">power_out</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span><span class="p">)</span><span class="o">/</span><span class="n">delta_H</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;eta_el = </span><span class="si">{</span><span class="n">eta_el</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">delta_H</span><span class="p">)</span>
+
+<span class="c1"># Create and execute exergy analysis</span>
+<span class="n">ean_el</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span>
+    <span class="n">network</span><span class="o">=</span><span class="n">nw_el</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_out</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out_cool</span><span class="p">])</span>
+<span class="n">ean_el</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ean_el</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">busses</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># ean_el.print_results()</span>
+<span class="n">epsilon_el</span> <span class="o">=</span> <span class="n">ean_el</span><span class="o">.</span><span class="n">network_data</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epsilon_el = </span><span class="si">{</span><span class="n">epsilon_el</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 6.48e+08 | 2.93e+04 | 5.17e+06 | 2.62e+07 | 5.43e-14
+2	| 3.89e+08 | 1.78e+03 | 1.30e+06 | 7.57e+05 | 0.00e+00
+3	| 2.41e+07 | 1.82e+03 | 5.80e+06 | 8.95e+05 | 0.00e+00
+4	| 2.45e+07 | 7.77e+02 | 1.04e+06 | 1.53e+05 | 1.61e-16
+5	| 6.75e+06 | 1.13e+02 | 1.08e+05 | 1.65e+04 | 0.00e+00
+6	| 4.65e+04 | 3.49e+00 | 2.10e+03 | 4.14e+01 | 0.00e+00
+7	| 1.45e+01 | 1.16e-03 | 7.12e-01 | 1.03e-02 | 5.05e-29
+8	| 1.19e-05 | 4.16e-05 | 3.50e-02 | 9.40e-03 | 4.29e-29
+--------+----------+----------+----------+----------+---------
+Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 46.26
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Turbine) #####
++----------------+-----------+----------+----------+
+|                |         P |    eta_s |       pr |
+|----------------+-----------+----------+----------|
+| LP ORC Turbine | -7.30e+07 | 9.00e-01 | 1.45e-01 |
+| Steam Turbine  | -6.04e+07 | 9.00e-01 | 1.84e-01 |
+| ORC Turbine    | -1.13e+07 | 9.00e-01 | 4.00e-01 |
++----------------+-----------+----------+----------+
+##### RESULTS (Pump) #####
++-----------------+----------+----------+----------+
+|                 |        P |    eta_s |       pr |
+|-----------------+----------+----------+----------|
+| LP ORC Pump     | 1.78e+06 | 8.00e-01 | 6.90e+00 |
+| Steam Pump      | 2.51e+05 | 8.00e-01 | 5.44e+00 |
+| ORC Pump        | 1.56e+05 | 8.00e-01 | 2.50e+00 |
+| Geothermal Pump | 1.22e+06 | 8.00e-01 | 2.78e+00 |
++-----------------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| LP ORC Evaporator | -3.13e+08 | 3.18e+07 | 9.85e+00 | 1.00e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| LP ORC Preheater  | -2.00e+08 | 1.16e+07 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| ORC Preheater     | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| ORC Evaporator    | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
+| ORC Cycle Closer    |         0.00e+00 |          0.00e+00 |
++---------------------+------------------+-------------------+
+##### RESULTS (Condenser) #####
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| LP ORC Condenser | -4.42e+08 | 4.09e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
+| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -8.65e-16 | 0.00e+00 |
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+| 40 | 1.133e+03 | 8.905e+00 | 1.815e+01 | 3.542e+01 |
+| 41 | 1.133e+03 | 8.905e+00 | 1.815e+01 | 3.542e+01 |
+| 42 | 1.133e+03 | 8.905e+00 | 1.947e+02 | 1.050e+02 |
+| 43 | 2.388e+03 | 8.905e+00 | 2.088e+02 | 1.100e+02 |
+| 44 | 2.388e+03 | 8.905e+00 | 3.399e+02 | 1.100e+02 |
+| 45 | 1.133e+03 | 8.905e+00 | 4.710e+02 | 1.100e+02 |
+| 46 | 1.133e+03 | 1.290e+00 | 4.066e+02 | 6.387e+01 |
+| 47 | 1.133e+03 | 1.290e+00 | 1.658e+01 | 3.500e+01 |
+| 61 | 2.929e+04 | 1.013e+00 | 4.144e+02 | 1.500e+01 |
+| 62 | 2.929e+04 | 1.013e+00 | 4.295e+02 | 3.000e+01 |
+| 13 | 2.250e+02 | 1.987e+00 | 2.511e+03 | 1.200e+02 |
+| 14 | 2.250e+02 | 1.987e+00 | 1.120e+03 | 1.200e+02 |
+| 15 | 2.250e+02 | 1.987e+00 | 2.304e+02 | 5.500e+01 |
+| 30 | 3.895e+02 | 3.224e+00 | 1.698e+01 | 3.511e+01 |
+| 31 | 3.895e+02 | 3.224e+00 | 1.698e+01 | 3.511e+01 |
+| 32 | 3.895e+02 | 3.224e+00 | 7.951e+01 | 6.116e+01 |
+| 33 | 5.787e+02 | 3.224e+00 | 9.198e+01 | 6.616e+01 |
+| 34 | 5.787e+02 | 3.224e+00 | 3.095e+02 | 6.616e+01 |
+| 35 | 3.895e+02 | 3.224e+00 | 4.027e+02 | 6.616e+01 |
+| 36 | 3.895e+02 | 1.290e+00 | 3.737e+02 | 4.594e+01 |
+| 37 | 3.895e+02 | 1.290e+00 | 1.658e+01 | 3.500e+01 |
+| 51 | 9.215e+03 | 1.013e+00 | 4.144e+02 | 1.500e+01 |
+| 52 | 9.215e+03 | 1.013e+00 | 4.295e+02 | 3.000e+01 |
+| 18 | 2.750e+02 | 1.080e+01 | 3.197e+02 | 7.616e+01 |
+| 16 | 2.250e+02 | 1.080e+01 | 2.315e+02 | 5.509e+01 |
+| 19 | 2.750e+02 | 1.080e+01 | 2.312e+02 | 5.500e+01 |
+| 20 | 5.000e+02 | 1.080e+01 | 2.313e+02 | 5.504e+01 |
+| 21 | 5.000e+02 | 3.000e+01 | 2.338e+02 | 5.523e+01 |
+| 11 | 5.000e+02 | 1.080e+01 | 1.679e+03 | 1.832e+02 |
+| 12 | 2.250e+02 | 1.080e+01 | 2.780e+03 | 1.832e+02 |
+| 17 | 2.750e+02 | 1.080e+01 | 7.774e+02 | 1.832e+02 |
++----+-----------+-----------+-----------+-----------+
+##### RESULTS (Bus: Heat Input) #####
++-------------------+-------------------+-------------+--------------+
+|                   |   component value |   bus value |   efficiency |
+|-------------------+-------------------+-------------+--------------|
+| Geothermal Source |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| Geothermal Sink   |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| total             |         0.000e+00 |   0.000e+00 |  nan         |
++-------------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Power Output) #####
++-----------------+-------------------+-------------+--------------+
+|                 |   component value |   bus value |   efficiency |
+|-----------------+-------------------+-------------+--------------|
+| Steam Turbine   |        -6.043e+07 |  -5.893e+07 |    9.751e-01 |
+| ORC Turbine     |        -1.130e+07 |  -1.102e+07 |    9.751e-01 |
+| LP ORC Turbine  |        -7.298e+07 |  -7.117e+07 |    9.751e-01 |
+| Steam Pump      |         2.514e+05 |   2.605e+05 |    9.652e-01 |
+| ORC Pump        |         1.557e+05 |   1.613e+05 |    9.652e-01 |
+| LP ORC Pump     |         1.783e+06 |   1.847e+06 |    9.652e-01 |
+| Geothermal Pump |         1.216e+06 |   1.260e+06 |    9.652e-01 |
+| total           |        -1.413e+08 |  -1.376e+08 |  nan         |
++-----------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Heat Output Cooling) #####
++-------------------+-------------------+-------------+--------------+
+|                   |   component value |   bus value |   efficiency |
+|-------------------+-------------------+-------------+--------------|
+| Coolant Source    |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| Coolant Sink      |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| LP Coolant Source |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| LP Coolant Sink   |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| total             |         0.000e+00 |   0.000e+00 |  nan         |
++-------------------+-------------------+-------------+--------------+
+eta_el = 0.190
+722890679.3083574
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Aggregation of components and busses #####
++---------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                     |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|---------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| LP ORC Condenser    |   3.116e+07 |   1.112e+07 |   2.004e+07 |   3.569e-01 |   8.489e-02 |   2.390e-01 |
+| LP ORC Preheater    |   4.925e+07 |   3.211e+07 |   1.715e+07 |   6.519e-01 |   7.263e-02 |   2.045e-01 |
+| ORC Evaporator      |   3.540e+07 |   1.898e+07 |   1.643e+07 |   5.360e-01 |   6.959e-02 |   1.959e-01 |
+| LP ORC Turbine      |   7.996e+07 |   7.117e+07 |   8.787e+06 |   8.901e-01 |   3.722e-02 |   1.048e-01 |
+| Steam Turbine       |   6.536e+07 |   5.893e+07 |   6.423e+06 |   9.017e-01 |   2.721e-02 |   7.660e-02 |
+| LP ORC Evaporator   |   8.363e+07 |   7.764e+07 |   5.990e+06 |   9.284e-01 |   2.537e-02 |   7.143e-02 |
+| ORC Condenser       |   9.150e+06 |   3.499e+06 |   5.651e+06 |   3.824e-01 |   2.394e-02 |   6.739e-02 |
+| ORC Turbine         |   1.243e+07 |   1.102e+07 |   1.417e+06 |   8.860e-01 |   6.004e-03 |   1.690e-02 |
+| ORC Preheater       |   3.630e+06 |   2.509e+06 |   1.121e+06 |   6.911e-01 |   4.750e-03 |   1.337e-02 |
+| LP ORC Pump         |   1.847e+06 |   1.450e+06 |   3.972e+05 |   7.849e-01 |   1.683e-03 |   4.737e-03 |
+| Geothermal Pump     |   1.260e+06 |   1.003e+06 |   2.573e+05 |   7.958e-01 |   1.090e-03 |   3.069e-03 |
+| LP ORC Drum         |   1.956e+08 |   1.955e+08 |   7.863e+04 |   9.996e-01 |   3.331e-04 |   9.378e-04 |
+| Steam Pump          |   2.605e+05 |   2.073e+05 |   5.320e+04 |   7.958e-01 |   2.253e-04 |   6.344e-04 |
+| ORC Pump            |   1.613e+05 |   1.266e+05 |   3.472e+04 |   7.848e-01 |   1.471e-04 |   4.140e-04 |
+| ORC Drum            |   2.809e+07 |   2.806e+07 |   3.061e+04 |   9.989e-01 |   1.297e-04 |   3.651e-04 |
+| Merge               |   5.552e+03 |   5.546e+03 |   5.348e+00 |   9.990e-01 |   2.266e-08 |   6.378e-08 |
+| LP ORC Cycle Closer | nan         | nan         | nan         | nan         | nan         | nan         |
+| LP Coolant Source   | nan         | nan         | nan         | nan         | nan         | nan         |
+| LP Coolant Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
+| ORC Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
+| Coolant Sink        | nan         | nan         | nan         | nan         | nan         | nan         |
+| Coolant Source      | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Source   | nan         | nan         | nan         | nan         | nan         | nan         |
+| Seperator           | nan         | nan         | nan         | nan         | nan         | nan         |
++---------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 2.361e+08 | 1.376e+08 | 8.385e+07 | 1.462e+07 | 5.828e-01 |
++-----------+-----------+-----------+-----------+-----------+
+epsilon_el = 0.583
 </pre></div>
 </div>
 </div>
