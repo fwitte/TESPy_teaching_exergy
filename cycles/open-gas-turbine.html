@@ -571,15 +571,6 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;brayton-thermal-efficiency&quot;</span><span class="p">,</span> <span class="n">thermal_efficiency</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;brayton-exergy-efficiency&quot;</span><span class="p">,</span> <span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;epsilon&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>The cycle’s efficiency is at about <span class="pasted-text">45.06</span> %, with an exergy efficiency of
 <span class="pasted-text">62.90</span> %. We can extract the plant’s overall exergy analysis results from the
 <code class="docutils literal notranslate"><span class="pre">network_data</span></code> attribute:</p>
@@ -620,7 +611,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
       <th>value</th>
       <td>1.589700e+08</td>
       <td>100000000.0</td>
-      <td>1.639128e-07</td>
+      <td>4.470348e-08</td>
       <td>5.897003e+07</td>
       <td>0.629049</td>
     </tr>
@@ -638,7 +629,7 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58970028.54051103
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58970028.54051102
 </pre></div>
 </div>
 </div>

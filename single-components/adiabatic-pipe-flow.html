@@ -663,13 +663,6 @@ pressure range) and plot the exergy destruction and the exergy efficiency.</p>
 </div>
 </details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-pressure-range&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Result</p>
 <p>From <a class="reference internal" href="#fig-exergy-destruction-steam-pressure-range"><span class="std std-numref">Fig. 4</span></a> we can see, that the destruction of exergy obviously depends
@@ -826,13 +819,6 @@ before. Then, we can make two subplots, which show the change in thermal exergy 
 </div>
 </details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-change-thermal-mechanical-water&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <figure class="align-default" id="fig-exergy-change-thermal-mechanical-water">
 <img alt="../_images/9feac1cb58e2c00d87a59ddd3071971055cd431196332140fd2dc070defcdaa8.png" src="../_images/9feac1cb58e2c00d87a59ddd3071971055cd431196332140fd2dc070defcdaa8.png" />
 <figcaption>
@@ -877,13 +863,6 @@ diagram for both states in <a class="reference internal" href="#fig-exergy-share
 </div>
 </div>
 </details>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-shares-water-bar&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>Finally, we can verify the value of mechanical exergy of the steam at ambient pressure:</p>
 <div class="cell tag_hide-cell docutils container">
@@ -947,13 +926,6 @@ legend.</p>
 </div>
 </details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-vs-air-pressure-range&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>In the first subplot of <a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-pressure-range"><span class="std std-numref">Fig. 7</span></a> we can see that in the steam flow
 the exergy destruction is higher by a factor of about 1.5. This ratio can be verified by checking
 <a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-ratio"><span class="std std-numref">Fig. 8</span></a>. This displays the ratio over the pressure range and we
@@ -997,19 +969,12 @@ for the air stream. We do this for the “extreme” case with the outlet pressu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1890/3922793100.py:3: RuntimeWarning: invalid value encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1941/3922793100.py:3: RuntimeWarning: invalid value encountered in divide
   ax.plot(pressure_difference_range / 1e5, (ex_in - ex_out) / (ex_in_air - ex_out_air))
 </pre></div>
 </div>
 </div>
 </details>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-destruction-steam-vs-air-ratio&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -1037,13 +1002,6 @@ for the air stream. We do this for the “extreme” case with the outlet pressu
 </div>
 </div>
 </details>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-exergy-shares-air-bar&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <figure class="align-default" id="fig-exergy-shares-air-bar">
 <img alt="../_images/a2164b2911cac27575a590b59a1e6f6057a378c300a8cdfcad3020d6d01d4361.png" src="../_images/a2164b2911cac27575a590b59a1e6f6057a378c300a8cdfcad3020d6d01d4361.png" />
