@@ -21,11 +21,14 @@ import plotly.graph_objects as go
 
 links, nodes = ean.generate_plotly_sankey_input()
 
-fig = go.Figure(go.Sankey(
-    arrangement="snap",
-    node={"label": nodes, 'pad': 11, 'color': 'orange'},
-    link=links
-    ))
+fig = go.Figure(
+    go.Sankey(
+        arrangement="snap",
+        node={"label": nodes, 'pad': 11, 'color': 'orange'},
+        link=links
+        ),
+    layout=go.Layout({'width': 800})
+    )
 # plot(fig, filename='chp_grassmann')
 fig.show()
 
@@ -48,11 +51,12 @@ fig_el.show()
 Cell [0;32mIn[9], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mplotly[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgraph_objects[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgo[39;00m
 [1;32m      3[0m links, nodes [38;5;241m=[39m ean[38;5;241m.[39mgenerate_plotly_sankey_input()
-[1;32m      5[0m fig [38;5;241m=[39m go[38;5;241m.[39mFigure(go[38;5;241m.[39mSankey(
-[1;32m      6[0m     arrangement[38;5;241m=[39m[38;5;124m"[39m[38;5;124msnap[39m[38;5;124m"[39m,
-[1;32m      7[0m     node[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mlabel[39m[38;5;124m"[39m: nodes, [38;5;124m'[39m[38;5;124mpad[39m[38;5;124m'[39m: [38;5;241m11[39m, [38;5;124m'[39m[38;5;124mcolor[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124morange[39m[38;5;124m'[39m},
-[1;32m      8[0m     link[38;5;241m=[39mlinks
-[1;32m      9[0m     ))
+[1;32m      5[0m fig [38;5;241m=[39m go[38;5;241m.[39mFigure(
+[1;32m      6[0m     go[38;5;241m.[39mSankey(
+[1;32m      7[0m         arrangement[38;5;241m=[39m[38;5;124m"[39m[38;5;124msnap[39m[38;5;124m"[39m,
+[0;32m   (...)[0m
+[1;32m     11[0m     layout[38;5;241m=[39mgo[38;5;241m.[39mLayout({[38;5;124m'[39m[38;5;124mwidth[39m[38;5;124m'[39m: [38;5;241m800[39m})
+[1;32m     12[0m     )
 
 [0;31mModuleNotFoundError[0m: No module named 'plotly'
 ModuleNotFoundError: No module named 'plotly'
