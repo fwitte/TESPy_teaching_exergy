@@ -383,16 +383,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-1">Exercises 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-product">Overall process product</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-exercise-2">Intermediate Exercise 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-solution-2">Intermediate Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4">Exercises 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-the-process">Improving the process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution 5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-6">Solution 6</a></li>
 </ul>
             </nav>
@@ -415,7 +420,7 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In this example we are investigating the provision of compressed air. Compressed air is often required in technical
-systems, e.g. for process control, or even as storage medium, i.e. in Compressed Air Energy Storage (CAES). To generate
+systems, e.g. for process control, or as storage medium, i.e. in Compressed Air Energy Storage (CAES). To generate
 compressed air a compressor is required, which will (in the best case) compress the air in an isentropic process. The
 isentropic process is characterized by the fact, that the entropy does not change.</p>
 <p>We can model such a process using CoolProp. For example, we want to compress 1.5 kg/s of air from the ambient state to
@@ -499,15 +504,13 @@ isentropic efficiency <span class="math notranslate nohighlight">\(\eta_\text{s,
 </section>
 <section id="exercises-1">
 <h2>Exercises 1<a class="headerlink" href="#exercises-1" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Assume you want to compress the same amount of air to the same pressure as in the example before:</p>
+<p>Assume you want to compress the same amount of air to the same pressure as in the example before:</p>
 <ul class="simple">
 <li><p>What power does a compressor with an isentropic efficiency of 85 % consume?</p></li>
 <li><p>How large is the exergy destruction?</p></li>
 <li><p>How and why does the product exergy change?</p></li>
+<li><p>What is the overall process exergy efficiency in both cases?</p></li>
 </ul>
-</li>
-</ol>
 </section>
 <section id="solution-1">
 <h2>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h2>
@@ -596,6 +599,40 @@ be available than before. We can verify this:</p>
 </div>
 </div>
 </div>
+<p>Looking at the exergy efficiency we can see, that the isentropic compressor provides 100 % efficiency. The real
+compressor induces exergy destruction, thus cannot have 100 % efficiency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">exergy_product</span> <span class="o">/</span> <span class="n">dot_W</span>
+<span class="n">epsilon_real</span> <span class="o">=</span> <span class="n">exergy_product_real</span> <span class="o">/</span> <span class="n">dot_W_real</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999986
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon_real</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9244946133954279
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="overall-process-product">
 <h2>Overall process product<a class="headerlink" href="#overall-process-product" title="Permalink to this heading">#</a></h2>
@@ -633,15 +670,15 @@ pressure and the respective enthalpy.</p>
 </div>
 <p>It becomes clear, that the outlet temperature rises with a lower isentropic efficiecy of the compressor. Obviously, our
 total exergy changes, but we want to have a look at how the shares of phyiscal and thermal exergy change.</p>
-<section id="intermediate-exercise-2">
-<h3>Intermediate Exercise 2<a class="headerlink" href="#intermediate-exercise-2" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple" start="2">
-<li><p>Compare the mechanical and thermal exergy for the compressed air provided by the ideal and the real compressor. What
-is strinking?</p></li>
-</ol>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<p>Compare the mechanical and thermal exergy for the compressed air provided by the ideal and the real compressor.</p>
+<ul class="simple">
+<li><p>Why does the mechanical exergy not change?</p></li>
+</ul>
 </section>
-<section id="intermediate-solution-2">
-<h3>Intermediate Solution 2<a class="headerlink" href="#intermediate-solution-2" title="Permalink to this heading">#</a></h3>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
 <p>We can make use of the exergy splitting to calculate thermal and mechanical exergy and specifically look at the
 mechanical exergy first: It does NOT change.</p>
 <div class="cell docutils container">
@@ -703,255 +740,306 @@ without changing the pressure as illustrated in <a class="reference internal" hr
 </section>
 <section id="exercise-3">
 <h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple" start="3">
-<li><p>Balance the virtual process according to the flowsheet above.</p>
+<p>Balance the virtual process according to the flowsheet above assuming the temperature at point 3 is at the ambient
+temperature and the pressure does not change between the states 2 and 3.</p>
 <ul class="simple">
 <li><p>Between the states 1 and 3</p>
 <ul>
 <li><p>How does the enthalpy change?</p></li>
+<li><p>How much energy is transferred overall?</p></li>
 <li><p>How do mechanical and thermal exergy change?</p></li>
 </ul>
 </li>
-<li><p>How does the heat transferred in the virtual process from 2 to 3 compare to the change in thermal exergy?</p></li>
+<li><p>Between the states 2 and 3</p>
+<ul>
+<li><p>How much heat is transferred?</p></li>
+<li><p>How much do mechanical and thermal exergy change?</p></li>
+<li><p>How do the heat transfer and the change in thermal exergy connect?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="solution-3">
+<h2>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h2>
+<p>We have the following constraints in the compressed air system:</p>
+<div class="math notranslate nohighlight" id="equation-eq-compressed-air-information">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-compressed-air-information" title="Permalink to this equation">#</a></span>\[\begin{split}    T_3 = T_1\\
+    p_3 = p_2\\
+    p_2 &gt; p_1\end{split}\]</div>
+<p>We have already calculated the enthalpy at the states 1 and 2. Therefore, we calculate the missing value of enthalpy at
+state 3 and find the change in enthalpy and the overall energy transfer between the states 1 and 3. Overall, the
+enthalpy changes by about 2.1 kJ/kg and the total energy transfer nets to -3.2 kW.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_3</span> <span class="o">=</span> <span class="n">T_1</span>
+<span class="n">p_3</span> <span class="o">=</span> <span class="n">p_2</span>
+<span class="n">h_3</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_3</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_3</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+<span class="n">h_3</span> <span class="o">-</span> <span class="n">h_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2117.337343836669
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_3</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3176.0060157550033
+</pre></div>
+</div>
+</div>
+</div>
+<p>For an outside observer not knowing about the specifics of the process, it seems as if the potential of the compressed
+air at the state 3 is lower than at the state 1. By calculating the exergy change we can however find, that the
+potential has actually increased.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For completeness, we are also calculating the exergy of the state 1, which must be equal to zero, since we are in
+ambient state in that point.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_1_therm</span><span class="p">,</span> <span class="n">ex_1_mech</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_1</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+<span class="n">ex_3_therm</span><span class="p">,</span> <span class="n">ex_3_mech</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_3</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">h_3</span><span class="p">,</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="n">T_amb</span> <span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">ex_3_therm</span> <span class="o">+</span> <span class="n">ex_3_mech</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">ex_1_therm</span> <span class="o">+</span> <span class="n">ex_1_mech</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>192380.30251046058
+</pre></div>
+</div>
+</div>
+</div>
+<p>We find the changes in the individual constituents of the exergy, the thermal exergy does obviously not change, because
+we are at ambient temperature in both cases. The mechanical exergy has however increased.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_3_therm</span> <span class="o">-</span> <span class="n">ex_1_therm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-9.331643013865686e-10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_3_mech</span> <span class="o">-</span> <span class="n">ex_1_mech</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>192380.3025104615
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we have a look at the process between the states 2 and 3. First, we identify the amount of heat transferred. For
+that we have to make the energy balance of that process.</p>
+<div class="math notranslate nohighlight">
+\[\dot Q_\text{2-3} = \dot m \cdot \left( h_3 - h_2\right)\]</div>
+<p>We can compare the amount of heat withdrawn with the change in exergy, which is the exergy destruction in the virutal
+cooling process. It becomes apparent, that the exergy destruction is lower than the heat transferred, because heat does
+not consist of pure exergy. And we can see, that the exergy destruction is purely caused by destruction of thermal
+exergy. The mechanical exergy does not change, because the pressure does not change.</p>
+<div class="math notranslate nohighlight">
+\[\dot E_\text{D,2-3} = \dot m \cdot \left( e_3 - e_2\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_Q</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_3</span> <span class="o">-</span> <span class="n">h_2</span><span class="p">)</span>
+<span class="n">dot_E_D</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">ex_3_therm</span> <span class="o">+</span> <span class="n">ex_3_mech</span> <span class="o">-</span> <span class="p">(</span><span class="n">ex_2_therm</span> <span class="o">+</span> <span class="n">ex_2_mech</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_Q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-410752.75564658863
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_E_D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-154726.61632715934
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_3_therm</span> <span class="o">-</span> <span class="n">ex_2_therm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-103151.07755143952
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_3_mech</span> <span class="o">-</span> <span class="n">ex_2_mech</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="improving-the-process">
+<h2>Improving the process<a class="headerlink" href="#improving-the-process" title="Permalink to this heading">#</a></h2>
+<p>To thermodynamically improve the process (minimizing the exergy destruction) we subdivide our compressor into two
+separate stages with intermittent cooling as shown in <a class="reference internal" href="#compressor-intermittent-cooling-flowsheet"><span class="std std-numref">Fig. 13</span></a>.</p>
+<figure class="align-default" id="compressor-intermittent-cooling-flowsheet">
+<img alt="figures/Compressor_intermittent_cooling.svg" src="figures/Compressor_intermittent_cooling.svg" /><figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Process representation of a compressor with two stages and intermittent cooling.</span><a class="headerlink" href="#compressor-intermittent-cooling-flowsheet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h2>
+<p>Model the process of</p>
+<ul class="simple">
+<li><p>compressing the ambient air to 3 bar,</p></li>
+<li><p>cooling the air back to the ambient temperature and</p></li>
+<li><p>compressing the air up to 10 bar.</p></li>
+</ul>
+<p>Assume, that the isentropic efficiency of the two compressor stages is 85 %.</p>
+</section>
+<section id="solution-4">
+<h2>Solution 4<a class="headerlink" href="#solution-4" title="Permalink to this heading">#</a></h2>
+<p>To model a compressor with intermittent cooling, we first define the overall process fuel exergy and product exergy in
+eqs. <a class="reference internal" href="#equation-compressor-overall-fuel-exergy">(30)</a> and <a class="reference internal" href="#equation-compressor-overall-product-exergy">(31)</a>. Exergy losses, e.g. by leaking
+mass flow are not considered. The exergy destruction and exergy efficiency can then be calculated according to the
+theory (eqs. <a class="reference internal" href="#equation-compressor-overall-exergy-destruction">(32)</a> and <a class="reference internal" href="#equation-compressor-overall-exergy-efficiency">(33)</a>).</p>
+<div class="math notranslate nohighlight" id="equation-compressor-overall-fuel-exergy">
+<span class="eqno">(30)<a class="headerlink" href="#equation-compressor-overall-fuel-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{F,tot} = \sum \dot W\]</div>
+<div class="math notranslate nohighlight" id="equation-compressor-overall-product-exergy">
+<span class="eqno">(31)<a class="headerlink" href="#equation-compressor-overall-product-exergy" title="Permalink to this equation">#</a></span>\[\dot E_\text{P,tot} = \dot m \cdot e_\text{4}\]</div>
+<div class="math notranslate nohighlight" id="equation-compressor-overall-exergy-destruction">
+<span class="eqno">(32)<a class="headerlink" href="#equation-compressor-overall-exergy-destruction" title="Permalink to this equation">#</a></span>\[\dot E_\text{D,tot} = \dot E_\text{F,tot} - dot E_\text{P,tot}\]</div>
+<div class="math notranslate nohighlight" id="equation-compressor-overall-exergy-efficiency">
+<span class="eqno">(33)<a class="headerlink" href="#equation-compressor-overall-exergy-efficiency" title="Permalink to this equation">#</a></span>\[\eta_\text{tot} = \frac{dot E_\text{P,tot}}{\dot E_\text{F,tot}}\]</div>
+<p>We define our 4 states and calculate the missing properties (all enthalpies):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eta_s</span> <span class="o">=</span> <span class="mf">0.85</span>
+
+<span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1e5</span>
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">+</span> <span class="mf">273.15</span>
+
+<span class="n">p_1</span> <span class="o">=</span> <span class="mf">1e5</span>
+<span class="n">p_2</span> <span class="o">=</span> <span class="mf">3e5</span>
+<span class="n">p_3</span> <span class="o">=</span> <span class="n">p_2</span>
+<span class="n">p_4</span> <span class="o">=</span> <span class="mf">10e5</span>
+
+<span class="n">T_1</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">T_3</span> <span class="o">=</span> <span class="n">T_1</span>
+
+<span class="n">h_1</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_1</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+<span class="n">h_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">isentropic_outlet_enthalpy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_1</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span> <span class="o">/</span> <span class="n">eta_s</span> <span class="o">+</span> <span class="n">h_1</span>
+<span class="n">h_3</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_3</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_3</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+<span class="n">h_4</span> <span class="o">=</span> <span class="p">(</span><span class="n">isentropic_outlet_enthalpy</span><span class="p">(</span><span class="n">p_3</span><span class="p">,</span> <span class="n">h_3</span><span class="p">,</span> <span class="n">p_4</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span> <span class="o">-</span> <span class="n">h_3</span><span class="p">)</span> <span class="o">/</span> <span class="n">eta_s</span> <span class="o">+</span> <span class="n">h_3</span>
+
+<span class="n">dot_W_1</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_2</span> <span class="o">-</span> <span class="n">h_1</span><span class="p">)</span>
+<span class="n">dot_W_2</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_4</span> <span class="o">-</span> <span class="n">h_3</span><span class="p">)</span>
+<span class="n">ex_4</span> <span class="o">=</span> <span class="n">calc_physical_exergy</span><span class="p">(</span><span class="n">p_4</span><span class="p">,</span> <span class="n">h_4</span><span class="p">,</span> <span class="n">p_amb</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+
+<span class="n">E_F</span> <span class="o">=</span> <span class="n">dot_W_1</span> <span class="o">+</span> <span class="n">dot_W_2</span>
+<span class="n">E_P</span> <span class="o">=</span> <span class="n">dot_m</span> <span class="o">*</span> <span class="n">ex_4</span>
+<span class="n">E_D</span> <span class="o">=</span> <span class="n">E_F</span> <span class="o">-</span> <span class="n">E_P</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="n">E_P</span> <span class="o">/</span> <span class="n">E_F</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.814393224673994
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_W_1</span> <span class="o">+</span> <span class="n">dot_W_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>412015.4274043005
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h2>
+<p>Balance the process with energy and exergy:</p>
+<ul class="simple">
+<li><p>How does the overall power requirement change?</p></li>
+<li><p>How does the overall exergy destruction change?</p></li>
+<li><p>Why is the overall exergy destruction smaller?</p></li>
+</ul>
+</section>
+<section id="solution-5">
+<h2>Solution 5<a class="headerlink" href="#solution-5" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="6">
+<li><p>Build a TESPy model for the same process.</p>
+<ul class="simple">
+<li><p>Run the exergy analysis.</p></li>
+<li><p>Verify the results of the models.</p></li>
+<li><p>Vary the intermediate pressure and calculate the process exergy efficiency for a pressure range of 2 bar to 9 bar.
+Plot the results.</p></li>
 </ul>
 </li>
 </ol>
 </section>
-<section id="solution-3">
-<h2>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h2>
-<p>The temperature rises together with the pressure. However, we cannot really make use of the temperature in pneumatic
-systems or in compressed air energy storage.</p>
-<div class="math notranslate nohighlight" id="equation-eq-compressed-air-information">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eq-compressed-air-information" title="Permalink to this equation">#</a></span>\[\begin{split}    T_3 = T_1\\
-    p_3 &gt; p_1\end{split}\]</div>
-<p>Applying energy analysis to the overall system neglecting the influence of
-potential and kinetic energy to the thermal system, we can calculate the total
-amount of energy transferred over the system boundaries <span class="math notranslate nohighlight">\(\dot E\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eq-compressed-air-energy">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eq-compressed-air-energy" title="Permalink to this equation">#</a></span>\[    \dot E =\dot m \cdot \left( h_3 - h_1\right)\]</div>
-<p>However, we can see that the change in enthalpy is nearly zero, since <span class="math notranslate nohighlight">\(h_1\)</span> and
-<span class="math notranslate nohighlight">\(h_3\)</span> are almost equal.</p>
-<div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-equality">
-<span class="eqno">(31)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
-<p>We can easily verify this claim:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CoolProp.CoolProp</span> <span class="kn">import</span> <span class="n">PropsSI</span>
-
-<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># °C</span>
-<span class="n">p_amb</span> <span class="o">=</span> <span class="mf">1.01325</span>  <span class="c1"># bar</span>
-<span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
-
-<span class="n">p_3</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># bar</span>
-
-<span class="n">p_amb_SI</span> <span class="o">=</span> <span class="n">p_amb</span> <span class="o">*</span> <span class="mf">1e5</span>  <span class="c1"># Pa</span>
-<span class="n">p_3_SI</span> <span class="o">=</span> <span class="n">p_3</span> <span class="o">*</span> <span class="mf">1e5</span>  <span class="c1"># Pa</span>
-<span class="n">T_amb_SI</span> <span class="o">=</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># K</span>
-
-<span class="n">h_1</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_amb_SI</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_amb_SI</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
-<span class="n">h_3</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_3_SI</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_amb_SI</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Change in enthalpy: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">h_3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h_1</span><span class="p">)</span><span class="si">}</span><span class="s2"> J/kg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Change in enthalpy: -880 J/kg
-</pre></div>
-</div>
-</div>
-</div>
-<p>It even looks as if energy has been produced by our setup, since the change in enthalpy is
-negative. We can see, how the enthalpy of air changes with pressure given
-isothermal process:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="n">p_ref</span> <span class="o">=</span> <span class="mf">1e3</span>  <span class="c1"># Pa</span>
-<span class="n">p_max</span> <span class="o">=</span> <span class="mf">1e6</span>  <span class="c1"># Pa</span>
-<span class="n">p_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">p_max</span><span class="p">)</span>  <span class="c1"># Pa</span>
-<span class="n">T_ref</span> <span class="o">=</span> <span class="mf">303.15</span>  <span class="c1"># K</span>
-
-<span class="n">h_ref</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_range</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="n">h_ref</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$\Delta p$ in $Pa$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\Delta h$ in $J/kg$&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/88ef6c6ea00e3b4c9bdc64239edabdfd9930018519297f0620960e24bebc1d16.png" src="../_images/88ef6c6ea00e3b4c9bdc64239edabdfd9930018519297f0620960e24bebc1d16.png" />
-</div>
-</div>
-<p>For ideal gases, the change in enthalpy will be exactly zero, as the enthalpy
-does not depend on change in pressure but only on change in temperature:</p>
-<div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-ideal-gas">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-ideal-gas" title="Permalink to this equation">#</a></span>\[    h\left(T\right) - h\left(T_\text{ref}\right) = c_\text{p}\left(T\right) \cdot \left(T - T_\text{ref}\right)\]</div>
-<div class="math notranslate nohighlight" id="equation-eq-compressed-air-enthalpy-equality2">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-compressed-air-enthalpy-equality2" title="Permalink to this equation">#</a></span>\[    h_\left(p_1, T_1\right) \sim h_\left(p_3, T_3\right)\]</div>
-<p>To visualize the energy stored in the pressurized air, we can apply the exergy
-method and split the exergy in its thermal and mechanical shares.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Source</span>
-<span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
-
-
-<span class="n">Network</span><span class="p">([</span><span class="s2">&quot;air&quot;</span><span class="p">])</span>
-
-
-<span class="n">ref</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">Source</span><span class="p">(</span><span class="s2">&quot;Dummysource1&quot;</span><span class="p">),</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">Sink</span><span class="p">(</span><span class="s2">&quot;Dummysink1&quot;</span><span class="p">),</span> <span class="s2">&quot;in1&quot;</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">Source</span><span class="p">(</span><span class="s2">&quot;Dummysource2&quot;</span><span class="p">),</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">Sink</span><span class="p">(</span><span class="s2">&quot;Dummysink2&quot;</span><span class="p">),</span> <span class="s2">&quot;in1&quot;</span><span class="p">)</span>
-
-<span class="n">ref</span><span class="o">.</span><span class="n">fluid</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">p_ref</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">T_ref</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-
-<span class="n">ref</span><span class="o">.</span><span class="n">get_physical_exergy</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mechanical exergy at reference state: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">ex_mech</span><span class="p">)</span><span class="si">}</span><span class="s2"> J/kg&quot;</span><span class="p">)</span>
-<span class="c1"># print(f&quot;Thermal exergy at reference state: {round(ref.ex_therm)} J/kg&quot;)</span>
-
-<span class="n">c</span><span class="o">.</span><span class="n">fluid</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">T_ref</span>
-
-<span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_range</span><span class="p">:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">p</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-
-    <span class="n">c</span><span class="o">.</span><span class="n">get_physical_exergy</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span>
-    <span class="n">ex</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_mech</span><span class="p">]</span>
-    
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">ex</span><span class="p">)</span>    
-<span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mechanical exergy at reference state: 0 J/kg
-</pre></div>
-</div>
-<img alt="../_images/9b2dacae3472055c07e62e461fb67dc1b2033b589583739107c07e9794d5982e.png" src="../_images/9b2dacae3472055c07e62e461fb67dc1b2033b589583739107c07e9794d5982e.png" />
-</div>
-</div>
-<p>With a closer look at the compressor assuming isentropic compression, we see that
-the physical exergy <span class="math notranslate nohighlight">\(e^\text{PH}\)</span> of the compressed air is identical to the
-isentropic compression energy <span class="math notranslate nohighlight">\(w = h_\text{is} - h\)</span>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ref</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-<span class="n">h_is</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_range</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">s_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-<span class="n">T_is</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_range</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">s_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-
-<span class="n">ex_therm</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">ex_mech</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">T_is</span><span class="p">):</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">p</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">get_physical_exergy</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span>
-    <span class="n">ex_therm</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_therm</span><span class="p">]</span>
-    <span class="n">ex_mech</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_mech</span><span class="p">]</span>
-    <span class="n">ex</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_physical</span><span class="p">]</span>
-    
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$\Delta p$ in $Pa$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\Delta h$ in $J/kg$&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">h_is</span> <span class="o">-</span> <span class="n">ref</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="s2">&quot;x-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$w_</span><span class="si">{is}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">ex_mech</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$ex^</span><span class="si">{M}</span><span class="s2">_</span><span class="si">{is}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">ex_therm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$ex^</span><span class="si">{T}</span><span class="s2">_</span><span class="si">{is}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">ex</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$ex_{PH,is}$&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/5dd066fad23abd25b194f9cf8a07db112a0801b69454ec1704b17c8e670c87fe.png" src="../_images/5dd066fad23abd25b194f9cf8a07db112a0801b69454ec1704b17c8e670c87fe.png" />
-</div>
-</div>
-<p>We can now inspect the change of energy in the cooling process (assuming isobaric).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_12</span> <span class="o">=</span> <span class="n">ex</span>
-
-<span class="n">h_is</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_range</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">s_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-<span class="n">h_3</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p_range</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-
-<span class="n">dex_therm</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">dex_mech</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">dex</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">T_is</span><span class="p">):</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">p</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">get_physical_exergy</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span>
-    <span class="n">ex_therm_is</span><span class="p">,</span> <span class="n">ex_mech_is</span><span class="p">,</span> <span class="n">ex_is</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">ex_therm</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">ex_mech</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">ex_physical</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">PropsSI</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">=</span> <span class="n">p</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">get_physical_exergy</span><span class="p">(</span><span class="n">p_ref</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span>
-    <span class="n">dex_therm</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_therm</span> <span class="o">-</span> <span class="n">ex_therm_is</span><span class="p">]</span>
-    <span class="n">dex_mech</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_mech</span> <span class="o">-</span> <span class="n">ex_mech_is</span><span class="p">]</span>
-    <span class="n">dex</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ex_physical</span> <span class="o">-</span> <span class="n">ex_is</span><span class="p">]</span>
-    
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$\Delta p$ in $Pa$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\Delta h$ in $J/kg$&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">h_3</span> <span class="o">-</span> <span class="n">h_is</span><span class="p">,</span> <span class="s2">&quot;x-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$q_{2,3}$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">dex_therm</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\Delta ex^</span><span class="si">{T}</span><span class="s2">_{2,3}$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">dex_mech</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\Delta ex^</span><span class="si">{M}</span><span class="s2">_{2,3}$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">dex</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\Delta ex^</span><span class="si">{PH}</span><span class="s2">_{2,3}$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="n">ex</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\Delta ex^</span><span class="si">{PH}</span><span class="s2">_{1,2}$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_range</span><span class="p">,</span> <span class="p">[</span><span class="n">ex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ex</span><span class="p">))],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\Delta ex^</span><span class="si">{PH}</span><span class="s2">_{1,3}$&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/4eda9c06e739bfb8b0588534c5544340807248288f9c2a007d19156467a6e66e.png" src="../_images/4eda9c06e739bfb8b0588534c5544340807248288f9c2a007d19156467a6e66e.png" />
-</div>
-</div>
+<section id="id1">
+<h2>Solution 3<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>Solution 4<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id3">
+<h2>Solution 5<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="solution-6">
+<h2>Solution 6<a class="headerlink" href="#solution-6" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Nur Kompressor vs. Kompressor mit Zwischenkühler:</p>
 <ul>
@@ -963,51 +1051,6 @@ isentropic compression energy <span class="math notranslate nohighlight">\(w = h
 <li><p>T,s/h,s-Diagramm</p></li>
 <li><p>Bezug Integral v dp?</p></li>
 </ul>
-</section>
-<section id="exercises-4">
-<h2>Exercises 4<a class="headerlink" href="#exercises-4" title="Permalink to this heading">#</a></h2>
-<p>Now we want to consider an improvement of our process providing the compressed air. The compressor is separated into two
-individual compressor stages and the air stream is cooled in between the two compression stages.</p>
-<ol class="arabic simple" start="4">
-<li><p>Model the process of</p>
-<ul class="simple">
-<li><p>compressing the ambient air to 3 bar,</p></li>
-<li><p>cooling the air back to the ambient temperature and</p></li>
-<li><p>compressing the air up to 10 bar.
-Assume, that the isentropic efficiency of the two compressor stages remains unchanged.</p></li>
-</ul>
-</li>
-<li><p>Balance the process with energy and exergy:</p>
-<ul class="simple">
-<li><p>How does the overall power requirement change?</p></li>
-<li><p>How does the overall exergy destruction change?</p></li>
-<li><p>Why is the overall exergy destruction smaller?</p></li>
-</ul>
-</li>
-<li><p>Build a TESPy model for the same process.</p>
-<ul class="simple">
-<li><p>Run the exergy analysis.</p></li>
-<li><p>Verify the results of the models.</p></li>
-</ul>
-</li>
-<li><p>How does the intermediate pressure affect the overall exergy efficiency?</p>
-<ul class="simple">
-<li><p>Calculate the exergy efficiency for an intermediate pressure range of 2 bar to 9 bar.</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="id1">
-<h2>Solution 3<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="solution-4">
-<h2>Solution 4<a class="headerlink" href="#solution-4" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="solution-5">
-<h2>Solution 5<a class="headerlink" href="#solution-5" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="solution-6">
-<h2>Solution 6<a class="headerlink" href="#solution-6" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1076,16 +1119,21 @@ Assume, that the isentropic efficiency of the two compressor stages remains unch
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-1">Exercises 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-product">Overall process product</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-exercise-2">Intermediate Exercise 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-solution-2">Intermediate Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4">Exercises 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-the-process">Improving the process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-4">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution 5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-6">Solution 6</a></li>
 </ul>
   </nav></div>

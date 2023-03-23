@@ -409,11 +409,11 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Subject of the following example of a more complex thermodynamic process will be a combined geothermal heat and power plant. As even deep geothermal boreholes can not supply temperatures high enough to drice conventional powerplant processes, such as the aforementioned and thoroughly analyzed Clausius Rankine Cycle, adjustments are necessary. Organic process fluids whose vaporization temperature is lower than that of water allow the execution of a Rankine cycle at these lower heat source temperatures, resulting in the so called <em>Organic Rankine Cycle</em>.</p>
-<p>The following exercises are supposed to emulate a typical energy engineers workflow. The task is a process design study, where conditions of the surrundings and requirements of stakeholders are given. The proposed process design has to fulfill these constraints, which are displayed in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 20</span></a>.</p>
+<p>The following exercises are supposed to emulate a typical energy engineers workflow. The task is a process design study, where conditions of the surrundings and requirements of stakeholders are given. The proposed process design has to fulfill these constraints, which are displayed in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 21</span></a>.</p>
 <figure class="align-default" id="geothermal-chp-parameters">
 <img alt="../_images/geothermal_chp_parameters.png" src="../_images/geothermal_chp_parameters.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Boundary conditions of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#geothermal-chp-parameters" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Boundary conditions of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#geothermal-chp-parameters" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Additionally, <a class="reference internal" href="#comp-approx"><span class="std std-numref">Table 5</span></a> lists approximations of typical component parameters.</p>
@@ -511,7 +511,7 @@ document.write(`
 <section id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Build a geothermal combined heat and power plant according to the boundary conditions in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 20</span></a> and <a class="reference internal" href="#comp-approx"><span class="std std-numref">Table 5</span></a> and evaluate them according to Eqs. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>.</p></li>
+<li><p>Build a geothermal combined heat and power plant according to the boundary conditions in <a class="reference internal" href="#geothermal-chp-parameters"><span class="std std-numref">Fig. 21</span></a> and <a class="reference internal" href="#comp-approx"><span class="std std-numref">Table 5</span></a> and evaluate them according to Eqs. <a class="reference internal" href="#equation-orc-chp-energy-efficiency">(41)</a> and <a class="reference internal" href="#equation-orc-chp-exergy-efficiency">(42)</a>.</p></li>
 <li><p>Build another geothermal plant based on the one before that replaces the heat output with another cycle extracting electrical power. Also evaluate this process and compare it with the combined heat and power plant.</p></li>
 </ol>
 <div class="admonition note">
@@ -528,16 +528,16 @@ document.write(`
 <div class="dropdown admonition">
 <p class="admonition-title">Proposed process designs (only use if necessary!)</p>
 <p>If you are having trouble creating/finding a suitable process design that fulfills all the requirements, example designs are provided here. Definitly try to come up with your own process designs at first, as there is a lot to learn trying, failing and hopefully finally succeeding in solving the tasks.</p>
-<p>For the cogeneration of heat and power, an ORC using the liquid phase from the geothermal source will be employed to solely supply power. The gaseous mass fraction can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 21</span></a>. The heat outflow to close the Organic Rankine Cycle is realized through cooling with ambient air. Finally, the two streams from the geothermal source are combined again to be fed back into the geothermal sink.</p>
+<p>For the cogeneration of heat and power, an ORC using the liquid phase from the geothermal source will be employed to solely supply power. The gaseous mass fraction can be fed directly through a steam turbine and condensated to supply the district heating network with heat. The process diagram of the described CHP plant can be found in <a class="reference internal" href="#orc-chp-flowsheet"><span class="std std-numref">Fig. 22</span></a>. The heat outflow to close the Organic Rankine Cycle is realized through cooling with ambient air. Finally, the two streams from the geothermal source are combined again to be fed back into the geothermal sink.</p>
 <figure class="align-default" id="orc-chp-flowsheet">
 <img alt="../_images/geothermal_orc_chp.svg" src="../_images/geothermal_orc_chp.svg" /><figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Flow sheet of the geothermal plant with cogeneration of heat and power.</span><a class="headerlink" href="#orc-chp-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The second approach without the supply of heat is implemented with an additional Organic Rankinke Cycle replacing the district heating condenser. This second ORC is in principle of the same structure as the first one, as can be seen in <a class="reference internal" href="#orc-full-elec-flowsheet"><span class="std std-numref">Fig. 22</span></a>.</p>
+<p>The second approach without the supply of heat is implemented with an additional Organic Rankinke Cycle replacing the district heating condenser. This second ORC is in principle of the same structure as the first one, as can be seen in <a class="reference internal" href="#orc-full-elec-flowsheet"><span class="std std-numref">Fig. 23</span></a>.</p>
 <figure class="align-default" id="orc-full-elec-flowsheet">
 <img alt="../_images/geothermal_orc_full_elec.svg" src="../_images/geothermal_orc_full_elec.svg" /><figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Flow sheet of the geothermal plant with sole power generation.</span><a class="headerlink" href="#orc-full-elec-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -676,25 +676,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618687235 below minimum value (0) at component ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.9563466186803 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618687974 below minimum value (0) at component ORC Preheater.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.95634661867848 below minimum value (0) at component ORC Preheater.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 3.06e+08 | 3.30e+05 | 7.93e+06 | 5.70e+06 | 0.00e+00
-2	| 6.23e+09 | 2.81e+06 | 3.09e+06 | 1.30e+08 | 0.00e+00
-3	| 3.66e+10 | 1.94e+06 | 1.27e+06 | 2.81e+07 | 0.00e+00
-4	| 1.77e+10 | 4.10e+05 | 5.57e+05 | 1.10e+06 | 0.00e+00
-5	| 3.16e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
-6	| 1.44e+08 | 3.19e+03 | 5.50e+04 | 1.42e+05 | 0.00e+00
-7	| 2.83e+05 | 3.81e+00 | 3.30e-10 | 3.02e+02 | 0.00e+00
-8	| 5.89e-01 | 7.16e-05 | 3.30e-10 | 6.07e-04 | 0.00e+00
-9	| 1.20e-07 | 1.53e-09 | 3.30e-10 | 9.92e-08 | 0.00e+00
+1	| 3.06e+08 | 3.28e+05 | 7.93e+06 | 5.67e+06 | 0.00e+00
+2	| 6.20e+09 | 2.80e+06 | 3.09e+06 | 1.29e+08 | 0.00e+00
+3	| 3.65e+10 | 1.93e+06 | 1.27e+06 | 2.80e+07 | 0.00e+00
+4	| 1.76e+10 | 4.08e+05 | 5.57e+05 | 1.07e+06 | 0.00e+00
+5	| 3.14e+09 | 1.47e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
+6	| 1.43e+08 | 3.17e+03 | 5.50e+04 | 1.41e+05 | 0.00e+00
+7	| 2.81e+05 | 3.79e+00 | 3.30e-10 | 3.00e+02 | 0.00e+00
+8	| 5.86e-01 | 7.12e-05 | 3.30e-10 | 6.04e-04 | 0.00e+00
+9	| 1.06e-07 | 1.53e-09 | 3.30e-10 | 9.60e-08 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 153.82
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 126.4
 iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
 1	| 3.00e+01 | 7.49e+02 | 6.23e+06 | 4.63e+05 | 0.00e+00
@@ -702,10 +702,12 @@ iter	| residual | massflow | pressure | enthalpy | fluid
 3	| 2.39e+06 | 2.79e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
 4	| 1.42e+05 | 6.76e+01 | 2.06e+04 | 6.34e+03 | 0.00e+00
 5	| 6.85e+03 | 1.06e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
-6	| 1.16e+00 | 1.26e-04 | 4.47e-02 | 1.43e-02 | 0.00e+00
-7	| 7.28e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6	| 1.16e+00 | 1.27e-04 | 4.49e-02 | 1.43e-02 | 0.00e+00
+7	| 7.23e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.63
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 75.35
 </pre></div>
 </div>
 </div>
@@ -799,28 +801,28 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.63
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 9.06e+06 | 2.35e+03 | 7.97e+06 | 3.38e+08 | 0.00e+00
-2	| 1.01e+10 | 6.85e+03 | 3.46e+06 | 1.25e+07 | 0.00e+00
-3	| 2.03e+10 | 6.00e-03 | 1.37e+06 | 6.34e+06 | 0.00e+00
-4	| 6.48e+05 | 7.91e-05 | 6.24e+05 | 9.12e+04 | 0.00e+00
-5	| 3.01e+05 | 2.68e-04 | 2.74e+05 | 7.47e+04 | 0.00e+00
-6	| 1.27e+05 | 8.13e-05 | 1.01e+05 | 5.62e+04 | 0.00e+00
-7	| 2.88e+04 | 1.34e-05 | 2.03e+04 | 3.21e+04 | 0.00e+00
-8	| 3.75e+03 | 1.70e-09 | 9.97e-07 | 3.77e+03 | 0.00e+00
-9	| 2.25e-07 | 6.02e-09 | 4.35e-06 | 1.35e-06 | 0.00e+00
+1	| 8.98e+06 | 2.42e+03 | 7.97e+06 | 2.59e+08 | 0.00e+00
+2	| 1.04e+10 | 6.92e+03 | 3.46e+06 | 1.21e+07 | 0.00e+00
+3	| 2.03e+10 | 6.24e-03 | 1.37e+06 | 6.34e+06 | 0.00e+00
+4	| 6.48e+05 | 4.08e-04 | 6.24e+05 | 9.12e+04 | 0.00e+00
+5	| 3.01e+05 | 2.00e-05 | 2.74e+05 | 7.47e+04 | 0.00e+00
+6	| 1.27e+05 | 9.89e-06 | 1.01e+05 | 5.62e+04 | 0.00e+00
+7	| 2.88e+04 | 1.12e-05 | 2.03e+04 | 3.21e+04 | 0.00e+00
+8	| 3.75e+03 | 2.57e-08 | 1.90e-05 | 3.77e+03 | 0.00e+00
+9	| 3.95e-07 | 1.12e-09 | 5.30e-07 | 2.31e-07 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 86.19
-iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 2.00e+01 | 2.10e+02 | 7.86e+04 | 1.29e+05 | 0.00e+00
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 65.65
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2	| 1.15e+06 | 4.25e+00 | 2.86e+04 | 1.99e+03 | 0.00e+00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 2.00e+01 | 2.10e+02 | 7.86e+04 | 1.29e+05 | 0.00e+00
+2	| 1.15e+06 | 4.25e+00 | 2.86e+04 | 1.99e+03 | 0.00e+00
 3	| 2.01e+03 | 2.20e-01 | 1.95e+03 | 1.02e+02 | 0.00e+00
 4	| 6.87e+00 | 7.99e-04 | 7.61e+00 | 3.70e-01 | 0.00e+00
-5	| 1.03e-04 | 1.35e-08 | 1.14e-04 | 5.77e-06 | 0.00e+00
+5	| 1.03e-04 | 1.17e-08 | 1.14e-04 | 5.57e-06 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 67.11
+Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 53.53
 </pre></div>
 </div>
 </div>
@@ -939,15 +941,17 @@ Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 67.11
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 1.77e+07 | 3.83e-14
-2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 1.76e-32
-3	| 1.35e+06 | 3.08e+02 | 7.41e+03 | 8.53e+03 | 1.61e-16
-4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 3.59e-21
-5	| 7.64e+00 | 5.13e-04 | 2.01e-01 | 4.93e-02 | 0.00e+00
-6	| 1.83e-06 | 1.96e-04 | 1.48e-01 | 3.81e-02 | 6.80e-30
+1	| 6.48e+08 | 1.56e+03 | 2.87e+06 | 1.97e+07 | 2.44e-14
+2	| 1.25e+08 | 1.62e+03 | 4.78e+05 | 3.35e+05 | 0.00e+00
+3	| 1.35e+06 | 3.08e+02 | 7.41e+03 | 8.53e+03 | 0.00e+00
+4	| 1.95e+04 | 5.73e-01 | 8.80e+02 | 2.48e+02 | 1.61e-16
+5	| 7.64e+00 | 5.13e-04 | 2.01e-01 | 4.94e-02 | 3.38e-29
+6	| 1.83e-06 | 1.96e-04 | 1.48e-01 | 3.81e-02 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 56.35
-##### RESULTS (Pump) #####
+Total iterations: 6, Calculation time: 0.2 s, Iterations per second: 38.23
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
 |-----------------+----------+----------+----------|
@@ -960,7 +964,7 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 56.35
 |                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
 | ORC Condenser              | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 8.65e-16 | 0.00e+00 |
-| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 | 5.60e-16 | 0.00e+00 |
+| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 | 1.12e-15 | 0.00e+00 |
 +----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (HeatExchanger) #####
 +----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
@@ -1233,32 +1237,40 @@ epsilon_chp = 0.714
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -2.214791294005181 below minimum value (0) at component LP ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -2.2147912940071137 below minimum value (0) at component LP ORC Evaporator.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 1.06e+07 | 9.55e+04 | 9.41e+06 | 2.15e+08 | 0.00e+00
-2	| 1.05e+09 | 8.96e+04 | 4.29e+06 | 9.80e+05 | 0.00e+00
-3	| 2.04e+08 | 3.87e+03 | 1.78e+06 | 5.75e+05 | 0.00e+00
-4	| 1.00e+08 | 2.12e+02 | 7.12e+05 | 3.96e+05 | 0.00e+00
-5	| 6.83e+06 | 1.78e+02 | 2.42e+05 | 2.96e+04 | 0.00e+00
-6	| 6.87e+05 | 1.21e+01 | 5.50e+04 | 1.91e+03 | 0.00e+00
-7	| 5.12e+02 | 8.22e-02 | 1.46e-11 | 1.46e+00 | 0.00e+00
-8	| 9.98e-03 | 9.20e-07 | 1.46e-11 | 5.42e-07 | 0.00e+00
-9	| 6.85e-08 | 6.48e-10 | 1.46e-11 | 1.85e-08 | 0.00e+00
+1	| 1.07e+07 | 1.07e+05 | 9.41e+06 | 2.35e+08 | 0.00e+00
+2	| 1.17e+09 | 1.02e+05 | 4.29e+06 | 1.08e+06 | 0.00e+00
+3	| 2.38e+08 | 4.61e+03 | 1.78e+06 | 6.65e+05 | 0.00e+00
+4	| 9.48e+07 | 2.58e+02 | 7.12e+05 | 3.96e+05 | 0.00e+00
+5	| 6.51e+06 | 1.63e+02 | 2.42e+05 | 2.97e+04 | 0.00e+00
+6	| 6.69e+05 | 1.17e+01 | 5.50e+04 | 1.90e+03 | 0.00e+00
+7	| 4.70e+02 | 8.26e-02 | 1.46e-11 | 1.45e+00 | 0.00e+00
+8	| 1.00e-02 | 9.34e-07 | 1.46e-11 | 2.61e-07 | 0.00e+00
+9	| 1.13e-07 | 2.68e-09 | 1.46e-11 | 1.51e-07 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 149.21
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 107.51
 iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
 1	| 1.22e+01 | 4.61e+02 | 1.22e+06 | 1.74e+05 | 0.00e+00
 2	| 2.92e+06 | 2.03e+02 | 1.67e+05 | 2.59e+04 | 0.00e+00
 3	| 8.82e+04 | 2.01e+01 | 2.24e+03 | 2.61e+03 | 0.00e+00
-4	| 9.97e+02 | 1.09e-01 | 4.98e+01 | 1.60e+01 | 0.00e+00
-5	| 3.32e-02 | 9.54e-07 | 1.72e-03 | 1.28e-04 | 0.00e+00
-6	| 5.69e-07 | 2.58e-06 | 2.18e-03 | 6.04e-04 | 0.00e+00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4	| 9.97e+02 | 1.09e-01 | 4.98e+01 | 1.60e+01 | 0.00e+00
+5	| 3.32e-02 | 9.85e-07 | 1.70e-03 | 1.23e-04 | 0.00e+00
+6	| 5.83e-07 | 2.58e-06 | 2.18e-03 | 6.04e-04 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 105.54
+Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 70.91
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
++---------------------+------------------+-------------------+
 ##### RESULTS (Turbine) #####
 +----------------+-----------+----------+----------+
 |                |         P |    eta_s |       pr |
@@ -1266,6 +1278,13 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 105.54
 | LP ORC Turbine | -8.12e+06 | 9.00e-01 | 4.39e-01 |
 | Steam Turbine  | -4.24e+06 | 9.00e-01 | 1.84e-01 |
 +----------------+-----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |     zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------|
+| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
+| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | -5.43e-15 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
 ##### RESULTS (Pump) #####
 +-------------+----------+----------+----------+
 |             |        P |    eta_s |       pr |
@@ -1273,19 +1292,6 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 105.54
 | LP ORC Pump | 1.07e+05 | 8.00e-01 | 2.28e+00 |
 | Steam Pump  | 7.99e+05 | 8.00e-01 | 1.51e+01 |
 +-------------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+---------------------+------------------+-------------------+
-|                     |   mass_deviation |   fluid_deviation |
-|---------------------+------------------+-------------------|
-| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
-+---------------------+------------------+-------------------+
 ##### RESULTS (Condenser) #####
 +------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
@@ -1420,25 +1426,25 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 105.54
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618681778 below minimum value (0) at component ORC Preheater.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618682005 below minimum value (0) at component ORC Evaporator.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 3.06e+08 | 3.29e+05 | 7.93e+06 | 5.70e+06 | 0.00e+00
+1	| 3.06e+08 | 3.30e+05 | 7.93e+06 | 5.70e+06 | 0.00e+00
 2	| 6.22e+09 | 2.81e+06 | 3.09e+06 | 1.29e+08 | 0.00e+00
 3	| 3.66e+10 | 1.94e+06 | 1.27e+06 | 2.81e+07 | 0.00e+00
 4	| 1.77e+10 | 4.10e+05 | 5.57e+05 | 1.10e+06 | 0.00e+00
 5	| 3.15e+09 | 1.48e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
 6	| 1.44e+08 | 3.19e+03 | 5.50e+04 | 1.42e+05 | 0.00e+00
-7	| 2.83e+05 | 3.80e+00 | 1.61e-05 | 3.01e+02 | 0.00e+00
-8	| 5.88e-01 | 7.15e-05 | 3.92e-07 | 6.06e-04 | 0.00e+00
-9	| 1.59e-07 | 3.17e-09 | 1.62e-06 | 5.46e-07 | 0.00e+00
+7	| 2.83e+05 | 3.80e+00 | 4.90e-07 | 3.02e+02 | 0.00e+00
+8	| 5.89e-01 | 7.15e-05 | 2.03e-06 | 6.07e-04 | 0.00e+00
+9	| 1.50e-07 | 1.54e-08 | 1.28e-05 | 3.66e-06 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 71.74
+Total iterations: 9, Calculation time: 0.2 s, Iterations per second: 53.23
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618683483 below minimum value (0) at component ORC Preheater.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.95634661868354 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
@@ -1448,10 +1454,19 @@ Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 71.74
 3	| 2.39e+06 | 2.79e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
 4	| 1.42e+05 | 6.76e+01 | 2.06e+04 | 6.34e+03 | 0.00e+00
 5	| 6.85e+03 | 1.06e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
-6	| 1.16e+00 | 1.27e-04 | 4.49e-02 | 1.43e-02 | 0.00e+00
-7	| 1.39e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
+6	| 1.16e+00 | 1.27e-04 | 4.48e-02 | 1.43e-02 | 0.00e+00
+7	| 1.12e-07 | 1.07e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 54.51
+Total iterations: 7, Calculation time: 0.2 s, Iterations per second: 39.94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         5.68e-14 |          0.00e+00 |
+| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
++---------------------+------------------+-------------------+
 ##### RESULTS (Turbine) #####
 +----------------+-----------+----------+----------+
 |                |         P |    eta_s |       pr |
@@ -1460,6 +1475,15 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 54.51
 | Steam Turbine  | -4.24e+06 | 9.00e-01 | 1.84e-01 |
 | ORC Turbine    | -1.11e+07 | 9.00e-01 | 4.07e-01 |
 +----------------+-----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |     zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------|
+| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 |  0.00e+00 |
+| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | -5.43e-15 |
+| ORC Preheater     | -2.38e+07 | 1.38e+06 | 1.72e+01 | 1.50e+01 | 1.97e+01 | 1.00e+00 | 1.00e+00 | -3.72e-12 |  0.00e+00 |
+| ORC Evaporator    | -1.27e+08 | 2.90e+06 | 4.37e+01 | 1.18e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 |  0.00e+00 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
 ##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
@@ -1469,29 +1493,13 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 54.51
 | ORC Pump        | 1.52e+05 | 8.00e-01 | 2.46e+00 |
 | Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
 +-----------------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
-|-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
-| LP ORC Evaporator | -1.02e+08 | 3.77e+06 | 2.71e+01 | 5.73e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-| LP ORC Preheater  | -1.69e+07 | 9.81e+05 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-| ORC Preheater     | -2.38e+07 | 1.38e+06 | 1.72e+01 | 1.50e+01 | 1.97e+01 | 1.00e+00 | 1.00e+00 | -3.72e-12 | 0.00e+00 |
-| ORC Evaporator    | -1.27e+08 | 2.90e+06 | 4.37e+01 | 1.18e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
-##### RESULTS (CycleCloser) #####
-+---------------------+------------------+-------------------+
-|                     |   mass_deviation |   fluid_deviation |
-|---------------------+------------------+-------------------|
-| LP ORC Cycle Closer |         5.68e-14 |          0.00e+00 |
-| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
-+---------------------+------------------+-------------------+
 ##### RESULTS (Condenser) #####
-+------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| LP ORC Condenser | -1.11e+08 | 1.03e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| LP ORC Condenser | -1.11e+08 | 1.03e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
+| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -8.59e-16 | 0.00e+00 |
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -1634,19 +1642,26 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 54.51
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 2.93e+04 | 5.17e+06 | 2.62e+07 | 5.43e-14
-2	| 3.89e+08 | 1.78e+03 | 1.30e+06 | 7.57e+05 | 0.00e+00
-3	| 2.41e+07 | 1.82e+03 | 5.80e+06 | 8.95e+05 | 0.00e+00
+1	| 6.48e+08 | 2.93e+04 | 5.17e+06 | 1.50e+07 | 5.15e-14
+2	| 3.89e+08 | 1.78e+03 | 1.30e+06 | 7.57e+05 | 9.73e-18
+3	| 2.41e+07 | 1.82e+03 | 5.80e+06 | 8.95e+05 | 3.90e-19
 4	| 2.45e+07 | 7.77e+02 | 1.04e+06 | 1.53e+05 | 1.61e-16
-5	| 6.75e+06 | 1.13e+02 | 1.08e+05 | 1.65e+04 | 0.00e+00
-6	| 4.65e+04 | 3.49e+00 | 2.10e+03 | 4.14e+01 | 0.00e+00
-7	| 1.45e+01 | 1.16e-03 | 7.12e-01 | 1.03e-02 | 5.05e-29
-8	| 1.19e-05 | 4.16e-05 | 3.50e-02 | 9.40e-03 | 4.29e-29
---------+----------+----------+----------+----------+---------
-Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 46.26
+5	| 6.75e+06 | 1.13e+02 | 1.08e+05 | 1.65e+04 | 2.10e-29
+6	| 4.65e+04 | 3.49e+00 | 2.10e+03 | 4.14e+01 | 8.88e-34
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Turbine) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7	| 1.45e+01 | 1.16e-03 | 7.12e-01 | 1.03e-02 | 8.88e-34
+8	| 1.19e-05 | 4.16e-05 | 3.50e-02 | 9.40e-03 | 8.88e-34
+--------+----------+----------+----------+----------+---------
+Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 32.82
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         2.27e-13 |          0.00e+00 |
+| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
++---------------------+------------------+-------------------+
+##### RESULTS (Turbine) #####
 +----------------+-----------+----------+----------+
 |                |         P |    eta_s |       pr |
 |----------------+-----------+----------+----------|
@@ -1654,6 +1669,15 @@ Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 46.26
 | Steam Turbine  | -6.04e+07 | 9.00e-01 | 1.84e-01 |
 | ORC Turbine    | -1.13e+07 | 9.00e-01 | 4.00e-01 |
 +----------------+-----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| LP ORC Preheater  | -2.00e+08 | 1.16e+07 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| LP ORC Evaporator | -3.13e+08 | 3.12e+07 | 1.00e+01 | 1.00e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| ORC Preheater     | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| ORC Evaporator    | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
@@ -1663,28 +1687,12 @@ Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 46.26
 | ORC Pump        | 1.56e+05 | 8.00e-01 | 2.50e+00 |
 | Geothermal Pump | 1.22e+06 | 8.00e-01 | 2.78e+00 |
 +-----------------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| LP ORC Evaporator | -3.13e+08 | 3.18e+07 | 9.85e+00 | 1.00e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| LP ORC Preheater  | -2.00e+08 | 1.16e+07 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Preheater     | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Evaporator    | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+---------------------+------------------+-------------------+
-|                     |   mass_deviation |   fluid_deviation |
-|---------------------+------------------+-------------------|
-| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
-| ORC Cycle Closer    |         0.00e+00 |          0.00e+00 |
-+---------------------+------------------+-------------------+
 ##### RESULTS (Condenser) #####
 +------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
 |                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
 |------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
 | LP ORC Condenser | -4.42e+08 | 4.09e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
-| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -8.65e-16 | 0.00e+00 |
+| ORC Condenser    | -1.39e+08 | 1.29e+07 | 1.08e+01 | 5.00e+00 | 2.00e+01 | 1.00e+00 | 1.00e+00 | -2.60e-15 | 0.00e+00 |
 +------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
@@ -1778,14 +1786,14 @@ eta_el = 0.190
 | ORC Drum            |   2.809e+07 |   2.806e+07 |   3.061e+04 |   9.989e-01 |   1.297e-04 |   3.651e-04 |
 | Merge               |   5.552e+03 |   5.546e+03 |   5.348e+00 |   9.990e-01 |   2.266e-08 |   6.378e-08 |
 | LP ORC Cycle Closer | nan         | nan         | nan         | nan         | nan         | nan         |
-| LP Coolant Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 | LP Coolant Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
+| LP Coolant Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 | ORC Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
 | Coolant Sink        | nan         | nan         | nan         | nan         | nan         | nan         |
 | Coolant Source      | nan         | nan         | nan         | nan         | nan         | nan         |
 | Geothermal Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
-| Geothermal Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 | Seperator           | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 +---------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
