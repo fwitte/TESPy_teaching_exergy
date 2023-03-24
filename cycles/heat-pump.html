@@ -722,8 +722,8 @@ document.write(`
 | Heat Consumer                  |   7.502e+04 |   7.490e+04 |   1.195e+02 |   9.984e-01 |   7.451e-04 |   1.398e-03 |
 | Heat Sink Recirculation Pump   |   3.053e+02 |   2.518e+02 |   5.351e+01 |   8.248e-01 |   3.337e-04 |   6.262e-04 |
 | Heat Source Recirculation Pump |   4.154e+01 |   3.311e+01 |   8.425e+00 |   7.972e-01 |   5.254e-05 |   9.860e-05 |
-| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
@@ -786,7 +786,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" src="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" />
+<img alt="../_images/227948addfa5765d09e1b808d12842c61d2d42dc2e11941ebed4d737c14703c6.png" src="../_images/227948addfa5765d09e1b808d12842c61d2d42dc2e11941ebed4d737c14703c6.png" />
 </div>
 </details>
 </div>
@@ -978,13 +978,13 @@ document.write(`
 
 <span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">refrigerant</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 
-<span class="n">split2econ</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">cond2split</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">split2econ</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">hp_comp2cond</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
 <span class="c1"># Starting values</span>
-<span class="n">p_evap</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span>
-<span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_evap</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span>
-<span class="n">p_cond</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">70</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span>
-<span class="n">cond2split</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_cond</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span>
+<span class="n">p_evap</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_evap</span><span class="p">)</span>
+<span class="n">p_cond</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">70</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+<span class="n">cond2split</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_cond</span><span class="p">)</span>
 <span class="n">p_mid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_evap</span> <span class="o">*</span> <span class="n">p_cond</span><span class="p">)</span>
 <span class="n">econ2merge</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_mid</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -1012,93 +1012,123 @@ document.write(`
 <span class="c1"># Initial solve with starting values</span>
 <span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">interinfo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">print_results</span><span class="p">()</span>
 
-<span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cond2split</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># evap2lp_comp.set_attr(p=None)</span>
+<span class="c1"># evaporator.set_attr(ttd_l=2)</span>
+<span class="c1"># cond2split.set_attr(p=None)</span>
+<span class="c1"># condenser.set_attr(ttd_u=2)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2011,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2010</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2011</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2012</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.001</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: Inputs in Brent [42645.642063,54784.000000] do not bracket the root.  Function values are [-1.000153,-0.990727]
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">123</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="c1"># Initial solve with starting values</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">nw</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">interinfo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">123</span> <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span> <span class="n">evap2lp_comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span> <span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1662,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, always_all_equations)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_determination</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1662</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_loop</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin_dep</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>         <span class="s1">&#39;Singularity in jacobian matrix, calculation aborted! Make &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>         <span class="s1">&#39;sure your network does not have any linear dependencies in &#39;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1674</span>         <span class="s1">&#39;of combustion chamber, provide small (near to zero, but not &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1675</span>         <span class="s1">&#39;zero) starting value.&#39;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1712,</span> in <span class="ni">Network.solve_loop</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1709</span> <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="bp">self</span><span class="o">.</span><span class="n">increment_filter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">increment</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">err</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="ne">-&gt; </span><span class="mi">1712</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_control</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residual</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1715</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterinfo</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1934,</span> in <span class="ni">Network.solve_control</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1931</span>             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1933</span>     <span class="c1"># check the fluid properties for physical ranges</span>
-<span class="ne">-&gt; </span><span class="mi">1934</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_check_props</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1935</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1937</span> <span class="c1"># increment for the custom variables</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2015,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2014</span>     <span class="n">f</span> <span class="o">=</span> <span class="mf">1.05</span>
-<span class="ne">-&gt; </span><span class="mi">2015</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2016</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2018</span> <span class="n">T</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2019</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
-<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="n">h_sat</span> <span class="o">=</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: Inputs in Brent [42002.910167,54784.000000] do not bracket the root.  Function values are [-1.000141,-0.990219]
+1	| 9.93e+06 | 6.69e+02 | 7.87e+06 | 5.22e+06 | 1.06e-14
+2	| 2.46e+07 | 8.17e+02 | 2.50e+06 | 1.53e+06 | 1.81e-16
+3	| 3.64e+06 | 1.69e+02 | 7.95e+05 | 1.41e+05 | 3.22e-16
+4	| 3.23e+05 | 4.60e+00 | 1.36e+05 | 1.19e+06 | 2.70e-16
+5	| 5.88e+04 | 2.39e-04 | 2.33e-10 | 1.95e+05 | 1.13e-16
+6	| 1.78e+00 | 4.76e-05 | 1.46e-11 | 2.84e+00 | 3.52e-17
+7	| 2.09e-06 | 1.66e-10 | 2.33e-10 | 3.22e-06 | 1.06e-17
+--------+----------+----------+----------+----------+---------
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 112.44
+##### RESULTS (Pump) #####
++--------------------------------+----------+----------+----------+
+|                                |        P |    eta_s |       pr |
+|--------------------------------+----------+----------+----------|
+| Heat Source Recirculation Pump | 4.09e+01 | 8.00e-01 | 1.02e+00 |
+| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
++--------------------------------+----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++--------------------------+------------------+-------------------+
+|                          |   mass_deviation |   fluid_deviation |
+|--------------------------+------------------+-------------------|
+| Refrigerant Cycle Closer |         0.00e+00 |          0.00e+00 |
+| Consumer Cycle Closer    |         0.00e+00 |          0.00e+00 |
++--------------------------+------------------+-------------------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| Evaporator | -3.39e+05 | 9.64e+04 | 3.52e+00 | 7.00e+00 | 1.45e+00 | 9.80e-01 | 9.80e-01 | 9.58e+03 | 5.38e+05 |
+| Economizer | -3.48e+03 | 9.30e+01 | 3.74e+01 | 3.86e+01 | 3.62e+01 | 9.80e-01 | 9.80e-01 | 3.29e+08 | 3.94e+10 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
++--------------------------+----------+----------+----------+--------+
+|                          |        P |    eta_s |       pr |   igva |
+|--------------------------+----------+----------+----------+--------|
+| Low Pressure Compressor  | 6.80e+04 | 7.50e-01 | 2.69e+00 |    nan |
+| High Pressure Compressor | 9.24e+04 | 7.50e-01 | 2.74e+00 |    nan |
++--------------------------+----------+----------+----------+--------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| Condenser | -5.00e+05 | 5.31e+04 | 9.42e+00 | 2.89e+00 | 2.20e+01 | 9.80e-01 | 9.80e-01 | 1.98e+07 | 6.93e+05 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (HeatExchangerSimple) #####
++---------------+-----------+----------+----------+-----+-----+------+------+--------+
+|               |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
+|---------------+-----------+----------+----------+-----+-----+------+------+--------|
+| Heat Consumer | -5.00e+05 | 9.80e-01 | 6.80e+05 | nan | nan |  nan |  nan |    nan |
++---------------+-----------+----------+----------+-----+-----+------+------+--------+
+##### RESULTS (Valve) #####
++--------------------+----------+----------+
+|                    |       pr |     zeta |
+|--------------------+----------+----------|
+| Main Valve         | 1.44e-01 | 7.45e+08 |
+| Intermediate Valve | 3.79e-01 | 1.88e+13 |
++--------------------+----------+----------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+| 00 | 3.694e-01 | 4.893e+00 | 6.922e+02 | 3.555e+00 |
+| 10 | 1.615e+01 | 1.013e+00 | 4.212e+01 | 1.000e+01 |
+| 11 | 1.615e+01 | 9.927e-01 | 2.112e+01 | 5.000e+00 |
+| 12 | 1.615e+01 | 1.013e+00 | 2.112e+01 | 5.000e+00 |
+| 01 | 3.694e-01 | 4.796e+00 | 1.611e+03 | 3.000e+00 |
+| 02 | 3.694e-01 | 1.289e+01 | 1.795e+03 | 9.015e+01 |
+| 03 | 3.731e-01 | 1.289e+01 | 1.793e+03 | 8.952e+01 |
+| 04 | 3.731e-01 | 3.538e+01 | 2.041e+03 | 2.030e+02 |
+| 20 | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
+| 21 | 5.975e+00 | 1.020e+01 | 2.102e+02 | 5.000e+01 |
+| 22 | 5.975e+00 | 1.000e+01 | 2.939e+02 | 7.000e+01 |
+| 23 | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
+| 05 | 3.731e-01 | 3.467e+01 | 7.016e+02 | 7.200e+01 |
+| 06 | 3.694e-01 | 3.467e+01 | 7.016e+02 | 7.200e+01 |
+| 07 | 3.694e-01 | 3.398e+01 | 6.922e+02 | 7.028e+01 |
+| 30 | 3.731e-03 | 3.467e+01 | 7.016e+02 | 7.200e+01 |
+| 31 | 3.731e-03 | 1.316e+01 | 7.016e+02 | 3.411e+01 |
+| 32 | 3.731e-03 | 1.289e+01 | 1.633e+03 | 3.341e+01 |
+| 08 | 3.694e-01 | 4.893e+00 | 6.922e+02 | 3.555e+00 |
++----+-----------+-----------+-----------+-----------+
+##### RESULTS (Bus: Heat Input) #####
++-----------------------+-------------------+-------------+--------------+
+|                       |   component value |   bus value |   efficiency |
+|-----------------------+-------------------+-------------+--------------|
+| Heat Source Feed Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| Heat Source Back Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| total                 |         0.000e+00 |   0.000e+00 |  nan         |
++-----------------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Heat Output) #####
++---------------+-------------------+-------------+--------------+
+|               |   component value |   bus value |   efficiency |
+|---------------+-------------------+-------------+--------------|
+| Heat Consumer |        -5.000e+05 |  -5.000e+05 |    1.000e+00 |
+| total         |        -5.000e+05 |  -5.000e+05 |  nan         |
++---------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Power Input) #####
++--------------------------------+-------------------+-------------+--------------+
+|                                |   component value |   bus value |   efficiency |
+|--------------------------------+-------------------+-------------+--------------|
+| Low Pressure Compressor        |         6.802e+04 |   7.086e+04 |    9.600e-01 |
+| High Pressure Compressor       |         9.243e+04 |   9.628e+04 |    9.600e-01 |
+| Heat Source Recirculation Pump |         4.091e+01 |   4.261e+01 |    9.600e-01 |
+| Heat Sink Recirculation Pump   |         3.053e+02 |   3.181e+02 |    9.600e-01 |
+| total                          |         1.608e+05 |   1.675e+05 |  nan         |
++--------------------------------+-------------------+-------------+--------------+
 </pre></div>
 </div>
 </div>
