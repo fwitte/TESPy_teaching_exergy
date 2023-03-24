@@ -53,6 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -722,8 +723,8 @@ document.write(`
 | Heat Consumer                  |   7.502e+04 |   7.490e+04 |   1.195e+02 |   9.984e-01 |   7.451e-04 |   1.398e-03 |
 | Heat Sink Recirculation Pump   |   3.053e+02 |   2.518e+02 |   5.351e+01 |   8.248e-01 |   3.337e-04 |   6.262e-04 |
 | Heat Source Recirculation Pump |   4.154e+01 |   3.311e+01 |   8.425e+00 |   7.972e-01 |   5.254e-05 |   9.860e-05 |
-| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
@@ -734,7 +735,7 @@ document.write(`
 | Compressor                     |  1.631e+05 |  1.565e+05 | 6.522e+03 | 9.600e-01 | 4.067e-02 | 7.633e-02 |
 | Heat Sink Recirculation Pump   |  3.181e+02 |  3.053e+02 | 1.272e+01 | 9.600e-01 | 7.934e-05 | 1.489e-04 |
 | Heat Source Recirculation Pump |  4.311e+01 |  4.138e+01 | 1.724e+00 | 9.600e-01 | 1.075e-05 | 2.018e-05 |
-| Heat Source Feed Flow          | -5.357e-07 | -5.357e-07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Feed Flow          | -5.356e-07 | -5.356e-07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Source Back Flow          |  3.067e+03 |  3.067e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Consumer                  |  7.490e+04 |  7.490e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +--------------------------------+------------+------------+-----------+-----------+-----------+-----------+
@@ -786,7 +787,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9dc91789479d8f28fb8f933c27844b6e553297558f5d6ebab0ef06a211fbcdc2.png" src="../_images/9dc91789479d8f28fb8f933c27844b6e553297558f5d6ebab0ef06a211fbcdc2.png" />
+<img alt="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" src="../_images/75f95e8cbb3c249b4afe2388139a02d7619bfd24f1f459135143b3b4acbac041.png" />
 </div>
 </details>
 </div>
@@ -1024,29 +1025,15 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 9.81e+06 | 5.67e+02 | 7.87e+06 | 6.07e+06 | 3.13e-15
-2	| 1.76e+07 | 6.59e+02 | 2.50e+06 | 1.53e+06 | 1.58e-16
-3	| 2.56e+06 | 1.14e+02 | 7.95e+05 | 2.46e+05 | 1.31e-15
-4	| 3.59e+05 | 3.11e+00 | 1.36e+05 | 1.26e+06 | 9.51e-17
-5	| 4.22e+04 | 2.99e-04 | 2.33e-10 | 1.40e+05 | 2.18e-16
-6	| 1.42e+00 | 3.75e-05 | 1.46e-11 | 2.35e+00 | 7.75e-17
-7	| 1.64e-06 | 1.97e-10 | 2.33e-10 | 2.51e-06 | 2.15e-16
+1	| 9.98e+06 | 8.40e+02 | 7.87e+06 | 6.32e+06 | 8.53e-13
+2	| 2.97e+07 | 1.02e+03 | 2.50e+06 | 1.53e+06 | 5.32e-16
+3	| 4.28e+06 | 2.01e+02 | 7.95e+05 | 1.12e+05 | 1.28e-16
+4	| 3.14e+05 | 5.46e+00 | 1.36e+05 | 1.19e+06 | 2.45e-16
+5	| 6.97e+04 | 9.71e-05 | 2.33e-10 | 2.31e+05 | 2.82e-17
+6	| 3.20e-01 | 5.87e-06 | 2.33e-10 | 8.52e-01 | 4.23e-17
+7	| 1.23e-06 | 2.46e-10 | 2.33e-10 | 1.53e-06 | 3.52e-17
 --------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.66
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| Evaporator | -3.39e+05 | 9.64e+04 | 3.52e+00 | 7.00e+00 | 1.45e+00 | 9.80e-01 | 9.80e-01 | 9.58e+03 | 5.38e+05 |
-| Economizer | -3.48e+03 | 9.30e+01 | 3.74e+01 | 3.86e+01 | 3.62e+01 | 9.80e-01 | 9.80e-01 | 3.29e+08 | 3.94e+10 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Pump) #####
-+--------------------------------+----------+----------+----------+
-|                                |        P |    eta_s |       pr |
-|--------------------------------+----------+----------+----------|
-| Heat Source Recirculation Pump | 4.09e+01 | 8.00e-01 | 1.02e+00 |
-| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
-+--------------------------------+----------+----------+----------+
+Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 102.82
 ##### RESULTS (CycleCloser) #####
 +--------------------------+------------------+-------------------+
 |                          |   mass_deviation |   fluid_deviation |
@@ -1054,12 +1041,26 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.66
 | Refrigerant Cycle Closer |         0.00e+00 |          0.00e+00 |
 | Consumer Cycle Closer    |         0.00e+00 |          0.00e+00 |
 +--------------------------+------------------+-------------------+
+##### RESULTS (Pump) #####
++--------------------------------+----------+----------+----------+
+|                                |        P |    eta_s |       pr |
+|--------------------------------+----------+----------+----------|
+| Heat Source Recirculation Pump | 4.09e+01 | 8.00e-01 | 1.02e+00 |
+| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
++--------------------------------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| Evaporator | -3.39e+05 | 9.64e+04 | 3.52e+00 | 7.00e+00 | 1.45e+00 | 9.80e-01 | 9.80e-01 | 9.58e+03 | 5.38e+05 |
+| Economizer | -3.48e+03 | 9.30e+01 | 3.74e+01 | 3.86e+01 | 3.62e+01 | 9.80e-01 | 9.80e-01 | 3.29e+08 | 3.94e+10 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Compressor) #####
 +--------------------------+----------+----------+----------+--------+
 |                          |        P |    eta_s |       pr |   igva |
 |--------------------------+----------+----------+----------+--------|
-| Low Pressure Compressor  | 6.80e+04 | 7.50e-01 | 2.69e+00 |    nan |
 | High Pressure Compressor | 9.24e+04 | 7.50e-01 | 2.74e+00 |    nan |
+| Low Pressure Compressor  | 6.80e+04 | 7.50e-01 | 2.69e+00 |    nan |
 +--------------------------+----------+----------+----------+--------+
 ##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
@@ -1077,8 +1078,8 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 110.66
 +--------------------+----------+----------+
 |                    |       pr |     zeta |
 |--------------------+----------+----------|
-| Intermediate Valve | 3.79e-01 | 1.88e+13 |
 | Main Valve         | 1.44e-01 | 7.45e+08 |
+| Intermediate Valve | 3.79e-01 | 1.88e+13 |
 +--------------------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+

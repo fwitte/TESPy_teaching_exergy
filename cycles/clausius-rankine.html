@@ -53,6 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -612,8 +613,8 @@ document.write(`
 | Steam Turbine   |   1.456e+07 |   1.268e+07 |   1.878e+06 |   8.710e-01 |   1.168e-01 |   5.173e-01 |
 | Feed Water Pump |   2.329e+05 |   1.724e+05 |   6.049e+04 |   7.403e-01 |   3.762e-03 |   1.667e-02 |
 | Steam Generator |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   4.568e-03 |
-| Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
 | Condenser       |   1.675e+06 | nan         | nan         | nan         | nan         | nan         |
+| Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
 +-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-------+-----------+
@@ -628,8 +629,8 @@ document.write(`
 | Steam Turbine   | 1.628e+07 | 1.440e+07 | 1.878e+06 | 1.168e-01 | 5.173e-01 |
 | Feed Water Pump | 2.769e+05 | 2.164e+05 | 6.049e+04 | 3.762e-03 | 1.667e-02 |
 | Steam Generator | 1.630e+07 | 1.628e+07 | 1.658e+04 | 1.031e-03 | 4.568e-03 |
-| Cycle Closer    | 1.628e+07 | 1.628e+07 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
 | Condenser       | 1.719e+06 | 1.719e+06 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cycle Closer    | 1.628e+07 | 1.628e+07 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
 +-----------------+-----------+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
@@ -713,8 +714,8 @@ document.write(`
 | Feed Water Pump      |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.183e-03 |   1.558e-02 |
 | Steam Generator      |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   5.048e-03 |
 | Cycle Closer         | nan         | nan         | nan         | nan         | nan         | nan         |
-| Cooling Water Sink   | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cooling Water Source | nan         | nan         | nan         | nan         | nan         | nan         |
+| Cooling Water Sink   | nan         | nan         | nan         | nan         | nan         | nan         |
 +----------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Bus exergy analysis #####
 +----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
@@ -723,8 +724,8 @@ document.write(`
 | Steam Turbine        | 1.321e+07 | 1.268e+07 | 5.284e+05 | 9.600e-01 | 3.286e-02 | 1.609e-01 |
 | Feed Water Pump      | 2.329e+05 | 2.236e+05 | 9.316e+03 | 9.600e-01 | 5.794e-04 | 2.836e-03 |
 | Steam Generator      | 1.608e+07 | 1.608e+07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-| Cooling Water Sink   | 3.545e+05 | 3.545e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Cooling Water Source | 9.275e+03 | 9.275e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cooling Water Sink   | 3.545e+05 | 3.545e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
@@ -844,7 +845,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7efd80452d70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f10f8736da0&gt;
 </pre></div>
 </div>
 <img alt="../_images/5576eef1e1be07157567de0d7c0a62cfa4ceffba0a3db1018961eefb09aaf9d5.png" src="../_images/5576eef1e1be07157567de0d7c0a62cfa4ceffba0a3db1018961eefb09aaf9d5.png" />
@@ -1014,7 +1015,7 @@ document.write(`
 | Feed Water Pump             |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.336e-03 |   1.638e-02 |
 | Steam Generator             |   1.534e+07 |   1.533e+07 |   1.658e+04 |   9.989e-01 |   1.081e-03 |   5.307e-03 |
 | Expansion Valve             |   9.499e+02 | nan         |   9.499e+02 | nan         |   6.191e-05 |   3.041e-04 |
-| Merge                       |   8.149e-10 |   0.000e+00 |   8.149e-10 |   0.000e+00 |   5.311e-17 |   2.609e-16 |
+| Merge                       |  -3.783e-10 |   0.000e+00 |  -3.783e-10 |  -0.000e+00 |  -2.466e-17 |  -1.211e-16 |
 | Splitter                    | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cycle Closer                | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cooling Water Source        | nan         | nan         | nan         | nan         | nan         | nan         |
