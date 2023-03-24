@@ -555,29 +555,29 @@ document.write(`
 <span class="n">valve</span> <span class="o">=</span> <span class="n">Valve</span><span class="p">(</span><span class="s1">&#39;Expansion Valve&#39;</span><span class="p">)</span>
 
 <span class="c1"># Connections</span>
-<span class="n">cc2evap</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;00&#39;</span><span class="p">)</span>
-<span class="n">hs_ff2evap</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">heatsource_ff</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
-<span class="n">evap2hs_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">heatsource_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
-<span class="n">hs_pump2hs_bf</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">heatsource_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">heatsource_bf</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+<span class="n">cond2cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;00&#39;</span><span class="p">)</span>
+<span class="n">cc2valve</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;01&#39;</span><span class="p">)</span>
+<span class="n">valve2eva</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;02&#39;</span><span class="p">)</span>
 
-<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">cc2evap</span><span class="p">,</span> <span class="n">hs_ff2evap</span><span class="p">,</span> <span class="n">evap2hs_pump</span><span class="p">,</span> <span class="n">hs_pump2hs_bf</span><span class="p">)</span>
+<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">cond2cc</span><span class="p">,</span> <span class="n">cc2valve</span><span class="p">,</span> <span class="n">valve2eva</span><span class="p">)</span>
 
-<span class="n">evap2comp</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">compressor</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;01&#39;</span><span class="p">)</span>
-<span class="n">comp2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">compressor</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;02&#39;</span><span class="p">)</span>
+<span class="n">hs_ff2evap</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">heatsource_ff</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
+<span class="n">evap2hs_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">heatsource_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">)</span>
+<span class="n">hs_pump2hs_bf</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">heatsource_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">heatsource_bf</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;23&#39;</span><span class="p">)</span>
+
+<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">hs_ff2evap</span><span class="p">,</span> <span class="n">evap2hs_pump</span><span class="p">,</span> <span class="n">hs_pump2hs_bf</span><span class="p">)</span>
+
+<span class="n">evap2comp</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">evaporator</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">compressor</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;03&#39;</span><span class="p">)</span>
+<span class="n">comp2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">compressor</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;04&#39;</span><span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">evap2comp</span><span class="p">,</span> <span class="n">comp2cond</span><span class="p">)</span>
 
-<span class="n">cons_cc2cons_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_cc</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cons_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
-<span class="n">cons_pump2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
-<span class="n">cond2cons_hs</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cons_heatsink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">)</span>
-<span class="n">cons_hs2cons_cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_heatsink</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cons_cc</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;23&#39;</span><span class="p">)</span>
+<span class="n">cons_cc2cons_pump</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_cc</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cons_pump</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;30&#39;</span><span class="p">)</span>
+<span class="n">cons_pump2cond</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_pump</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;in2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;31&#39;</span><span class="p">)</span>
+<span class="n">cond2cons_hs</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out2&#39;</span><span class="p">,</span> <span class="n">cons_heatsink</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;32&#39;</span><span class="p">)</span>
+<span class="n">cons_hs2cons_cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cons_heatsink</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cons_cc</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;33&#39;</span><span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">cons_cc2cons_pump</span><span class="p">,</span> <span class="n">cons_pump2cond</span><span class="p">,</span> <span class="n">cond2cons_hs</span><span class="p">,</span> <span class="n">cons_hs2cons_cc</span><span class="p">)</span>
-
-<span class="n">cond2valve</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">condenser</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;03&#39;</span><span class="p">)</span>
-<span class="n">valve2cc</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">valve</span><span class="p">,</span> <span class="s1">&#39;out1&#39;</span><span class="p">,</span> <span class="n">cycle_closer</span><span class="p">,</span> <span class="s1">&#39;in1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;04&#39;</span><span class="p">)</span>
-
-<span class="n">nw</span><span class="o">.</span><span class="n">add_conns</span><span class="p">(</span><span class="n">cond2valve</span><span class="p">,</span> <span class="n">valve2cc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -615,8 +615,9 @@ document.write(`
 <span class="c1"># Starting values</span>
 <span class="n">p_evap</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span>
 <span class="n">evap2comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_evap</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span>
+
 <span class="n">p_cond</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">70</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">refrigerant</span><span class="p">)</span>
-<span class="n">cond2valve</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_cond</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span>
+<span class="n">cond2cc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_cond</span><span class="o">*</span><span class="mf">1e-5</span><span class="p">)</span>
 
 <span class="c1"># Busses</span>
 <span class="n">heat_in</span> <span class="o">=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;Heat Input&#39;</span><span class="p">)</span>
@@ -658,8 +659,9 @@ document.write(`
 
 <span class="c1"># Final solve </span>
 <span class="n">evap2comp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">cond2valve</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">cond2cc</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">condenser</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
@@ -705,9 +707,9 @@ document.write(`
 | Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.436e-04 |   1.337e-03 |
 | Heat Sink Recirculation Pump   |   3.053e+02 |   2.490e+02 |   5.634e+01 |   8.155e-01 |   3.967e-04 |   6.286e-04 |
 | Heat Source Recirculation Pump |   4.207e+01 |   3.320e+01 |   8.872e+00 |   7.891e-01 |   6.247e-05 |   9.898e-05 |
-| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
-| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Bus exergy analysis #####
@@ -717,8 +719,8 @@ document.write(`
 | Compressor                     | 1.631e+05 | 1.565e+05 | 6.522e+03 | 9.600e-01 | 4.593e-02 | 7.277e-02 |
 | Heat Sink Recirculation Pump   | 3.181e+02 | 3.053e+02 | 1.272e+01 | 9.600e-01 | 8.958e-05 | 1.419e-04 |
 | Heat Source Recirculation Pump | 4.311e+01 | 4.138e+01 | 1.724e+00 | 9.600e-01 | 1.214e-05 | 1.924e-05 |
-| Heat Source Back Flow          | 4.813e+04 | 4.813e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Source Feed Flow          | 2.673e+04 | 2.673e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Back Flow          | 4.813e+04 | 4.813e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Consumer                  | 5.239e+04 | 5.239e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
@@ -787,7 +789,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/77a4a0151cafe4a3b1027dbdc171b199467860f6f9a9cdfc905b194cdd541140.png" src="../_images/77a4a0151cafe4a3b1027dbdc171b199467860f6f9a9cdfc905b194cdd541140.png" />
+<img alt="../_images/b2fe2e88cb16f6312d74b8432ffb1ccf137b73e5b414822329d7b1e3b579009b.png" src="../_images/b2fe2e88cb16f6312d74b8432ffb1ccf137b73e5b414822329d7b1e3b579009b.png" />
 </div>
 </details>
 </div>
@@ -1048,124 +1050,17 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 9.11e+06 | 2.74e+01 | 7.52e+06 | 4.21e+06 | 2.83e-15
-2	| 1.69e+07 | 2.30e+02 | 1.69e+06 | 1.04e+06 | 7.46e-16
-3	| 3.42e+06 | 2.78e+02 | 2.84e+05 | 2.23e+05 | 5.19e-16
-4	| 8.82e+05 | 1.24e+01 | 3.33e-10 | 1.42e+06 | 0.00e+00
-5	| 1.81e+05 | 2.11e+00 | 3.35e-10 | 4.39e+05 | 9.81e-17
-6	| 4.15e+04 | 1.23e+00 | 1.46e-11 | 7.74e+04 | 1.05e-16
-7	| 1.25e+03 | 4.97e-02 | 3.35e-10 | 1.22e+03 | 1.64e-16
-8	| 1.23e+00 | 2.80e-05 | 1.46e-11 | 3.20e+00 | 1.09e-16
-9	| 1.19e-06 | 3.15e-10 | 3.35e-10 | 2.02e-06 | 5.47e-17
+1	| 8.93e+06 | 4.12e+01 | 7.52e+06 | 4.58e+06 | 9.87e-16
+2	| 2.20e+07 | 3.13e+02 | 1.69e+06 | 1.19e+06 | 1.79e-16
+3	| 4.12e+06 | 3.95e+02 | 2.84e+05 | 1.16e+05 | 2.56e-16
+4	| 6.36e+05 | 3.49e+01 | 4.06e-10 | 5.84e+05 | 0.00e+00
+5	| 2.26e+05 | 2.13e-01 | 3.35e-10 | 5.98e+05 | 1.61e-16
+6	| 2.49e+04 | 7.58e-01 | 2.33e-10 | 3.06e+04 | 1.08e-16
+7	| 3.07e+02 | 1.91e-02 | 3.35e-10 | 9.50e+01 | 1.64e-16
+8	| 2.34e-02 | 6.63e-09 | 2.33e-10 | 6.29e-02 | 1.64e-16
+9	| 1.24e-07 | 2.86e-10 | 3.35e-10 | 1.89e-07 | 1.09e-16
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 78.48
-##### RESULTS (Pump) #####
-+--------------------------------+----------+----------+----------+
-|                                |        P |    eta_s |       pr |
-|--------------------------------+----------+----------+----------|
-| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
-| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
-+--------------------------------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| Evaporator | -3.49e+05 | 8.35e+04 | 4.18e+00 | 7.55e+00 | 2.00e+00 | 9.80e-01 | 9.80e-01 | 9.05e+03 | 7.47e+05 |
-| Economizer | -5.35e+04 | 3.34e+03 | 1.60e+01 | 3.77e+01 | 4.86e+00 | 9.80e-01 | 9.80e-01 | 4.42e+08 | 1.69e+08 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| Condenser | -5.00e+05 | 6.16e+04 | 8.11e+00 | 2.00e+00 | 2.11e+01 | 9.80e-01 | 9.80e-01 | 1.89e+07 | 6.93e+05 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Compressor) #####
-+--------------------------+----------+----------+----------+--------+
-|                          |        P |    eta_s |       pr |   igva |
-|--------------------------+----------+----------+----------+--------|
-| High Pressure Compressor | 8.98e+04 | 7.50e-01 | 2.69e+00 |    nan |
-| Low Pressure Compressor  | 6.09e+04 | 7.50e-01 | 2.74e+00 |    nan |
-+--------------------------+----------+----------+----------+--------+
-##### RESULTS (CycleCloser) #####
-+--------------------------+------------------+-------------------+
-|                          |   mass_deviation |   fluid_deviation |
-|--------------------------+------------------+-------------------|
-| Consumer Cycle Closer    |         0.00e+00 |          0.00e+00 |
-| Refrigerant Cycle Closer |         5.55e-17 |          0.00e+00 |
-+--------------------------+------------------+-------------------+
-##### RESULTS (HeatExchangerSimple) #####
-+---------------+-----------+----------+----------+-----+-----+------+------+--------+
-|               |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
-|---------------+-----------+----------+----------+-----+-----+------+------+--------|
-| Heat Consumer | -5.00e+05 | 9.80e-01 | 6.80e+05 | nan | nan |  nan |  nan |    nan |
-+---------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (Valve) #####
-+--------------------+----------+----------+
-|                    |       pr |     zeta |
-|--------------------+----------+----------|
-| Main Valve         | 1.44e-01 | 1.73e+09 |
-| Intermediate Valve | 3.87e-01 | 7.94e+10 |
-+--------------------+----------+----------+
-##### RESULTS (Connection) #####
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+------+-----------+-----------+-----------+-----------+
-|      |         m |         p |         h |         T |
-|------+-----------+-----------+-----------+-----------|
-| 10   | 1.662e+01 | 1.013e+00 | 4.212e+01 | 1.000e+01 |
-| 11   | 1.662e+01 | 9.927e-01 | 2.112e+01 | 5.000e+00 |
-| 12   | 1.662e+01 | 1.013e+00 | 2.112e+01 | 5.000e+00 |
-| 01   | 3.236e-01 | 4.700e+00 | 1.610e+03 | 2.448e+00 |
-| 02   | 3.236e-01 | 1.289e+01 | 1.798e+03 | 9.149e+01 |
-| 03   | 3.807e-01 | 1.289e+01 | 1.774e+03 | 8.198e+01 |
-| 04   | 3.807e-01 | 3.467e+01 | 2.009e+03 | 1.910e+02 |
-| 20   | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
-| 21   | 5.975e+00 | 1.020e+01 | 2.102e+02 | 5.000e+01 |
-| 22   | 5.975e+00 | 1.000e+01 | 2.939e+02 | 7.000e+01 |
-| 23   | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
-| 05   | 3.807e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
-| 05cc | 3.807e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
-| 00   | 3.236e-01 | 4.796e+00 | 5.314e+02 | 3.000e+00 |
-| 06   | 3.236e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
-| 07   | 3.236e-01 | 3.330e+01 | 5.314e+02 | 3.897e+01 |
-| 30   | 5.710e-02 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
-| 31   | 5.710e-02 | 1.316e+01 | 6.967e+02 | 3.411e+01 |
-| 32   | 5.710e-02 | 1.289e+01 | 1.633e+03 | 3.341e+01 |
-+------+-----------+-----------+-----------+-----------+
-##### RESULTS (Bus: Heat Input) #####
-+-----------------------+-------------------+-------------+--------------+
-|                       |   component value |   bus value |   efficiency |
-|-----------------------+-------------------+-------------+--------------|
-| Heat Source Feed Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
-| Heat Source Back Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
-| total                 |         0.000e+00 |   0.000e+00 |  nan         |
-+-----------------------+-------------------+-------------+--------------+
-##### RESULTS (Bus: Heat Output) #####
-+---------------+-------------------+-------------+--------------+
-|               |   component value |   bus value |   efficiency |
-|---------------+-------------------+-------------+--------------|
-| Heat Consumer |        -5.000e+05 |  -5.000e+05 |    1.000e+00 |
-| total         |        -5.000e+05 |  -5.000e+05 |  nan         |
-+---------------+-------------------+-------------+--------------+
-##### RESULTS (Bus: Power Input) #####
-+--------------------------------+-------------------+-------------+--------------+
-|                                |   component value |   bus value |   efficiency |
-|--------------------------------+-------------------+-------------+--------------|
-| Low Pressure Compressor        |         6.090e+04 |   6.343e+04 |    9.600e-01 |
-| High Pressure Compressor       |         8.977e+04 |   9.351e+04 |    9.600e-01 |
-| Heat Source Recirculation Pump |         4.209e+01 |   4.384e+01 |    9.600e-01 |
-| Heat Sink Recirculation Pump   |         3.053e+02 |   3.181e+02 |    9.600e-01 |
-| total                          |         1.510e+05 |   1.573e+05 |  nan         |
-+--------------------------------+-------------------+-------------+--------------+
-iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 5.17e-10 | 2.33e-10 | 1.78e-06 | 6.13e-07 | 0.00e+00
-2	| 2.11e-09 | 2.32e-10 | 1.25e-06 | 5.77e-07 | 2.19e-16
-3	| 1.23e-09 | 2.13e-10 | 1.25e-06 | 5.78e-07 | 1.64e-16
-4	| 2.16e-09 | 2.22e-10 | 2.96e-09 | 1.62e-07 | 1.09e-16
-5	| 2.16e-09 | 2.22e-10 | 2.42e-10 | 1.62e-07 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 67.53
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 93.05
 ##### RESULTS (Pump) #####
 +--------------------------------+----------+----------+----------+
 |                                |        P |    eta_s |       pr |
@@ -1237,9 +1132,114 @@ Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 67.53
 | 31   | 5.710e-02 | 1.316e+01 | 6.967e+02 | 3.411e+01 |
 | 32   | 5.710e-02 | 1.289e+01 | 1.633e+03 | 3.341e+01 |
 +------+-----------+-----------+-----------+-----------+
+##### RESULTS (Bus: Heat Input) #####
++-----------------------+-------------------+-------------+--------------+
+|                       |   component value |   bus value |   efficiency |
+|-----------------------+-------------------+-------------+--------------|
+| Heat Source Feed Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| Heat Source Back Flow |         0.000e+00 |   0.000e+00 |    1.000e+00 |
+| total                 |         0.000e+00 |   0.000e+00 |  nan         |
++-----------------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Heat Output) #####
++---------------+-------------------+-------------+--------------+
+|               |   component value |   bus value |   efficiency |
+|---------------+-------------------+-------------+--------------|
+| Heat Consumer |        -5.000e+05 |  -5.000e+05 |    1.000e+00 |
+| total         |        -5.000e+05 |  -5.000e+05 |  nan         |
++---------------+-------------------+-------------+--------------+
+##### RESULTS (Bus: Power Input) #####
++--------------------------------+-------------------+-------------+--------------+
+|                                |   component value |   bus value |   efficiency |
+|--------------------------------+-------------------+-------------+--------------|
+| Low Pressure Compressor        |         6.090e+04 |   6.343e+04 |    9.600e-01 |
+| High Pressure Compressor       |         8.977e+04 |   9.351e+04 |    9.600e-01 |
+| Heat Source Recirculation Pump |         4.209e+01 |   4.384e+01 |    9.600e-01 |
+| Heat Sink Recirculation Pump   |         3.053e+02 |   3.181e+02 |    9.600e-01 |
+| total                          |         1.510e+05 |   1.573e+05 |  nan         |
++--------------------------------+-------------------+-------------+--------------+
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Bus: Heat Input) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
+--------+----------+----------+----------+----------+---------
+1	| 5.86e-10 | 2.33e-10 | 1.78e-06 | 6.12e-07 | 0.00e+00
+2	| 1.97e-09 | 2.32e-10 | 1.25e-06 | 5.77e-07 | 1.64e-16
+3	| 1.11e-09 | 2.13e-10 | 1.25e-06 | 5.78e-07 | 1.09e-16
+4	| 1.91e-09 | 2.23e-10 | 2.96e-09 | 1.62e-07 | 2.19e-16
+5	| 2.01e-09 | 2.22e-10 | 3.36e-10 | 1.62e-07 | 5.47e-17
+--------+----------+----------+----------+----------+---------
+Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 83.51
+##### RESULTS (Pump) #####
++--------------------------------+----------+----------+----------+
+|                                |        P |    eta_s |       pr |
+|--------------------------------+----------+----------+----------|
+| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
+| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
++--------------------------------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| Evaporator | -3.49e+05 | 8.35e+04 | 4.18e+00 | 7.55e+00 | 2.00e+00 | 9.80e-01 | 9.80e-01 | 9.05e+03 | 7.47e+05 |
+| Economizer | -5.35e+04 | 3.34e+03 | 1.60e+01 | 3.77e+01 | 4.86e+00 | 9.80e-01 | 9.80e-01 | 4.42e+08 | 1.69e+08 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| Condenser | -5.00e+05 | 6.16e+04 | 8.11e+00 | 2.00e+00 | 2.11e+01 | 9.80e-01 | 9.80e-01 | 1.89e+07 | 6.93e+05 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
++--------------------------+----------+----------+----------+--------+
+|                          |        P |    eta_s |       pr |   igva |
+|--------------------------+----------+----------+----------+--------|
+| High Pressure Compressor | 8.98e+04 | 7.50e-01 | 2.69e+00 |    nan |
+| Low Pressure Compressor  | 6.09e+04 | 7.50e-01 | 2.74e+00 |    nan |
++--------------------------+----------+----------+----------+--------+
+##### RESULTS (CycleCloser) #####
++--------------------------+------------------+-------------------+
+|                          |   mass_deviation |   fluid_deviation |
+|--------------------------+------------------+-------------------|
+| Consumer Cycle Closer    |         0.00e+00 |          0.00e+00 |
+| Refrigerant Cycle Closer |         0.00e+00 |          0.00e+00 |
++--------------------------+------------------+-------------------+
+##### RESULTS (HeatExchangerSimple) #####
++---------------+-----------+----------+----------+-----+-----+------+------+--------+
+|               |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
+|---------------+-----------+----------+----------+-----+-----+------+------+--------|
+| Heat Consumer | -5.00e+05 | 9.80e-01 | 6.80e+05 | nan | nan |  nan |  nan |    nan |
++---------------+-----------+----------+----------+-----+-----+------+------+--------+
+##### RESULTS (Valve) #####
++--------------------+----------+----------+
+|                    |       pr |     zeta |
+|--------------------+----------+----------|
+| Main Valve         | 1.44e-01 | 1.73e+09 |
+| Intermediate Valve | 3.87e-01 | 7.94e+10 |
++--------------------+----------+----------+
+##### RESULTS (Connection) #####
++------+-----------+-----------+-----------+-----------+
+|      |         m |         p |         h |         T |
+|------+-----------+-----------+-----------+-----------|
+| 10   | 1.662e+01 | 1.013e+00 | 4.212e+01 | 1.000e+01 |
+| 11   | 1.662e+01 | 9.927e-01 | 2.112e+01 | 5.000e+00 |
+| 12   | 1.662e+01 | 1.013e+00 | 2.112e+01 | 5.000e+00 |
+| 01   | 3.236e-01 | 4.700e+00 | 1.610e+03 | 2.448e+00 |
+| 02   | 3.236e-01 | 1.289e+01 | 1.798e+03 | 9.149e+01 |
+| 03   | 3.807e-01 | 1.289e+01 | 1.774e+03 | 8.198e+01 |
+| 04   | 3.807e-01 | 3.467e+01 | 2.009e+03 | 1.910e+02 |
+| 20   | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
+| 21   | 5.975e+00 | 1.020e+01 | 2.102e+02 | 5.000e+01 |
+| 22   | 5.975e+00 | 1.000e+01 | 2.939e+02 | 7.000e+01 |
+| 23   | 5.975e+00 | 9.800e+00 | 2.102e+02 | 5.000e+01 |
+| 05   | 3.807e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
+| 05cc | 3.807e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
+| 00   | 3.236e-01 | 4.796e+00 | 5.314e+02 | 3.000e+00 |
+| 06   | 3.236e-01 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
+| 07   | 3.236e-01 | 3.330e+01 | 5.314e+02 | 3.897e+01 |
+| 30   | 5.710e-02 | 3.398e+01 | 6.967e+02 | 7.111e+01 |
+| 31   | 5.710e-02 | 1.316e+01 | 6.967e+02 | 3.411e+01 |
+| 32   | 5.710e-02 | 1.289e+01 | 1.633e+03 | 3.341e+01 |
++------+-----------+-----------+-----------+-----------+
+##### RESULTS (Bus: Heat Input) #####
 +-----------------------+-------------------+-------------+--------------+
 |                       |   component value |   bus value |   efficiency |
 |-----------------------+-------------------+-------------+--------------|
@@ -1311,9 +1311,7 @@ COP = 3.178
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Component exergy analysis #####
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 |                                |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
 |--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
 | Condenser                      |   8.451e+04 |   5.238e+04 |   3.213e+04 |   6.198e-01 |   2.371e-01 |   3.864e-01 |
@@ -1327,8 +1325,8 @@ COP = 3.178
 | Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.839e-04 |   1.441e-03 |
 | Heat Sink Recirculation Pump   |   3.053e+02 |   2.490e+02 |   5.634e+01 |   8.155e-01 |   4.157e-04 |   6.776e-04 |
 | Heat Source Recirculation Pump |   4.279e+01 |   3.377e+01 |   9.023e+00 |   7.891e-01 |   6.657e-05 |   1.085e-04 |
-| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Condensate Splitter            | nan         | nan         | nan         | nan         | nan         | nan         |
 | Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
@@ -1341,8 +1339,8 @@ COP = 3.178
 | Low Pressure Compressor        | 6.343e+04 | 6.090e+04 | 2.537e+03 | 9.600e-01 | 1.872e-02 | 3.052e-02 |
 | Heat Sink Recirculation Pump   | 3.181e+02 | 3.053e+02 | 1.272e+01 | 9.600e-01 | 9.387e-05 | 1.530e-04 |
 | Heat Source Recirculation Pump | 4.384e+01 | 4.209e+01 | 1.754e+00 | 9.600e-01 | 1.294e-05 | 2.109e-05 |
-| Heat Source Back Flow          | 4.896e+04 | 4.896e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Source Feed Flow          | 2.719e+04 | 2.719e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Back Flow          | 4.896e+04 | 4.896e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Heat Consumer                  | 5.239e+04 | 5.239e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
