@@ -688,19 +688,19 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.tools</span> <span class="kn">import</span> <span class="n">ExergyAnalysis</span>
 
 <span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
-<span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">ean</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">comps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fuel Exergy&#39;</span><span class="p">]</span>
 <span class="n">E_F</span> <span class="o">=</span> <span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="o">.</span><span class="n">E_F</span>
 <span class="n">E_D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">E_P</span> <span class="o">=</span> <span class="p">[</span><span class="n">E_F</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">ean</span><span class="o">.</span><span class="n">component_data</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">ean</span><span class="o">.</span><span class="n">aggregation_data</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
     <span class="c1"># only plot components with exergy destruction &gt; 1 W</span>
-    <span class="k">if</span> <span class="n">ean</span><span class="o">.</span><span class="n">component_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">ean</span><span class="o">.</span><span class="n">aggregation_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">:</span>
         <span class="n">comps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
-        <span class="n">E_D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">component_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">])</span>
-        <span class="n">E_F</span> <span class="o">=</span> <span class="n">E_F</span> <span class="o">-</span> <span class="n">ean</span><span class="o">.</span><span class="n">component_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span>
+        <span class="n">E_D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ean</span><span class="o">.</span><span class="n">aggregation_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">])</span>
+        <span class="n">E_F</span> <span class="o">=</span> <span class="n">E_F</span> <span class="o">-</span> <span class="n">ean</span><span class="o">.</span><span class="n">aggregation_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span>
         <span class="n">E_P</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E_F</span><span class="p">)</span>
 <span class="n">comps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Product Exergy&#39;</span><span class="p">)</span>
 <span class="n">E_D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -716,34 +716,34 @@ document.write(`
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 |                                |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
 |--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
-| Condenser                      |   1.066e+05 |   7.489e+04 |   3.171e+04 |   7.026e-01 |   1.977e-01 |   3.711e-01 |
-| Compressor                     |   1.566e+05 |   1.321e+05 |   2.455e+04 |   8.433e-01 |   1.531e-01 |   2.873e-01 |
-| Expansion Valve                |   2.463e+04 |   8.793e+03 |   1.584e+04 |   3.570e-01 |   9.878e-02 |   1.854e-01 |
-| Evaporator                     |   9.704e+03 |   3.067e+03 |   6.637e+03 |   3.160e-01 |   4.139e-02 |   7.767e-02 |
-| Heat Consumer                  |   7.502e+04 |   7.490e+04 |   1.195e+02 |   9.984e-01 |   7.451e-04 |   1.398e-03 |
-| Heat Sink Recirculation Pump   |   3.053e+02 |   2.518e+02 |   5.351e+01 |   8.248e-01 |   3.337e-04 |   6.262e-04 |
-| Heat Source Recirculation Pump |   4.154e+01 |   3.311e+01 |   8.425e+00 |   7.972e-01 |   5.254e-05 |   9.860e-05 |
-| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Condenser                      |   8.577e+04 |   5.238e+04 |   3.339e+04 |   6.107e-01 |   2.351e-01 |   3.725e-01 |
+| Compressor                     |   1.574e+05 |   1.316e+05 |   2.585e+04 |   8.358e-01 |   1.820e-01 |   2.884e-01 |
+| Expansion Valve                |   4.488e+04 |   2.820e+04 |   1.668e+04 |   6.284e-01 |   1.174e-01 |   1.861e-01 |
+| Evaporator                     |   2.840e+04 |   2.141e+04 |   6.989e+03 |   7.539e-01 |   4.921e-02 |   7.798e-02 |
+| Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.436e-04 |   1.337e-03 |
+| Heat Sink Recirculation Pump   |   3.053e+02 |   2.490e+02 |   5.634e+01 |   8.155e-01 |   3.967e-04 |   6.286e-04 |
+| Heat Source Recirculation Pump |   4.207e+01 |   3.320e+01 |   8.872e+00 |   7.891e-01 |   6.247e-05 |   9.898e-05 |
 | Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Bus exergy analysis #####
-+--------------------------------+------------+------------+-----------+-----------+-----------+-----------+
-|                                |        E_F |        E_P |       E_D |   epsilon |      y_Dk |     y*_Dk |
-|--------------------------------+------------+------------+-----------+-----------+-----------+-----------|
-| Compressor                     |  1.631e+05 |  1.565e+05 | 6.522e+03 | 9.600e-01 | 4.067e-02 | 7.633e-02 |
-| Heat Sink Recirculation Pump   |  3.181e+02 |  3.053e+02 | 1.272e+01 | 9.600e-01 | 7.934e-05 | 1.489e-04 |
-| Heat Source Recirculation Pump |  4.311e+01 |  4.138e+01 | 1.724e+00 | 9.600e-01 | 1.075e-05 | 2.018e-05 |
-| Heat Source Back Flow          |  3.067e+03 |  3.067e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-| Heat Source Feed Flow          | -5.356e-07 | -5.356e-07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-| Heat Consumer                  |  7.490e+04 |  7.490e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-+--------------------------------+------------+------------+-----------+-----------+-----------+-----------+
++--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
+|                                |       E_F |       E_P |       E_D |   epsilon |      y_Dk |     y*_Dk |
+|--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------|
+| Compressor                     | 1.631e+05 | 1.565e+05 | 6.522e+03 | 9.600e-01 | 4.593e-02 | 7.277e-02 |
+| Heat Sink Recirculation Pump   | 3.181e+02 | 3.053e+02 | 1.272e+01 | 9.600e-01 | 8.958e-05 | 1.419e-04 |
+| Heat Source Recirculation Pump | 4.311e+01 | 4.138e+01 | 1.724e+00 | 9.600e-01 | 1.214e-05 | 1.924e-05 |
+| Heat Source Feed Flow          | 2.673e+04 | 2.673e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Back Flow          | 4.813e+04 | 4.813e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Consumer                  | 5.239e+04 | 5.239e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
++--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
 |       E_F |       E_P |       E_D |       E_L |   epsilon |
 |-----------+-----------+-----------+-----------+-----------|
-| 1.604e+05 | 7.490e+04 | 8.545e+04 | 0.000e+00 | 4.671e-01 |
+| 1.420e+05 | 5.239e+04 | 8.963e+04 | 0.000e+00 | 3.689e-01 |
 +-----------+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
@@ -787,7 +787,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9dc91789479d8f28fb8f933c27844b6e553297558f5d6ebab0ef06a211fbcdc2.png" src="../_images/9dc91789479d8f28fb8f933c27844b6e553297558f5d6ebab0ef06a211fbcdc2.png" />
+<img alt="../_images/466d5f084ffc29f8ada088cf576ecb315f5caa6d60ab777c204f9d0fed003e96.png" src="../_images/466d5f084ffc29f8ada088cf576ecb315f5caa6d60ab777c204f9d0fed003e96.png" />
 </div>
 </details>
 </div>
@@ -799,24 +799,27 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ean_results</span><span class="p">(</span><span class="n">ean</span><span class="p">):</span>
-    <span class="n">comps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fuel Exergy&#39;</span><span class="p">,</span> <span class="s1">&#39;Expansion Valve&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporator&#39;</span><span class="p">,</span> <span class="s1">&#39;Compressor&#39;</span><span class="p">,</span> <span class="s1">&#39;Condenser&#39;</span><span class="p">,</span> <span class="s1">&#39;Product Exergy&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ean_results</span><span class="p">(</span><span class="n">ean</span><span class="p">,</span> <span class="n">comps</span><span class="p">):</span>
     <span class="n">E_F</span> <span class="o">=</span> <span class="n">ean</span><span class="o">.</span><span class="n">network_data</span><span class="o">.</span><span class="n">E_F</span> <span class="o">*</span> <span class="mf">1e-3</span>
     <span class="n">E_D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">E_P</span> <span class="o">=</span> <span class="p">[</span><span class="n">E_F</span><span class="p">]</span>
 
     <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">comps</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="n">E_D</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ean</span><span class="o">.</span><span class="n">component_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+        <span class="n">E_D</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ean</span><span class="o">.</span><span class="n">aggregation_data</span><span class="o">.</span><span class="n">E_D</span><span class="p">[</span><span class="n">comp</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
         <span class="n">E_F</span> <span class="o">-=</span> <span class="n">E_D</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">E_P</span> <span class="o">+=</span> <span class="p">[</span><span class="n">E_F</span><span class="p">]</span>
 
     <span class="n">E_D</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">E_P</span> <span class="o">+=</span> <span class="p">[</span><span class="n">E_F</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">E_P</span><span class="p">,</span> <span class="n">E_D</span><span class="p">,</span> <span class="n">comps</span>
+    <span class="k">return</span> <span class="n">E_P</span><span class="p">,</span> <span class="n">E_D</span>
 
 <span class="n">eta_s_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">ttd_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">comps</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Fuel Exergy&#39;</span><span class="p">,</span> <span class="s1">&#39;Expansion Valve&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporator&#39;</span><span class="p">,</span> <span class="s1">&#39;Compressor&#39;</span><span class="p">,</span> <span class="s1">&#39;Condenser&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Product Exergy&#39;</span>
+    <span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
     <span class="nb">len</span><span class="p">(</span><span class="n">ttd_range</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">eta_s_range</span><span class="p">),</span>
@@ -832,9 +835,9 @@ document.write(`
 
         <span class="n">nw</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
         <span class="n">ean</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
-        <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">ean</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
-        <span class="n">E_P</span><span class="p">,</span> <span class="n">E_D</span><span class="p">,</span> <span class="n">comps</span> <span class="o">=</span> <span class="n">get_ean_results</span><span class="p">(</span><span class="n">ean</span><span class="p">)</span>
+        <span class="n">E_P</span><span class="p">,</span> <span class="n">E_D</span> <span class="o">=</span> <span class="n">get_ean_results</span><span class="p">(</span><span class="n">ean</span><span class="p">,</span> <span class="n">comps</span><span class="p">)</span>
 
         <span class="n">colors_E_P</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#74ADC0&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)</span>
         <span class="n">colors_E_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#00395B&#39;</span>
@@ -867,7 +870,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5d3fd599850b2bc362f0d61d5a9d37d0525f7a76494779db44f79e39f8c8f14.png" src="../_images/b5d3fd599850b2bc362f0d61d5a9d37d0525f7a76494779db44f79e39f8c8f14.png" />
+<img alt="../_images/69df76a4a20117219653ed14ba3c40ee8c6f80da7a6eb4ba6f910d6ce782d3e9.png" src="../_images/69df76a4a20117219653ed14ba3c40ee8c6f80da7a6eb4ba6f910d6ce782d3e9.png" />
 </div>
 </details>
 </div>
@@ -1045,24 +1048,17 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 9.03e+06 | 7.24e+01 | 7.52e+06 | 3.97e+06 | 1.70e-15
-2	| 2.18e+07 | 2.68e+02 | 1.69e+06 | 1.06e+06 | 1.74e-16
-3	| 4.39e+06 | 3.78e+02 | 2.84e+05 | 1.41e+05 | 5.53e-16
-4	| 7.70e+05 | 2.04e+01 | 3.33e-10 | 1.05e+06 | 0.00e+00
-5	| 2.19e+05 | 1.13e-01 | 2.40e-10 | 5.69e+05 | 1.07e-16
-6	| 2.48e+04 | 7.58e-01 | 2.33e-10 | 3.16e+04 | 1.07e-16
-7	| 3.17e+02 | 1.90e-02 | 2.40e-10 | 4.83e+01 | 5.47e-17
-8	| 1.23e-02 | 7.17e-08 | 2.33e-10 | 2.95e-02 | 5.47e-17
-9	| 1.24e-07 | 2.87e-10 | 2.40e-10 | 1.89e-07 | 0.00e+00
+1	| 8.68e+06 | 1.61e+02 | 7.52e+06 | 4.93e+06 | 6.34e-16
+2	| 2.05e+07 | 4.26e+02 | 1.69e+06 | 1.03e+06 | 3.64e-16
+3	| 3.92e+06 | 3.11e+02 | 2.84e+05 | 2.04e+05 | 2.68e-15
+4	| 9.09e+05 | 1.38e+01 | 4.06e-10 | 1.39e+06 | 0.00e+00
+5	| 1.98e+05 | 3.08e+00 | 2.40e-10 | 4.84e+05 | 9.72e-17
+6	| 2.89e+04 | 5.38e-01 | 3.30e-10 | 7.06e+04 | 2.15e-16
+7	| 5.01e+02 | 1.24e-02 | 2.40e-10 | 8.39e+02 | 1.09e-16
+8	| 1.37e-01 | 6.28e-07 | 3.30e-10 | 3.84e-01 | 1.64e-16
+9	| 1.24e-07 | 2.87e-10 | 2.40e-10 | 1.89e-07 | 1.64e-16
 --------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 102.35
-##### RESULTS (Pump) #####
-+--------------------------------+----------+----------+----------+
-|                                |        P |    eta_s |       pr |
-|--------------------------------+----------+----------+----------|
-| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
-| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
-+--------------------------------+----------+----------+----------+
+Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 97.08
 ##### RESULTS (HeatExchanger) #####
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
@@ -1070,6 +1066,13 @@ Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 102.35
 | Evaporator | -3.49e+05 | 8.35e+04 | 4.18e+00 | 7.55e+00 | 2.00e+00 | 9.80e-01 | 9.80e-01 | 9.05e+03 | 7.47e+05 |
 | Economizer | -5.35e+04 | 3.34e+03 | 1.60e+01 | 3.77e+01 | 4.86e+00 | 9.80e-01 | 9.80e-01 | 4.42e+08 | 1.69e+08 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Pump) #####
++--------------------------------+----------+----------+----------+
+|                                |        P |    eta_s |       pr |
+|--------------------------------+----------+----------+----------|
+| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
+| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
++--------------------------------+----------+----------+----------+
 ##### RESULTS (Compressor) #####
 +--------------------------+----------+----------+----------+--------+
 |                          |        P |    eta_s |       pr |   igva |
@@ -1156,20 +1159,13 @@ Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 102.35
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 6.13e-10 | 2.67e-10 | 1.78e-06 | 6.20e-07 | 2.19e-16
-2	| 2.20e-09 | 2.66e-10 | 1.25e-06 | 5.87e-07 | 5.47e-17
-3	| 1.22e-09 | 2.48e-10 | 1.25e-06 | 5.87e-07 | 5.47e-17
-4	| 1.84e-09 | 2.57e-10 | 2.96e-09 | 1.87e-07 | 1.64e-16
-5	| 1.40e-09 | 2.57e-10 | 2.42e-10 | 1.87e-07 | 1.64e-16
+1	| 5.86e-10 | 2.33e-10 | 1.78e-06 | 6.12e-07 | 0.00e+00
+2	| 1.99e-09 | 2.32e-10 | 1.25e-06 | 5.80e-07 | 5.47e-17
+3	| 1.30e-09 | 2.13e-10 | 1.25e-06 | 5.80e-07 | 1.09e-16
+4	| 1.89e-09 | 2.22e-10 | 2.96e-09 | 1.62e-07 | 1.09e-16
+5	| 1.41e-09 | 2.22e-10 | 3.36e-10 | 1.62e-07 | 5.47e-17
 --------+----------+----------+----------+----------+---------
-Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 90.65
-##### RESULTS (Pump) #####
-+--------------------------------+----------+----------+----------+
-|                                |        P |    eta_s |       pr |
-|--------------------------------+----------+----------+----------|
-| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
-| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
-+--------------------------------+----------+----------+----------+
+Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 86.56
 ##### RESULTS (HeatExchanger) #####
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
@@ -1177,6 +1173,13 @@ Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 90.65
 | Evaporator | -3.49e+05 | 8.35e+04 | 4.18e+00 | 7.55e+00 | 2.00e+00 | 9.80e-01 | 9.80e-01 | 9.05e+03 | 7.47e+05 |
 | Economizer | -5.35e+04 | 3.34e+03 | 1.60e+01 | 3.77e+01 | 4.86e+00 | 9.80e-01 | 9.80e-01 | 4.42e+08 | 1.69e+08 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Pump) #####
++--------------------------------+----------+----------+----------+
+|                                |        P |    eta_s |       pr |
+|--------------------------------+----------+----------+----------|
+| Heat Source Recirculation Pump | 4.21e+01 | 8.00e-01 | 1.02e+00 |
+| Heat Sink Recirculation Pump   | 3.05e+02 | 8.00e-01 | 1.04e+00 |
++--------------------------------+----------+----------+----------+
 ##### RESULTS (Compressor) #####
 +--------------------------+----------+----------+----------+--------+
 |                          |        P |    eta_s |       pr |   igva |
@@ -1262,6 +1265,91 @@ Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 90.65
 COP = 3.178
 </pre></div>
 </div>
+</div>
+</div>
+<p><strong>Second step:</strong> Create and execute <code class="docutils literal notranslate"><span class="pre">ExergyAnalysis</span></code> instance and prepare result data and plot the waterfall diagram of the heat pump process</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ean_econ</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw_econ</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
+<span class="n">ean_econ</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ean_econ</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">comps</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Fuel Exergy&#39;</span><span class="p">,</span> <span class="s1">&#39;Economizer&#39;</span><span class="p">,</span> <span class="s1">&#39;Main Valve&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporator&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Pressure Compressor&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Injection&#39;</span><span class="p">,</span> <span class="s1">&#39;High Pressure Compressor&#39;</span><span class="p">,</span> <span class="s1">&#39;Condenser&#39;</span><span class="p">,</span> <span class="s1">&#39;Intermediate Valve&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Product Exergy&#39;</span>
+    <span class="p">]</span>
+
+<span class="n">E_P</span><span class="p">,</span> <span class="n">E_D</span> <span class="o">=</span> <span class="n">get_ean_results</span><span class="p">(</span><span class="n">ean_econ</span><span class="p">,</span> <span class="n">comps</span><span class="p">)</span>
+
+<span class="n">colors_E_P</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#74ADC0&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)</span>
+<span class="n">colors_E_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#00395B&#39;</span>
+<span class="n">colors_E_P</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#B54036&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)),</span> <span class="n">E_P</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors_E_P</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)),</span> <span class="n">E_D</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="n">E_P</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;E_D&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#EC6707&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;$\epsilon_</span><span class="se">{{</span><span class="s1">tot</span><span class="se">}}</span><span class="s1"> = $</span><span class="si">{</span><span class="n">E_P</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">E_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span>
+    <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+    <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.3&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Exergy in kW&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">comps</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Component exergy analysis #####
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                                |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Condenser                      |   8.451e+04 |   5.238e+04 |   3.213e+04 |   6.198e-01 |   2.371e-01 |   3.864e-01 |
+| High Pressure Compressor       |   8.977e+04 |   7.501e+04 |   1.476e+04 |   8.356e-01 |   1.089e-01 |   1.775e-01 |
+| Low Pressure Compressor        |   6.166e+04 |   4.890e+04 |   1.277e+04 |   7.930e-01 |   9.419e-02 |   1.535e-01 |
+| Evaporator                     |   2.872e+04 |   2.177e+04 |   6.949e+03 |   7.581e-01 |   5.127e-02 |   8.357e-02 |
+| Main Valve                     |   3.372e+04 |   2.855e+04 |   5.164e+03 |   8.468e-01 |   3.810e-02 |   6.210e-02 |
+| Economizer                     |   4.942e+03 |   1.444e+03 |   3.498e+03 |   2.921e-01 |   2.581e-02 |   4.207e-02 |
+| Intermediate Valve             |   7.912e+02 | nan         |   7.912e+02 | nan         |   5.838e-03 |   9.516e-03 |
+| Injection                      |   1.371e+03 |   7.563e+02 |   6.150e+02 |   5.515e-01 |   4.538e-03 |   7.397e-03 |
+| Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.839e-04 |   1.441e-03 |
+| Heat Sink Recirculation Pump   |   3.053e+02 |   2.490e+02 |   5.634e+01 |   8.155e-01 |   4.157e-04 |   6.776e-04 |
+| Heat Source Recirculation Pump |   4.279e+01 |   3.377e+01 |   9.023e+00 |   7.891e-01 |   6.657e-05 |   1.085e-04 |
+| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Condensate Splitter            | nan         | nan         | nan         | nan         | nan         | nan         |
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Bus exergy analysis #####
++--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
+|                                |       E_F |       E_P |       E_D |   epsilon |      y_Dk |     y*_Dk |
+|--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------|
+| High Pressure Compressor       | 9.351e+04 | 8.977e+04 | 3.741e+03 | 9.600e-01 | 2.760e-02 | 4.499e-02 |
+| Low Pressure Compressor        | 6.343e+04 | 6.090e+04 | 2.537e+03 | 9.600e-01 | 1.872e-02 | 3.052e-02 |
+| Heat Sink Recirculation Pump   | 3.181e+02 | 3.053e+02 | 1.272e+01 | 9.600e-01 | 9.387e-05 | 1.530e-04 |
+| Heat Source Recirculation Pump | 4.384e+01 | 4.209e+01 | 1.754e+00 | 9.600e-01 | 1.294e-05 | 2.109e-05 |
+| Heat Source Feed Flow          | 2.719e+04 | 2.719e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Source Back Flow          | 4.896e+04 | 4.896e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Heat Consumer                  | 5.239e+04 | 5.239e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
++--------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 1.355e+05 | 5.239e+04 | 8.315e+04 | 0.000e+00 | 3.865e-01 |
++-----------+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+<img alt="../_images/afe24df0e9bc767ed5920eaed0c486982618b7ce3ac5ffc739f508c9be6040e6.png" src="../_images/afe24df0e9bc767ed5920eaed0c486982618b7ce3ac5ffc739f508c9be6040e6.png" />
 </div>
 </div>
 </section>
