@@ -613,8 +613,8 @@ document.write(`
 | Steam Turbine   |   1.456e+07 |   1.268e+07 |   1.878e+06 |   8.710e-01 |   1.168e-01 |   5.173e-01 |
 | Feed Water Pump |   2.329e+05 |   1.724e+05 |   6.049e+04 |   7.403e-01 |   3.762e-03 |   1.667e-02 |
 | Steam Generator |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   4.568e-03 |
-| Condenser       |   1.675e+06 | nan         | nan         | nan         | nan         | nan         |
 | Cycle Closer    | nan         | nan         | nan         | nan         | nan         | nan         |
+| Condenser       |   1.675e+06 | nan         | nan         | nan         | nan         | nan         |
 +-----------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-------+-----------+
@@ -629,8 +629,8 @@ document.write(`
 | Steam Turbine   | 1.628e+07 | 1.440e+07 | 1.878e+06 | 1.168e-01 | 5.173e-01 |
 | Feed Water Pump | 2.769e+05 | 2.164e+05 | 6.049e+04 | 3.762e-03 | 1.667e-02 |
 | Steam Generator | 1.630e+07 | 1.628e+07 | 1.658e+04 | 1.031e-03 | 4.568e-03 |
-| Condenser       | 1.719e+06 | 1.719e+06 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
 | Cycle Closer    | 1.628e+07 | 1.628e+07 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
+| Condenser       | 1.719e+06 | 1.719e+06 | 0.000e+00 | 0.000e+00 | 0.000e+00 |
 +-----------------+-----------+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
@@ -714,8 +714,8 @@ document.write(`
 | Feed Water Pump      |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.183e-03 |   1.558e-02 |
 | Steam Generator      |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   1.031e-03 |   5.048e-03 |
 | Cycle Closer         | nan         | nan         | nan         | nan         | nan         | nan         |
-| Cooling Water Source | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cooling Water Sink   | nan         | nan         | nan         | nan         | nan         | nan         |
+| Cooling Water Source | nan         | nan         | nan         | nan         | nan         | nan         |
 +----------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Bus exergy analysis #####
 +----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
@@ -724,8 +724,8 @@ document.write(`
 | Steam Turbine        | 1.321e+07 | 1.268e+07 | 5.284e+05 | 9.600e-01 | 3.286e-02 | 1.609e-01 |
 | Feed Water Pump      | 2.329e+05 | 2.236e+05 | 9.316e+03 | 9.600e-01 | 5.794e-04 | 2.836e-03 |
 | Steam Generator      | 1.608e+07 | 1.608e+07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-| Cooling Water Source | 9.275e+03 | 9.275e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Cooling Water Sink   | 3.545e+05 | 3.545e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cooling Water Source | 9.275e+03 | 9.275e+03 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +----------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
@@ -845,7 +845,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f8ea3f519f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1d5283db10&gt;
 </pre></div>
 </div>
 <img alt="../_images/5576eef1e1be07157567de0d7c0a62cfa4ceffba0a3db1018961eefb09aaf9d5.png" src="../_images/5576eef1e1be07157567de0d7c0a62cfa4ceffba0a3db1018961eefb09aaf9d5.png" />
@@ -1015,7 +1015,7 @@ document.write(`
 | Feed Water Pump             |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   3.336e-03 |   1.638e-02 |
 | Steam Generator             |   1.534e+07 |   1.533e+07 |   1.658e+04 |   9.989e-01 |   1.081e-03 |   5.307e-03 |
 | Expansion Valve             |   9.499e+02 | nan         |   9.499e+02 | nan         |   6.191e-05 |   3.041e-04 |
-| Merge                       |   2.085e+05 |   2.085e+05 |   5.297e-09 |   1.000e+00 |   3.452e-16 |   1.696e-15 |
+| Merge                       |  -2.095e-09 |   0.000e+00 |  -2.095e-09 |  -0.000e+00 |  -1.366e-16 |  -6.708e-16 |
 | Splitter                    | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cycle Closer                | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cooling Water Source        | nan         | nan         | nan         | nan         | nan         | nan         |
@@ -1159,9 +1159,9 @@ document.write(`
 | Feed Water Pump             |   2.236e+05 |   1.724e+05 |   5.118e+04 |   7.711e-01 |   2.435e-03 |   1.236e-02 |
 | Steam Generator             |   1.608e+07 |   1.606e+07 |   1.658e+04 |   9.990e-01 |   7.889e-04 |   4.002e-03 |
 | Steam Superheater           |   4.935e+06 |   4.935e+06 |   3.879e+02 |   9.999e-01 |   1.846e-05 |   9.366e-05 |
+| Cooling Water Source        | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cooling Water Sink          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Cycle Closer                | nan         | nan         | nan         | nan         | nan         | nan         |
-| Cooling Water Source        | nan         | nan         | nan         | nan         | nan         | nan         |
 +-----------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Bus exergy analysis #####
 +-----------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
@@ -1170,10 +1170,10 @@ document.write(`
 | Low Pressure Steam Turbine  | 8.896e+06 | 8.540e+06 | 3.558e+05 | 9.600e-01 | 1.693e-02 | 8.590e-02 |
 | High Pressure Steam Turbine | 8.467e+06 | 8.128e+06 | 3.387e+05 | 9.600e-01 | 1.612e-02 | 8.176e-02 |
 | Feed Water Pump             | 2.329e+05 | 2.236e+05 | 9.316e+03 | 9.600e-01 | 4.433e-04 | 2.249e-03 |
-| Cooling Water Sink          | 4.490e+05 | 4.490e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Steam Generator             | 1.608e+07 | 1.608e+07 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
-| Steam Superheater           | 4.935e+06 | 4.935e+06 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 | Cooling Water Source        | 1.175e+04 | 1.175e+04 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Steam Superheater           | 4.935e+06 | 4.935e+06 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
+| Cooling Water Sink          | 4.490e+05 | 4.490e+05 | 0.000e+00 | 1.000e+00 | 0.000e+00 | 0.000e+00 |
 +-----------------------------+-----------+-----------+-----------+-----------+-----------+-----------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
