@@ -403,8 +403,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gas-turbine">
-<span id="brayton-label"></span><h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
+  <ul class="simple" id="brayton-label">
+<li><p>Feature branch mergen</p></li>
+</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="gas-turbine">
+<h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
 <p>In this section we will be investigating gas turbine cycles using TESPy. In the first step the ideal Brayton cycle is
 modeled. The ideal Brayton cycle consists of three subprocesses, i.e. isentropic compression, isobaric heat transfer
 and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 15</span></a>). Next, we are comparing the cycle to the open cycle gas
@@ -615,7 +618,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
       <th>value</th>
       <td>1.583699e+08</td>
       <td>100000000.0</td>
-      <td>4.470348e-08</td>
+      <td>1.266599e-07</td>
       <td>5.836990e+07</td>
       <td>0.631433</td>
     </tr>
@@ -633,7 +636,7 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.43656831
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.43656838
 </pre></div>
 </div>
 </div>
@@ -866,7 +869,7 @@ cycle simulation.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.146613e-13</td>
+      <td>1.140117e-13</td>
       <td>0.068955</td>
       <td>0.000000e+00</td>
     </tr>
@@ -922,7 +925,7 @@ at only  %.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.9241723285509664e-05 above maximum value (0) at component combustion chamber.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.9241723285509695e-05 above maximum value (0) at component combustion chamber.
 </pre></div>
 </div>
 </div>

@@ -716,14 +716,23 @@ document.write(`
 
 <span class="n">Ex_dot_D_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">eta_Ex_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">Ex_dot_P_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">Ex_dot_F_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
 <span class="k">for</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">m_dot_1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ex_in_1_range</span><span class="p">,</span> <span class="n">m_dot_1_range</span><span class="p">):</span>
     <span class="n">Ex_dot_F</span><span class="p">,</span> <span class="n">Ex_dot_P</span> <span class="o">=</span> <span class="n">calc_ex_fuel_prod</span><span class="p">(</span>
         <span class="n">m_dot_1</span><span class="p">,</span> <span class="n">ex_in_1</span><span class="p">,</span> <span class="n">ex_out_1</span><span class="p">,</span> <span class="n">m_dot_2</span><span class="p">,</span> <span class="n">ex_in_2</span><span class="p">,</span> <span class="n">ex_out_2</span>
         <span class="p">)</span>
+    <span class="n">Ex_dot_F_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_F</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
+    <span class="n">Ex_dot_P_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_P</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
     <span class="n">Ex_dot_D_range</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">Ex_dot_F</span> <span class="o">-</span> <span class="n">Ex_dot_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">]</span>
     <span class="n">eta_Ex_range</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Ex_dot_P</span> <span class="o">/</span> <span class="n">Ex_dot_F</span><span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_ex_D_eta_ex</span><span class="p">(</span><span class="n">T_in_1_range</span><span class="p">,</span> <span class="n">Ex_dot_D_range</span><span class="p">,</span> <span class="n">eta_Ex_range</span><span class="p">)</span>
+<span class="c1"># axs[0].plot(T_in_1_range, Ex_dot_F_range, color=&#39;r&#39;)</span>
+<span class="c1"># axs[0].plot(T_in_1_range, Ex_dot_P_range, color=&#39;b&#39;)</span>
+<span class="c1"># axs[0].plot(T_in_1_range, [sum(exer) * 1e-3 for exer in ex_in_1_range], color=&#39;g&#39;)</span>
+<span class="c1"># axs[1].plot(T_in_1_range, m_dot_1_range, color=&#39;g&#39;)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span>
     <span class="s1">&#39;Feed flow temperature of district heating system in °C&#39;</span><span class="p">,</span>
@@ -754,7 +763,7 @@ document.write(`
 <span class="n">h_in_1</span> <span class="o">=</span> <span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_1</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_1</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
 <span class="n">ex_in_1</span> <span class="o">=</span> <span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_1</span><span class="p">,</span> <span class="n">h_in_1</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_1</span><span class="p">)</span>
 
-<span class="n">T_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">61</span><span class="p">)]</span>
+<span class="n">T_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">56</span><span class="p">)]</span>
 <span class="n">h_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">PSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">p_2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">T_in_2</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_in_2</span> <span class="ow">in</span> <span class="n">T_in_2_range</span><span class="p">]</span>
 <span class="n">ex_in_2_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_splitted_physical_exergy</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">h_in_2</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">fluid_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">h_in_2</span> <span class="ow">in</span> <span class="n">h_in_2_range</span><span class="p">]</span>
 <span class="n">m_dot_2_range</span> <span class="o">=</span> <span class="p">[</span>
@@ -781,7 +790,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Back flow temperature of home heating system in °C&#39;)
 </pre></div>
 </div>
-<img alt="../_images/421744a77a2907ca122f85ca339c35104cabfc29716b7cbdf776fb4f24783d0b.png" src="../_images/421744a77a2907ca122f85ca339c35104cabfc29716b7cbdf776fb4f24783d0b.png" />
+<img alt="../_images/44f58d17b623e831ca1486f77a6dc7537db05f1bd122f2c7d9cde66d877392ef.png" src="../_images/44f58d17b623e831ca1486f77a6dc7537db05f1bd122f2c7d9cde66d877392ef.png" />
 </div>
 </details>
 </div>
