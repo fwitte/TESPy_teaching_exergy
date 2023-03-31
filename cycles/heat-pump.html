@@ -697,8 +697,8 @@ document.write(`
 | Heat Sink Recirculation Pump   |   3.181e+02 |   2.490e+02 |   6.906e+01 |   7.829e-01 |   4.863e-04 |   7.706e-04 |
 | Heat Source Recirculation Pump |   4.380e+01 |   3.320e+01 |   1.060e+01 |   7.581e-01 |   7.461e-05 |   1.182e-04 |
 | Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
-| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
 +--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Network exergy analysis #####
@@ -860,7 +860,12 @@ document.write(`
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Explanation</p>
-<p>Hier könnte ihre Erklärung stehen</p>
+<p>Bei konstanten Umgebungs, Quellen- und Senkentemperaturen:</p>
+<ul class="simple">
+<li><p>Wenn ttd_u am Cond steigt, steigt die Kondensationstemperatur –&gt; höhere Destruction im Cond am Comp –&gt; höheres Fuel Exergy und schlechteres epsilon</p></li>
+<li><p>Wenn ttd_l am Evap steigt, sinkt die Verdampfungstemperatur weiter unter T_0 –&gt; höhere Destruction im Evap und Valve –&gt; höheres Fuel Exergy und schlechteres epsilon</p></li>
+<li><p>Wenn eta_s am Comp steigt, sinkt die Verdichteraustrittstemperatur –&gt; niedigere Destruction im Comp und Cond –&gt; geringeres Fuel Exergy und besseres epsilon</p></li>
+</ul>
 </div>
 </section>
 <section id="proposed-solution-1-3">
@@ -996,7 +1001,7 @@ document.write(`
 </section>
 <section id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
-<p>Build the heat pump model including the economizer according to the flowsheet (see Figure XX) and the parametrization of <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>. Additionally you need to set … Explain the improvement of the heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by analyzing the exergy destruction of each component.</p>
+<p>Build the heat pump model including the economizer according to the flowsheet (see <a class="reference internal" href="#heat-pump-econ-flowsheet"><span class="std std-numref">Fig. 21</span></a>) and the parametrization of <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>. Additionally you need to set the distribution of the mass flow at the splitter, as well as the intermediate pressure at the economizer. Explain the improvement of the heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by analyzing the exergy destruction of each component.</p>
 <section id="proposed-solution-2">
 <h3>Proposed solution 2<a class="headerlink" href="#proposed-solution-2" title="Permalink to this heading">#</a></h3>
 <p><strong>First step:</strong> Build the extenden heat pump cycle with economizer</p>
@@ -1126,11 +1131,11 @@ document.write(`
 
 <span class="n">nw_econ</span><span class="o">.</span><span class="n">add_busses</span><span class="p">(</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">heat_out</span><span class="p">,</span> <span class="n">power_in</span><span class="p">)</span>
 
-<span class="c1"># # Initial solve with starting values</span>
+<span class="c1"># Initial solve with starting values</span>
 <span class="n">nw_econ</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">nw_econ</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;design&#39;</span><span class="p">)</span>
 
-<span class="c1"># cc2evap.set_attr(p=None)</span>
+<span class="c1"># Final solve </span>
 <span class="n">main_valve2evap</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">evaporator</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">hp_comp2cond</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1159,6 +1164,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ean_econ</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">nw_econ</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">heat_in</span><span class="p">,</span> <span class="n">power_in</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">heat_out</span><span class="p">])</span>
 <span class="n">ean_econ</span><span class="o">.</span><span class="n">analyse</span><span class="p">(</span><span class="n">pamb</span><span class="o">=</span><span class="mf">1.013</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ean_econ</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">busses</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">comps</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Fuel Exergy&#39;</span><span class="p">,</span> <span class="s1">&#39;Economizer&#39;</span><span class="p">,</span> <span class="s1">&#39;Main Valve&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporator&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Pressure Compressor&#39;</span><span class="p">,</span> 
@@ -1196,13 +1202,65 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Aggregation of components and busses #####
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                                |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
+|--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Condenser                      |   8.451e+04 |   5.238e+04 |   3.213e+04 |   6.198e-01 |   2.371e-01 |   3.864e-01 |
+| High Pressure Compressor       |   9.351e+04 |   7.501e+04 |   1.850e+04 |   8.022e-01 |   1.365e-01 |   2.225e-01 |
+| Low Pressure Compressor        |   6.420e+04 |   4.890e+04 |   1.530e+04 |   7.616e-01 |   1.129e-01 |   1.841e-01 |
+| Evaporator                     |   2.872e+04 |   2.177e+04 |   6.949e+03 |   7.581e-01 |   5.127e-02 |   8.357e-02 |
+| Main Valve                     |   3.372e+04 |   2.855e+04 |   5.164e+03 |   8.468e-01 |   3.810e-02 |   6.210e-02 |
+| Economizer                     |   4.942e+03 |   1.444e+03 |   3.498e+03 |   2.921e-01 |   2.581e-02 |   4.207e-02 |
+| Intermediate Valve             |   7.912e+02 | nan         |   7.912e+02 | nan         |   5.838e-03 |   9.516e-03 |
+| Injection                      |   1.371e+03 |   7.563e+02 |   6.150e+02 |   5.515e-01 |   4.538e-03 |   7.397e-03 |
+| Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.839e-04 |   1.441e-03 |
+| Heat Sink Recirculation Pump   |   3.181e+02 |   2.490e+02 |   6.906e+01 |   7.829e-01 |   5.096e-04 |   8.306e-04 |
+| Heat Source Recirculation Pump |   4.455e+01 |   3.377e+01 |   1.078e+01 |   7.581e-01 |   7.951e-05 |   1.296e-04 |
+| Condensate Splitter            | nan         | nan         | nan         | nan         | nan         | nan         |
+| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
+| Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |
++--------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+##### RESULTS: Network exergy analysis #####
++-----------+-----------+-----------+-----------+-----------+
+|       E_F |       E_P |       E_D |       E_L |   epsilon |
+|-----------+-----------+-----------+-----------+-----------|
+| 1.355e+05 | 5.239e+04 | 8.315e+04 | 0.000e+00 | 3.865e-01 |
++-----------+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
 <img alt="../_images/570ff433b55b9965aaeb49b476266ffd8eadbd17d922332bdb319426637cd066.png" src="../_images/570ff433b55b9965aaeb49b476266ffd8eadbd17d922332bdb319426637cd066.png" />
 </div>
 </details>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Explanation</p>
-<p>Hier könnte ihre Erklärung stehen</p>
+<ul class="simple">
+<li><p>Verbesserung des COPs durch die doppelte Kompression.</p></li>
+<li><p>Exergie Wirkungsgrade der Komponenten</p></li>
+</ul>
+<p>Economiser      |   E_F       |   E_P       |   E_D       |   epsilon
+Condenser      |   8.451e+04 |   5.238e+04 |   3.213e+04 |   6.198e-01
+HP Compressor  |   9.351e+04 |   7.501e+04 |   1.850e+04 |   8.022e-01
+LP Compressor  |   6.420e+04 |   4.890e+04 |   1.530e+04 |   7.616e-01
+Evaporator     |   2.872e+04 |   2.177e+04 |   6.949e+03 |   7.581e-01
+Main Valve     |   3.372e+04 |   2.855e+04 |   5.164e+03 |   8.468e-01
+Economizer     |   4.942e+03 |   1.444e+03 |   3.498e+03 |   2.921e-01
+Inter Valve    |   7.912e+02 | nan         |   7.912e+02 | nan<br />
+Injection      |   1.371e+03 |   7.563e+02 |   6.150e+02 |   5.515e-01
+Heat Consumer  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01
+Sink Pump      |   3.181e+02 |   2.490e+02 |   6.906e+01 |   7.829e-01
+Source Pump    |   4.455e+01 |   3.377e+01 |   1.078e+01 |   7.581e-01</p>
+<p>Simple          |   E_F       |   E_P       |   E_D       |   epsilon
+Condenser      |   7.188e+04 |   3.737e+04 |   3.451e+04 |   5.199e-01
+Compressor     |   1.649e+05 |   1.316e+05 |   3.324e+04 |   7.984e-01
+Expansion Valve|   5.878e+04 |   4.154e+04 |   1.724e+04 |   7.067e-01
+Evaporator     |   4.086e+04 |   3.363e+04 |   7.223e+03 |   8.232e-01
+Heat Consumer  |   3.750e+04 |   3.738e+04 |   1.202e+02 |   9.968e-01
+Sink Pump      |   3.181e+02 |   2.471e+02 |   7.095e+01 |   7.769e-01
+Source Pump    |   4.420e+01 |   3.330e+01 |   1.089e+01 |   7.535e-01</p>
 </div>
 </section>
 </section>
