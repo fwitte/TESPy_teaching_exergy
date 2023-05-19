@@ -11,6 +11,7 @@ parts:
 - caption: Introduction
   chapters:
   - file: intro/scope-and-preconditions
+  - file: intro/engineering-thermodynamics
   - file: intro/exergy-analysis
 - caption: Single Components
   chapters:
