@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Goals and Scope of the Course &#8212; Teaching Exergy using TESPy</title>
+    <title>Engineering Thermodynamics &#8212; Teaching Exergy using TESPy</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/scope-and-preconditions';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/engineering-thermodynamics';</script>
     <link rel="shortcut icon" href="../_static/logo_tespy_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Engineering Thermodynamics" href="engineering-thermodynamics.html" />
-    <link rel="prev" title="Introduction to used libraries" href="../getting-started/intro-packages.html" />
+    <link rel="next" title="Fundamentals of Exergy Analysis" href="exergy-analysis.html" />
+    <link rel="prev" title="Goals and Scope of the Course" href="scope-and-preconditions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,9 +157,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Goals and Scope of the Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Engineering Thermodynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -257,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/fwitte/TESPy_teaching_exergy/issues/new?title=Issue%20on%20page%20%2Fintro/scope-and-preconditions.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fwitte/TESPy_teaching_exergy/issues/new?title=Issue%20on%20page%20%2Fintro/engineering-thermodynamics.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -287,7 +287,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/intro/scope-and-preconditions.ipynb" target="_blank"
+      <li><a href="../_sources/intro/engineering-thermodynamics.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +369,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Goals and Scope of the Course</h1>
+    <h1>Engineering Thermodynamics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,15 +379,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Goals and Scope of the Course</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-group">Target Group</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preconditions">Preconditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamic-states">Thermodynamic States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamic-processes">Thermodynamic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-energy-balances">Component Energy Balances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excursion-numerical-methods">Excursion: Numerical Methods</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-the-paper">Link to the Paper</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -398,37 +395,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="goals-and-scope-of-the-course">
-<h1>Goals and Scope of the Course<a class="headerlink" href="#goals-and-scope-of-the-course" title="Permalink to this heading">#</a></h1>
-<section id="target-group">
-<h2>Target Group<a class="headerlink" href="#target-group" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="engineering-thermodynamics">
+<span id="intro-engineering-thermodynamics"></span><h1>Engineering Thermodynamics<a class="headerlink" href="#engineering-thermodynamics" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="thermodynamic-states">
+<h2>Thermodynamic States<a class="headerlink" href="#thermodynamic-states" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Is interested in the exergy concept and wants to get a hands on experience</p></li>
-<li><p>Have basic programming/scrpting knowledge</p></li>
-<li><p>Have thermodynamic knowledge</p></li>
-<li><p>Have heard of exergy</p></li>
+<li><p>Pure fluids</p></li>
+<li><p>Gaseous mixtures</p></li>
+<li><p>Condensation of water</p></li>
 </ul>
 </section>
-<section id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">#</a></h2>
+<section id="thermodynamic-processes">
+<h2>Thermodynamic Processes<a class="headerlink" href="#thermodynamic-processes" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Get a hand on experience on modeling thermodynamic proceseses</p></li>
-<li><p>Build own expertise to carry out exergy analysis</p></li>
-<li><p>Learn that TESPy can do a lot of work for you</p></li>
-<li><p>Schaffung einer Basis, auf der der Kurs im Alleinstudium durchgezogen werden kann.</p></li>
+<li><p>Open Systems</p>
+<ul>
+<li><p>Isobaric</p></li>
+<li><p>Isenthalpic</p></li>
+<li><p>Adiabatic</p></li>
+<li><p>Isentropic</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="preconditions">
-<h2>Preconditions<a class="headerlink" href="#preconditions" title="Permalink to this heading">#</a></h2>
+<section id="component-energy-balances">
+<h2>Component Energy Balances<a class="headerlink" href="#component-energy-balances" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Python</p></li>
-<li><p>Thermodynamik…</p></li>
-<li><p>Verweise zu Grundlagenliteraturstellen</p></li>
+<li><p>General energy balance equation</p></li>
+<li><p>Turbomachinery</p></li>
+<li><p>Heat exchangers</p></li>
+<li><p>Combustion processes</p></li>
 </ul>
 </section>
+<section id="excursion-numerical-methods">
+<h2>Excursion: Numerical Methods<a class="headerlink" href="#excursion-numerical-methods" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Where and why?</p></li>
+<li><p>Root finding methods single dimension</p></li>
+<li><p>Multidimensional root finding</p></li>
+</ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="link-to-the-paper">
-<h1>Link to the Paper<a class="headerlink" href="#link-to-the-paper" title="Permalink to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -463,20 +472,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../getting-started/intro-packages.html"
+       href="scope-and-preconditions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to used libraries</p>
+        <p class="prev-next-title">Goals and Scope of the Course</p>
       </div>
     </a>
     <a class="right-next"
-       href="engineering-thermodynamics.html"
+       href="exergy-analysis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Engineering Thermodynamics</p>
+        <p class="prev-next-title">Fundamentals of Exergy Analysis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -498,15 +507,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Goals and Scope of the Course</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-group">Target Group</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preconditions">Preconditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamic-states">Thermodynamic States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermodynamic-processes">Thermodynamic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-energy-balances">Component Energy Balances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excursion-numerical-methods">Excursion: Numerical Methods</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-the-paper">Link to the Paper</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

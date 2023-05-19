@@ -161,6 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../intro/engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -618,7 +619,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
       <th>value</th>
       <td>1.583699e+08</td>
       <td>100000000.0</td>
-      <td>1.266599e-07</td>
+      <td>4.470348e-08</td>
       <td>5.836990e+07</td>
       <td>0.631433</td>
     </tr>
@@ -636,7 +637,7 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.43656838
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.43656831
 </pre></div>
 </div>
 </div>
@@ -869,7 +870,7 @@ cycle simulation.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.146613e-13</td>
+      <td>1.143365e-13</td>
       <td>0.068955</td>
       <td>0.000000e+00</td>
     </tr>
@@ -925,7 +926,7 @@ at only  %.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.930447376466311e-05 above maximum value (0) at component combustion chamber.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.9178972806356185e-05 above maximum value (0) at component combustion chamber.
 </pre></div>
 </div>
 </div>
@@ -977,7 +978,7 @@ ambient air inlet to a bus as well, which will be part of the plant’s overall 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">chemexlib</span> <span class="o">=</span> <span class="n">get_chem_ex_lib</span><span class="p">(</span><span class="s2">&quot;Ahrendts&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ean_gt</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">nwk</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">fuel_input</span><span class="p">,</span> <span class="n">air_input</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_output</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">chimney</span><span class="p">])</span>
 
-<span class="ne">ImportError</span>: cannot import name &#39;get_chem_ex_lib&#39; from &#39;tespy.tools.helpers&#39; (/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/helpers.py)
+<span class="ne">ImportError</span>: cannot import name &#39;get_chem_ex_lib&#39; from &#39;tespy.tools.helpers&#39; (/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/tespy/tools/helpers.py)
 </pre></div>
 </div>
 </div>
