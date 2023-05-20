@@ -9,6 +9,6 @@ specific to each application, the last example introduces the usage of the softw
 
 The following sections contain these examples:
 
-- {ref}`Flow of steam through an adiabatic pipe <adiabaitc-pipe-label>`
+- {ref}`Flow of steam through an adiabatic pipe <adiabatic-pipe-label>`
 - {ref}`Heat exchanger for district heating <heat-exchanger-label>`
 - {ref}`Production of compressed air <compressed-air-label>`
