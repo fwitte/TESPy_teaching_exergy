@@ -18,16 +18,15 @@ steps to create an environment and install the required dependencies:
    ```{literalinclude} /../environment.yml
    ```
 3. Open the miniforge3 prompt and navigate into that folder with `cd /path/to/the/folder`
-4. Create and prepare the environment mit `conda env create -f environment.yml`
+4. Create and prepare the environment `conda env create -f environment.yml`
 5. Activate your environment using `conda activate exergy-env`
 
 ## Working with jupyter-notebooks
 
-In the in person-workshop we will be working with Jupyter Notebooks. It is possible to edit the notebooks in code
-editors (e.g. in VS Code) or in the browser.To learn more about how to use them, you can check out the respective
-section in the [online documentation](https://jupyter.org/).
+It is possible to edit the notebooks in code editors (e.g. in VS Code) or in the browser. To learn more about how to use
+them, you can check out the respective section in the online documentation of [jupyter](https://jupyter.org/).
 
 ```{note}
 If you installed all dependencies into your python environment as described in the steps above, you do NOT need to
-install jupyter notebook separately.
+install the jupyter notebook package separately.
 ```
