@@ -161,7 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../intro/engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -185,8 +184,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
 </ul>
 
@@ -414,20 +411,20 @@ document.write(`
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Flow sheet of the simplest implementation of a heat pump.</span><a class="headerlink" href="#heat-pump-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As the final simple thermodynamic cycle, a heat pump will be subject of the exergy analysis. Heat pumps are a promising technology in the process of climate change mitigation, because they can replace conventional fossil fuel based heating plants. As heat pumps are scalable, they can be used in households and building, as well as whole neighbourhoods and in district heating systems. A heat pump employs the well known refrigeration cycle (see <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 20</span></a>), but instead uses the heat that is transfered out of the system. For the cycle to work, heat has to be transferred into the system at a lower temperature level and through the input of work can be transferred out on a higher temperature level. The resulting energy balance of a heat pump is displayed in Eq. <a class="reference internal" href="#equation-heat-pump-energy-balance">(41)</a>.</p>
+<p>As the final simple thermodynamic cycle, a heat pump will be subject of the exergy analysis. Heat pumps are a promising technology in the process of climate change mitigation, because they can replace conventional fossil fuel based heating plants. As heat pumps are scalable, they can be used in households and building, as well as whole neighbourhoods and in district heating systems. A heat pump employs the well known refrigeration cycle (see <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 20</span></a>), but instead uses the heat that is transferred out of the system. For the cycle to work, heat has to be transferred into the system at a lower temperature level and through the input of work can be transferred out on a higher temperature level. The resulting energy balance of a heat pump is displayed in Eq. <a class="reference internal" href="#equation-heat-pump-energy-balance">(41)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-heat-pump-energy-balance">
 <span class="eqno">(41)<a class="headerlink" href="#equation-heat-pump-energy-balance" title="Permalink to this equation">#</a></span>\[    0 = Q_{in} + Q_{out} + W_{in}\]</div>
-<p>As traditionally is done with heat engines, the benefit of a cycle can be put in to relation with the necessary input. Formalizing this expression yields the so called coefficient of performance of a heat pump, as is shown in Eq. <a class="reference internal" href="#equation-heat-pump-coefficient-of-performance">(42)</a>. From the energy balance <a class="reference internal" href="#equation-heat-pump-energy-balance">(41)</a> we can infer, that the outgoing heat is the sum of the work and heat put in. This means, that the <span class="math notranslate nohighlight">\(COP\)</span> must be greater than <span class="math notranslate nohighlight">\(1\)</span>, in contrast to the thermal efficiency of heat engines.</p>
+<p>As traditionally is done with heat engines, the benefit of a cycle can be put in to relation with the necessary input. Formalizing this expression yields the so-called coefficient of performance of a heat pump, as is shown in Eq. <a class="reference internal" href="#equation-heat-pump-coefficient-of-performance">(42)</a>. From the energy balance <a class="reference internal" href="#equation-heat-pump-energy-balance">(41)</a> we can infer, that the outgoing heat is the sum of the work and heat put in. This means, that the <span class="math notranslate nohighlight">\(COP\)</span> must be greater than <span class="math notranslate nohighlight">\(1\)</span>, in contrast to the thermal efficiency of heat engines.</p>
 <div class="math notranslate nohighlight" id="equation-heat-pump-coefficient-of-performance">
 <span class="eqno">(42)<a class="headerlink" href="#equation-heat-pump-coefficient-of-performance" title="Permalink to this equation">#</a></span>\[    COP = \frac{Q_{out}}{W_{in}}\]</div>
-<p>Coming from thermal efficiencies of heat engines, this can seem to be in conflict the laws of thermodynamics. We get more heat from the cycle than work needs to be put in. There only has to be an ambient heat source supply heat at a lower temperature. To reveal the thermodynamic losses occuring in this process and to show that the cycle is no perpetuum mobile, we can analyze the exergy flows.</p>
-<p>At first, we have to define the fuel and the product of the heat pump cycle. As described above, the benefit of the cycle is the heat transfered out of the system, which makes it the product. The necessary fuels logically are the heat and work inputs. Added to the compressor work are necessary supplemental work inputs like recirculation pumps. With these defined, we can start to build the heat pump model.</p>
+<p>Coming from thermal efficiencies of heat engines, this can seem to be in conflict the laws of thermodynamics. We get more heat from the cycle than work needs to be put in. There only has to be an ambient heat source supply heat at a lower temperature. To reveal the thermodynamic losses occurring in this process and to show that the cycle is no perpetuum mobile, we can analyze the exergy flows.</p>
+<p>At first, we have to define the fuel and the product of the heat pump cycle. As described above, the benefit of the cycle is the heat transferred out of the system, which makes it the product. The necessary fuels logically are the heat and work inputs. Added to the compressor work are necessary supplemental work inputs like recirculation pumps. With these defined, we can start to build the heat pump model.</p>
 </section>
 <section id="exercise-1">
 <span id="heat-pump-exercise-1"></span><h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Build a simple heat pump model using ammonia with TESPy according to the flowsheet in <a class="reference internal" href="#heat-pump-flowsheet"><span class="std std-numref">Fig. 20</span></a>, but add a water fed heat source (the hot side of the evaporator) and a consumer cycle as the heat sink (the cold side of the condenser). Parametrize the model according to the description as shown in <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>.</p></li>
-<li><p>Execute the exergy analysis for the heat pump model. Visualize how each component destroyes part of the fuel exergy through a waterfall diagram. Analyze the influence of the compressors isentropic efficiency, as well as that of the heat exchangers terminal temperature differences.</p></li>
+<li><p>Execute the exergy analysis for the heat pump model. Visualize how each component destroys part of the fuel exergy through a waterfall diagram. Analyze the influence of the compressors isentropic efficiency, as well as that of the heat exchangers terminal temperature differences.</p></li>
 <li><p>Analyze the impact of the ambient temperature level on the components and total efficiency.</p></li>
 </ol>
 <table class="table" id="heat-pump-param">
@@ -770,7 +767,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6106422d870430b98ca26c1d44ebef6457293a5b2c3ac2ca08a15a9d2681e287.png" src="../_images/6106422d870430b98ca26c1d44ebef6457293a5b2c3ac2ca08a15a9d2681e287.png" />
+<img alt="../_images/0971957c5fb79826a7f3d567b00160ec219274ef58f2bac93ddc66eb90dc91dd.png" src="../_images/0971957c5fb79826a7f3d567b00160ec219274ef58f2bac93ddc66eb90dc91dd.png" />
 </div>
 </details>
 </div>
@@ -871,7 +868,7 @@ document.write(`
 </section>
 <section id="proposed-solution-1-3">
 <h3>Proposed solution 1.3<a class="headerlink" href="#proposed-solution-1-3" title="Permalink to this heading">#</a></h3>
-<p><strong>First step:</strong> Variate ambient temperature and analyse the effect on total efficiency.</p>
+<p><strong>First step:</strong> Variate ambient temperature and analyze the effect on total efficiency.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -993,7 +990,7 @@ document.write(`
 </section>
 <section id="topological-process-improvements">
 <h2>Topological process improvements<a class="headerlink" href="#topological-process-improvements" title="Permalink to this heading">#</a></h2>
-<p>There are many ways to improve a heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by changing the process through the addition of components. A popular topological improvement is the so called <em>Economizer</em>, where part of the condensate gets evaporated on an intermediate pressure level and injected between two compressor stages. This is done in order to yield a cooler mixture entering the high pressure compressor and to reduce the final output temperature of the superheated gas. The evaporation of part of the condensate is reached through subcooling of the rest of it via an internal heat exchanger. The topology of this improved heat pump cycle can be seen in the flowsheet depicted in <a class="reference internal" href="#heat-pump-econ-flowsheet"><span class="std std-numref">Fig. 21</span></a>.</p>
+<p>There are many ways to improve a heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by changing the process through the addition of components. A popular topological improvement is the so-called <em>Economizer</em>, where part of the condensate gets evaporated on an intermediate pressure level and injected between two compressor stages. This is done in order to yield a cooler mixture entering the high pressure compressor and to reduce the final output temperature of the superheated gas. The evaporation of part of the condensate is reached through subcooling of the rest of it via an internal heat exchanger. The topology of this improved heat pump cycle can be seen in the flowsheet depicted in <a class="reference internal" href="#heat-pump-econ-flowsheet"><span class="std std-numref">Fig. 21</span></a>.</p>
 <figure class="align-default" id="heat-pump-econ-flowsheet">
 <img alt="../_images/heat_pump_economizer.svg" src="../_images/heat_pump_economizer.svg" /><figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Flow sheet of a heat pump with an economizer.</span><a class="headerlink" href="#heat-pump-econ-flowsheet" title="Permalink to this image">#</a></p>
@@ -1002,7 +999,7 @@ document.write(`
 </section>
 <section id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
-<p>Build the heat pump model including the economizer according to the flowsheet (see <a class="reference internal" href="#heat-pump-econ-flowsheet"><span class="std std-numref">Fig. 21</span></a>) and the parametrization of <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>. Additionally you need to set the distribution of the mass flow at the splitter, as well as the intermediate pressure at the economizer. Explain the improvement of the heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by analyzing the exergy destruction of each component.</p>
+<p>Build the heat pump model including the economizer according to the flowsheet (see <a class="reference internal" href="#heat-pump-econ-flowsheet"><span class="std std-numref">Fig. 21</span></a>) and the parametrization of <a class="reference internal" href="#heat-pump-param"><span class="std std-numref">Table 4</span></a>. Additionally, you need to set the distribution of the mass flow at the splitter, as well as the intermediate pressure at the economizer. Explain the improvement of the heat pumps <span class="math notranslate nohighlight">\(COP\)</span> by analyzing the exergy destruction of each component.</p>
 <section id="proposed-solution-2">
 <h3>Proposed solution 2<a class="headerlink" href="#proposed-solution-2" title="Permalink to this heading">#</a></h3>
 <p><strong>First step:</strong> Build the extenden heat pump cycle with economizer</p>
@@ -1218,8 +1215,8 @@ document.write(`
 | Heat Consumer                  |   5.251e+04 |   5.239e+04 |   1.198e+02 |   9.977e-01 |   8.839e-04 |   1.441e-03 |
 | Heat Sink Recirculation Pump   |   3.181e+02 |   2.490e+02 |   6.906e+01 |   7.829e-01 |   5.096e-04 |   8.306e-04 |
 | Heat Source Recirculation Pump |   4.455e+01 |   3.377e+01 |   1.078e+01 |   7.581e-01 |   7.951e-05 |   1.296e-04 |
-| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
 | Condensate Splitter            | nan         | nan         | nan         | nan         | nan         | nan         |
+| Refrigerant Cycle Closer       | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Back Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Heat Source Feed Flow          | nan         | nan         | nan         | nan         | nan         | nan         |
 | Consumer Cycle Closer          | nan         | nan         | nan         | nan         | nan         | nan         |

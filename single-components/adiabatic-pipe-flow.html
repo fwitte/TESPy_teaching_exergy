@@ -161,7 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../intro/engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -185,8 +184,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
 </ul>
 
@@ -407,7 +404,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adiabatic-pipe-flow">
 <span id="adiabatic-pipe-label"></span><h1>Adiabatic Pipe Flow<a class="headerlink" href="#adiabatic-pipe-flow" title="Permalink to this heading">#</a></h1>
-<p>In this section we will have a look at an adiabatic pipe with pressure losses ocourring. With the first law of
+<p>In this section we will have a look at an adiabatic pipe with pressure losses occurring. With the first law of
 thermodynamics we cannot see a change in energy, exergy analysis can reveal the thermodynamic losses.</p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -458,7 +455,7 @@ thermodynamics we cannot see a change in energy, exergy analysis can reveal the 
 <span class="math notranslate nohighlight">\(\dot Q\)</span> transferred change the enthalpy <span class="math notranslate nohighlight">\(h\)</span> of a mass flow <span class="math notranslate nohighlight">\(\dot m\)</span> from a state 1 to a different state 2:</p>
 <div class="math notranslate nohighlight" id="equation-pipe-flow-energy-balance">
 <span class="eqno">(16)<a class="headerlink" href="#equation-pipe-flow-energy-balance" title="Permalink to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left(h_2 - h_1\right)\]</div>
-<p>Since a pipe does not transfer work to the fluid, work transferred can be considered equal to zero. Therefore the
+<p>Since a pipe does not transfer work to the fluid, work transferred can be considered equal to zero. Thus, the
 specific heat transferred can be calculated by the change of enthalpy. Since the pipeline is well insulated, the value
 should be rather small.</p>
 <div class="math notranslate nohighlight" id="equation-pipe-flow-energy-balance-simplified">
@@ -499,8 +496,8 @@ therefore be zero as well:</p>
 <div class="math notranslate nohighlight">
 \[    h_2 = h_1\]</div>
 </div>
-<p>We can also double check this, by calculating the outlet temperature at the measured outlet pressure and with the
-assumption of non-changing enthalpy. Note that it is only slighty different:</p>
+<p>We can also double-check this, by calculating the outlet temperature at the measured outlet pressure and with the
+assumption of non-changing enthalpy. Note that it is only slightly different:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_out</span> <span class="o">=</span> <span class="n">h_in</span>
@@ -523,7 +520,7 @@ have become less valuable.</p>
 <h2>Exergy Analysis<a class="headerlink" href="#exergy-analysis" title="Permalink to this heading">#</a></h2>
 <p>In this chapter, we will learn, how the described change in quality of energy can be made visible using Second Law
 analysis. To do that, we calculate the exergy of the fluid at the inlet and at the outlet of the pipe. First, we define
-a function, that follows the definition of phyiscal exergy in eq. <a class="reference internal" href="../intro/exergy-analysis.html#equation-physical-exergy-total">(4)</a> without splitting physical
+a function, that follows the definition of physical exergy in eq. <a class="reference internal" href="../intro/exergy-analysis.html#equation-physical-exergy-total">(4)</a> without splitting physical
 exergy into mechanical and thermal share. Chemical exergy can be ignored in this application, since no chemical reaction
 processes take place.</p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">calc_physical_exergy</span></code> will take pressure and enthalpy of a fluid and calculate the thermal and the
@@ -739,7 +736,7 @@ physical exergy consists of the two components</p>
 <li><p>Verify that your function produces the same result as the function defined earlier.</p></li>
 <li><p>Create a plot that shows, how thermal and mechanical exergy are affected by the pressure change within the
 specified pressure range.</p></li>
-<li><p>What is the thermal and what is the mechanical exergy of the steam, when the pressure at the outlet is at ambient
+<li><p>What is the thermal, and what is the mechanical exergy of the steam, when the pressure at the outlet is at ambient
 state?</p></li>
 </ul>
 </li>
@@ -753,7 +750,7 @@ efficiency of the steam flow?</p></li>
 </ol>
 <section id="solution-3">
 <h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h3>
-<p>First we define a new function that returns the thermal and the mechanical share of exergy according the the equations
+<p>First we define a new function that returns the thermal and the mechanical share of exergy according the equations
 <a class="reference internal" href="../intro/exergy-analysis.html#equation-thermal-exergy">(5)</a>, <a class="reference internal" href="../intro/exergy-analysis.html#equation-mechanical-exergy">(6)</a> and <a class="reference internal" href="../intro/exergy-analysis.html#equation-physical-exergy">(7)</a>. Then we can calculate the share of thermal and
 mechanical exergy at the inlet state of the air pipe and validate, if the sum of both shares is equal to the result
 from our first implementation of the physical exergy:</p>
@@ -833,7 +830,9 @@ the pipe flow at the different pressure losses. Note, the different scales:</p>
 <li><p>The thermal exergy changes by up to 300 kW.</p></li>
 <li><p>The mechanical exergy changes only by about 0.9 kW at maximum.</p></li>
 </ul>
-<p>Obviously, the much more thermal exergy is destroyed in the process than mechanical exergy, although only the pressure changes. This is because expansion of the steam causes a drop in temperature as well (as we have seen in the solution 2). The reason, why we see such a small change in mechanical exergy can be seen, when we have a look at the shares of
+<p>Obviously, the much more thermal exergy is destroyed in the process than mechanical exergy, although only the pressure
+changes. This is because expansion of the steam causes a drop in temperature as well (as we have seen in the solution
+2). The reason, why we see such a small change in mechanical exergy can be seen, when we have a look at the shares of
 thermal and mechanical exergies in the inlet state and the outlet state at ambient pressure. We can create a bar
 diagram for both states in <a class="reference internal" href="#fig-exergy-shares-water-bar"><span class="std std-numref">Fig. 6</span></a>. The exergy is nearly pure thermal exergy.</p>
 <figure class="align-default" id="fig-exergy-shares-water-bar">
@@ -930,8 +929,8 @@ legend.</p>
 </div>
 <p>In the first subplot of <a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-pressure-range"><span class="std std-numref">Fig. 7</span></a> we can see that in the steam flow
 the exergy destruction is higher by a factor of about 1.5. This ratio can be verified by checking
-<a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-ratio"><span class="std std-numref">Fig. 8</span></a>. This displays the ratio over the pressure range and we
-can see, the ratio is merely affected by pressure.</p>
+<a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-ratio"><span class="std std-numref">Fig. 8</span></a>. This displays the ratio over the pressure range, and we
+can see the ratio is merely affected by pressure.</p>
 <figure class="align-default" id="fig-exergy-destruction-steam-vs-air-pressure-range">
 <img alt="../_images/e654167a1e0f2f4be09239b563d11a4637f76043f45d411fafd42502ae297262.png" src="../_images/e654167a1e0f2f4be09239b563d11a4637f76043f45d411fafd42502ae297262.png" />
 <figcaption>
@@ -948,7 +947,8 @@ can see, the ratio is merely affected by pressure.</p>
 <a class="reference internal" href="#fig-exergy-destruction-steam-vs-air-pressure-range"><span class="std std-numref">Fig. 7</span></a> that the exergy destruction as share of the inlet exergy
 is much higher for air. When the pressure drops to ambient state pressure, more than 80 % of exergy of the air are
 destroyed. To understand why this is the case, we can again have a look at the shares of mechanical and thermal exergy
-for the air stream. We do this for the “extreme” case with the outlet pressure at ambient state, i.e. when all mechanical exergy is lost. The <a class="reference internal" href="#fig-exergy-shares-water-bar"><span class="std std-numref">Fig. 6</span></a> displays the result.</p>
+for the air stream. We do this for the “extreme” case with the outlet pressure at ambient state, i.e. when all
+mechanical exergy is lost. The <a class="reference internal" href="#fig-exergy-shares-water-bar"><span class="std std-numref">Fig. 6</span></a> displays the result.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -971,7 +971,7 @@ for the air stream. We do this for the “extreme” case with the outlet pressu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1903/3922793100.py:3: RuntimeWarning: invalid value encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1976/3922793100.py:3: RuntimeWarning: invalid value encountered in divide
   ax.plot(pressure_difference_range / 1e5, (ex_in - ex_out) / (ex_in_air - ex_out_air))
 </pre></div>
 </div>
@@ -1042,9 +1042,8 @@ is lost.</p>
 <section id="lessons-learned">
 <h2>Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Physical exergy of a mass flow can be splitted into a thermal and a mechanical share.</p></li>
+<li><p>Physical exergy of a mass flow can be split into a thermal and a mechanical share.</p></li>
 <li><p>At the same pressure and temperature, the shares of the exergy depend on the working fluid.</p></li>
-<li><p>At ambient pressure mechanical exergy is equal to zero.</p></li>
 </ul>
 </section>
 </section>

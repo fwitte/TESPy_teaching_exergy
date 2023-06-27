@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction" href="../single-components/intro.html" />
-    <link rel="prev" title="Engineering Thermodynamics" href="engineering-thermodynamics.html" />
+    <link rel="prev" title="Goals and Scope of the Course" href="scope-and-preconditions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,7 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -185,8 +184,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
 </ul>
 
@@ -398,16 +395,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <ul class="simple" id="intro-fundamentals">
-<li><p>Übersetzen</p></li>
-<li><p>Chemische Exergie beschreiben</p></li>
-</ul>
-<section class="tex2jax_ignore mathjax_ignore" id="fundamentals-of-exergy-analysis">
-<h1>Fundamentals of Exergy Analysis<a class="headerlink" href="#fundamentals-of-exergy-analysis" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals-of-exergy-analysis">
+<span id="intro-fundamentals"></span><h1>Fundamentals of Exergy Analysis<a class="headerlink" href="#fundamentals-of-exergy-analysis" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Exergy is bound to mass flow or to massless energy transfer such as heat transfer or power. The transport of exergy
-with mass can be further splitted into four different shares according to eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>, i.e.:</p>
+with mass can be further split into four different shares according to eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>, i.e.:</p>
 <ul class="simple">
 <li><p>physical <span class="math notranslate nohighlight">\(e^\text{PH}\)</span>,</p></li>
 <li><p>chemical <span class="math notranslate nohighlight">\(e^\text{CH}\)</span>,</p></li>
@@ -430,7 +423,7 @@ change to the ambient state <code class="docutils literal notranslate"><span cla
 <div class="math notranslate nohighlight" id="equation-physical-exergy-total">
 <span class="eqno">(4)<a class="headerlink" href="#equation-physical-exergy-total" title="Permalink to this equation">#</a></span>\[e^\mathrm{PH} = \left( h - h \left( p_0, T_0 \right) \right) -
 T_0 \cdot \left(s - s\left(p_0, T_0\right)\right)\]</div>
-<p>Following the definitions in <span id="id1">[<a class="reference internal" href="../zliterature.html#id5" title="Tatiana Morosuk and George Tsatsaronis. Splitting physical exergy: theory and application. Energy, 167:698-707, 2019. doi:https://doi.org/10.1016/j.energy.2018.10.090.">4</a>]</span>, phyical exergy can be further splitted into two shares:</p>
+<p>Following the definitions in <span id="id1">[<a class="reference internal" href="../zliterature.html#id5" title="Tatiana Morosuk and George Tsatsaronis. Splitting physical exergy: theory and application. Energy, 167:698-707, 2019. doi:https://doi.org/10.1016/j.energy.2018.10.090.">4</a>]</span>, physical exergy can be further split into two shares:</p>
 <ul class="simple">
 <li><p>the mechanical exergy, eq. <a class="reference internal" href="#equation-mechanical-exergy">(6)</a> and</p></li>
 <li><p>the thermal exergy, eq. <a class="reference internal" href="#equation-thermal-exergy">(5)</a>.</p></li>
@@ -459,10 +452,10 @@ x_i\right)\]</div>
 <section id="exergy-analyses">
 <h2>Exergy Analyses<a class="headerlink" href="#exergy-analyses" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="#exergy-system"><span class="std std-ref">Figure 1</span></a> shows an abstract thermodynamic system and the exergy transported over the system’s
-boundary. Based on that, we can define an exergy balance to analyse the system, taking into account exergy transferred
+boundary. Based on that, we can define an exergy balance to analyze the system, taking into account exergy transferred
 to or from the system. These can be heat (eq. <a class="reference internal" href="#equation-exergy-heat">(2)</a>) and power (eq. <a class="reference internal" href="#equation-exergy-work">(3)</a>), incoming
-<span class="math notranslate nohighlight">\(\dot E_{in}\)</span>and outgoing massflows <span class="math notranslate nohighlight">\(\dot E_{out}\)</span> (eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>) as well as the destruction
-of exergy <span class="math notranslate nohighlight">\(\dot E_\text{D}\)</span> happening in all of the system’s components.</p>
+<span class="math notranslate nohighlight">\(\dot E_{in}\)</span>and outgoing mass flows <span class="math notranslate nohighlight">\(\dot E_{out}\)</span> (eq. <a class="reference internal" href="#equation-exergy-massflow">(1)</a>) as well as the destruction
+of exergy <span class="math notranslate nohighlight">\(\dot E_\text{D}\)</span> happening in all the system’s components.</p>
 <div class="math notranslate nohighlight" id="equation-ex-bilanz-stat">
 <span class="eqno">(10)<a class="headerlink" href="#equation-ex-bilanz-stat" title="Permalink to this equation">#</a></span>\[0=\sum\limits_{j}\dot E_{\text{q,}j}+
 \sum\limits_{i}\dot E_{\text{w,}i} + \sum\limits_{in}\dot E_{in}-\sum\limits_{out}\dot E_{out} -\dot E_\text{D}\]</div>
@@ -523,12 +516,12 @@ destruction can then be calculated as the difference between fuel exergy <span c
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="engineering-thermodynamics.html"
+       href="scope-and-preconditions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Engineering Thermodynamics</p>
+        <p class="prev-next-title">Goals and Scope of the Course</p>
       </div>
     </a>
     <a class="right-next"

@@ -161,7 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/scope-and-preconditions.html">Goals and Scope of the Course</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../intro/engineering-thermodynamics.html">Engineering Thermodynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/exergy-analysis.html">Fundamentals of Exergy Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Components</span></p>
@@ -185,8 +184,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../abbreveations-symbols.html">List of Abbreveations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../zliterature.html">Literature References</a></li>
 </ul>
 
@@ -404,11 +401,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <ul class="simple" id="brayton-label">
-<li><p>Feature branch mergen</p></li>
-</ul>
-<section class="tex2jax_ignore mathjax_ignore" id="gas-turbine">
-<h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="gas-turbine">
+<span id="brayton-label"></span><h1>Gas Turbine<a class="headerlink" href="#gas-turbine" title="Permalink to this heading">#</a></h1>
 <p>In this section we will be investigating gas turbine cycles using TESPy. In the first step the ideal Brayton cycle is
 modeled. The ideal Brayton cycle consists of three subprocesses, i.e. isentropic compression, isobaric heat transfer
 and isentropic expansion (see <a class="reference internal" href="#brayton-flowsheet"><span class="std std-numref">Fig. 15</span></a>). Next, we are comparing the cycle to the open cycle gas
@@ -619,7 +613,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
       <th>value</th>
       <td>1.583699e+08</td>
       <td>100000000.0</td>
-      <td>1.266599e-07</td>
+      <td>2.235174e-08</td>
       <td>5.836990e+07</td>
       <td>0.631433</td>
     </tr>
@@ -629,7 +623,7 @@ the plant’s fuel and product exergy as well as the exergy losses in eqs. <a cl
 </div>
 <p>As expected no exergy is destroyed in our setup, because the compressor and the turbine are isentropic components and
 the heat input is isobaric. However, our exergy efficiency is still not 100 %. The reason for this is, that the flue gas
-leaving the cycle to the ambient still contains exergy. The stream of physical exergs is therefore lost:</p>
+leaving the cycle to the ambient still contains exergy. The stream of physical exergy is therefore lost:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c4</span><span class="o">.</span><span class="n">Ex_physical</span>
@@ -637,7 +631,7 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.43656839
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58369903.436568305
 </pre></div>
 </div>
 </div>
@@ -648,7 +642,7 @@ leaving the cycle to the ambient still contains exergy. The stream of physical e
 <h2>Open Cycle Gas Turbine<a class="headerlink" href="#open-cycle-gas-turbine" title="Permalink to this heading">#</a></h2>
 <p>In the second part of this section we are switching our investigation to an actual open cycle gas turbine system with
 combustion of fuel as indicated in <a class="reference internal" href="#gas-turbine-flowsheet"><span class="std std-numref">Fig. 16</span></a>. All relevant component and process parameters
-are indicated in <a class="reference internal" href="#gas-turbine-param"><span class="std std-numref">Table 2</span></a>. As fuel we are going to use pure methane.</p>
+are indicated in <a class="reference internal" href="#gas-turbine-param"><span class="std std-numref">Table 2</span></a>. As fuel, we are going to use pure methane.</p>
 <figure class="align-default" id="gas-turbine-flowsheet">
 <img alt="../_images/gas_turbine.svg" src="../_images/gas_turbine.svg" /><figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Flow sheet of the open cycle gas turbine.</span><a class="headerlink" href="#gas-turbine-flowsheet" title="Permalink to this image">#</a></p>
@@ -726,7 +720,7 @@ are indicated in <a class="reference internal" href="#gas-turbine-param"><span c
 </tr>
 </tbody>
 </table>
-<p>In constrast to the previous exercise we have to model the air composition component wise in this example. We are going
+<p>In contrast to the previous exercise we have to model the air composition component wise in this example. We are going
 to use an additional source for the fuel and the <code class="docutils literal notranslate"><span class="pre">DiabaticCombustionChamber</span></code> to make accounting of heat and pressure
 losses in the combustion process possible. The topology can be built according to the flowsheet. A power output bus is
 added to the network, which sums the power generation of the turbine with the power consumption of the compressor. The
@@ -788,7 +782,7 @@ mass fractions are zero except for the methane mass fraction. We can specify the
 </div>
 </div>
 <p>We can run the simulation and calculate the thermal efficiency. It is at <span class="pasted-text">43.91</span> %, thus a
-little bit lower than in the ideal brayton process.</p>
+little lower than in the ideal Brayton process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
@@ -819,8 +813,8 @@ little bit lower than in the ideal brayton process.</p>
 </section>
 <section id="solution-2">
 <h2>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h2>
-<p>For the comparison of the results between the two cycles, we have saved all connection information from the brayton
-cycle in a dataframe. We can then substract the results dataframes from each other. Rows and columns with missing values
+<p>For the comparison of the results between the two cycles, we have saved all connection information from the Brayton
+cycle in a dataframe. We can then subtract the results dataframes from each other. Rows and columns with missing values
 are dropped and only absolute properties (mass flow, temperature and pressure) are kept in the dataframe.</p>
 <p>The relative deviation can then be calculated by dividing the absolute deviation by the results of the gas turbine
 cycle simulation.</p>
@@ -870,7 +864,7 @@ cycle simulation.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.146613e-13</td>
+      <td>1.140117e-13</td>
       <td>0.068955</td>
       <td>0.000000e+00</td>
     </tr>
@@ -900,7 +894,7 @@ higher deviation can be observed in the mass flow: Here the Brayton cycle requir
 <p>With the setup specified in the table and the above changes:</p>
 <ul class="simple">
 <li><p>Calculate the thermal efficiency.</p></li>
-<li><p>Run the exergy anlysis.</p></li>
+<li><p>Run the exergy analysis.</p></li>
 <li><p>Calculate the exergy efficiency.</p>
 <ul>
 <li><p>How does it compare to the ideal Brayton cycle?</p></li>
@@ -926,7 +920,7 @@ at only  %.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.9116222327202804e-05 above maximum value (0) at component combustion chamber.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q_loss: Q_loss = 2.924172328550962e-05 above maximum value (0) at component combustion chamber.
 </pre></div>
 </div>
 </div>
@@ -978,7 +972,7 @@ ambient air inlet to a bus as well, which will be part of the plant’s overall 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">chemexlib</span> <span class="o">=</span> <span class="n">get_chem_ex_lib</span><span class="p">(</span><span class="s2">&quot;Ahrendts&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ean_gt</span> <span class="o">=</span> <span class="n">ExergyAnalysis</span><span class="p">(</span><span class="n">nwk</span><span class="p">,</span> <span class="n">E_F</span><span class="o">=</span><span class="p">[</span><span class="n">fuel_input</span><span class="p">,</span> <span class="n">air_input</span><span class="p">],</span> <span class="n">E_P</span><span class="o">=</span><span class="p">[</span><span class="n">power_output</span><span class="p">],</span> <span class="n">E_L</span><span class="o">=</span><span class="p">[</span><span class="n">chimney</span><span class="p">])</span>
 
-<span class="ne">ImportError</span>: cannot import name &#39;get_chem_ex_lib&#39; from &#39;tespy.tools.helpers&#39; (/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/tespy/tools/helpers.py)
+<span class="ne">ImportError</span>: cannot import name &#39;get_chem_ex_lib&#39; from &#39;tespy.tools.helpers&#39; (/opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/tespy/tools/helpers.py)
 </pre></div>
 </div>
 </div>
