@@ -11,7 +11,7 @@ parts:
 - caption: Introduction
   chapters:
   - file: intro/scope-and-preconditions
-  - file: intro/engineering-thermodynamics
+#  - file: intro/engineering-thermodynamics
   - file: intro/exergy-analysis
 - caption: Single Components
   chapters:
@@ -31,5 +31,5 @@ parts:
   - file: processes/orc-combined-heat-and-power
 - caption: Reference
   chapters:
-  - file: abbreveations-symbols
+#  - file: abbreveations-symbols
   - file: zliterature

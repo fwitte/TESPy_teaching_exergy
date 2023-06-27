@@ -8,5 +8,5 @@ chapter focuses on well known processes, i.e.
 - {ref}`a compression heat pump process <heat-pump-label>`.
 
 You will learn how to set up larger models with TESPy and how to apply the exergy analysis to them. Furthermore,
-parametric analysis of component and process parameters show, how exergy analysis can help identifying cycle
+parametric analysis of component and process parameters show, how exergy analysis can help to identify cycle
 inefficiencies, or finding improvements.

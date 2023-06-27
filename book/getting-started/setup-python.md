@@ -12,7 +12,7 @@ steps to create an environment and install the required dependencies:
 
 1. Create a new folder on your machine.
 2. Download the `environment.yml` file from the
-   [github repository](https://github.com/fwitte/TESPy_teaching_exergy) and save it to the new folder OR create an
+   [GitHub repository](https://github.com/fwitte/TESPy_teaching_exergy) and save it to the new folder OR create an
    `environment.yml` in your folder manually and copy the following contents into it:
 
    ```{literalinclude} /../environment.yml

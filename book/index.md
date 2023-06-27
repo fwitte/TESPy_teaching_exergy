@@ -11,7 +11,7 @@ Thermodynamics -- there is nothing more fundamental.
 ## Contribute
 
 For more information on how to contribute, please visit the
-[github repository](https://github.com/fwitte/TESPy_teaching_exergy).
+[GitHub repository](https://github.com/fwitte/TESPy_teaching_exergy).
 
 ## License
 
