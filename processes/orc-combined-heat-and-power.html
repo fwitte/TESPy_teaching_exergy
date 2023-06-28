@@ -676,32 +676,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.956346618691953 below minimum value (0) at component ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid value for ttd_u: ttd_u = -14.95634661868155 below minimum value (0) at component ORC Preheater.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618693942 below minimum value (0) at component ORC Preheater.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid value for ttd_l: ttd_l = -19.956346618681835 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 3.06e+08 | 2.98e+05 | 7.93e+06 | 5.67e+06 | 0.00e+00
-2	| 5.86e+09 | 7.61e+06 | 3.09e+06 | 1.29e+08 | 0.00e+00
-3	| 3.64e+10 | 6.41e+06 | 1.27e+06 | 2.80e+07 | 0.00e+00
-4	| 1.77e+10 | 1.03e+06 | 5.57e+05 | 1.07e+06 | 0.00e+00
-5	| 3.14e+09 | 4.32e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
-6	| 1.41e+08 | 8.68e+03 | 5.50e+04 | 1.41e+05 | 0.00e+00
-7	| 2.88e+05 | 1.25e+01 | 4.04e-10 | 3.00e+02 | 0.00e+00
-8	| 1.57e+00 | 5.17e-04 | 4.04e-10 | 6.04e-04 | 0.00e+00
-9	| 2.92e-07 | 1.33e-09 | 4.04e-10 | 1.01e-07 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 156.04
-##### RESULTS (Pump) #####
-+-----------------+----------+----------+----------+
-|                 |        P |    eta_s |       pr |
-|-----------------+----------+----------+----------|
-| ORC Pump        | 1.07e+06 | 8.00e-01 | 1.45e+01 |
-| Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
-+-----------------+----------+----------+----------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 3.06e+08   | 50 %       | 2.98e+05   | 7.93e+06   | 5.68e+06   | 0.00e+00   |            
+ 2     | 5.87e+09   | 50 %       | 7.62e+06   | 3.09e+06   | 1.29e+08   | 0.00e+00   |            
+ 3     | 3.64e+10   | 50 %       | 6.42e+06   | 1.27e+06   | 2.80e+07   | 0.00e+00   |            
+ 4     | 1.77e+10   | 50 %       | 1.03e+06   | 5.57e+05   | 1.08e+06   | 0.00e+00   |            
+ 5     | 3.15e+09   | 50 %       | 4.32e+05   | 2.13e+05   | 5.90e+06   | 0.00e+00   |            
+ 6     | 1.41e+08   | 50 %       | 8.69e+03   | 5.50e+04   | 1.41e+05   | 0.00e+00   |            
+ 7     | 2.89e+05   | 50 %       | 1.26e+01   | 4.04e-10   | 3.01e+02   | 0.00e+00   |            
+ 8     | 1.57e+00   | 51 %       | 5.18e-04   | 4.03e-10   | 6.05e-04   | 0.00e+00   |            
+ 9     | 2.84e-07   | 53 %       | 1.27e-09   | 4.04e-10   | 9.77e-08   | 0.00e+00   |            
+Total iterations: 9, Calculation time: 0.06 s, Iterations per second: 159.71
+
 ##### RESULTS (Condenser) #####
 +---------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |               |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
@@ -712,21 +705,28 @@ Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 156.04
 +----------------+-----------+------+----------+-----------+-----------+----------+----------+-----------+----------+
 |                |         Q |   kA |   td_log |     ttd_u |     ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
 |----------------+-----------+------+----------+-----------+-----------+----------+----------+-----------+----------|
-| ORC Evaporator | -6.33e+07 |  nan |      nan |  3.32e+01 | <span class=" -Color -Color-Red">-2.00e+01</span> | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
 | ORC Preheater  | -8.71e+07 |  nan |      nan | <span class=" -Color -Color-Red">-1.50e+01</span> |  1.88e+01 | 1.00e+00 | 1.00e+00 | -3.65e-12 | 0.00e+00 |
+| ORC Evaporator | -6.33e+07 |  nan |      nan |  3.32e+01 | <span class=" -Color -Color-Red">-2.00e+01</span> | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
 +----------------+-----------+------+----------+-----------+-----------+----------+----------+-----------+----------+
-##### RESULTS (CycleCloser) #####
-+------------------+------------------+-------------------+
-|                  |   mass_deviation |   fluid_deviation |
-|------------------+------------------+-------------------|
-| ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
-+------------------+------------------+-------------------+
 ##### RESULTS (Turbine) #####
 +-------------+-----------+----------+----------+
 |             |         P |    eta_s |       pr |
 |-------------+-----------+----------+----------|
 | ORC Turbine | -2.71e+07 | 9.00e-01 | 6.91e-02 |
 +-------------+-----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++------------------+------------------+-------------------+
+|                  |   mass_deviation |   fluid_deviation |
+|------------------+------------------+-------------------|
+| ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
++------------------+------------------+-------------------+
+##### RESULTS (Pump) #####
++-----------------+----------+----------+----------+
+|                 |        P |    eta_s |       pr |
+|-----------------+----------+----------+----------|
+| ORC Pump        | 1.07e+06 | 8.00e-01 | 1.45e+01 |
+| Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
++-----------------+----------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -746,27 +746,20 @@ Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 156.04
 | 19 | 2.750e+02 | 1.080e+01 | 2.304e+02 | 5.481e+01 |
 | 21 | 2.750e+02 | 3.000e+01 | 2.328e+02 | 5.500e+01 |
 +----+-----------+-----------+-----------+-----------+
-iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 3.00e+01 | 2.21e+03 | 6.23e+06 | 4.63e+05 | 0.00e+00
-2	| 1.46e+07 | 1.00e+03 | 1.93e+06 | 5.16e+04 | 0.00e+00
-3	| 2.39e+06 | 8.29e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
-4	| 1.42e+05 | 2.01e+02 | 2.06e+04 | 6.34e+03 | 0.00e+00
-5	| 6.85e+03 | 3.17e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
-6	| 1.16e+00 | 3.76e-04 | 4.47e-02 | 1.43e-02 | 0.00e+00
-7	| 2.21e-06 | 3.15e-05 | 7.89e-03 | 2.05e-03 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.09
+
+ iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 3.00e+01   | 51 %       | 2.21e+03   | 6.23e+06   | 4.63e+05   | 0.00e+00   |            
+ 2     | 1.46e+07   | 50 %       | 1.00e+03   | 1.93e+06   | 5.16e+04   | 0.00e+00   |            
+ 3     | 2.39e+06   | 50 %       | 8.29e+02   | 3.88e+05   | 1.47e+04   | 0.00e+00   |            
+ 4     | 1.42e+05   | 50 %       | 2.01e+02   | 2.06e+04   | 6.34e+03   | 0.00e+00   |            
+ 5     | 6.85e+03   | 50 %       | 3.17e+00   | 9.05e+01   | 8.46e+01   | 0.00e+00   |            
+ 6     | 1.16e+00   | 51 %       | 3.77e-04   | 4.49e-02   | 1.43e-02   | 0.00e+00   |            
+ 7     | 2.24e-06   | 53 %       | 3.15e-05   | 7.89e-03   | 2.05e-03   | 0.00e+00   |            
+Total iterations: 7, Calculation time: 0.07 s, Iterations per second: 105.08
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Pump) #####
-+-----------------+----------+----------+----------+
-|                 |        P |    eta_s |       pr |
-|-----------------+----------+----------+----------|
-| ORC Pump        | 1.52e+05 | 8.00e-01 | 2.46e+00 |
-| Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
-+-----------------+----------+----------+----------+
-##### RESULTS (Condenser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
 +---------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |               |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |---------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -776,21 +769,28 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.09
 +----------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
 |                |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |     zeta2 |
 |----------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------|
+| ORC Preheater  | -2.38e+07 | 1.38e+06 | 1.72e+01 | 1.50e+01 | 1.97e+01 | 1.00e+00 | 1.00e+00 | -3.72e-12 |  0.00e+00 |
 | ORC Evaporator | -1.27e+08 | 2.90e+06 | 4.37e+01 | 1.18e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | -5.32e-15 |
-| ORC Preheater  | -2.38e+07 | 1.38e+06 | 1.72e+01 | 1.50e+01 | 1.97e+01 | 1.00e+00 | 1.00e+00 | -7.45e-12 |  0.00e+00 |
 +----------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
-##### RESULTS (CycleCloser) #####
-+------------------+------------------+-------------------+
-|                  |   mass_deviation |   fluid_deviation |
-|------------------+------------------+-------------------|
-| ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
-+------------------+------------------+-------------------+
 ##### RESULTS (Turbine) #####
 +-------------+-----------+----------+----------+
 |             |         P |    eta_s |       pr |
 |-------------+-----------+----------+----------|
 | ORC Turbine | -1.11e+07 | 9.00e-01 | 4.07e-01 |
 +-------------+-----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++------------------+------------------+-------------------+
+|                  |   mass_deviation |   fluid_deviation |
+|------------------+------------------+-------------------|
+| ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
++------------------+------------------+-------------------+
+##### RESULTS (Pump) #####
++-----------------+----------+----------+----------+
+|                 |        P |    eta_s |       pr |
+|-----------------+----------+----------+----------|
+| ORC Pump        | 1.52e+05 | 8.00e-01 | 2.46e+00 |
+| Geothermal Pump | 6.69e+05 | 8.00e-01 | 2.78e+00 |
++-----------------+----------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -897,29 +897,32 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 109.09
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 9.27e+06 | 2.29e+03 | 7.91e+06 | 2.31e+08 | 0.00e+00
-2	| 9.79e+09 | 6.99e+03 | 3.39e+06 | 1.34e+07 | 0.00e+00
-3	| 2.13e+10 | 6.54e-03 | 1.29e+06 | 6.34e+06 | 0.00e+00
-4	| 5.93e+05 | 7.73e-05 | 5.42e+05 | 8.41e+04 | 0.00e+00
-5	| 2.47e+05 | 2.58e-05 | 1.95e+05 | 6.22e+04 | 0.00e+00
-6	| 5.02e+04 | 1.49e-05 | 3.53e+04 | 3.41e+04 | 0.00e+00
-7	| 3.09e+03 | 6.72e-09 | 1.64e-06 | 3.11e+03 | 0.00e+00
-8	| 2.97e-07 | 2.85e-08 | 7.14e-06 | 2.21e-06 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 8, Calculation time: 0.1 s, Iterations per second: 85.07
-iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 9.64e-08 | 3.67e-08 | 1.18e-05 | 7.34e-06 | 0.00e+00
-2	| 1.62e-06 | 6.96e-09 | 1.62e-06 | 5.01e-07 | 0.00e+00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3	| 9.83e-08 | 2.81e-08 | 7.04e-06 | 2.18e-06 | 0.00e+00
-4	| 6.39e-08 | 3.67e-08 | 9.20e-06 | 2.85e-06 | 0.00e+00
-5	| 1.07e-07 | 1.15e-09 | 2.65e-07 | 9.92e-08 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 72.67
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1     | 8.91e+06   | 50 %       | 2.41e+03   | 7.91e+06   | 3.35e+08   | 0.00e+00   |            
+ 2     | 1.04e+10   | 50 %       | 7.12e+03   | 3.39e+06   | 1.27e+07   | 0.00e+00   |            
+ 3     | 2.13e+10   | 50 %       | 7.21e-03   | 1.29e+06   | 6.34e+06   | 0.00e+00   |            
+ 4     | 5.93e+05   | 50 %       | 2.69e-04   | 5.42e+05   | 8.41e+04   | 0.00e+00   |            
+ 5     | 2.47e+05   | 50 %       | 1.36e-04   | 1.95e+05   | 6.22e+04   | 0.00e+00   |            
+ 6     | 5.02e+04   | 50 %       | 3.56e-05   | 3.53e+04   | 3.41e+04   | 0.00e+00   |            
+ 7     | 3.09e+03   | 50 %       | 2.60e-08   | 6.49e-06   | 3.11e+03   | 0.00e+00   |            
+ 8     | 2.18e-07   | 53 %       | 4.64e-09   | 1.11e-06   | 3.61e-07   | 0.00e+00   |            
+Total iterations: 8, Calculation time: 0.10 s, Iterations per second: 82.42
+
+ iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 6.32e-08   | 53 %       | 2.22e-08   | 9.21e-06   | 6.98e-06   | 0.00e+00   |            
+ 2     | 1.59e-06   | 53 %       | 2.64e-08   | 6.48e-06   | 1.98e-06   | 0.00e+00   |            
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 3     | 7.31e-08   | 53 %       | 2.54e-09   | 6.25e-07   | 1.95e-07   | 0.00e+00   |            
+ 4     | 5.06e-08   | 53 %       | 1.08e-08   | 2.71e-06   | 8.39e-07   | 0.00e+00   |            
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 5     | 8.21e-08   | 53 %       | 1.40e-08   | 3.51e-06   | 1.08e-06   | 0.00e+00   |            
+Total iterations: 5, Calculation time: 0.07 s, Iterations per second: 69.14
 </pre></div>
 </div>
 </div>
@@ -1035,16 +1038,45 @@ Total iterations: 5, Calculation time: 0.1 s, Iterations per second: 72.67
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 4.08e+03 | 2.87e+06 | 1.87e+07 | 5.17e-14
-2	| 1.25e+08 | 4.81e+03 | 4.78e+05 | 3.35e+05 | 0.00e+00
-3	| 1.35e+06 | 9.19e+02 | 7.41e+03 | 8.53e+03 | 1.61e-16
-4	| 1.95e+04 | 1.61e+00 | 8.80e+02 | 2.48e+02 | 0.00e+00
-5	| 7.64e+00 | 1.52e-03 | 2.01e-01 | 4.93e-02 | 0.00e+00
-6	| 1.83e-06 | 5.78e-04 | 1.48e-01 | 3.80e-02 | 1.61e-16
---------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 55.27
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 6.48e+08   | 50 %       | 4.08e+03   | 2.87e+06   | 1.58e+07   | 4.94e-14   |            
+ 2     | 1.25e+08   | 50 %       | 4.81e+03   | 4.78e+05   | 3.35e+05   | 4.73e-17   |            
+ 3     | 1.35e+06   | 50 %       | 9.19e+02   | 7.41e+03   | 8.53e+03   | 1.61e-16   |            
+ 4     | 1.95e+04   | 50 %       | 1.61e+00   | 8.80e+02   | 2.48e+02   | 0.00e+00   |            
+ 5     | 7.64e+00   | 51 %       | 1.52e-03   | 2.01e-01   | 4.93e-02   | 4.63e-30   |            
+ 6     | 1.83e-06   | 53 %       | 5.78e-04   | 1.48e-01   | 3.81e-02   | 1.61e-16   |            
+Total iterations: 6, Calculation time: 0.11 s, Iterations per second: 53.66
+
+##### RESULTS (Condenser) #####
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| ORC Condenser              | -1.39e+08 | 1.93e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | -2.60e-15 | 0.00e+00 |
+| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 |  1.12e-15 | 0.00e+00 |
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+##### RESULTS (HeatExchanger) #####
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
+|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |     zeta2 |
+|----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------|
+| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
+| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | -5.44e-15 |
+| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
++----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
+##### RESULTS (Turbine) #####
++---------------+-----------+----------+----------+
+|               |         P |    eta_s |       pr |
+|---------------+-----------+----------+----------|
+| ORC Turbine   | -1.13e+07 | 9.00e-01 | 4.00e-01 |
+| Steam Turbine | -7.60e+07 | 9.00e-01 | 1.12e-01 |
++---------------+-----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++-------------------------------+------------------+-------------------+
+|                               |   mass_deviation |   fluid_deviation |
+|-------------------------------+------------------+-------------------|
+| ORC Cycle Closer              |         0.00e+00 |          0.00e+00 |
+| District Heating Cycle Closer |         0.00e+00 |          0.00e+00 |
++-------------------------------+------------------+-------------------+
 ##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
@@ -1053,35 +1085,6 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 55.27
 | Geothermal Pump | 1.22e+06 | 8.00e-01 | 2.78e+00 |
 | Steam Pump      | 2.74e+05 | 8.00e-01 | 8.93e+00 |
 +-----------------+----------+----------+----------+
-##### RESULTS (Condenser) #####
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| ORC Condenser              | -1.39e+08 | 1.93e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 8.65e-16 | 0.00e+00 |
-| District Heating Condenser | -4.50e+08 | 2.30e+07 | 1.96e+01 | 5.00e+00 | 5.02e+01 | 1.00e+00 | 1.00e+00 | 1.12e-15 | 0.00e+00 |
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
-|                            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |     zeta2 |
-|----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------|
-| ORC Evaporator             | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | -5.44e-15 |
-| ORC Preheater              | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | -1.12e-11 |  0.00e+00 |
-| District Heating Preheater | -4.72e+07 | 2.41e+06 | 1.96e+01 | 5.02e+01 | 5.00e+00 | 1.00e+00 | 1.00e+00 | -1.72e-12 |  0.00e+00 |
-+----------------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+-----------+
-##### RESULTS (CycleCloser) #####
-+-------------------------------+------------------+-------------------+
-|                               |   mass_deviation |   fluid_deviation |
-|-------------------------------+------------------+-------------------|
-| ORC Cycle Closer              |         5.68e-14 |          0.00e+00 |
-| District Heating Cycle Closer |         0.00e+00 |          0.00e+00 |
-+-------------------------------+------------------+-------------------+
-##### RESULTS (Turbine) #####
-+---------------+-----------+----------+----------+
-|               |         P |    eta_s |       pr |
-|---------------+-----------+----------+----------|
-| ORC Turbine   | -1.13e+07 | 9.00e-01 | 4.00e-01 |
-| Steam Turbine | -7.60e+07 | 9.00e-01 | 1.12e-01 |
-+---------------+-----------+----------+----------+
 ##### RESULTS (HeatExchangerSimple) #####
 +---------------------------+-----------+----------+----------+-----+-----+------+------+--------+
 |                           |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
@@ -1173,7 +1176,7 @@ eta_chp = 0.804
 | ORC Pump                      |   1.613e+05 |   1.256e+05 |   3.573e+04 |   7.785e-01 |   1.630e-04 |   5.596e-04 |
 | ORC Drum                      |   2.117e+07 |   2.114e+07 |   3.168e+04 |   9.985e-01 |   1.445e-04 |   4.962e-04 |
 | Merge                         |   4.535e+03 |   4.528e+03 |   6.554e+00 |   9.986e-01 |   2.990e-08 |   1.026e-07 |
-| District Heating Consumer     |   7.078e+07 |   7.078e+07 |   0.000e+00 |   1.000e+00 |   0.000e+00 |   0.000e+00 |
+| District Heating Consumer     |   7.078e+07 |   7.078e+07 |  -1.490e-08 |   1.000e+00 |  -6.799e-17 |  -2.334e-16 |
 | ORC Cycle Closer              | nan         | nan         | nan         | nan         | nan         | nan         |
 | Coolant Source                | nan         | nan         | nan         | nan         | nan         | nan         |
 | Coolant Sink                  | nan         | nan         | nan         | nan         | nan         | nan         |
@@ -1335,32 +1338,31 @@ epsilon_chp = 0.703
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -2.2147912939992125 below minimum value (0) at component LP ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid value for ttd_l: ttd_l = -2.2147912940035326 below minimum value (0) at component LP ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 1.06e+07 | 1.31e+05 | 9.41e+06 | 3.20e+08 | 0.00e+00
-2	| 1.28e+09 | 1.57e+05 | 4.29e+06 | 1.41e+06 | 0.00e+00
-3	| 3.39e+08 | 4.20e+03 | 1.78e+06 | 9.96e+05 | 0.00e+00
-4	| 8.08e+07 | 6.09e+02 | 7.12e+05 | 3.96e+05 | 0.00e+00
-5	| 5.46e+06 | 3.61e+02 | 2.42e+05 | 3.00e+04 | 0.00e+00
-6	| 6.08e+05 | 3.98e+01 | 5.50e+04 | 1.89e+03 | 0.00e+00
-7	| 3.73e+02 | 9.03e-01 | 1.46e-11 | 1.45e+00 | 0.00e+00
-8	| 1.10e-01 | 3.08e-05 | 1.46e-11 | 2.90e-07 | 0.00e+00
-9	| 2.27e-07 | 4.64e-09 | 1.46e-11 | 2.04e-08 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 101.41
-iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 1.22e+01 | 1.35e+03 | 1.22e+06 | 1.74e+05 | 0.00e+00
-2	| 2.92e+06 | 5.98e+02 | 1.67e+05 | 2.59e+04 | 0.00e+00
-3	| 8.82e+04 | 5.96e+01 | 2.24e+03 | 2.61e+03 | 0.00e+00
-4	| 9.97e+02 | 3.23e-01 | 4.98e+01 | 1.60e+01 | 0.00e+00
-5	| 3.32e-02 | 2.83e-06 | 1.73e-03 | 1.29e-04 | 0.00e+00
-6	| 1.74e-06 | 7.60e-06 | 2.18e-03 | 6.04e-04 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 103.43
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 1.08e+07   | 50 %       | 9.35e+04   | 9.41e+06   | 2.41e+08   | 0.00e+00   |            
+ 2     | 9.32e+08   | 50 %       | 1.23e+05   | 4.29e+06   | 1.04e+06   | 0.00e+00   |            
+ 3     | 2.17e+08   | 50 %       | 8.15e+02   | 1.78e+06   | 6.32e+05   | 0.00e+00   |            
+ 4     | 9.69e+07   | 50 %       | 4.33e+02   | 7.12e+05   | 3.96e+05   | 0.00e+00   |            
+ 5     | 6.62e+06   | 50 %       | 5.24e+02   | 2.42e+05   | 2.96e+04   | 0.00e+00   |            
+ 6     | 6.73e+05   | 50 %       | 4.35e+01   | 5.50e+04   | 1.91e+03   | 0.00e+00   |            
+ 7     | 5.24e+02   | 50 %       | 8.98e-01   | 1.46e-11   | 1.46e+00   | 0.00e+00   |            
+ 8     | 1.09e-01   | 52 %       | 3.06e-05   | 0.00e+00   | 3.23e-07   | 0.00e+00   |            
+ 9     | 2.47e-07   | 53 %       | 1.05e-08   | 1.46e-11   | 1.50e-07   | 0.00e+00   |            
+Total iterations: 9, Calculation time: 0.06 s, Iterations per second: 149.12
+
+ iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 1.22e+01   | 51 %       | 1.35e+03   | 1.22e+06   | 1.74e+05   | 0.00e+00   |            
+ 2     | 2.92e+06   | 50 %       | 5.98e+02   | 1.67e+05   | 2.59e+04   | 0.00e+00   |            
+ 3     | 8.82e+04   | 50 %       | 5.96e+01   | 2.24e+03   | 2.61e+03   | 0.00e+00   |            
+ 4     | 9.97e+02   | 50 %       | 3.23e-01   | 4.98e+01   | 1.60e+01   | 0.00e+00   |            
+ 5     | 3.32e-02   | 52 %       | 2.90e-06   | 1.71e-03   | 1.26e-04   | 0.00e+00   |            
+ 6     | 1.76e-06   | 53 %       | 7.60e-06   | 2.18e-03   | 6.04e-04   | 0.00e+00   |            
+Total iterations: 6, Calculation time: 0.06 s, Iterations per second: 105.11
 </pre></div>
 </div>
 </div>
@@ -1469,38 +1471,36 @@ Total iterations: 6, Calculation time: 0.1 s, Iterations per second: 103.43
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -14.956346618689224 below minimum value (0) at component ORC Preheater.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid value for ttd_u: ttd_u = -14.956346618681323 below minimum value (0) at component ORC Preheater.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_l: ttd_l = -19.9563466186886 below minimum value (0) at component ORC Evaporator.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid value for ttd_l: ttd_l = -19.956346618681835 below minimum value (0) at component ORC Evaporator.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 3.06e+08 | 3.01e+05 | 7.93e+06 | 5.73e+06 | 0.00e+00
-2	| 5.91e+09 | 7.68e+06 | 3.09e+06 | 1.30e+08 | 0.00e+00
-3	| 3.67e+10 | 6.47e+06 | 1.27e+06 | 2.82e+07 | 0.00e+00
-4	| 1.79e+10 | 1.04e+06 | 5.57e+05 | 1.13e+06 | 0.00e+00
-5	| 3.17e+09 | 4.36e+05 | 2.13e+05 | 5.90e+06 | 0.00e+00
-6	| 1.42e+08 | 8.76e+03 | 5.50e+04 | 1.43e+05 | 0.00e+00
-7	| 2.91e+05 | 1.27e+01 | 8.87e-07 | 3.03e+02 | 0.00e+00
-8	| 1.58e+00 | 5.22e-04 | 3.65e-06 | 6.09e-04 | 0.00e+00
-9	| 2.80e-07 | 1.95e-08 | 4.79e-06 | 1.57e-06 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 9, Calculation time: 0.1 s, Iterations per second: 70.16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 3.06e+08   | 50 %       | 3.00e+05   | 7.93e+06   | 5.71e+06   | 0.00e+00   |            
+ 2     | 5.89e+09   | 50 %       | 7.65e+06   | 3.09e+06   | 1.30e+08   | 0.00e+00   |            
+ 3     | 3.66e+10   | 50 %       | 6.45e+06   | 1.27e+06   | 2.81e+07   | 0.00e+00   |            
+ 4     | 1.78e+10   | 50 %       | 1.03e+06   | 5.57e+05   | 1.11e+06   | 0.00e+00   |            
+ 5     | 3.16e+09   | 50 %       | 4.34e+05   | 2.13e+05   | 5.90e+06   | 0.00e+00   |            
+ 6     | 1.42e+08   | 50 %       | 8.72e+03   | 5.50e+04   | 1.42e+05   | 0.00e+00   |            
+ 7     | 2.90e+05   | 50 %       | 1.26e+01   | 1.29e-05   | 3.02e+02   | 0.00e+00   |            
+ 8     | 1.57e+00   | 51 %       | 5.20e-04   | 6.62e-07   | 6.07e-04   | 0.00e+00   |            
+ 9     | 2.69e-07   | 53 %       | 1.40e-08   | 2.72e-06   | 9.07e-07   | 0.00e+00   |            
+Total iterations: 9, Calculation time: 0.13 s, Iterations per second: 70.97
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 3.00e+01 | 2.21e+03 | 6.23e+06 | 4.63e+05 | 0.00e+00
-2	| 1.46e+07 | 1.00e+03 | 1.93e+06 | 5.16e+04 | 0.00e+00
-3	| 2.39e+06 | 8.29e+02 | 3.88e+05 | 1.47e+04 | 0.00e+00
-4	| 1.42e+05 | 2.01e+02 | 2.06e+04 | 6.34e+03 | 0.00e+00
-5	| 6.85e+03 | 3.17e+00 | 9.05e+01 | 8.46e+01 | 0.00e+00
-6	| 1.16e+00 | 3.77e-04 | 4.49e-02 | 1.43e-02 | 0.00e+00
-7	| 1.13e-07 | 3.15e-05 | 7.90e-03 | 2.06e-03 | 0.00e+00
---------+----------+----------+----------+----------+---------
-Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 52.03
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 3.00e+01   | 51 %       | 2.21e+03   | 6.23e+06   | 4.63e+05   | 0.00e+00   |            
+ 2     | 1.46e+07   | 50 %       | 1.00e+03   | 1.93e+06   | 5.16e+04   | 0.00e+00   |            
+ 3     | 2.39e+06   | 50 %       | 8.29e+02   | 3.88e+05   | 1.47e+04   | 0.00e+00   |            
+ 4     | 1.42e+05   | 50 %       | 2.01e+02   | 2.06e+04   | 6.34e+03   | 0.00e+00   |            
+ 5     | 6.85e+03   | 50 %       | 3.17e+00   | 9.05e+01   | 8.46e+01   | 0.00e+00   |            
+ 6     | 1.16e+00   | 51 %       | 3.77e-04   | 4.49e-02   | 1.43e-02   | 0.00e+00   |            
+ 7     | 1.23e-07   | 53 %       | 3.15e-05   | 7.89e-03   | 2.05e-03   | 0.00e+00   |            
+Total iterations: 7, Calculation time: 0.12 s, Iterations per second: 56.53
 </pre></div>
 </div>
 </div>
@@ -1607,22 +1607,28 @@ Total iterations: 7, Calculation time: 0.1 s, Iterations per second: 52.03
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/tespy/components/heat_exchangers/base.py:839: RuntimeWarning: invalid value encountered in scalar divide
-  self.td_log.val = ((self.ttd_l.val - self.ttd_u.val) /
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iter  | residual   | progress   | massflow   | pressure   | enthalpy   | fluid      |            
+-------+------------+------------+------------+------------+------------+------------+
+ 1     | 6.48e+08   | 50 %       | 8.73e+04   | 5.17e+06   | 1.96e+07   | 4.35e-14   |            
+ 2     | 3.89e+08   | 50 %       | 5.19e+03   | 1.30e+06   | 7.57e+05   | 0.00e+00   |            
+ 3     | 2.41e+07   | 50 %       | 5.38e+03   | 5.80e+06   | 8.95e+05   | 0.00e+00   |            
+ 4     | 2.45e+07   | 50 %       | 2.15e+03   | 1.04e+06   | 1.53e+05   | 1.61e-16   |            
+ 5     | 6.75e+06   | 50 %       | 2.97e+02   | 1.08e+05   | 1.65e+04   | 0.00e+00   |            
+ 6     | 4.65e+04   | 50 %       | 1.02e+01   | 2.10e+03   | 4.14e+01   | 5.49e-30   |            
+ 7     | 1.45e+01   | 51 %       | 3.40e-03   | 7.12e-01   | 1.03e-02   | 0.00e+00   |            
+ 8     | 1.19e-05   | 53 %       | 1.21e-04   | 3.50e-02   | 9.40e-03   | 0.00e+00   |            
+Total iterations: 8, Calculation time: 0.17 s, Iterations per second: 46.39
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
---------+----------+----------+----------+----------+---------
-1	| 6.48e+08 | 8.73e+04 | 5.17e+06 | 2.00e+07 | 3.79e-14
-2	| 3.89e+08 | 5.19e+03 | 1.30e+06 | 7.57e+05 | 3.92e-18
-3	| 2.41e+07 | 5.38e+03 | 5.80e+06 | 8.95e+05 | 4.31e-19
-4	| 2.45e+07 | 2.15e+03 | 1.04e+06 | 1.53e+05 | 1.61e-16
-5	| 6.75e+06 | 2.97e+02 | 1.08e+05 | 1.65e+04 | 9.60e-34
-6	| 4.65e+04 | 1.02e+01 | 2.10e+03 | 4.14e+01 | 9.60e-34
-7	| 1.45e+01 | 3.40e-03 | 7.12e-01 | 1.03e-02 | 3.22e-29
-8	| 1.19e-05 | 1.21e-04 | 3.50e-02 | 9.40e-03 | 9.60e-34
---------+----------+----------+----------+----------+---------
-Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 45.12
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
+|                   |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |     zeta2 |
+|-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------|
+| LP ORC Preheater  | -2.00e+08 | 1.16e+07 | 1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
+| LP ORC Evaporator | -3.13e+08 | 3.13e+07 | 1.00e+01 | 1.00e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
+| ORC Preheater     | -2.44e+07 | 1.41e+06 | 1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 |  0.00e+00 |
+| ORC Evaporator    | -1.26e+08 | 2.89e+06 | 4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | -5.44e-15 |
++-------------------+-----------+----------+----------+----------+----------+----------+----------+----------+-----------+
 ##### RESULTS (Turbine) #####
 +----------------+-----------+----------+----------+
 |                |         P |    eta_s |       pr |
@@ -1631,17 +1637,20 @@ Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 45.12
 | Steam Turbine  | -6.04e+07 | 9.00e-01 | 1.84e-01 |
 | ORC Turbine    | -1.13e+07 | 9.00e-01 | 4.00e-01 |
 +----------------+-----------+----------+----------+
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
-+-------------------+-----------+------------+------------+----------+----------+----------+----------+----------+----------+
-|                   |         Q |         kA |     td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-------------------+-----------+------------+------------+----------+----------+----------+----------+----------+----------|
-| LP ORC Preheater  | -2.00e+08 |   1.16e+07 |   1.72e+01 | 1.50e+01 | 1.96e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| LP ORC Evaporator | -3.13e+08 | nan        | nan        | 1.00e+01 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Preheater     | -2.44e+07 |   1.41e+06 |   1.73e+01 | 1.50e+01 | 1.99e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Evaporator    | -1.26e+08 |   2.89e+06 |   4.35e+01 | 1.17e+02 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-------------------+-----------+------------+------------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Condenser) #####
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |     zeta1 |    zeta2 |
+|------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------|
+| LP ORC Condenser | -4.42e+08 | 6.13e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | -6.72e-16 | 0.00e+00 |
+| ORC Condenser    | -1.39e+08 | 1.93e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 |  0.00e+00 | 0.00e+00 |
++------------------+-----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+##### RESULTS (CycleCloser) #####
++---------------------+------------------+-------------------+
+|                     |   mass_deviation |   fluid_deviation |
+|---------------------+------------------+-------------------|
+| LP ORC Cycle Closer |         2.27e-13 |          0.00e+00 |
+| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
++---------------------+------------------+-------------------+
 ##### RESULTS (Pump) #####
 +-----------------+----------+----------+----------+
 |                 |        P |    eta_s |       pr |
@@ -1651,20 +1660,6 @@ Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 45.12
 | ORC Pump        | 1.56e+05 | 8.00e-01 | 2.50e+00 |
 | Geothermal Pump | 1.22e+06 | 8.00e-01 | 2.78e+00 |
 +-----------------+----------+----------+----------+
-##### RESULTS (Condenser) #####
-+------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|                  |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| LP ORC Condenser | -4.42e+08 | 6.13e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-| ORC Condenser    | -1.39e+08 | 1.93e+07 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+---------------------+------------------+-------------------+
-|                     |   mass_deviation |   fluid_deviation |
-|---------------------+------------------+-------------------|
-| LP ORC Cycle Closer |         0.00e+00 |          0.00e+00 |
-| ORC Cycle Closer    |         5.68e-14 |          0.00e+00 |
-+---------------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -1733,7 +1728,9 @@ Total iterations: 8, Calculation time: 0.2 s, Iterations per second: 45.12
 | total             |         0.000e+00 |   0.000e+00 |  nan         |
 +-------------------+-------------------+-------------+--------------+
 eta_el = 0.190
-##### RESULTS: Aggregation of components and busses #####
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS: Aggregation of components and busses #####
 +---------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 |                     |         E_F |         E_P |         E_D |     epsilon |        y_Dk |       y*_Dk |
 |---------------------+-------------+-------------+-------------+-------------+-------------+-------------|
@@ -1752,7 +1749,7 @@ eta_el = 0.190
 | Steam Pump          |   2.605e+05 |   2.057e+05 |   5.473e+04 |   7.899e-01 |   2.497e-04 |   7.128e-04 |
 | ORC Pump            |   1.613e+05 |   1.256e+05 |   3.573e+04 |   7.785e-01 |   1.630e-04 |   4.654e-04 |
 | ORC Drum            |   2.117e+07 |   2.114e+07 |   3.168e+04 |   9.985e-01 |   1.445e-04 |   4.126e-04 |
-| Merge               |   4.166e+03 |   4.160e+03 |   5.534e+00 |   9.987e-01 |   2.525e-08 |   7.207e-08 |
+| Merge               |   4.166e+03 |   4.160e+03 |   5.534e+00 |   9.987e-01 |   2.525e-08 |   7.208e-08 |
 | LP ORC Cycle Closer | nan         | nan         | nan         | nan         | nan         | nan         |
 | LP Coolant Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 | LP Coolant Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
@@ -1760,8 +1757,8 @@ eta_el = 0.190
 | Coolant Sink        | nan         | nan         | nan         | nan         | nan         | nan         |
 | Coolant Source      | nan         | nan         | nan         | nan         | nan         | nan         |
 | Geothermal Sink     | nan         | nan         | nan         | nan         | nan         | nan         |
-| Geothermal Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 | Seperator           | nan         | nan         | nan         | nan         | nan         | nan         |
+| Geothermal Source   | nan         | nan         | nan         | nan         | nan         | nan         |
 +---------------------+-------------+-------------+-------------+-------------+-------------+-------------+
 ##### RESULTS: Network exergy analysis #####
 +-----------+-----------+-----------+-----------+-----------+
@@ -1861,9 +1858,9 @@ epsilon_el = 0.628
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="8da1a6eb-a2a9-4f2e-9c8e-eecda5c4f95f" class="plotly-graph-div" style="height:525px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("8da1a6eb-a2a9-4f2e-9c8e-eecda5c4f95f")) {                    Plotly.newPlot(                        "8da1a6eb-a2a9-4f2e-9c8e-eecda5c4f95f",                        [{"arrangement":"snap","link":{"color":["rgba(55.0, 126.0, 184.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(152.0, 78.0, 163.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(55.0, 126.0, 184.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)"],"source":[0,1,23,23,23,23,2,2,3,3,3,4,4,4,5,5,5,7,7,7,8,8,8,11,11,11,12,12,12,13,13,13,14,14,15,15,17,17,18,18,21,21],"target":[1,21,2,14,18,25,27,7,27,2,26,27,5,8,27,4,7,27,4,17,23,27,3,27,13,15,23,27,11,27,14,11,27,17,25,13,27,18,27,1,5,12],"value":[219181714.5265511,223632556.30056694,161319.62462909805,283453.34142148576,1260216.2508000191,83401136.33033234,35729.09886785422,290660.1958197313,3487685.6709003984,165069.6700584875,1153377.2725400934,31677.33754762262,3861539.4029668765,17277956.052228086,16996455.43101948,19129607.941355005,4807051.2599389125,1160236.1822242178,2041564.8513875797,1895910.422146846,11015090.01115521,1456733.427573895,4806132.61349898,28486013.96146884,8629267.564209744,82770065.95329827,74091035.53602774,8544220.912005275,103925724.62318744,3321685.2537326533,1335543.280347649,15959622.855789423,59557.9340149326,1559438.6877542022,70782482.1276383,11987583.825659981,6.553632127182027,3455342.556268921,264717.0330531085,4450841.774015832,37071575.22934652,186560981.07122046]},"node":{"color":"orange","label":["E_F","Heat Input","ORC Pump","ORC Condenser","ORC Drum","ORC Evaporator","ORC Cycle Closer","ORC Preheater","ORC Turbine","Coolant Source","Coolant Sink","District Heating Condenser","Steam Turbine","District Heating Preheater","Steam Pump","District Heating Consumer","District Heating Cycle Closer","Merge","Geothermal Pump","Geothermal Sink","Geothermal Source","Seperator","Heat Output District Heating","Power Output","Heat Output Cooling","E_P","E_L","E_D"],"pad":11},"type":"sankey"}],                        {"width":1200,"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="8fc00ba8-d723-4980-9fce-66a82d8a311c" class="plotly-graph-div" style="height:525px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("8fc00ba8-d723-4980-9fce-66a82d8a311c")) {                    Plotly.newPlot(                        "8fc00ba8-d723-4980-9fce-66a82d8a311c",                        [{"arrangement":"snap","link":{"color":["rgba(242, 142, 43, 0.90)","rgba(89, 161, 79, 0.90)","rgba(118, 183, 178, 0.90)","rgba(78, 121, 167, 0.90)","rgba(78, 121, 167, 0.90)","rgba(78, 121, 167, 0.90)","rgba(118, 183, 178, 0.90)","rgba(156, 117, 95, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)"],"source":[0,1,22,23,23,23,23,24,2,2,2,3,3,3,4,4,4,5,5,5,6,7,7,8,8,8,10,11,11,11,12,12,12,13,13,14,14,14,15,15,16,17,17,18,19,19,20,21,21],"target":[1,20,25,7,13,17,25,26,27,7,10,27,5,19,23,27,2,27,8,4,3,27,6,27,5,3,24,27,14,15,23,27,11,27,19,27,13,11,22,16,14,27,18,1,27,17,21,8,12],"value":[219181714.52655798,223632556.30056694,70782482.1276558,161319.62462966036,283453.34142172994,1260216.25079524,83401136.33036688,1153377.2725412697,3487685.6708984887,165069.67005835325,1153377.2725412697,1160236.1822298183,2041564.8513987313,1895910.4221552538,11015090.011185968,1456733.4275778588,4806132.613498111,31677.33754763007,3861539.402985293,17277956.052261937,290660.19582014333,35729.098867870285,290660.19582014333,16996455.430972025,19129607.94139613,4807051.25996366,1153377.2725412697,28486013.961341254,8629267.564206759,82770065.95329691,74091035.53602754,8544220.912004963,103925724.62318796,59557.93402841763,1559438.6877575517,3321685.2538266573,1335543.2803642394,15959622.855656993,70782482.1276558,11987583.825641131,11987583.825641131,264717.03307340294,4450841.774008955,4450841.774008955,6.553625687231943,3455342.556287118,223632556.30056694,37071575.22934652,186560981.07122046]},"node":{"color":"orange","label":["E_F","Heat Input","ORC Condenser","ORC Preheater","ORC Turbine","ORC Drum","ORC Cycle Closer","ORC Pump","ORC Evaporator","Coolant Source","Coolant Sink","District Heating Condenser","Steam Turbine","Steam Pump","District Heating Preheater","District Heating Consumer","District Heating Cycle Closer","Geothermal Pump","Geothermal Sink","Merge","Geothermal Source","Seperator","Heat Output District Heating","Power Output","Heat Output Cooling","E_P","E_L","E_D"],"pad":11},"type":"sankey"}],                        {"width":1200,"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('8da1a6eb-a2a9-4f2e-9c8e-eecda5c4f95f');
+var gd = document.getElementById('8fc00ba8-d723-4980-9fce-66a82d8a311c');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -1885,9 +1882,9 @@ if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
 
-                        })                };                });            </script>        </div></div><div class="output text_html"><div>                            <div id="ba90277e-910e-496a-ab13-96502e3a093b" class="plotly-graph-div" style="height:525px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ba90277e-910e-496a-ab13-96502e3a093b")) {                    Plotly.newPlot(                        "ba90277e-910e-496a-ab13-96502e3a093b",                        [{"arrangement":"snap","link":{"color":["rgba(55.0, 126.0, 184.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(152.0, 78.0, 163.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(152.0, 78.0, 163.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(228.0, 26.0, 28.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(255.0, 127.0, 0.0, 0.75)","rgba(152.0, 78.0, 163.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(55.0, 126.0, 184.0, 0.75)","rgba(77.0, 175.0, 74.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)","rgba(166.0, 86.0, 40.0, 0.75)"],"source":[0,1,27,27,27,27,27,28,2,2,2,3,3,3,4,4,5,5,5,6,6,6,7,7,7,11,11,11,12,12,13,13,14,14,14,15,15,15,17,17,17,18,18,18,19,19,19,22,22,24,24,26,26],"target":[1,26,4,12,13,22,29,30,27,31,5,31,6,12,31,3,31,4,28,31,7,2,31,6,3,27,31,7,31,24,31,14,31,18,24,27,31,19,31,18,14,31,17,15,31,13,28,31,1,31,22,11,17],"value":[219182386.78483468,223632556.30056694,1847105.0060718711,260463.9773287131,161319.62463105423,1260214.0881571684,137586847.8922631,4818914.315584167,71168680.8929002,9028527.55304338,17382903.125582185,17741181.272787057,28195720.752321403,1353033.7577867555,408800.4567877499,1918653.6785931995,13237016.953391843,480349.1293090782,3665537.0428812657,81362.58779916167,66689106.28014292,97580111.57152577,6197668.717511192,136154859.68714646,45371282.10430202,58932179.684330545,6594097.15807312,121034704.22881676,54728.26447941252,1558769.470636056,35729.098869378766,290660.1958208813,1160236.1822393336,2041564.851418534,1895910.42215094,11015090.011221167,1456733.4275919124,4806132.613498515,16996455.4309183,19129607.941450983,4807051.259987926,31677.33754722774,3861539.403010691,17277956.052311596,3487685.670736409,165069.67005920582,1153377.272702901,264718.931547628,4450169.515732245,5.53366429194466,3454674.3591227042,186560981.07122043,37071575.22934652]},"node":{"color":"orange","label":["E_F","Heat Input","LP ORC Turbine","LP ORC Preheater","LP ORC Pump","LP ORC Condenser","LP ORC Drum","LP ORC Evaporator","LP ORC Cycle Closer","LP Coolant Source","LP Coolant Sink","Steam Turbine","Steam Pump","ORC Pump","ORC Preheater","ORC Turbine","ORC Cycle Closer","ORC Evaporator","ORC Drum","ORC Condenser","Coolant Sink","Coolant Source","Geothermal Pump","Geothermal Sink","Merge","Geothermal Source","Seperator","Power Output","Heat Output Cooling","E_P","E_L","E_D"],"pad":11},"type":"sankey"}],                        {"width":1200,"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
+                        })                };                });            </script>        </div></div><div class="output text_html"><div>                            <div id="2741833d-316e-42c3-be12-3944240ea6b6" class="plotly-graph-div" style="height:525px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("2741833d-316e-42c3-be12-3944240ea6b6")) {                    Plotly.newPlot(                        "2741833d-316e-42c3-be12-3944240ea6b6",                        [{"arrangement":"snap","link":{"color":["rgba(242, 142, 43, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(78, 121, 167, 0.90)","rgba(78, 121, 167, 0.90)","rgba(78, 121, 167, 0.90)","rgba(118, 183, 178, 0.90)","rgba(156, 117, 95, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(78, 121, 167, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(176, 122, 161, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)","rgba(89, 161, 79, 0.90)"],"source":[0,1,27,27,27,27,27,28,2,2,2,3,3,3,4,4,4,5,5,5,6,7,7,7,8,8,10,11,11,11,12,12,13,13,14,14,14,15,15,15,16,16,16,17,17,17,18,19,19,19,20,22,22,23,24,24,25,25,26],"target":[1,26,8,12,13,24,29,30,31,7,12,27,31,5,31,7,2,31,8,10,2,31,4,3,31,6,28,27,31,4,31,22,31,18,31,19,17,31,13,20,31,14,22,27,31,15,16,31,14,16,28,31,24,1,31,23,11,19,25],"value":[219182386.7848673,223632556.30056694,1847105.0060810875,260463.9773119835,161319.62463035557,1260214.0882154969,137586847.89221865,4818914.315583933,17741181.272788614,28195720.752360143,1353033.7577906942,71168680.89293577,9028527.553047195,17382903.125583895,6197668.717465848,136154859.6872366,45371282.104344584,13237016.953394338,480349.1293087709,3665537.042880784,1918653.6785948672,81362.58779960871,66689106.28023027,97580111.57156686,408800.4567949914,1918653.678594867,3665537.042880784,58932179.684330545,6594097.15807312,121034704.22881676,54728.264465662214,1558769.4706370155,35729.098869160545,290660.19582055503,31677.33754779026,3861539.4029937447,17277956.052277904,3487685.670736162,165069.67005936,1153377.2727031496,1160236.1822300202,2041564.851404839,1895910.4221573828,11015090.011191275,1456733.427587958,4806132.613498671,290660.195820555,16996455.43095398,19129607.941414602,4807051.259971687,1153377.2727031496,5.533694293264489,3454674.359100105,4450169.515699656,264718.9316159459,4450169.515699656,186560981.07122043,37071575.22934652,223632556.30056694]},"node":{"color":"orange","label":["E_F","Heat Input","LP ORC Preheater","LP ORC Turbine","LP ORC Evaporator","LP ORC Condenser","LP ORC Cycle Closer","LP ORC Drum","LP ORC Pump","LP Coolant Source","LP Coolant Sink","Steam Turbine","Steam Pump","ORC Pump","ORC Drum","ORC Condenser","ORC Preheater","ORC Turbine","ORC Cycle Closer","ORC Evaporator","Coolant Sink","Coolant Source","Merge","Geothermal Sink","Geothermal Pump","Seperator","Geothermal Source","Power Output","Heat Output Cooling","E_P","E_L","E_D"],"pad":11},"type":"sankey"}],                        {"width":1200,"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('ba90277e-910e-496a-ab13-96502e3a093b');
+var gd = document.getElementById('2741833d-316e-42c3-be12-3944240ea6b6');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
