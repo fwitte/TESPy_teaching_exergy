@@ -4,9 +4,9 @@
 Thermodynamics -- there is nothing more fundamental.
 ```
 
-- Introduction
-- Scope
-- Table of Contents
+This page is a work in progress state of an open source course on exergy analysis in thermal engineering. The sections
+are functioning but not yet feature complete, feel free to check them out. If you would like to contribute reach out via
+the GitHub page!
 
 ## Contribute
 

@@ -5,5 +5,5 @@ dependencies:
 - python==3.10
 - pip
 - pip:
-  - tespy
+  - git+https://github.com/oemof/tespy.git@0b6558d3ee6be0c8451f93ad7956639639853826
   - notebook
